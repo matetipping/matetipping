@@ -12,12 +12,14 @@ header {
   position: fixed;
   top: 0;
 }
-header::after { 
+header::after, footer::before { 
   content: "";
   background-color: #F47D33;
   height: 32px;
   width: 100%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+header::after {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 128px;
 }
@@ -27,6 +29,11 @@ main {
   margin: auto;
   margin-top: 160px;
   margin-bottom: 160px;
+}
+footer::before {
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 128px;
 }
 footer {
   position: absolute;
