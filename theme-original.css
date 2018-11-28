@@ -33,6 +33,7 @@ header span {
 }
 span.highlight {
   color: #F47D33;
+  display: inline;
 }
 h1 {
   font-size: 16pt;
