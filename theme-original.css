@@ -31,9 +31,12 @@ header span {
   vertical-align: middle;
   display: table-cell;
 }
-span.highlight {
-  color: #F47D33;
+header span span {
   display: inline;
+}
+span.highlight {
+  font-family: 'Lato Black', sans-serif;
+  color: #F47D33;
 }
 h1 {
   font-size: 16pt;
