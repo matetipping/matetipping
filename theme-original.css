@@ -12,7 +12,7 @@ header {
   position: fixed;
   top: 0;
 }
-header::after { 
+header::after, footer::before { 
   content: "";
   background-color: #F47D33;
   height: 32px;
