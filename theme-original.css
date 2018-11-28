@@ -15,6 +15,10 @@ main {
 }
 @media only screen and (min-width: 768px) {
   /* for desktop */
-  
+  main {
+    margin-top: 128px;
+    margin-bottom: 128px;
+    border-radius: 20px;
+  }
 
 }
