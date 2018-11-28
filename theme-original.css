@@ -31,6 +31,9 @@ header span {
   vertical-align: middle;
   display: table-cell;
 }
+span.highlight {
+  color: #F47D33;
+}
 h1 {
   font-size: 16pt;
   text-transform: uppercase;
