@@ -38,6 +38,16 @@ header span {
 header span span {
   display: inline;
 }
+header span.logo-container {
+  margin-left: 24px;
+  margin-right: 0;
+  width: 32px;
+  padding-left: 24px;
+  padding-right: 12px;
+}
+header span.logo-container logo-small-desktop {
+  display: none;
+}
 span.highlight {
   color: #F47D33;
 }
@@ -90,5 +100,11 @@ footer {
   }
   h1 {
     font-size: 24pt;
+  }
+  header span.logo-container logo-small-desktop {
+    display: block;
+  }
+  header span.logo-container logo-small {
+    display: none;
   }
 }
