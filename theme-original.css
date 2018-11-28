@@ -69,6 +69,7 @@ span.coin-container {
 }
 .float-right {
   float: right;
+  height: auto;
 }
 main {
   background-color: #222A35;
