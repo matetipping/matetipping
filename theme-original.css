@@ -12,12 +12,14 @@ header {
   position: fixed;
   top: 0;
 }
-header::after, footer::before { 
+header::after { 
   content: "";
   background-color: #F47D33;
   height: 32px;
   width: 100%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 128px;
 }
 main {
   background-color: #222A35;
@@ -28,7 +30,7 @@ footer {
   position: absolute;
   bottom: 0;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-device-width: 1200px) {
   /* for desktop */
   main {
     margin-top: 128px;
@@ -37,5 +39,9 @@ footer {
   }
   header, footer {
     height: 64px; 
+  }
+  header::after {
+    height: 16px;
+    top: 64px;
   }
 }
