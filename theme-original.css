@@ -17,6 +17,7 @@ header {
   position: fixed;
   top: 0;
   display: table;
+  font-size: 32px;
 }
 header::after, footer::before { 
   content: "";
@@ -36,7 +37,7 @@ header span {
   display: table-cell;
 }
 header span span {
-  display: inline;
+  display: block;
 }
 header span.logo-container {
   margin-left: 24px;
@@ -121,5 +122,8 @@ footer {
   }
   main {
     margin-bottom: 64px;
+  }
+  header span span {
+    display: inline;
   }
 }
