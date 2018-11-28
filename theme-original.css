@@ -45,10 +45,10 @@ header span.logo-container {
   padding-left: 24px;
   padding-right: 12px;
 }
-header span.logo-container logo-small-desktop {
+header span.logo-container .logo-small-desktop {
   display: none;
 }
-header span.logo-container logo-small {
+header span.logo-container .logo-small {
   height: 128px;
   width: 128px;
 }
@@ -105,10 +105,10 @@ footer {
   h1 {
     font-size: 24pt;
   }
-  header span.logo-container logo-small-desktop {
+  header span.logo-container .logo-small-desktop {
     display: block;
   }
-  header span.logo-container logo-small {
+  header span.logo-container .logo-small {
     display: none;
   }
 }
