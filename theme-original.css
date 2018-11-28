@@ -42,7 +42,7 @@ footer {
 @media only screen and (min-device-width: 1200px) {
   /* for desktop */
   main {
-    margin: auto;
+    margin: 48px;
     margin-top: 128px;
     margin-bottom: 128px;
     border-radius: 24px;
