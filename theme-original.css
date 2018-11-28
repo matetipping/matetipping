@@ -25,6 +25,8 @@ main {
   background-color: #222A35;
   max-width: 768px;
   margin: auto;
+  margin-top: 160px;
+  margin-bottom: 160px;
 }
 footer {
   position: absolute;
