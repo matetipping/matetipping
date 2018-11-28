@@ -111,4 +111,8 @@ footer {
   header span.logo-container .logo-small {
     display: none;
   }
+  footer::before {
+    height: 16px;
+    bottom: 64px;
+  }
 }
