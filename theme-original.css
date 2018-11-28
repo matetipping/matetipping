@@ -68,6 +68,9 @@ h1 {
 span.coin-container {
   /* display: none; */
 }
+span.username-container {
+  text-align: right;
+}
 span.hamburger-container {
   width: 32px;
 }
