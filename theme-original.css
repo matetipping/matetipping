@@ -24,6 +24,9 @@ header::after {
   position: fixed;
   top: 128px;
 }
+.float-right {
+  float: right;
+}
 main {
   background-color: #222A35;
   margin: 0;
