@@ -17,7 +17,7 @@ header {
   position: fixed;
   top: 0;
   display: table;
-  font-size: 32px;
+  font-size: 32pt;
 }
 header::after, footer::before { 
   content: "";
@@ -52,6 +52,9 @@ header span.logo-container .logo-small-desktop {
 header span.logo-container .logo-small {
   height: 128px;
   width: 128px;
+}
+header span.hamburger-container {
+  font-size: 32pt; 
 }
 span.highlight {
   color: #F47D33;
@@ -104,6 +107,9 @@ footer {
     border-radius: 24px;
     max-width: 1200px;
   }
+  header {
+    font-size: 16pt;
+  }
   header, footer {
     height: 64px; 
   }
@@ -122,6 +128,9 @@ footer {
   }
   header span.logo-container .logo-small {
     display: none;
+  }
+  header span.hamburger-container {
+    font-size: 64pt;
   }
   footer::before {
     height: 16px;
