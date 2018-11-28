@@ -66,11 +66,15 @@ h1 {
   margin: 0;
 }
 span.coin-container {
-  display: none;
+  /* display: none; */
 }
-.float-right {
+span.hamburger-container {
+  width: 32px;
+}
+span.float-right {
   float: right;
   height: auto;
+  margin-right: 24px;
 }
 main {
   background-color: #222A35;
