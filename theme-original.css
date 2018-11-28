@@ -24,6 +24,14 @@ header::after {
   position: fixed;
   top: 128px;
 }
+header span {
+  height: 100%;
+  vertical-align: middle;
+  display: table;
+}
+span h1 {
+  display: inline-block;
+}
 .float-right {
   float: right;
 }
