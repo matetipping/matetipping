@@ -71,7 +71,6 @@ main {
   background-color: #222A35;
   margin: 0;
   margin-top: 160px;
-  margin-bottom: 160px;
   padding: 24px;
   min-height: 100vh;
 }
@@ -81,7 +80,7 @@ footer::before {
   bottom: 128px;
 }
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 @media only screen and (min-device-width: 1200px) {
@@ -115,5 +114,8 @@ footer {
   footer::before {
     height: 16px;
     bottom: 64px;
+  }
+  main {
+    margin-bottom: 160px;
   }
 }
