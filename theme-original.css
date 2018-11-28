@@ -21,7 +21,7 @@ header {
 header::after, footer::before { 
   content: "";
   background-color: #F47D33;
-  height: px;
+  height: 32px;
   width: 100%;
 }
 header::after {
