@@ -35,10 +35,10 @@ header span span {
   display: inline;
 }
 span.highlight {
-  font-family: 'Lato Black', sans-serif;
   color: #F47D33;
 }
 h1 {
+  font-family: 'Lato Black', sans-serif;
   font-size: 16pt;
   text-transform: uppercase;
   margin: 0;
