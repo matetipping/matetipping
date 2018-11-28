@@ -4,6 +4,7 @@ body {
 header, footer {
   background-color: #222A35;
   height: 64px;
+  width: 100%;
 }
 header {
   position: fixed;
