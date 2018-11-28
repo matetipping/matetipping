@@ -5,7 +5,7 @@ body {
 }
 header, footer {
   background-color: #1E252F;
-  height: 64px;
+  height: 128px;
   width: 100%;
 }
 header {
@@ -28,5 +28,7 @@ main {
     margin-bottom: 128px;
     border-radius: 20px;
   }
-
+  header, footer {
+    height: 64px; 
+  }
 }
