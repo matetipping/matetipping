@@ -17,7 +17,7 @@ header {
   position: fixed;
   top: 0;
   display: table;
-  font-size: 32pt;
+  font-size: 32px;
 }
 header::after, footer::before { 
   content: "";
@@ -54,7 +54,7 @@ header span.logo-container .logo-small {
   width: 128px;
 }
 header span.hamburger-container {
-  font-size: 32pt; 
+  font-size: 64px; 
 }
 span.highlight {
   color: #F47D33;
@@ -64,7 +64,7 @@ h1 span.highlight {
 }
 h1 {
   font-family: 'Lato Black', sans-serif;
-  font-size: 32pt;
+  font-size: 32px;
   text-transform: uppercase;
   margin: 0;
 }
@@ -108,7 +108,7 @@ footer {
     max-width: 1200px;
   }
   header {
-    font-size: 16pt;
+    font-size: 16px;
   }
   header, footer {
     height: 64px; 
@@ -121,7 +121,7 @@ footer {
     display: inline;
   }
   h1 {
-    font-size: 24pt;
+    font-size: 24px;
   }
   header span.logo-container .logo-small-desktop {
     display: block;
@@ -130,7 +130,7 @@ footer {
     display: none;
   }
   header span.hamburger-container {
-    font-size: 64pt;
+    font-size: 32px;
   }
   footer::before {
     height: 16px;
