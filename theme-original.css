@@ -21,7 +21,7 @@ header {
 header::after, footer::before { 
   content: "";
   background-color: #F47D33;
-  height: 32px;
+  height: px;
   width: 100%;
 }
 header::after {
@@ -41,9 +41,12 @@ header span span {
 span.highlight {
   color: #F47D33;
 }
+h1 span.highlight {
+  display: block;
+}
 h1 {
   font-family: 'Lato Black', sans-serif;
-  font-size: 16pt;
+  font-size: 32pt;
   text-transform: uppercase;
   margin: 0;
 }
@@ -81,5 +84,11 @@ footer {
   header::after {
     height: 16px;
     top: 64px;
+  }
+  h1 span.highlight {
+    display: inline;
+  }
+  h1 {
+    font-size: 24pt;
   }
 }
