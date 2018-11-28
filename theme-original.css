@@ -74,7 +74,7 @@ span.username-container {
 span.hamburger-container {
   width: 32px;
 }
-span.float-right {
+.float-right {
   float: right;
   height: auto;
   margin-right: 24px;
