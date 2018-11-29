@@ -35,18 +35,18 @@ $(document).ready(function(){
 		var isRegistrationError = false;
 		var registrationErrorMessage;
 		var formData = {
-			"username": $("#form-register-username").val(),
-			"email": $("#form-register-email").val(),
-			"password": $("#form-register-password").val(),
-			"passwordConfirm": $("form-register-password-confirm").val()
+			"username": $("#input-register-username").val(),
+			"email": $("#input-register-email").val(),
+			"password": $("#input-register-password").val(),
+			"passwordConfirm": $("input-register-password-confirm").val()
 		}
-		if (formData.username.length < 3 || formData.username.length > 20) {
+		if (formData.username.length() < 3 || formData.username.length() > 20) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Username must be between 3 and 20 characters."
 		} else if (!formData.email.contains("@")) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Email does not appear to be valid."			
-		} else if (formData.password.length < 6) {
+		} else if (formData.password.length() < 6) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
 		} else if (formData.password != formData.passwordConfirm) {
