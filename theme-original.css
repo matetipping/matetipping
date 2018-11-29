@@ -145,19 +145,19 @@ span.hamburger-container {
   }
   40% {
     width: 6px;
-    transform: translateX(50%);
+    transform: translateX(17px);
   }
   50% {
     width: 4px;
-    transform: translate(50%, 4px);
+    transform: translate(17px, 4px);
   }
   60% {
     width: 6px;
-    transform: translate(50%, 12px);
+    transform: translate(17px, 12px);
   }
   90% {
     width: 120%;
-    transform: translate(-10%, 12px) rotate(60deg);
+    transform: translate(-6px, 12px) rotate(60deg);
   }
   100% {
     width: 100%;
@@ -175,21 +175,25 @@ span.hamburger-container {
   }
   40% {
     width: 6px;
-    transform: translateX(50%);
+    transform: translateX(17px);
+  }
+  50% {
+    width: 4px;
+    transform: translate(17px, 0);
   }
   59% {
-    width: 4px;
-    transform: translate(50%, 0);
+    width: 6px;
+    transform: translate(17px, 0);
   }
   60% {
     width: 0;
     height: 0;
-    transform: translate(50%, 0);
+    transform: translate(20px, 0);
   }
   100% {
     width: 0;
     height: 0;
-    transform: translate(50%, 0);
+    transform: translate(20px, 0);
   }
 }
 @keyframes hamburgerBottomBar {
@@ -203,19 +207,19 @@ span.hamburger-container {
   }
   40% {
     width: 6px;
-    transform: translateX(50%);
+    transform: translateX(17px);
   }
   50% {
     width: 4px;
-    transform: translate(50%, -4px);
+    transform: translate(17px, -4px);
   }
   60% {
     width: 6px;
-    transform: translate(50%, -6px);
+    transform: translate(17px, -6px);
   }
   90% {
     width: 120%;
-    transform: translate(-10%, -6px) rotate(-60deg);
+    transform: translate(-6px, -6px) rotate(-60deg);
   }
   100% {
     width: 100%;
