@@ -32,10 +32,10 @@ $(document).ready(function(){
 
 function attemptLogIn(username, tokenCount) {
 	if (loggedIn) {
-		$(".username-container span:nth-child(1)").text(username);
-		$(".username-container span:nth-child(2)").html("[" + tokenCount + " tokens]");
+		$(".username-container span span:nth-child(1)").text(username);
+		$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
 	} else {
-		$(".username-container span:nth-child(1)").text("You are logged off.");
-		$(".username-container span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
+		$(".username-container span span:nth-child(1)").text("You are logged off.");
+		$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
 	}
 }
