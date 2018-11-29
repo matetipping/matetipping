@@ -3,7 +3,7 @@ $(document).ready(function(){
 		if ($(this).hasClass("animcomplete")) {
 			$(this).removeClass("animcomplete");
 			$(this).addClass("closed");
-			$("nav").css("right", "-64px");
+			$("nav").css("right", "-100%");
 			setTimeout(function() {
 				$("#nav-hamburger").removeClass("closed");
 			}, 500);
