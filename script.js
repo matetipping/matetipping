@@ -123,7 +123,7 @@ function commitLogOff() {
 function displayLogIn(username, tokenCount) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
-	$("nav ul li:nth-child(1)").html("<a href='javascript:logOff();'>Log off</a>");
+	$("nav ul li:nth-child(1)").html("<a href='javascript:commitLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
