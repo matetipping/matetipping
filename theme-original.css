@@ -177,7 +177,7 @@ span.hamburger-container {
     width: 6px;
     transform: translateX(50%);
   }
-  50% {
+  59% {
     width: 4px;
     transform: translate(50%, 0);
   }
