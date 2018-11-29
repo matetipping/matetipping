@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 function attemptLogIn(username, tokenCount) {
 	if (loggedIn) {
-		$(".username-container span span:nth-child(1)").text(username);
+		$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 		$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
 		$("nav ul li:nth-child(1)").html("<a href='javascript:logOff();'>Log off</a>");
 	} else {
