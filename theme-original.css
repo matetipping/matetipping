@@ -309,6 +309,9 @@ input {
   padding-left: 18px;
   border: none;
 }
+.offline table {
+  width: 100%;
+}
 .offline td {
   width: 50%;
   vertical-align: middle;
