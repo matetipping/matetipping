@@ -66,9 +66,9 @@ $(document).ready(function(){
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
 						user.updateProfile({
-							displayName: formData.username;
+							displayName: formData.username
 						}).then(function() {
-							showUsername(user.displayName);
+							displayLogIn(user.displayName, tokenCount);
 						}, function(error) {
 							alert("Failed to save username");
 						});
@@ -99,28 +99,22 @@ $(document).ready(function(){
 	
 });
 
-function attemptLogIn(username, tokenCount) {
-	if (loggedIn) {
-		$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
-		$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
-		$("nav ul li:nth-child(1)").html("<a href='javascript:logOff();'>Log off</a>");
-		$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
-		$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
-		$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
-		$("nav ul li:nth-child(5) a:not(.selected)").attr("href", "/cards.html");
-		$("nav ul li:nth-child(6) a:not(.selected)").attr("href", "/games.html");
-	} else {
-		$(".username-container span span:nth-child(1)").text("You are logged off.");
-		$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
-		$("nav ul li a").each(function() {
-			$(this).attr("href", "");
-		});
-		$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>Sign in</a>");
-		loggedIn = true;
-	}
+function displayLogIn(username, tokenCount) {
+	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
+	$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
+	$("nav ul li:nth-child(1)").html("<a href='javascript:logOff();'>Log off</a>");
+	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
+	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
+	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
+	$("nav ul li:nth-child(5) a:not(.selected)").attr("href", "/cards.html");
+	$("nav ul li:nth-child(6) a:not(.selected)").attr("href", "/games.html");
 }
 
-function logOff() {
-	loggedIn = false;
-	attemptLogIn(username, tokenCount);
+function displayLogOff() {
+	$(".username-container span span:nth-child(1)").text("You are logged off.");
+	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
+	$("nav ul li a").each(function() {
+		$(this).attr("href", "");
+	});
+	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>Sign in</a>");
 }
