@@ -28,6 +28,41 @@ $(document).ready(function(){
 	});
 	// End hamburger menu
 	
+	// Registration form //
+	$("#form-register").submit(function(e) {
+		e.preventDefault();
+		
+		var isRegistrationError = false;
+		var registrationErrorMessage;
+		var formData = {
+			"username": $("#form-register-username").val(),
+			"email": $("#form-register-email").val(),
+			"password": $("#form-register-password").val(),
+			"passwordConfirm": $("form-register-password-confirm").val()
+		}
+		if (formData.username.length < 3 || formData.username.length > 20) {
+			isRegistrationError = true;
+			registrationErrorMessage = "Username must be between 3 and 20 characters."
+		} else if (!formData.email.contains("@")) {
+			isRegistrationError = true;
+			registrationErrorMessage = "Email does not appear to be valid."			
+		} else if (formData.password.length < 6) {
+			isRegistrationError = true;
+			registrationErrorMessage = "Password is too short.";
+		} else if (formData.password != formData.passwordConfirm) {
+			isRegistrationError = true;
+			registrationErrorMessage = "Passwords do not match.";
+		}
+		if (isRegistrationError) {
+			alert("ERROR CODE 1: " + registrationErrorMessage);
+		} else {
+			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
+				var registrationErrorCode = error.code;
+				registrationErrorMessage = error.message;
+				alert("ERROR CODE " + registrationErrorCode ": " + registrationErrorMessage);
+			});
+		}
+	});	
 });
 
 function attemptLogIn(username, tokenCount) {
