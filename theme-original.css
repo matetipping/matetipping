@@ -318,6 +318,9 @@ input[type="submit"] {
   font-family: 'Lato Black', sans-serif;
   cursor: pointer;
 }
+input:-webkit-autofill {
+  background-color: #667EA0;
+}
 .offline table {
   width: 100%;
 }
