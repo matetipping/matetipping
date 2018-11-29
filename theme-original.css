@@ -3,6 +3,9 @@ a {
   text-decoration: none;
   transition: 0.25s;
 }
+a:hover {
+  color: #FFAE7C;
+}
 a[href=""], a[href=""]:hover {
   color: #8DA3C1;
   transition: none;
