@@ -40,13 +40,13 @@ $(document).ready(function(){
 			"password": $("#input-register-password").val(),
 			"passwordConfirm": $("input-register-password-confirm").val()
 		}
-		if (formData.username.length() < 3 || formData.username.length() > 20) {
+		if (formData.username.length < 3 || formData.username.length > 20) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Username must be between 3 and 20 characters."
 		} else if (!formData.email.contains("@")) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Email does not appear to be valid."			
-		} else if (formData.password.length() < 6) {
+		} else if (formData.password.length < 6) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
 		} else if (formData.password != formData.passwordConfirm) {
