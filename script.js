@@ -35,11 +35,11 @@ function attemptLogIn(username, tokenCount) {
 		$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 		$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
 		$("nav ul li:nth-child(1)").html("<a href='javascript:logOff();'>Log off</a>");
-		$("nav ul li:nth-child(2):not(.selected) a").attr("href", "/index.html");
-		$("nav ul li:nth-child(3):not(.selected) a").attr("href", "/results.html");
-		$("nav ul li:nth-child(4):not(.selected) a").attr("href", "/profile.html");
-		$("nav ul li:nth-child(5):not(.selected) a").attr("href", "/cards.html");
-		$("nav ul li:nth-child(6):not(.selected) a").attr("href", "/games.html");
+		$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
+		$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
+		$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
+		$("nav ul li:nth-child(5) a:not(.selected)").attr("href", "/cards.html");
+		$("nav ul li:nth-child(6) a:not(.selected)").attr("href", "/games.html");
 	} else {
 		$(".username-container span span:nth-child(1)").text("You are logged off.");
 		$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
