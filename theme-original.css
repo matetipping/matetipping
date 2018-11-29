@@ -75,37 +75,37 @@ span.username-container {
   text-align: right;
 }
 span.hamburger-container {
-  width: 32px;
+  width: 64px;
 }
 #nav-hamburger {
   cursor: pointer;
 }
 #container-hamburger {
-  width: 40px;
-  height: 30px;
-  margin-right: 10px;
+  width: 80px;
+  height: 60px;
+  margin-right: 20px;
   display: inline-block;
 }
 #container-hamburger span {
   background-color: white;
-  height: 6px;
+  height: 12px;
   display: block;
   position: relative;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 #hamburgerTop {
   top: 0;
 }
 #hamburgerMid {
-  top: 6px;
+  top: 12px;
 }
 #hamburgerBottom {
-  top: 12px;
+  top: 24px;
 }
 .animcomplete #hamburgerTop {
   width: 100%;
-  transform: translate(0, 12px) rotate(45deg);
+  transform: translate(0, 24px) rotate(45deg);
 }
 .animcomplete #hamburgerMid {
   width: 0;
@@ -114,7 +114,7 @@ span.hamburger-container {
 }
 .animcomplete #hamburgerBottom {
   width: 100%;
-  transform: translate(0, -6px) rotate(-45deg);
+  transform: translate(0, -12px) rotate(-45deg);
 }
 .open #hamburgerTop {
   animation: hamburgerTopBar 0.5s ease-in-out 0s infinite normal forwards;
@@ -143,66 +143,69 @@ span.hamburger-container {
   }
   10% {
     width: 120%;
-    transform: translateX(-6px);
+    transform: translateX(-12px);
   }
   40% {
-    width: 6px;
-    transform: translateX(17px);
+    width: 12px;
+    transform: translateX(34px);
   }
   50% {
-    width: 4px;
-    transform: translate(17px, 4px);
+    width: 8px;
+    transform: translate(34px, 8px);
   }
   60% {
-    width: 6px;
-    transform: translate(17px, 12px);
+    width: 12px;
+    transform: translate(34px, 24px);
   }
   90% {
     width: 120%;
-    transform: translate(-6px, 12px) rotate(60deg);
+    transform: translate(-12px, 24px) rotate(60deg);
   }
   100% {
     width: 100%;
-    transform: translate(0, 12px) rotate(45deg);
+    transform: translate(0, 24px) rotate(45deg);
   }
 }
 @keyframes hamburgerMidBar {
   0% {
     width: 100%;
-    height: 6px;
+    height: 12px;
     transform: translateY(0px);
   }
   10% {
     width: 120%;
-    height: 6px;
-    transform: translateX(-6px);
+    height: 12px;
+    transform: translateX(-12px);
   }
   40% {
-    width: 6px;
-    height: 6px;
-    transform: translateX(17px);
+    width: 12px;
+    height: 12px;
+    transform: translateX(34px);
   }
   50% {
-    width: 4px;
-    height: 6px;
-    transform: translate(17px, 0);
+    width: 8px;
+    height: 12px;
+    transform: translate(34px, 0);
   }
   60% {
-    width: 6px;
-    height: 6px;
-    transform: translate(17px, 0);
+    width: 12px;
+    height: 12px;
+    transform: translate(34px, 0);
   }
   61% {
     width: 0;
     height: 0;
-    transform: translate(20px, 0);
+    transform: translate(40px, 0);
   }
   100% {
     width: 0;
     height: 0;
-    transform: translate(20px, 0);
+    transform: translate(40px, 0);
   }
 }
+
+
+
 @keyframes hamburgerBottomBar {
   0% {
     width: 100%;
@@ -286,46 +289,46 @@ footer {
     display: none;
   }
   span.hamburger-container {
-    width: 64px;
+    width: 32px;
   }
   #nav-hamburger {
     cursor: pointer;
   }
   #container-hamburger {
-    width: 80px;
-    height: 60px;
-    margin-right: 20px;
+    width: 40px;
+    height: 30px;
+    margin-right: 10px;
     display: inline-block;
   }
   #container-hamburger span {
     background-color: white;
-    height: 12px;
+    height: 6px;
     display: block;
     position: relative;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 3px;
   }
   #hamburgerTop {
     top: 0;
   }
   #hamburgerMid {
-    top: 12px;
+    top: 6px;
   }
   #hamburgerBottom {
-    top: 24px;
+    top: 12px;
   }
   .animcomplete #hamburgerTop {
     width: 100%;
-    transform: translate(0, 24px) rotate(45deg);
+    transform: translate(0, 12px) rotate(45deg);
   }
   .animcomplete #hamburgerMid {
     width: 0;
     height: 0;
-    transform: translate(40px, 0);
+    transform: translate(20px, 0);
   }
   .animcomplete #hamburgerBottom {
     width: 100%;
-    transform: translate(0, -12px) rotate(-45deg);
+    transform: translate(0, -6px) rotate(-45deg);
   }
   .open #hamburgerTop {
     animation: hamburgerTopBar 0.5s ease-in-out 0s infinite normal forwards;
@@ -354,64 +357,64 @@ footer {
     }
     10% {
       width: 120%;
-      transform: translateX(-12px);
+      transform: translateX(-6px);
     }
     40% {
-      width: 12px;
-      transform: translateX(34px);
+      width: 6px;
+      transform: translateX(17px);
     }
     50% {
-      width: 8px;
-      transform: translate(34px, 8px);
+      width: 4px;
+      transform: translate(17px, 4px);
     }
     60% {
-      width: 12px;
-      transform: translate(34px, 24px);
+      width: 6px;
+      transform: translate(17px, 12px);
     }
     90% {
       width: 120%;
-      transform: translate(-12px, 24px) rotate(60deg);
+      transform: translate(-6px, 12px) rotate(60deg);
     }
     100% {
       width: 100%;
-      transform: translate(0, 24px) rotate(45deg);
+      transform: translate(0, 12px) rotate(45deg);
     }
   }
   @keyframes hamburgerMidBar {
     0% {
       width: 100%;
-      height: 12px;
+      height: 6px;
       transform: translateY(0px);
     }
     10% {
       width: 120%;
-      height: 12px;
-      transform: translateX(-12px);
+      height: 6px;
+      transform: translateX(-6px);
     }
     40% {
-      width: 12px;
-      height: 12px;
-      transform: translateX(34px);
+      width: 6px;
+      height: 6px;
+      transform: translateX(17px);
     }
     50% {
-      width: 8px;
-      height: 12px;
-      transform: translate(34px, 0);
+      width: 4px;
+      height: 6px;
+      transform: translate(17px, 0);
     }
     60% {
-      width: 12px;
-      height: 12px;
-      transform: translate(34px, 0);
+      width: 6px;
+      height: 6px;
+      transform: translate(17px, 0);
     }
     61% {
       width: 0;
       height: 0;
-      transform: translate(40px, 0);
+      transform: translate(20px, 0);
     }
     100% {
       width: 0;
       height: 0;
-      transform: translate(40px, 0);
+      transform: translate(20px, 0);
     }
   }
   @keyframes hamburgerBottomBar {
@@ -421,27 +424,27 @@ footer {
     }
     10% {
       width: 120%;
-      transform: translateX(-12px);
+      transform: translateX(-6px);
     }
     40% {
-      width: 12px;
-      transform: translateX(34px);
+      width: 6px;
+      transform: translateX(17px);
     }
     50% {
-      width: 8px;
-      transform: translate(34px, -8px);
+      width: 4px;
+      transform: translate(17px, -4px);
     }
     60% {
-      width: 12px;
-      transform: translate(34px, -12px);
+      width: 6px;
+      transform: translate(17px, -6px);
     }
     90% {
       width: 120%;
-      transform: translate(-12px, -12px) rotate(-60deg);
+      transform: translate(-6px, -6px) rotate(-60deg);
     }
     100% {
       width: 100%;
-      transform: translate(0, -12px) rotate(-45deg);
+      transform: translate(0, -6px) rotate(-45deg);
     }
   }
   footer::before {
