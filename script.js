@@ -26,7 +26,7 @@ $(document).ready(function(){
 			}, 500);
 		}
 	});
-	// End hamburger menu
+	// End hamburger menu //
 	
 	// Registration form //
 	$("#form-register").submit(function(e) {
@@ -62,7 +62,25 @@ $(document).ready(function(){
 				alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
 			});
 		}
-	});	
+	});
+	// END Registration form //
+	
+	// Login form //
+	$("#form-register").submit(function(e) {
+		e.preventDefault();
+		
+		var formData = {
+			"email": $("#input-login-email").val(),
+			"password": $("#input-login-password").val()
+		}
+		firebase.auth().signInWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
+			var loginErrorCode = error.code;
+			var loginErrorMessage = error.message;
+			alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
+		});
+	});
+	// END Login form //
+	
 });
 
 function attemptLogIn(username, tokenCount) {
