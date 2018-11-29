@@ -317,6 +317,11 @@ input[type="submit"] {
   padding: 0;
   font-family: 'Lato Black', sans-serif;
   cursor: pointer;
+  transition: 0.25s;
+}
+input[type="submit"]:hover {
+  height: 48px;
+  color: #FFAE7C;
 }
 input:-webkit-autofill {
   background-color: #667EA0;
