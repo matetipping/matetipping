@@ -229,12 +229,37 @@ span.hamburger-container {
     transform: translate(0, -12px) rotate(-45deg);
   }
 }
-
 .float-right {
   float: right;
   height: auto;
   margin-right: 24px;
 }
+
+
+nav {
+  top: 64px;
+  right: 0;
+  padding: 0;
+  position: fixed;
+  margin: 0;
+}
+nav ul {
+  text-decoration: none;
+  text-transform: uppercase;
+  width: fit-content;
+  margin: 0;
+  padding-bottom: 12px;
+  padding-right: 36px;
+  padding-left: 24px;
+  padding-top: 0;
+  background-color: navy;
+  border-bottom-left-radius: 24px;
+}
+nav li {
+  list-style-type: none;
+  padding-top: 5px;
+}
+
 main {
   background-color: #222A35;
   margin: 0;
