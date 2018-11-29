@@ -2,6 +2,9 @@ $(document).ready(function(){
 	// testing only
 	username = "Your Username Here";
 	tokenCount = 478;
+	if (user) {
+		displayLogIn(user.displayName, tokenCount);
+	}
 	// end test code
 	
 	// Hamburger menu
@@ -90,13 +93,9 @@ $(document).ready(function(){
 			alert("ERROR CODE " + loginErrorCode + ": " + loginErrorMessage);
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
-			user.updateProfile({
-				displayName: formData.username
-			}).then(function() {
+			if (user) {
 				displayLogIn(user.displayName, tokenCount);
-			}, function(error) {
-				alert("Failed to save username");
-			});
+			}
 		});
 	});
 	// END Login form //
