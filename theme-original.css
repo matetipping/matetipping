@@ -73,9 +73,6 @@ h1 {
   text-transform: uppercase;
   margin: 0;
 }
-span.coin-container {
-  /* display: none; */
-}
 span.username-container {
   text-align: right;
 }
@@ -522,5 +519,14 @@ footer {
   }
   header span span {
     display: inline;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 16px;
+  }
+  span.username-container {
+    font-size: 12px;
   }
 }
