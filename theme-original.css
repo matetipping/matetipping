@@ -309,6 +309,11 @@ input {
   padding-left: 18px;
   border: none;
 }
+input[type="submit"] {
+  margin-top: 18px;
+  text-transform: uppercase;
+  padding: 0;
+}
 .offline table {
   width: 100%;
 }
