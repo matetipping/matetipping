@@ -252,12 +252,20 @@ nav ul {
   padding-right: 36px;
   padding-left: 24px;
   padding-top: 0;
-  background-color: navy;
+  background-color: #1E252F;;
   border-bottom-left-radius: 24px;
 }
 nav li {
   list-style-type: none;
   padding-top: 5px;
+}
+nav li:nth-child(1)::after {
+  content: '';
+  height: 2px;
+  background-color: #F47D33;
+  width: 100%;
+  display: list-item;
+  margin-top: 5px;
 }
 
 main {
