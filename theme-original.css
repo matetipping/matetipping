@@ -215,7 +215,7 @@ span.hamburger-container {
   }
   90% {
     width: 120%;
-    transform: translate(-10%, -6px) rotate(60deg);
+    transform: translate(-10%, -6px) rotate(-60deg);
   }
   100% {
     width: 100%;
