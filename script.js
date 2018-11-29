@@ -90,7 +90,7 @@ $(document).ready(function(){
 	// Login form //
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
+		$("#form-login input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
 		
 		var formData = {
 			"email": $("#input-login-email").val(),
