@@ -323,7 +323,7 @@ input[type="submit"] {
 }
 .offline td {
   width: 50%;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .offline div {
   margin-top: 6px;
