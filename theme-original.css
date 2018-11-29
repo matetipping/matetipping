@@ -116,7 +116,7 @@ span.hamburger-container {
 .animcomplete #hamburgerMid {
   width: 0;
   height: 0;
-  transform: translate(50%, 0);
+  transform: translate(30px, 0);
 }
 .animcomplete #hamburgerBottom {
   width: 100%;
@@ -402,18 +402,19 @@ footer {
     cursor: pointer;
   }
   #container-hamburger {
-    width: 40px;
+    width: 30px;
     height: 30px;
     margin-right: 10px;
     display: inline-block;
   }
   #container-hamburger span {
     background-color: white;
-    height: 6px;
+    height: 4px;
     display: block;
     position: relative;
     width: 100%;
-    border-radius: 3px;
+    border-radius: 2px;
+    margin: 2px;
   }
   #hamburgerTop {
     top: 0;
@@ -431,7 +432,7 @@ footer {
   .animcomplete #hamburgerMid {
     width: 0;
     height: 0;
-    transform: translate(20px, 0);
+    transform: translate(15px, 0);
   }
   .animcomplete #hamburgerBottom {
     width: 100%;
@@ -464,23 +465,23 @@ footer {
     }
     10% {
       width: 120%;
-      transform: translateX(-6px);
+      transform: translateX(-4px);
     }
     40% {
-      width: 6px;
-      transform: translateX(17px);
+      width: 4px;
+      transform: translateX(13px);
     }
     50% {
-      width: 4px;
-      transform: translate(17px, 4px);
+      width: 3px;
+      transform: translate(13px, 4px);
     }
     60% {
-      width: 6px;
-      transform: translate(17px, 12px);
+      width: 4px;
+      transform: translate(13px, 12px);
     }
     90% {
       width: 120%;
-      transform: translate(-6px, 12px) rotate(60deg);
+      transform: translate(-4px, 12px) rotate(60deg);
     }
     100% {
       width: 100%;
@@ -490,38 +491,38 @@ footer {
   @keyframes hamburgerMidBar {
     0% {
       width: 100%;
-      height: 6px;
+      height: 4px;
       transform: translateY(0px);
     }
     10% {
       width: 120%;
-      height: 6px;
-      transform: translateX(-6px);
+      height: 4px;
+      transform: translateX(-4px);
     }
     40% {
-      width: 6px;
-      height: 6px;
-      transform: translateX(17px);
+      width: 4px;
+      height: 4px;
+      transform: translateX(13px);
     }
     50% {
-      width: 4px;
-      height: 6px;
-      transform: translate(17px, 0);
+      width: 3px;
+      height: 4px;
+      transform: translate(13px, 0);
     }
     60% {
-      width: 6px;
-      height: 6px;
-      transform: translate(17px, 0);
+      width: 4px;
+      height: 4px;
+      transform: translate(13px, 0);
     }
     61% {
       width: 0;
       height: 0;
-      transform: translate(20px, 0);
+      transform: translate(15px, 0);
     }
     100% {
       width: 0;
       height: 0;
-      transform: translate(20px, 0);
+      transform: translate(15px, 0);
     }
   }
   @keyframes hamburgerBottomBar {
@@ -531,23 +532,23 @@ footer {
     }
     10% {
       width: 120%;
-      transform: translateX(-6px);
+      transform: translateX(-4px);
     }
     40% {
-      width: 6px;
-      transform: translateX(17px);
+      width: 4px;
+      transform: translateX(13px);
     }
     50% {
-      width: 4px;
-      transform: translate(17px, -4px);
+      width: 3px;
+      transform: translate(13px, -4px);
     }
     60% {
-      width: 6px;
-      transform: translate(17px, -6px);
+      width: 4px;
+      transform: translate(13px, -6px);
     }
     90% {
       width: 120%;
-      transform: translate(-6px, -6px) rotate(-60deg);
+      transform: translate(-4px, -6px) rotate(-60deg);
     }
     100% {
       width: 100%;
