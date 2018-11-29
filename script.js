@@ -34,6 +34,7 @@ $(document).ready(function(){
 	
 	// Registration form //
 	$("#form-register").submit(function(e) {
+		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
 		e.preventDefault();
 		
 		var isRegistrationError = false;
@@ -81,6 +82,7 @@ $(document).ready(function(){
 				});
 			}
 		}
+		$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
 	});
 	// END Registration form //
 	
@@ -143,4 +145,5 @@ function displayLogOff() {
 		$(this).attr("href", "");
 	});
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>Sign in</a>");
+	$(".offline").css("display", "block");
 }
