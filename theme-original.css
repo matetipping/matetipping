@@ -3,6 +3,14 @@ a {
   text-decoration: none;
   transition: 0.25s;
 }
+a[href=""] {
+  color: #8DA3C1;
+  transition: none;
+}
+a[href=""]:hover {
+  color: #8DA3C1;
+  cursor: default;
+}
 body {
   background-color: #333F50;
   margin: 0;
