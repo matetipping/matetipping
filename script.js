@@ -50,6 +50,8 @@ $(document).ready(function(){
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
 		} else if (formData.password != formData.passwordConfirm) {
+			console.log(formData.password);
+			console.log(formData.passwordConfirm);
 			isRegistrationError = true;
 			registrationErrorMessage = "Passwords do not match.";
 		}
