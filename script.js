@@ -57,10 +57,24 @@ $(document).ready(function(){
 			alert("ERROR CODE 1: " + registrationErrorMessage);
 		} else {
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
+				var isRegistrationError = true;
 				var registrationErrorCode = error.code;
 				registrationErrorMessage = error.message;
 				alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
 			});
+			if (!isRegistrationError) {
+				firebase.auth().onAuthStateChanged(function(user) {
+					if (user) {
+						user.updateProfile({
+							displayName: formData.username;
+						}).then(function() {
+							showUsername(user.displayName);
+						}, function(error) {
+							alert("Failed to save username");
+						});
+					});
+				});
+			}
 		}
 	});
 	// END Registration form //
@@ -80,6 +94,8 @@ $(document).ready(function(){
 		});
 	});
 	// END Login form //
+	
+	
 	
 });
 
