@@ -76,6 +76,9 @@ h1 {
 span.username-container {
   text-align: right;
 }
+span.username-container span span:nth-child(2) {
+  color: #F47D33;
+}
 span.hamburger-container {
   width: 64px;
 }
