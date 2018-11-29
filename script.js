@@ -4,14 +4,14 @@ $(document).ready(function(){
 			$(this).removeClass("animcomplete");
 			$(this).addClass("closed");
 			setTimeout(function() {
-				$("#top_hamburger").removeClass("closed");
-			}, 700);
+				$("#nav-hamburger").removeClass("closed");
+			}, 500);
 		} else {
 		$(this).addClass("open");
 			setTimeout(function() {
-				$("#top_hamburger").removeClass("open");
-				$("#top_hamburger").addClass("animcomplete");
-			}, 700);
+				$("#nav-hamburger").removeClass("open");
+				$("#nav-hamburger").addClass("animcomplete");
+			}, 500);
 		}
 	});
 });
