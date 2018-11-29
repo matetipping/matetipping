@@ -1,9 +1,10 @@
 $(document).ready(function(){
-	$('#nav-hamburger').click(function(){
+	$("nav").css("right", (-1*$("nav").width()) + "px");
+	$("#nav-hamburger").click(function(){
 		if ($(this).hasClass("animcomplete")) {
 			$(this).removeClass("animcomplete");
 			$(this).addClass("closed");
-			$("nav").css("right", "-100%");
+			$("nav").css("right", (-1*$("nav").width()) + "px");
 			setTimeout(function() {
 				$("#nav-hamburger").removeClass("closed");
 			}, 500);
