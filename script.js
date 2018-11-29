@@ -72,7 +72,7 @@ $(document).ready(function(){
 						}, function(error) {
 							alert("Failed to save username");
 						});
-					});
+					}
 				});
 			}
 		}
