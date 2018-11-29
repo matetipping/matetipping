@@ -1,6 +1,7 @@
 a {
   color: #F47D33;
   text-decoration: none;
+  transition: 0.25s;
 }
 body {
   background-color: #333F50;
@@ -251,7 +252,7 @@ nav ul {
   text-transform: uppercase;
   width: fit-content;
   margin: 0;
-  padding-bottom: 24px;
+  padding-bottom: 36px;
   padding-right: 72px;
   padding-left: 48px;
   padding-top: 0;
@@ -269,6 +270,13 @@ nav li:nth-child(1)::after {
   width: 100%;
   display: list-item;
   margin-top: 10px;
+}
+nav .selected {
+  color: #777;
+}
+nav a:hover {
+  cursor: pointer;
+  color: #F47D33;
 }
 
 main {
@@ -482,7 +490,7 @@ footer {
     top: 64px;
   }
   nav ul {
-    padding-bottom: 12px;
+    padding-bottom: 18px;
     padding-right: 36px;
     padding-left: 24px;
     border-bottom-left-radius: 24px;
