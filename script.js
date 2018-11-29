@@ -11,8 +11,6 @@ $(document).ready(function(){
 			}, 500);
 		} else {
 		$(this).addClass("open");
-			$("nav").css("font-size", "16px");
-			$("nav").css("top", "64px");
 			$("nav").css("right", "0");
 			setTimeout(function() {
 				$("#nav-hamburger").removeClass("open");
