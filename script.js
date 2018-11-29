@@ -89,6 +89,15 @@ $(document).ready(function(){
 			var loginErrorMessage = error.message;
 			alert("ERROR CODE " + loginErrorCode + ": " + loginErrorMessage);
 		});
+		firebase.auth().onAuthStateChanged(function(user) {
+			user.updateProfile({
+				displayName: formData.username
+			}).then(function() {
+				displayLogIn(user.displayName, tokenCount);
+			}, function(error) {
+				alert("Failed to save username");
+			});
+		});
 	});
 	// END Login form //
 	
