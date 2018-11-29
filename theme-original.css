@@ -111,7 +111,7 @@ span.hamburger-container {
 }
 .animcomplete #hamburgerBottom {
   width: 100%;
-  transform: translate(0, -6px) rotate(45deg);
+  transform: translate(0, -6px) rotate(-45deg);
 }
 .open #hamburgerTop {
   animation: hamburgerTopBar 0.5s ease-in-out 0s infinite normal forwards;
