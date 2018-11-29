@@ -2,6 +2,11 @@ $(document).ready(function(){
 	// testing only
 	username = "Your Username Here";
 	tokenCount = 478;
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			displayLogIn(user.displayName, tokenCount);
+		}
+	});
 	// end test code
 	
 	// Hamburger menu
