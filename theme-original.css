@@ -77,6 +77,9 @@ span.username-container {
 span.hamburger-container {
   width: 32px;
 }
+#nav-hamburger {
+  cursor: pointer;
+}
 #container-hamburger {
   width: 40px;
   height: 30px;
