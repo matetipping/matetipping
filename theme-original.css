@@ -77,72 +77,150 @@ span.username-container {
 span.hamburger-container {
   width: 32px;
 }
-#nav-hamburger {
-  width: 32px;
-  height: 28px;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  cursor: pointer;
+#container-hamburger {
+  width: 40px;
+  height: 30px;
+  margin-right: 10px;
+  display: inline-block;
 }
-#nav-hamburger span {
+#container-hamburger span {
+  background-color: white;
+  height: 6px;
   display: block;
-  position: absolute;
-  height: 4px;
+  position: relative;
   width: 100%;
-  background: #E6EBF2;
   border-radius: 3px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
 }
-#nav-hamburger span:nth-child(1) {
-  top: 0px;
+#hamburgerTop {
+  top: 0;
 }
-#nav-hamburger span:nth-child(2),#nav-hamburger span:nth-child(3) {
+#hamburgerMid {
+  top: 6px;
+}
+#hamburgerBottom {
   top: 12px;
 }
-
-#nav-hamburger span:nth-child(4) {
-  top: 24px;
+.animcomplete #hamburgerTop {
+  width: 100%;
+  transform: translate(0, 12px) rotate(45deg);
 }
-
-#nav-hamburger.open span:nth-child(1) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
+.animcomplete #hamburgerMid {
+  width: 0;
+  height: 0;
+  transform: translate(50%, 0);
 }
-
-#nav-hamburger.open span:nth-child(2) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
+.animcomplete #hamburgerBottom {
+  width: 100%;
+  transform: translate(0, -6px) rotate(45deg);
 }
-
-#nav-hamburger.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+.open #hamburgerTop {
+  animation: hamburgerTopBar 0.5s ease-in-out 0s infinite normal forwards;
 }
+.open #hamburgerMid {
+  animation: hamburgerMidBar 0.5s ease-in-out 0s infinite normal forwards;
+}
+.open #hamburgerBottom {
+  animation: hamburgerBottomBar 0.5s ease-in-out 0s infinite normal forwards;
+}
+.closed #hamburgerTop {
+  animation: hamburgerTopBar 0.5s ease-in-out 0s infinite reverse forwards;
+}
+.closed #hamburgerMid {
+  animation: hamburgerMidBar 0.5s ease-in-out 0s infinite reverse forwards;
+}
+.closed #hamburgerBottom {
+  animation: hamburgerBottomBar 0.5s ease-in-out 0s infinite reverse forwards;
+}
+/* Discount Bootstrap Responsive Grid /*
 
-#nav-hamburger.open span:nth-child(4) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
+/* Hamburger CSS Animation */
+@keyframes hamburgerTopBar {
+  0% {
+    width: 100%;
+    transform: translateY(0px);
+  }
+  10% {
+    width: 120%;
+    transform: translateX(-6px);
+  }
+  40% {
+    width: 6px;
+    transform: translateX(50%);
+  }
+  50% {
+    width: 4px;
+    transform: translate(50%, 4px);
+  }
+  60% {
+    width: 6px;
+    transform: translate(50%, 12px);
+  }
+  90% {
+    width: 120%;
+    transform: translate(-10%, 12px) rotate(60deg);
+  }
+  100% {
+    width: 100%;
+    transform: translate(0, 12px) rotate(45deg);
+  }
+}
+@keyframes hamburgerMidBar {
+  0% {
+    width: 100%;
+    transform: translateY(0px);
+  }
+  10% {
+    width: 120%;
+    transform: translateX(-6px);
+  }
+  40% {
+    width: 6px;
+    transform: translateX(50%);
+  }
+  50% {
+    width: 4px;
+    transform: translate(50%, 0);
+  }
+  60% {
+    width: 0;
+    height: 0;
+    transform: translate(50%, 0);
+  }
+  100% {
+    width: 0;
+    height: 0;
+    transform: translate(50%, 0);
+  }
+}
+@keyframes hamburgerBottomBar {
+  0% {
+    width: 100%;
+    transform: translateY(0px);
+  }
+  10% {
+    width: 120%;
+    transform: translateX(-6px);
+  }
+  40% {
+    width: 6px;
+    transform: translateX(50%);
+  }
+  50% {
+    width: 4px;
+    transform: translate(50%, -4px);
+  }
+  60% {
+    width: 6px;
+    transform: translate(50%, -6px);
+  }
+  90% {
+    width: 120%;
+    transform: translate(-10%, -6px) rotate(60deg);
+  }
+  100% {
+    width: 100%;
+    transform: translate(0, -6px) rotate(-45deg);
+  }
 }
 .float-right {
   float: right;
