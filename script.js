@@ -38,7 +38,7 @@ $(document).ready(function(){
 			"username": $("#input-register-username").val(),
 			"email": $("#input-register-email").val(),
 			"password": $("#input-register-password").val(),
-			"passwordConfirm": $("input-register-password-confirm").val()
+			"passwordConfirm": $("#input-register-password-confirm").val()
 		}
 		if (formData.username.length < 3 || formData.username.length > 20) {
 			isRegistrationError = true;
@@ -50,8 +50,6 @@ $(document).ready(function(){
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
 		} else if (formData.password != formData.passwordConfirm) {
-			console.log(formData.password);
-			console.log(formData.passwordConfirm);
 			isRegistrationError = true;
 			registrationErrorMessage = "Passwords do not match.";
 		}
