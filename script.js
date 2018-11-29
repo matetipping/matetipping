@@ -36,6 +36,6 @@ function attemptLogIn(username, tokenCount) {
 		$(".username-container span:nth-child(2)").html("[" + tokenCount + " tokens]");
 	} else {
 		$(".username-container span:nth-child(1)").text("You are logged off.");
-		$(".username-container span:nth-child(2)").html("<a href="#">[Sign In]</a>");
+		$(".username-container span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
 	}
 }
