@@ -272,7 +272,10 @@ nav li:nth-child(1)::after {
   margin-top: 10px;
 }
 nav .selected {
-  color: #777;
+  color: #BECADB;
+}
+nav a {
+  color: #E6EBF2;
 }
 nav a:hover {
   cursor: pointer;
