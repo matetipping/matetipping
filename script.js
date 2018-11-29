@@ -66,7 +66,7 @@ $(document).ready(function(){
 	// END Registration form //
 	
 	// Login form //
-	$("#form-register").submit(function(e) {
+	$("#form-login").submit(function(e) {
 		e.preventDefault();
 		
 		var formData = {
@@ -76,7 +76,7 @@ $(document).ready(function(){
 		firebase.auth().signInWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 			var loginErrorCode = error.code;
 			var loginErrorMessage = error.message;
-			alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
+			alert("ERROR CODE " + loginErrorCode + ": " + loginErrorMessage);
 		});
 	});
 	// END Login form //
