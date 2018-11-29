@@ -247,7 +247,7 @@ span.hamburger-container {
 }
 
 img.loader {
-  animation: loadingSpinner 1s linear 0s infinite normal forwards;
+  animation: loadingSpinner 0.5s linear 0s infinite normal forwards;
 }
 
 @keyframes loadingSpinner {
