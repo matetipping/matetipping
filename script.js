@@ -59,7 +59,7 @@ $(document).ready(function(){
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 				var registrationErrorCode = error.code;
 				registrationErrorMessage = error.message;
-				alert("ERROR CODE " + registrationErrorCode ": " + registrationErrorMessage);
+				alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
 			});
 		}
 	});	
