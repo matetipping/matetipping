@@ -237,8 +237,8 @@ span.hamburger-container {
 
 
 nav {
-  font-size: 0;
-  top: 0;
+  font-size: 16px;
+  top: 64px;
   right: -64px;
   padding: 0;
   position: fixed;
