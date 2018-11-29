@@ -5,6 +5,8 @@ $(document).ready(function(){
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			displayLogIn(user.displayName, tokenCount);
+		} else {
+			displayLogOff();
 		}
 	});
 	// end test code
@@ -58,6 +60,7 @@ $(document).ready(function(){
 		if (isRegistrationError) {
 			alert("ERROR CODE 1: " + registrationErrorMessage);
 		} else {
+			commitLogOff();
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 				var isRegistrationError = true;
 				var registrationErrorCode = error.code;
@@ -89,6 +92,7 @@ $(document).ready(function(){
 			"email": $("#input-login-email").val(),
 			"password": $("#input-login-password").val()
 		}
+		commitLogOff();
 		firebase.auth().signInWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 			var loginErrorCode = error.code;
 			var loginErrorMessage = error.message;
@@ -105,6 +109,16 @@ $(document).ready(function(){
 	
 	
 });
+
+function commitLogOff() {
+	if (user) {
+		firebase.auth().signOut().then(function() {
+			displayLogOff();
+		}).catch(function(error) {
+			alert("Could not log out");
+		});
+	}
+}
 
 function displayLogIn(username, tokenCount) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
