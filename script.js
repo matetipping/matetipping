@@ -3,8 +3,6 @@ $(document).ready(function(){
 		if ($(this).hasClass("animcomplete")) {
 			$(this).removeClass("animcomplete");
 			$(this).addClass("closed");
-			$("nav").css("font-size", "0");
-			$("nav").css("top", "0");
 			$("nav").css("right", "-64px");
 			setTimeout(function() {
 				$("#nav-hamburger").removeClass("closed");
