@@ -34,8 +34,8 @@ $(document).ready(function(){
 	
 	// Registration form //
 	$("#form-register").submit(function(e) {
-		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
 		e.preventDefault();
+		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
 		
 		var isRegistrationError = false;
 		var registrationErrorMessage;
@@ -74,21 +74,23 @@ $(document).ready(function(){
 						user.updateProfile({
 							displayName: formData.username
 						}).then(function() {
+							$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
 							displayLogIn(user.displayName, tokenCount);
 						}, function(error) {
 							alert("Failed to save username");
 						});
 					}
+					$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
 				});
 			}
 		}
-		$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
 	});
 	// END Registration form //
 	
 	// Login form //
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
+		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
 		
 		var formData = {
 			"email": $("#input-login-email").val(),
@@ -102,6 +104,7 @@ $(document).ready(function(){
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
+				$("#form-login img.loader").replaceWith("<input type='submit' value='Log in'>");
 				displayLogIn(user.displayName, tokenCount);
 			}
 		});
