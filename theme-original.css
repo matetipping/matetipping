@@ -203,9 +203,6 @@ span.hamburger-container {
     transform: translate(40px, 0);
   }
 }
-
-
-
 @keyframes hamburgerBottomBar {
   0% {
     width: 100%;
@@ -213,29 +210,30 @@ span.hamburger-container {
   }
   10% {
     width: 120%;
-    transform: translateX(-6px);
+    transform: translateX(-8px);
   }
   40% {
-    width: 6px;
-    transform: translateX(17px);
+    width: 12px;
+    transform: translateX(34px);
   }
   50% {
-    width: 4px;
-    transform: translate(17px, -4px);
+    width: 8px;
+    transform: translate(34px, -8px);
   }
   60% {
-    width: 6px;
-    transform: translate(17px, -6px);
+    width: 12px;
+    transform: translate(34px, -12px);
   }
   90% {
     width: 120%;
-    transform: translate(-6px, -6px) rotate(-60deg);
+    transform: translate(-12px, -12px) rotate(-60deg);
   }
   100% {
     width: 100%;
-    transform: translate(0, -6px) rotate(-45deg);
+    transform: translate(0, -12px) rotate(-45deg);
   }
 }
+
 .float-right {
   float: right;
   height: auto;
@@ -257,6 +255,9 @@ footer {
   position: relative;
   bottom: 0;
 }
+
+
+
 @media only screen and (min-device-width: 1200px) {
   /* for desktop */
   main {
