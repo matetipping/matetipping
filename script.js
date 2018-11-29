@@ -130,6 +130,10 @@ function displayLogIn(username, tokenCount) {
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
 	$("nav ul li:nth-child(5) a:not(.selected)").attr("href", "/cards.html");
 	$("nav ul li:nth-child(6) a:not(.selected)").attr("href", "/games.html");
+	$(".offline input").each(function() {
+		$(this).attr("value", "");
+	});
+	$(".offline").css("display", "none");
 }
 
 function displayLogOff() {
