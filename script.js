@@ -111,6 +111,7 @@ $(document).ready(function(){
 });
 
 function commitLogOff() {
+	var user = firebase.auth().currentUser;
 	if (user) {
 		firebase.auth().signOut().then(function() {
 			displayLogOff();
