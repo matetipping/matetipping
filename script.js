@@ -2,9 +2,6 @@ $(document).ready(function(){
 	// testing only
 	username = "Your Username Here";
 	tokenCount = 478;
-	loggedIn = false;
-	attemptLogIn(username, tokenCount);
-	loggedIn = true;
 	// end test code
 	
 	// Hamburger menu
