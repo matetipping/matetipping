@@ -6,6 +6,7 @@ a {
 a[href=""], a[href=""]:hover {
   color: #8DA3C1;
   transition: none;
+  cursor: default;
 }
 body {
   background-color: #333F50;
@@ -275,7 +276,7 @@ nav li:nth-child(1)::after {
   display: list-item;
   margin-top: 10px;
 }
-nav .selected, nav.selected:hover {
+nav .selected, nav .selected:hover {
   color: #BECADB;
 }
 nav a {
