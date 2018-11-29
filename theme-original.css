@@ -242,6 +242,7 @@ nav {
   padding: 0;
   position: fixed;
   margin: 0;
+  transition: 0.5s;
 }
 nav ul {
   text-decoration: none;
