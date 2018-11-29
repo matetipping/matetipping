@@ -49,10 +49,6 @@ header span.logo-container {
 header span.logo-container .logo-small-desktop {
   display: none;
 }
-header span.logo-container .logo-small {
-  height: 128px;
-  width: 128px;
-}
 header span.hamburger-container {
   font-size: 64px; 
 }
