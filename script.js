@@ -111,8 +111,10 @@ $(document).ready(function(){
 	});
 	// END Login form //
 	
-	
-	
+	// Tipping form //
+	$("#form-tipping").submit(function(e) {
+		e.preventDefault();
+	// END Tipping form //
 });
 
 function commitLogOff() {
@@ -139,6 +141,8 @@ function displayLogIn(username, tokenCount) {
 		$(this).val("");
 	});
 	$(".offline").css("display", "none");
+	$(".online").css("display", "block");
+	displayTippingForm();
 }
 
 function displayLogOff() {
@@ -149,4 +153,31 @@ function displayLogOff() {
 	});
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>Sign in</a>");
 	$(".offline").css("display", "block");
+	$(".online").css("display", "none");
+}
+
+function displayTippingForm() {
+	var currentYear = new Date.getFullYear();
+	firebase.database().ref("/years/" + currentYear + "/").once("value").then(function(snapshot) {
+		var roundCode = snapshot.child("current").val();
+		var currentRound = currentYear + "-" + roundCode;
+		var htmlTitle = "<h2>" + currentRound + "</h2>";
+	});
+	firebase.database().ref("/fixtures/" + currentRound + "/").once("value").then(function(snapshot) {
+  		var htmlFields = "";
+		var length = snapshot.child("gameCount").val();
+  		var i;
+		for (i = 1; i <= length; i++) {
+			var teamHome = "";
+			var teamAway = "";
+			var venue = "";
+			var date = "
+			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" +
+					teamHome + " vs " + teamAway + 
+					"</span><span class='align-right'" +
+					venue + " | " + date + 
+					"</span></div>";
+		}
+	});
+	$("form-tipping").html(htmlFields);
 }
