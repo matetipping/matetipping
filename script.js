@@ -168,10 +168,10 @@ function displayTippingForm() {
 		var length = snapshot.child("gameCount").val();
   		var i;
 		for (i = 1; i <= length; i++) {
-			var teamHome = "";
-			var teamAway = "";
-			var venue = "";
-			var date = "
+			var teamHome = "A";
+			var teamAway = "B";
+			var venue = "Here";
+			var date = "Then";
 			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" +
 					teamHome + " vs " + teamAway + 
 					"</span><span class='align-right'" +
