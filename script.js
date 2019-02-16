@@ -175,5 +175,5 @@ function displayTippingForm() {
 			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
 		}
 	});
-	$("form-tipping").html(htmlFields);
+	$("#form-tipping").html(htmlFields);
 }
