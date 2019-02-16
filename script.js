@@ -162,6 +162,8 @@ function displayTippingForm() {
 		var roundCode = snapshot.child("current").val();
 		var currentRound = currentYear + "-" + roundCode;
 		var htmlTitle = "<h2>" + currentRound + "</h2>";
+	}, function(error) {
+        	console.error(error);
 	});
 	firebase.database().ref("/fixtures/" + currentRound + "/").once("value").then(function(snapshot) {
   		var htmlFields = "";
@@ -174,6 +176,8 @@ function displayTippingForm() {
 			var date = "Then";
 			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
 		}
+	}, function(error) {
+        	console.error(error);
 	});
 	$("#form-tipping").html(htmlFields);
 }
