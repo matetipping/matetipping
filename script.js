@@ -156,28 +156,29 @@ function displayLogOff() {
 	$(".online").css("display", "none");
 }
 
-function displayTippingForm() {
-	var currentYear = new Date.getFullYear();
-	firebase.database().ref("/years/" + currentYear + "/").once("value").then(function(snapshot) {
-		var roundCode = snapshot.child("current").val();
-		var currentRound = currentYear + "-" + roundCode;
-		var htmlTitle = "<h2>" + currentRound + "</h2>";
-	}, function(error) {
-        	console.error(error);
-	});
-	firebase.database().ref("/fixtures/" + currentRound + "/").once("value").then(function(snapshot) {
-  		var htmlFields = "";
-		var length = snapshot.child("gameCount").val();
-  		var i;
-		for (i = 1; i <= length; i++) {
-			var teamHome = "A";
-			var teamAway = "B";
-			var venue = "Here";
-			var date = "Then";
-			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
-		}
-	}, function(error) {
-        	console.error(error);
-	});
-	$("#form-tipping").html(htmlFields);
-}
+//function displayTippingForm() {
+//	var currentYear = new Date.getFullYear();
+//	var database = firebase.database();
+//	database.ref("/years/" + currentYear + "/").once("value").then(function(snapshot) {
+//		var roundCode = snapshot.child("current").val();
+//		var currentRound = currentYear + "-" + roundCode;
+//		var htmlTitle = "<h2>" + currentRound + "</h2>";
+//	}, function(error) {
+//        	console.error(error);
+//	});
+//	database.ref("/fixtures/" + currentRound + "/").once("value").then(function(snapshot) {
+//  		var htmlFields = "";
+//		var length = snapshot.child("gameCount").val();
+//  		var i;
+//		for (i = 1; i <= length; i++) {
+//			var teamHome = "A";
+//			var teamAway = "B";
+//			var venue = "Here";
+//			var date = "Then";
+//			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
+//		}
+//	}, function(error) {
+//        	console.error(error);
+//	});
+//	$("#form-tipping").html(htmlFields);
+//}
