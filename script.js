@@ -158,7 +158,7 @@ function displayLogOff() {
 }
 
 function displayTippingForm() {
-	var currentYear = new Date.getFullYear();
+	var currentYear = new Date().getFullYear();
 	var db = firebase.firestore();
 	db.collection("years").doc(currentYear).get().then(function(doc) {
 		if (doc.exists) {
