@@ -143,7 +143,7 @@ function displayLogIn(username, tokenCount) {
 	});
 	$(".offline").css("display", "none");
 	$(".online").css("display", "block");
-//	displayTippingForm();
+	displayTippingForm();
 }
 
 function displayLogOff() {
