@@ -118,6 +118,7 @@ $(document).ready(function(){
 	// Tipping form //
 	$("#form-tipping").submit(function(e) {
 		e.preventDefault();
+	});
 	// END Tipping form //
 });
 
