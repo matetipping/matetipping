@@ -1,3 +1,7 @@
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
 $(document).ready(function(){
 	// testing only
 	username = "Your Username Here";
@@ -142,7 +146,7 @@ function displayLogIn(username, tokenCount) {
 	});
 	$(".offline").css("display", "none");
 	$(".online").css("display", "block");
-	displayTippingForm();
+//	displayTippingForm();
 }
 
 function displayLogOff() {
@@ -156,29 +160,29 @@ function displayLogOff() {
 	$(".online").css("display", "none");
 }
 
-//function displayTippingForm() {
-//	var currentYear = new Date.getFullYear();
-//	var database = firebase.database();
-//	database.ref("/years/" + currentYear + "/").once("value").then(function(snapshot) {
-//		var roundCode = snapshot.child("current").val();
-//		var currentRound = currentYear + "-" + roundCode;
-//		var htmlTitle = "<h2>" + currentRound + "</h2>";
-//	}, function(error) {
-//        	console.error(error);
-//	});
-//	database.ref("/fixtures/" + currentRound + "/").once("value").then(function(snapshot) {
-//  		var htmlFields = "";
-//		var length = snapshot.child("gameCount").val();
-//  		var i;
-//		for (i = 1; i <= length; i++) {
-//			var teamHome = "A";
-//			var teamAway = "B";
-//			var venue = "Here";
-//			var date = "Then";
-//			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
-//		}
-//	}, function(error) {
-//        	console.error(error);
-//	});
-//	$("#form-tipping").html(htmlFields);
-//}
+function displayTippingForm() {
+	var currentYear = new Date.getFullYear();
+	var db = firebase.firestore();
+	db.collection("years").doc(currentYear).get().then(function(doc) {
+		if (doc.exists) {
+			var roundCode = doc.data().current;
+			var currentRound = currentYear + "-" + roundCode;
+			var htmlTitle = "<h2>" + currentRound + "</h2>";
+		} else {
+			console.log("No such document!");
+		}
+	});
+	db.collection("fixtures").doc(currentRound).get().then(function(doc) {
+		var htmlFields = "";
+		var length = doc.data().gameCount;
+		var i;
+		for (i = 1; i < length; i++) {
+			var teamHome = "A";
+			var teamAway = "B";
+			var venue = "Here";
+			var date = "Then";
+			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
+		}
+	});
+	$("#form-tipping").html(htmlFields);
+}
