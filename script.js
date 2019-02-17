@@ -1,7 +1,3 @@
-const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
-
 $(document).ready(function(){
 	// testing only
 	username = "Your Username Here";
