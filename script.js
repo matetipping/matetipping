@@ -160,11 +160,13 @@ function displayLogOff() {
 function displayTippingForm() {
 	var currentYear = new Date().getFullYear().toString();
 	var db = firebase.firestore();
+	var currentRound = "";
+	var htmlTitle = "";
 	db.collection("years").doc(currentYear).get().then(function(doc) {
 		if (doc.exists) {
 			var roundCode = doc.data().current;
-			var currentRound = currentYear + "-" + roundCode;
-			var htmlTitle = "<h2>" + currentRound + "</h2>";
+			currentRound = currentYear + "-" + roundCode;
+			htmlTitle = "<h2>" + currentRound + "</h2>";
 		} else {
 			console.log("No such document!");
 		}
