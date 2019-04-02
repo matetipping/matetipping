@@ -170,18 +170,19 @@ function displayTippingForm() {
 		} else {
 			console.log("No such document!");
 		}
+	}).then(function(doc) {
+		db.collection("fixtures").doc(currentRound).get().then(function(doc) {
+			var htmlFields = "";
+			var length = doc.data().gameCount;
+			var i;
+			for (i = 1; i < length; i++) {
+				var teamHome = "A";
+				var teamAway = "B";
+				var venue = "Here";
+				var date = "Then";
+				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
+			}
+			$("#form-tipping").html(htmlFields);
+		});
 	});
-	db.collection("fixtures").doc(currentRound).get().then(function(doc) {
-		var htmlFields = "";
-		var length = doc.data().gameCount;
-		var i;
-		for (i = 1; i < length; i++) {
-			var teamHome = "A";
-			var teamAway = "B";
-			var venue = "Here";
-			var date = "Then";
-			htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
-		}
-	});
-	$("#form-tipping").html(htmlFields);
 }
