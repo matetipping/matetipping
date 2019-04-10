@@ -206,7 +206,7 @@ function displayTippingForm() {
 				} else {
 					if (margin == 0) {
 						$("#marginInput-" + gameNo).val(1);
-						if (club == $("home-" + gameNo).val()) {
+						if (club == $("#home-" + gameNo).val()) {
 							$("#marginSlider-" + gameNo).val(-100);
 						} else {
 							$("#marginSlider-" + gameNo).val(100);
