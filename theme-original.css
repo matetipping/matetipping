@@ -26,6 +26,8 @@ input[type="range"] {
   border-radius: 5px;
   background: #333F50;
   outline: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 input[type="range"]:hover {
