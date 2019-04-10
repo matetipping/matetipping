@@ -184,9 +184,8 @@ function displayTippingForm() {
 				var venue = doc.data().venue;
 				var date = doc.data().date;
 				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
-			}).then(function() {
-				$("#form-tipping").html(htmlFields);
 			});
+			$("#form-tipping").html(htmlFields);
 		});
 	});
 }
