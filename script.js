@@ -182,11 +182,14 @@ function displayTippingForm() {
 			docs.forEach(function(doc) {
 				var homeTeam = doc.data().homeTeam;
 				var awayTeam = doc.data().awayTeam;
+				var homeTeamLong = getLongName(homeTeam);
+				var awayTeamLong = getLongName(awayTeam);
 				var venue = doc.data().venue;
 				var date = doc.data().date.toDate();
 				var formattedDate = getFormattedDate(date);
-				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
-				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='" + homeTeam + "'></div><div class='flag' id='" + awayTeam + "'></div></div>"
+				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
+				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='" + homeTeam + "'></div><select><option value='" + homeTeam + "'>" + homeTeamLong + "</option><option value='" + awayTeam + "'>" + awayTeamLong + "</option><option value='DRW'>Draw</option></select><input type='number' min='0' max='200'></input><div class='flag' id='" + awayTeam + "'></div></div>";
+				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-40000' max='40000'></input></div>";
 			});
 			$("#form-tipping").html(htmlFields);
 		});
@@ -287,4 +290,65 @@ function getFormattedDate(date) {
 	}
 	
 	return stringDay + " " + stringDate + " " + stringMonth + ", " + stringHour + stringMins;
+}
+
+function getLongName(club) {
+	switch(club) {
+		case "ADE":
+			return "Adelaide Crows";
+			break;
+		case "BRI":
+			return "Brisbane Lions";
+			break;
+		case "CAR":
+			return "Carlton Blues";
+			break;
+		case "COL":
+			return "Collingwood Magpies";
+			break;
+		case "ESS":
+			return "Essendon Bombers";
+			break;
+		case "FRE":
+			return "Fremantle Dockers";
+			break;
+		case "GEE":
+			return "Geelong Cats";
+			break;
+		case "GCS":
+			return "Gold Coast Suns";
+			break;
+		case "GWS":
+			return "GWS Giants";
+			break;
+		case "HAW":
+			return "Hawthorn Hawks";
+			break;
+		case "MEL":
+			return "Melbourne Demons";
+			break;
+		case "NTH":
+			return "North Melbourne";
+			break;
+		case "PTA":
+			return "Port Adelaide";
+			break;
+		case "RIC":
+			return "Richmond Tigers";
+			break;
+		case "SYD":
+			return "Sydney Swans";
+			break;
+		case "STK":
+			return "St Kilda Saints";
+			break;
+		case "WCE":
+			return "West Coast Eagles";
+			break;
+		case "WBD":
+			return "Western Bulldogs";
+			break;
+		case default:
+			return "";
+	}
 }
