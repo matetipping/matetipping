@@ -220,7 +220,8 @@ function displayTippingForm() {
 			$("input.formInput[type='number']").on('input', function() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
-				var margin = $(this).val();
+				var margin = Math.round($(this).val());
+				$(this).val(margin);
 				var sliderVal = Math.round(Math.cbrt(margin)*1000);
 				var prevSliderVal = $("#marginSlider-" + gameNo).val();
 				if (prevSliderVal < 0) {
