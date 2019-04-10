@@ -179,6 +179,7 @@ function displayTippingForm() {
 		roundRef.collection("fixtures").orderBy("date")
 		  .get()
 		  .then(function(docs) {
+			var i = 1;
 			docs.forEach(function(doc) {
 				var homeTeam = doc.data().homeTeam;
 				var awayTeam = doc.data().awayTeam;
@@ -188,10 +189,48 @@ function displayTippingForm() {
 				var date = doc.data().date.toDate();
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
-				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='" + homeTeam + "'></div><select><option value='" + homeTeam + "'>" + homeTeamLong + "</option><option value='" + awayTeam + "'>" + awayTeamLong + "</option><option value='DRW'>Draw</option></select><input type='number' min='0' max='200'></input><div class='flag' id='" + awayTeam + "'></div></div>";
-				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-40000' max='40000'></input></div>";
+				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='" + homeTeam + "'></div><select class='formInput' id='clubInput-" + i + "'><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "'></input><div class='flag' id='" + awayTeam + "'></div></div>";
+				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-1414' max='1414' class='formInput' id='marginSlider-" + i + "'></input></div>";
+				i++;
 			});
 			$("#form-tipping").html(htmlFields);
+			$(".formInput").change(function() {
+				var thisID = $(this).attr("id").split("-");
+				var inputType = thisID[0];
+				var gameNo = thisID[1];
+				if (inputType == "clubInput") {
+					var club = $(this).val();
+					var sliderVal = $("#marginSlider-" + gameNo).val();
+					if (club == "DRW") {
+						$("#marginInput-" + gameNo).val(0);
+						$("#marginSlider-" + gameNo).val(0);
+					} else {
+						$("#marginSlider-" + gameNo).val(sliderVal *-1);
+					}
+				} else if (inputType == "marginInput") {
+					var margin = $(this).val();
+					var sliderVal = Math.round(Math.sqrt(margin)*100);
+					var prevSliderVal = $("#marginSlider-" + gameNo).val();
+					if (prevSliderVal < 0) {
+						sliderVal *= -1;
+					}
+					if (margin == 0) {
+						$("#clubInput-" + gameNo).val($("option#draw-" + gameNo).val());
+					}
+					$("#marginSlider-" + gameNo).val(sliderVal);
+				} else if (inputType == "marginSlider") {
+					var sliderVal = $(this).val();
+					var margin = Math.round((margin/100)^2);
+					if (margin < 0) {
+						$("#clubInput-" + gameNo).val($("option#home-" + gameNo).val());
+					} else if (margin == 0) {
+						$("#clubInput-" + gameNo).val($("option#draw-" + gameNo).val());
+					} else {
+						$("#clubInput-" + gameNo).val($("option#away-" + gameNo).val());
+					}
+					$("#marginInput-" + gameNo).val(margin);
+				}
+			});
 		});
 	});
 }
