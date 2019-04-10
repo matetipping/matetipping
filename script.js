@@ -166,8 +166,6 @@ function displayTippingForm() {
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
 	db.collection("rounds")
-	  .where("date", "<", timestamp)
-	  .orderBy("date")
 	  .limit(1)
 	  .get()
 	  .then(function(doc) {
