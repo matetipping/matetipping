@@ -158,14 +158,15 @@ function displayLogOff() {
 }
 
 function displayTippingForm() {
-	var currentYear = firebase.firestore.FieldValue.serverTimestamp().toDate().getFullYear().toString();
 	var db = firebase.firestore();
 	var currentRound = "";
 	var htmlTitle = "";
 	var htmlFields = "";
 	var fixtures;
+	var timestamp = new Timestamp.now();
+	var currentYear = timestamp.toDate().getFullYear().toString();
 	db.collection("rounds")
-	  .where("date", ">", firebase.database().ServerValue.TIMESTAMP)
+	  .where("date", ">", timestamp)
 	  .orderBy("date")
 	  .limit(1)
 	  .get()
