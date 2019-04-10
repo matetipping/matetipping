@@ -26,6 +26,9 @@ div.flag {
 div.flag#DRW {
   background-image: url('images/flag_drw.png');
 }
+div.flag#NA {
+  background-image: url('images/flag_na.png');
+}
 div.flag#ADE {
   background-image: url('images/flag_ade.png');
 }
