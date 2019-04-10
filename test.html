@@ -37,7 +37,7 @@
             current: true
           }
           
-          db.collection('cities').add(thisData).then(ref => {
+          db.collection('footballers').add(thisData).then(ref => {
             console.log('Added document with ID: ', ref.id);
           });
           console.log(textValue[i].substring(3).trim() + " (" + club + ")");
