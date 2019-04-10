@@ -18,6 +18,13 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.details {
+  text-transform: uppercase;
+}
+
+.details .align-right {
+  float: right;
+}
 
 .slider {
   text-align: center;
