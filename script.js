@@ -165,10 +165,8 @@ function displayTippingForm() {
 	var fixtures;
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
-	db.collection("rounds")
-	  .doc("2019-R04")
-	  .get()
-	  .then(function(doc) {
+	var roundRef = db.collection("rounds").doc("2019-R04");
+	roundRef.get().then(function(doc) {
 		if (doc.exists) {
 			var roundName = doc.data().name;
 			currentRound = roundName + ", " + currentYear;
@@ -178,7 +176,7 @@ function displayTippingForm() {
 			console.log("Document does not exist");
 		}
 	}).then(function(doc) {
-		fixtures.orderBy("date")
+		roundRef.collection("fixtures").orderBy("date")
 		  .get()
 		  .then(function(docs) {
 			docs.forEach(function(doc) {
