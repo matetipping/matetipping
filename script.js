@@ -241,15 +241,21 @@ function displayTippingForm() {
 				$("#marginSlider-" + gameNo).val(sliderVal);
 			});
 			$("input.formInput[type='range']").on('input', function() {
-				var sliderVal = $(this).val();
 				var gameNo = $(this).attr("id").split("-")[1];
-				var margin = Math.round((margin/1000)^3);
+				var club = $("#clubInput-" + gameNo).val();
+				var sliderVal = $(this).val();
+				var margin = Math.round(Math.pow(margin/1000, 3));
 				if (margin < 0) {
-					$("#clubInput-" + gameNo).val($("option#home-" + gameNo).val());
+					club = $("#home-" + gameNo).val();
+					$("#clubInput-" + gameNo).val(club);
+					$(".flag-" + gameNo).attr("id", club);
 				} else if (margin == 0) {
-					$("#clubInput-" + gameNo).val($("option#draw-" + gameNo).val());
+					$("#clubInput-" + gameNo).val("DRW");
+					$(".flag-" + gameNo).attr("id", "DRW");
 				} else {
-					$("#clubInput-" + gameNo).val($("option#away-" + gameNo).val());
+					club = $("#away-" + gameNo).val();
+					$("#clubInput-" + gameNo).val(club);
+					$(".flag-" + gameNo).attr("id", club);
 				}
 				$("#marginInput-" + gameNo).val(margin);
 			});
