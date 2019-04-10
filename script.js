@@ -171,7 +171,6 @@ function displayTippingForm() {
 			var roundName = doc.data().name;
 			currentRound = roundName + ", " + currentYear;
 			htmlTitle = "<h2>" + currentRound + "</h2>";
-			fixtures = doc.collection("fixtures");
 		} else {
 			console.log("Document does not exist");
 		}
