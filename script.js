@@ -201,7 +201,7 @@ function displayTippingForm() {
 				var sliderVal = $("#marginSlider-" + gameNo).val();
 				if (club == "DRW") {
 					$("#marginInput-" + gameNo).val(0);
-					$("marginSlider-" + gameNo).val(0);
+					$("#marginSlider-" + gameNo).val(0);
 				} else {
 					if (margin == 0) {
 						$("#marginInput-" + gameNo).val(1);
@@ -212,22 +212,25 @@ function displayTippingForm() {
 				}
 				
 			});
-			$("input.formInput").change(function() {
-				var thisID = $(this).attr("id").split("-");
-				var inputType = thisID[0];
-				var gameNo = thisID[1];
-				if (inputType == "marginInput") {
-					var margin = $(this).val();
-					var sliderVal = Math.round(Math.sqrt(margin)*100);
-					var prevSliderVal = $("#marginSlider-" + gameNo).val();
-					if (prevSliderVal < 0) {
-						sliderVal *= -1;
-					}
-					if (margin == 0) {
-						$("#clubInput-" + gameNo).val($("option#draw-" + gameNo).val());
-					}
-					$("#marginSlider-" + gameNo).val(sliderVal);
-				} else if (inputType == "marginSlider") {
+			$("input.formInput[type='number']").change(function() {
+				var gameNo = $(this).attr("id").split("-")[1];
+				var club = $("#clubInput-" + gameNo).val();
+				var margin = $(this).val();
+				var sliderVal = Math.round(Math.sqrt(margin)*100);
+				var prevSliderVal = $("#marginSlider-" + gameNo).val();
+				if (prevSliderVal < 0) {
+					sliderVal *= -1;
+				}
+				if (margin == 0) {
+					$("#clubInput-" + gameNo).val("DRW");
+				} else if (sliderVal < 0) {
+					$("#clubInput-" + gameNo).val($("#home-" + gameNo).val());
+				} else {
+					$("#clubInput-" + gameNo).val($("#away-" + gameNo).val());
+				}
+				$("#marginSlider-" + gameNo).val(sliderVal);
+			});
+			$("input.formInput[type='range']").change(function() {
 					var sliderVal = $(this).val();
 					var margin = Math.round((margin/100)^2);
 					if (margin < 0) {
@@ -238,7 +241,6 @@ function displayTippingForm() {
 						$("#clubInput-" + gameNo).val($("option#away-" + gameNo).val());
 					}
 					$("#marginInput-" + gameNo).val(margin);
-				}
 			});
 		});
 	});
