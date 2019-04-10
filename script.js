@@ -348,7 +348,7 @@ function getLongName(club) {
 		case "WBD":
 			return "Western Bulldogs";
 			break;
-		case default:
+		default:
 			return "";
 	}
 }
