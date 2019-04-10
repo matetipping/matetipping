@@ -245,7 +245,7 @@ function displayTippingForm() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
 				var sliderVal = $(this).val();
-				var margin = Math.abs(Math.round(Math.pow(sliderVal/1000, 3)));
+				var margin = Math.round(Math.pow(sliderVal/1000, 3));
 				if (margin < 0) {
 					club = $("#home-" + gameNo).val();
 					$("#clubInput-" + gameNo).val(club);
@@ -258,7 +258,7 @@ function displayTippingForm() {
 					$("#clubInput-" + gameNo).val(club);
 					$(".flag-" + gameNo).attr("id", club);
 				}
-				$("#marginInput-" + gameNo).val(margin);
+				$("#marginInput-" + gameNo).val(Math.abs(margin));
 			});
 		});
 	});
