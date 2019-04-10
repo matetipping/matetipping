@@ -184,9 +184,106 @@ function displayTippingForm() {
 				var awayTeam = doc.data().awayTeam;
 				var venue = doc.data().venue;
 				var date = doc.data().date.toDate();
-				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'>" + venue + " | " + date + "</span></div>";
+				var formattedDate = getFormattedDate(date);
+				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
 			});
 			$("#form-tipping").html(htmlFields);
 		});
 	});
+}
+
+function getFormattedDate(date) {
+	var intDay = date.getDay();
+	var stringDay = "";
+	switch(intDay) {
+		case 0:
+			stringDay = "Sunday";
+			break;
+		case 1:
+			stringDay = "Monday";
+			break;
+		case 2:
+			stringDay = "Tuesday";
+			break;
+		case 3:
+			stringDay = "Wednesday";
+			break;
+		case 4:
+			stringDay = "Thursday";
+			break;
+		case 5:
+			stringDay = "Friday";
+			break;
+		default:
+			stringDay = "Saturday";
+	}
+	
+	var intMonth = date.getMonth();
+	var stringMonth = "";
+	switch(intMonth) {
+		case 0:
+			stringMonth = "Jan";
+			break;
+		case 1:
+			stringMonth = "Feb";
+			break;
+		case 2:
+			stringMonth = "Mar";
+			break;
+		case 3:
+			stringMonth = "Apr";
+			break;
+		case 4:
+			stringMonth = "May";
+			break;
+		case 5:
+			stringMonth = "Jun";
+			break;
+		case 6:
+			stringMonth = "Jul";
+			break;
+		case 7:
+			stringMonth = "Aug";
+			break;
+		case 8:
+			stringMonth = "Sep";
+			break;
+		case 9:
+			stringMonth = "Oct";
+			break;
+		case 10:
+			stringMonth = "Nov";
+			break;
+		default:
+			stringMonth = "Dec";
+	}
+	
+	var intDate = date.getDate();
+	var stringDate = intDate.toString();
+	
+	var intHour = date.getHours();
+	var stringHour = "";
+	
+	var intMins = date.getMinutes();
+	var stringMins = "";
+	
+	if (intHour > 12) {
+		intHour = intHour - 12;
+		stringMins = "PM";
+		
+	} else {
+		if (intHour == 0) {
+			intHour = 12;
+		}
+		stringMins = "AM";
+	}
+	stringHour = intHour + ":";
+	
+	if (intMins < 10) {
+		stringMins = "0" + intMins + stringMins;
+	} else {
+		stringMins = intMins + stringMins;
+	}
+	
+	return stringDay + " " + stringDate + " " + stringMonth + ", " + stringHour + stringMins;
 }
