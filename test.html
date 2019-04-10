@@ -25,29 +25,14 @@
       firebase.initializeApp(config);
       var db = firebase.firestore();
       
-      function submitTeamData() {
-        var textValue = $("textarea").val().split('\n');
-        var club = textValue[0];
-        var i;
-        var leng = textValue.length;
-        for (i=1; i++; i<leng) {
-          var thisData = {
-            name: textValue[i].substring(3).trim(),
-            club: club,
-            current: true
-          }
-          
-          db.collection('footballers').add(thisData).then(ref => {
-            console.log('Added document with ID: ', ref.id);
-          });
-          console.log(textValue[i].substring(3).trim() + " (" + club + ")");
-        }
+      function submitData() {
+        
       }
     </script>
     <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
     <textarea></textarea rows="50" cols="100">
-    <button onclick="submitTeamData()">Submit</button>
+    <button onclick="submitData()">Submit</button>
   </body>
 </html>
