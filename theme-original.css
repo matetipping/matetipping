@@ -48,6 +48,7 @@ select[id*='clubInput'] {
 
 .slider {
   text-align: center;
+  height: 40px;
 }
 input[type="range"] {
   -webkit-appearance: none;
@@ -109,6 +110,10 @@ input[type="range"]:active::-moz-range-thumb {
   background: #F2975E;
 }
 
+div.flags {
+  text-align: center;
+  height: 60px;
+}
 
 div.flag {
   width: 200px;
