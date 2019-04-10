@@ -212,7 +212,7 @@ function displayTippingForm() {
 							$("#marginSlider-" + gameNo).val(1000);
 						}
 					} else {
-						$("#marginSlider-" + gameNo).val(sliderVal *-1);
+						$("#marginSlider-" + gameNo).val(sliderVal * -1);
 					}
 				}
 				
@@ -228,10 +228,15 @@ function displayTippingForm() {
 				}
 				if (margin == 0) {
 					$("#clubInput-" + gameNo).val("DRW");
+					$(".flag-" + gameNo).attr("id", "DRW");
 				} else if (sliderVal < 0) {
-					$("#clubInput-" + gameNo).val($("#home-" + gameNo).val());
+					club = $("#home-" + gameNo).val();
+					$("#clubInput-" + gameNo).val(club);
+					$(".flag-" + gameNo).attr("id", club);
 				} else {
-					$("#clubInput-" + gameNo).val($("#away-" + gameNo).val());
+					club = $("#away-" + gameNo).val();
+					$("#clubInput-" + gameNo).val(club);
+					$(".flag-" + gameNo).attr("id", club);
 				}
 				$("#marginSlider-" + gameNo).val(sliderVal);
 			});
