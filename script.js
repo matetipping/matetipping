@@ -175,6 +175,7 @@ function displayTippingForm() {
 			console.log("Document does not exist");
 		}
 	}).then(function(doc) {
+		htmlFields = htmlFields + htmlTitle;
 		roundRef.collection("fixtures").orderBy("date")
 		  .get()
 		  .then(function(docs) {
