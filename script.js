@@ -162,26 +162,33 @@ function displayTippingForm() {
 	var db = firebase.firestore();
 	var currentRound = "";
 	var htmlTitle = "";
-	db.collection("years").doc(currentYear).get().then(function(doc) {
+	var htmlFields = "";
+	var fixtures;
+	db.collection("rounds")
+	  .where("date", ">", Date.now())
+	  .orderBy("date")
+	  .limit(1)
+	  .get()
+	  .then(function(doc) {
 		if (doc.exists) {
-			var roundCode = doc.data().current;
-			currentRound = currentYear + "-" + roundCode;
+			var roundName = doc.data().name;
+			currentRound = roundName + ", " + currentYear;
 			htmlTitle = "<h2>" + currentRound + "</h2>";
+			fixtures = doc.collection("fixtures");
 		} else {
-			console.log("No such document!");
+			console.log("Document does not exist");
 		}
 	}).then(function(doc) {
-		db.collection("fixtures").doc(currentRound).get().then(function(doc) {
-			var htmlFields = "";
-			var length = doc.data().gameCount;
-			var i;
-			for (i = 1; i < length; i++) {
-				var teamHome = "A";
-				var teamAway = "B";
-				var venue = "Here";
-				var date = "Then";
-				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + teamHome + " vs " + teamAway + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
-			}
+		fixtures.orderBy("date")
+		  .get()
+		  .then(function(docs) {
+			docs.forEach(function(doc) {
+				var homeTeam = doc.data().homeTeam;
+				var awayTeam = doc.data().awayTeam;
+				var venue = doc.data().venue;
+				var date = doc.data().date;
+				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'" + venue + " | " + date + "</span></div>";
+			});
 			$("#form-tipping").html(htmlFields);
 		});
 	});
