@@ -20,11 +20,11 @@ body {
 
 .details {
   text-transform: uppercase;
+  padding: 20px 0;
 }
 
 .details .align-right {
   float: right;
-  padding: 20px 0;
 }
 
 
