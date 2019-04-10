@@ -198,6 +198,7 @@ function displayTippingForm() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $(this).val();
 				var margin = $("#marginInput-" + gameNo).val();
+				var sliderVal = $("#marginSlider-" + gameNo).val();
 				if (club == "DRW") {
 					$("#marginInput-" + gameNo).val(0);
 				} else {
