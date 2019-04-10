@@ -189,7 +189,7 @@ function displayTippingForm() {
 				var date = doc.data().date.toDate();
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
-				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='DRW'></div><select class='formInput' id='clubInput-" + i + "'><option disabled selected value></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
+				htmlFields = htmlFields + "<div class='flags'><div class='flag flag-'" + i + "' id='DRW'></div><select class='formInput' id='clubInput-" + i + "'><option disabled selected value></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
 				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-1414' max='1414' class='formInput' id='marginSlider-" + i + "'></input></div>";
 				i++;
 			});
@@ -199,6 +199,7 @@ function displayTippingForm() {
 				var club = $(this).val();
 				var margin = $("#marginInput-" + gameNo).val();
 				var sliderVal = $("#marginSlider-" + gameNo).val();
+				$(".flag-" + gameNo).attr("id", club);
 				if (club == "DRW") {
 					$("#marginInput-" + gameNo).val(0);
 					$("#marginSlider-" + gameNo).val(0);
