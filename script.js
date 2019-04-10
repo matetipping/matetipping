@@ -206,7 +206,11 @@ function displayTippingForm() {
 				} else {
 					if (margin == 0) {
 						$("#marginInput-" + gameNo).val(1);
-						$("#marginSlider-" + gameNo).val(100);
+						if (club == $("home-" + gameNo).val()) {
+							$("#marginSlider-" + gameNo).val(-100);
+						} else {
+							$("#marginSlider-" + gameNo).val(100);
+						}
 					} else {
 						$("#marginSlider-" + gameNo).val(sliderVal *-1);
 					}
