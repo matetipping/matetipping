@@ -190,7 +190,7 @@ function displayTippingForm() {
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
 				htmlFields = htmlFields + "<div class='flags'><div class='flag flag-'" + i + "' id='DRW'></div><select class='formInput' id='clubInput-" + i + "'><option disabled selected value></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
-				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-1414' max='1414' class='formInput' id='marginSlider-" + i + "'></input></div>";
+				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-5848' max='5848' class='formInput' id='marginSlider-" + i + "'></input></div>";
 				i++;
 			});
 			$("#form-tipping").html(htmlFields);
@@ -207,9 +207,9 @@ function displayTippingForm() {
 					if (margin == 0) {
 						$("#marginInput-" + gameNo).val(1);
 						if (club == $("#home-" + gameNo).val()) {
-							$("#marginSlider-" + gameNo).val(-100);
+							$("#marginSlider-" + gameNo).val(-1000);
 						} else {
-							$("#marginSlider-" + gameNo).val(100);
+							$("#marginSlider-" + gameNo).val(1000);
 						}
 					} else {
 						$("#marginSlider-" + gameNo).val(sliderVal *-1);
@@ -221,7 +221,7 @@ function displayTippingForm() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
 				var margin = $(this).val();
-				var sliderVal = Math.round(Math.sqrt(margin)*100);
+				var sliderVal = Math.round(Math.cbrt(margin)*1000);
 				var prevSliderVal = $("#marginSlider-" + gameNo).val();
 				if (prevSliderVal < 0) {
 					sliderVal *= -1;
@@ -238,7 +238,7 @@ function displayTippingForm() {
 			$("input.formInput[type='range']").change(function() {
 				var sliderVal = $(this).val();
 				var gameNo = $(this).attr("id").split("-")[1];
-				var margin = Math.round((margin/100)^2);
+				var margin = Math.round((margin/1000)^3);
 				if (margin < 0) {
 					$("#clubInput-" + gameNo).val($("option#home-" + gameNo).val());
 				} else if (margin == 0) {
