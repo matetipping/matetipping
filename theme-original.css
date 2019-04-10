@@ -18,14 +18,18 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+
+.slider {
+  text-align: center;
+}
 input[type="range"] {
-  padding: 0;
   -webkit-appearance: none;
-  width: 100%;
+  width: 50%;
   height: 10px;
   border-radius: 5px;
   background: #333F50;
   outline: none;
+  padding: 0;
   margin-top: 20px;
   margin-bottom: 20px;
 }
