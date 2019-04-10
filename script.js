@@ -186,6 +186,7 @@ function displayTippingForm() {
 				var date = doc.data().date.toDate();
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='details'><span class='align-left'>" + homeTeam + " vs " + awayTeam + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
+				htmlFields = htmlFields + "<div class='flags'><div class='flag' id='" + homeTeam + "'></div><div class='flag' id='" + awayTeam + "></div></div>"
 			});
 			$("#form-tipping").html(htmlFields);
 		});
