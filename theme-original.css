@@ -23,6 +23,9 @@ div.flag {
   background-size: contain;
   display: inline-block;
 }
+div.flag#DRW {
+  background-image: url('images/flag_drw.png');
+}
 div.flag#ADE {
   background-image: url('images/flag_ade.png');
 }
