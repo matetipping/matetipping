@@ -163,7 +163,7 @@ function displayTippingForm() {
 	var htmlTitle = "";
 	var htmlFields = "";
 	var fixtures;
-	var timestamp = db.Timestamp.now();
+	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
 	db.collection("rounds")
 	  .where("date", "<", timestamp)
