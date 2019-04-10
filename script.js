@@ -217,7 +217,7 @@ function displayTippingForm() {
 				}
 				
 			});
-			$("input.formInput[type='number']").change(function() {
+			$("input.formInput[type='number']").on('input', function() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
 				var margin = $(this).val();
@@ -240,7 +240,7 @@ function displayTippingForm() {
 				}
 				$("#marginSlider-" + gameNo).val(sliderVal);
 			});
-			$("input.formInput[type='range']").change(function() {
+			$("input.formInput[type='range']").on('input', function() {
 				var sliderVal = $(this).val();
 				var gameNo = $(this).attr("id").split("-")[1];
 				var margin = Math.round((margin/1000)^3);
