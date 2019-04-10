@@ -22,58 +22,58 @@ div.flag {
   height: 100px;
 }
 div.flag#ADE {
-  background: url('images/flag_ade');
+  background: url('images/flag_ade.png');
 }
 div.flag#BRI {
-  background: url('images/flag_bri');
+  background: url('images/flag_bri.png');
 }
 div.flag#CAR {
-  background: url('images/flag_car');
+  background: url('images/flag_car.png');
 }
 div.flag#COL {
-  background: url('images/flag_col');
+  background: url('images/flag_col.png');
 }
 div.flag#ESS {
-  background: url('images/flag_ess');
+  background: url('images/flag_ess.png');
 }
 div.flag#FRE {
-  background: url('images/flag_fre');
+  background: url('images/flag_fre.png');
 }
 div.flag#GEE {
-  background: url('images/flag_gee');
+  background: url('images/flag_gee.png');
 }
 div.flag#GCS {
-  background: url('images/flag_gcs');
+  background: url('images/flag_gcs.png');
 }
 div.flag#GWS {
-  background: url('images/flag_gws');
+  background: url('images/flag_gws.png');
 }
 div.flag#HAW {
-  background: url('images/flag_haw');
+  background: url('images/flag_haw.png');
 }
 div.flag#MEL {
-  background: url('images/flag_mel');
+  background: url('images/flag_mel.png');
 }
 div.flag#NTH {
-  background: url('images/flag_nth');
+  background: url('images/flag_nth.png');
 }
 div.flag#PTA {
-  background: url('images/flag_pta');
+  background: url('images/flag_pta.png');
 }
 div.flag#RIC {
-  background: url('images/flag_ric');
+  background: url('images/flag_ric.png');
 }
 div.flag#SYD {
-  background: url('images/flag_syd');
+  background: url('images/flag_syd.png');
 }
 div.flag#STK {
-  background: url('images/flag_stk');
+  background: url('images/flag_stk.png');
 }
 div.flag#WCE {
-  background: url('images/flag_wce');
+  background: url('images/flag_wce.png');
 }
 div.flag#WBD {
-  background: url('images/flag_wbd');
+  background: url('images/flag_wbd.png');
 }
 header, footer {
   background-color: #1E252F;
