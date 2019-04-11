@@ -190,7 +190,7 @@ function displayTippingForm() {
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='game'><div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
 				htmlFields = htmlFields + "<div class='flags'><div class='flag flag-" + i + "' id='NA'></div><select class='formInput' id='clubInput-" + i + "'><option disabled selected value style='display: none;'></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
-				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-5848' max='5848' class='formInput' id='marginSlider-" + i + "'></input></div></div>";
+				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-4642' max='4642' class='formInput' id='marginSlider-" + i + "'></input></div></div>";
 				i++;
 			});
 			$("#form-tipping").html(htmlFields);
