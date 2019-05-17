@@ -475,6 +475,7 @@ nav a:hover:not([href=""]) {
 }
 
 main {
+  max-width: 720px;
   background-color: #222A35;
   margin: 0;
   margin-top: 160px;
@@ -514,6 +515,7 @@ input:-webkit-autofill {
   width: 100%;
 }
 .offline td {
+  padding: 24px;
   width: 50%;
   vertical-align: top;
 }
