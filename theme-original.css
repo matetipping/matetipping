@@ -39,14 +39,14 @@ body {
 }
 
 input[id*='marginInput'] {
-  width: 40%;
+  width: 25%;
   text-align: right;
   padding: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 select[id*='clubInput'] {
-  width: 60%;
+  width: 75%;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 32px;
