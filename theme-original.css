@@ -28,6 +28,13 @@ body {
   font-size: 75%;
 }
 
+.game:nth-child(even) {
+  margin-right: -24px;
+  margin-left: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
 input[id*='marginInput'] {
   width: 40%;
