@@ -47,7 +47,7 @@ select[id*='clubInput'] {
   padding-left: 20px;
 }
 
-.slider {
+.slider, .inputs {
   text-align: right;
   max-width: 496px;
   padding-left: 224px;
