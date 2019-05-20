@@ -19,12 +19,13 @@ body {
 }
 
 .details {
-  text-transform: uppercase;
   padding: 20px 0;
 }
 
 .details .align-right {
   float: right;
+  text-transform: uppercase;
+  font-size: 75%;
 }
 
 
