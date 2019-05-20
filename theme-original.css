@@ -113,8 +113,9 @@ input[type="range"]:active::-moz-range-thumb {
 }
 
 div.flags {
-  text-align: center;
-  height: 60px;
+  text-align: left;
+  height: fit-content;
+  width: fit-content;
 }
 
 div.flag {
