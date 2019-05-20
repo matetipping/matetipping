@@ -48,7 +48,9 @@ select[id*='clubInput'] {
 }
 
 .slider {
-  text-align: center;
+  text-align: right;
+  max-width: 496px;
+  padding-left: 224px;
   height: 40px;
 }
 input[type="range"] {
