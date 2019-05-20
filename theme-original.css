@@ -27,7 +27,9 @@ body {
   text-transform: uppercase;
   font-size: 75%;
 }
-
+.game {
+  padding-bottom: 24px;
+}
 .game:nth-child(even) {
   margin-right: -24px;
   margin-left: -24px;
