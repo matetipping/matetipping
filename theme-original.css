@@ -52,7 +52,7 @@ select[id*='clubInput'] {
   height: 32px;
   border: none;
   -webkit-appearance: none;
-  padding-left: 20px;
+  padding-left: 36px;
 }
 
 .slider, .inputs {
