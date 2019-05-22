@@ -548,6 +548,10 @@ main {
   min-height: 100vh;
 }
 
+select {
+  cursor: pointer;
+}
+
 input, select {
   width: 100%;
   height: 32px;
