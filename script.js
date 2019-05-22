@@ -170,11 +170,15 @@ function displayTippingForm() {
 		if (doc.exists) {
 			var roundName = doc.data().name;
 			currentRound = roundName + ", " + currentYear;
-			htmlTitle = "<select value='" + roundName + "' class='roundSelector'>";
+			htmlTitle = "<select class='roundSelector'>";
 			var i;
 			var roundCount = 23;
 			for (i = 1; i <= roundCount; i++) {
-				htmlTitle = htmlTitle + "<option value='Round " + i + "'>Round " + i + "</option>";
+				if (roundName === "Round " + i) {
+					htmlTitle = htmlTitle + "<option value='Round " + i + "' selected>Round " + i + "</option>";
+				} else {
+					htmlTitle = htmlTitle + "<option value='Round " + i + "'>Round " + i + "</option>";
+				}
 			}
 			htmlTitle = htmlTitle + "</select>";
 		} else {
