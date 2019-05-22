@@ -37,6 +37,9 @@ body {
   padding-right: 24px;
   background-color: #1E252F;
 }
+.game:last-child {
+  text-align: center;
+}
 
 input[id*='marginInput'] {
   width: 25%;
