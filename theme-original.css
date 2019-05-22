@@ -28,7 +28,7 @@ body {
   font-size: 75%;
 }
 .game {
-  padding-bottom: 24px;
+  padding: 24px 0;
 }
 .game:nth-child(even) {
   margin-right: -24px;
@@ -132,6 +132,10 @@ input[type="range"]:active::-moz-range-thumb {
 div.bonusRow {
   height: 32px;
   padding: 24px 0;
+}
+
+div.bonusRow:nth-child(1) {
+  padding-bottom: 24px;
 }
 
 button {
