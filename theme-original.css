@@ -573,6 +573,10 @@ select.roundSelector {
   width: 200px;
   padding-left: 36px;
 }
+div.roundTitle {
+  max-width: 496px;
+  width: unset;
+}
 
 input, select {
   width: 100%;
