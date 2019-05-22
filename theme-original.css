@@ -64,7 +64,7 @@ select[id*='clubInput'] {
   padding-left: 224px;
   height: 50px;
 }
-.inputs span {
+span.downArrow {
   width: 0;
   height: 24px;
   position: absolute;
@@ -572,6 +572,7 @@ select {
 }
 select.roundSelector {
   width: 200px;
+  padding-left: 36px;
 }
 
 input, select {
