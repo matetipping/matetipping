@@ -129,6 +129,39 @@ input[type="range"]:active::-moz-range-thumb {
   background: #F2975E;
 }
 
+div.bonusRow {
+  height: 32px;
+  padding: 24px 0;
+}
+
+button {
+  border: none;
+  webkit-appearance: none;
+  border-radius: 16px;
+  height: 32px;
+  width: 120px;
+  color: #F47D33;
+  background-color: #333F50;
+  text-transform: uppercase;
+  font-family: 'Lato Black', sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+span.bonusMarkers {
+  width: 64px;
+  height: 32px;
+  margin: 0px 18px;
+  margin-right: 24px;
+  position: absolute;
+  padding-left: 120px;
+}
+
+span.bonusMarkers div {
+  width: 64px;
+  display: block;
+}
+
 div.flags {
   text-align: left;
   height: fit-content;
