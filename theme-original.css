@@ -578,7 +578,7 @@ div.roundTitle {
   width: unset;
 }
 
-input, select {
+input, select, div.roundTitle {
   width: 100%;
   height: 32px;
   font-size: 18px;
