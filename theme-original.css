@@ -152,6 +152,12 @@ button {
   font-family: 'Lato Black', sans-serif;
   cursor: pointer;
   font-size: 14px;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: #777;
+  color: #fff;
 }
 
 button.submit {
