@@ -160,6 +160,10 @@ button:hover {
   color: #E6EBF2;
 }
 
+button:focus, input:focus, select:focus {
+  outline: none;
+}
+
 button.submit {
   height: 48px;
   font-size: 24px;
