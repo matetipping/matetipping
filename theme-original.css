@@ -65,7 +65,6 @@ select[id*='clubInput'] {
   height: 50px;
 }
 span.downArrow {
-  width: 0;
   height: 24px;
   position: absolute;
   font-size: 18px;
