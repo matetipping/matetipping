@@ -180,7 +180,7 @@ function displayTippingForm() {
 					htmlTitle = htmlTitle + "<option value='Round " + i + "'>Round " + i + "</option>";
 				}
 			}
-			htmlTitle = htmlTitle + "</select>";
+			htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
 		} else {
 			console.log("Document does not exist");
 		}
