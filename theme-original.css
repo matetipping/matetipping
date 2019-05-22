@@ -71,6 +71,7 @@ span.downArrow {
   padding: 5px 12px;
   pointer-events: none;
   color: #1E252F;
+  z-index: 1;
 }
 input[type="range"] {
   -webkit-appearance: none;
@@ -572,6 +573,7 @@ select {
 select.roundSelector {
   width: 200px;
   padding-left: 36px;
+  position: absolute;
 }
 div.roundTitle {
   max-width: 496px;
