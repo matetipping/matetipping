@@ -570,6 +570,9 @@ main {
 select {
   cursor: pointer;
 }
+select.roundSelector {
+  width: 200px;
+}
 
 input, select {
   width: 100%;
@@ -582,6 +585,7 @@ input, select {
   border: none;
   background-color: #333F50;
   color: #F47D33;
+  -webkit-appearance: none;
 }
 input[type="submit"] {
   margin-top: 18px;
