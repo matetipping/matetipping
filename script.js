@@ -193,6 +193,8 @@ function displayTippingForm() {
 				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-4642' max='4642' class='formInput' id='marginSlider-" + i + "'></input></div></div>";
 				i++;
 			});
+			var bonusMarkerHTML = "<span><div><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span></div><div><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span><span class="usedBonusMarker"></span></div></span>";
+			htmlFields = htmlFields + "<div class='game'><div><button class='buttonBonusDisposal'>Disposal</button>" + bonusMarkerHTML + "<input></input></div><div><button class='buttonBonusScorer'>Scorer</button>" + bonusMarkerHTML + "<input></input></div></div>";
 			$("#form-tipping").html(htmlFields);
 			$("select.formInput").change(function() {
 				var gameNo = $(this).attr("id").split("-")[1];
