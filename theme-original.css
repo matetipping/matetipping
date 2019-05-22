@@ -281,6 +281,7 @@ header {
   top: 0;
   display: table;
   font-size: 32px;
+  z-index: 2;
 }
 header::after, footer::before { 
   content: "";
