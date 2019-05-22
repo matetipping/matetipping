@@ -170,7 +170,13 @@ function displayTippingForm() {
 		if (doc.exists) {
 			var roundName = doc.data().name;
 			currentRound = roundName + ", " + currentYear;
-			htmlTitle = "<h2>" + currentRound + "</h2>";
+			htmlTitle = "<select value='R1' class='roundSelector'>";
+			var i;
+			var roundCount = 23;
+			for (i = 1; i <= roundCount; i++) {
+				htmlTitle = htmlTitle + "<option value='R" + i + "'>Round " + i + "</option>";
+			}
+			htmlTitle = htmlTitle + "</select>";
 		} else {
 			console.log("Document does not exist");
 		}
