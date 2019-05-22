@@ -131,7 +131,6 @@ input[type="range"]:active::-moz-range-thumb {
 
 div.bonusRow {
   height: 32px;
-  padding: 24px 0;
 }
 
 div.bonusRow:nth-child(1) {
