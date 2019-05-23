@@ -500,8 +500,10 @@ span.hamburger-container {
   height: auto;
   margin-right: 24px;
 }
-
-img.loader {
+div.loader {
+  text-align: center;
+}
+div.loader img {
   animation: loadingSpinner 0.5s linear 0s infinite normal forwards;
 }
 
