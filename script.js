@@ -191,6 +191,7 @@ function displayTippingForm() {
 		  .get()
 		  .then(function(docs) {
 			var i = 1;
+			var fixtures = [];
 			docs.forEach(function(doc) {
 				var homeTeam = doc.data().homeTeam;
 				var awayTeam = doc.data().awayTeam;
@@ -198,6 +199,7 @@ function displayTippingForm() {
 				var awayTeamLong = getLongName(awayTeam);
 				var venue = doc.data().venue;
 				var date = doc.data().date.toDate();
+				fixtures.push([homeTeam, awayTeam, date]);
 				var formattedDate = getFormattedDate(date);
 				htmlFields = htmlFields + "<div class='game'><div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
 				htmlFields = htmlFields + "<div class='flags'><div class='flag flag-" + i + "' id='NA'></div></div><div class='inputs'><span class='downArrow'>&#9660;</span><select class='formInput' id='clubInput-" + i + "'><option disabled selected value style='display: none;'></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
