@@ -35,7 +35,7 @@ $(document).ready(function(){
 	// Registration form //
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
+		$("#form-register input[type=submit]").parent().replaceWith("<div class='loader'><img src='/logos/icon-load.png'></div>");
 		
 		var isRegistrationError = false;
 		var registrationErrorMessage;
@@ -60,6 +60,7 @@ $(document).ready(function(){
 		}
 		if (isRegistrationError) {
 			alert("ERROR CODE 1: " + registrationErrorMessage);
+			$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
 		} else {
 			commitLogOff();
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
@@ -74,13 +75,13 @@ $(document).ready(function(){
 						user.updateProfile({
 							displayName: formData.username
 						}).then(function() {
-							$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
+							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
 							displayLogIn(user.displayName, tokenCount);
 						}, function(error) {
 							alert("Failed to save username");
 						});
 					}
-					$("#form-register img.loader").replaceWith("<input type='submit' value='Register'>");
+					$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
 				});
 			}
 		}
@@ -90,7 +91,7 @@ $(document).ready(function(){
 	// Login form //
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
-		$("#form-login input[type=submit]").replaceWith("<img class='loader' src='/logos/icon-load.png'>");
+		$("#form-login input[type=submit]").replaceWith("<div class='loader'><img src='/logos/icon-load.png'></div>");
 		
 		var formData = {
 			"email": $("#input-login-email").val(),
@@ -104,7 +105,7 @@ $(document).ready(function(){
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
-				$("#form-login img.loader").replaceWith("<input type='submit' value='Log in'>");
+				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 				displayLogIn(user.displayName, tokenCount);
 			}
 		});
