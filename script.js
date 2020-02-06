@@ -2,10 +2,10 @@ $(document).ready(function(){
 	// testing only
 	var loggedOutUsername = "You are logged out.";
 	try {
-		var username = localStorage.get('username');
+		var username = localStorage.getItem('username');
 		displayLogIn(loggedOutUsername);
 	} catch(e) {
-		localStorage.set('username', loggedOutUsername);
+		localStorage.setItem('username', loggedOutUsername);
 		var username = loggedOutUsername;
 	}
 	
