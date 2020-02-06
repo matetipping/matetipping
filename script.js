@@ -175,7 +175,7 @@ $(document).ready(function(){
 		if (valid) {
 			console.log(roundCode);
 			console.log(user.uid);
-			firebase.firestore().collection("tips").doc(roundCode).collection("participants").doc(user.uid).set({
+			firebase.firestore().collection("rounds").doc(roundCode).collection("participants").doc(user.uid).set({
 				clubs: clubTips,
 				margins: marginTips,
 				disposal: bonusDisposal,
@@ -363,6 +363,8 @@ function displayTippingForm() {
 				$("#marginInput-" + gameNo).val(Math.abs(margin));
 			});
 		});
+	}).then(function(doc) {
+		var savedTipsRef = db.collection("rounds").doc(currentYear + "-" + 
 	});
 }
 
