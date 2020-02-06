@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>MATE Tipping</title>
+    <link rel="stylesheet" type="text/css" href="theme-original.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="/favicon.ico/site.webmanifest">
+    <link rel="mask-icon" href="/favicon.ico/safari-pinned-tab.svg" color="#f47d33">
+    <link rel="shortcut icon" href="/favicon.ico/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1e252f">
+    <meta name="msapplication-config" content="/favicon.ico/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyBEduYbG9nwxiif677ot7WLAAG8AuRiqoI",
+        authDomain: "mate-tipping.firebaseapp.com",
+        databaseURL: "https://mate-tipping.firebaseio.com",
+        projectId: "mate-tipping",
+        storageBucket: "mate-tipping.appspot.com",
+        messagingSenderId: "650624140459"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="admin-script.js"></script>
+  </head>
+  <body>
+    <header>
+      <span class="logo-container">
+        <img class="logo-small" src="/logos/matetippinglogo-footy.svg">
+      </span>
+      <span class="title-container">
+        <h1>
+          <span>mate </span>
+          <span class="highlight">tipping</span>
+        </h1>
+      </span>
+      <span class="username-container">
+        <span class="float-right">
+          <span></span>
+        </span>
+      </span>
+      <span class="hamburger-container">
+        <div id="nav-hamburger" class="float-right">
+          <div id="container-hamburger">
+            <span id="hamburgerTop"></span>
+            <span id="hamburgerMid"></span>
+            <span id="hamburgerBottom"></span>
+          </div>
+        </div>
+      </span>
+    </header>
+    <nav id="hamburger-menu">
+      <ul>
+        <li><a href="javascript:attemptLogIn(username);">Sign in</a></li>
+        <li><a href="">Tipping</a></li>
+        <li><a href="" class="selected">Results</a></li>
+        <li><a href="">Profile</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="online">
+        <input type="textarea" class=""></input>
+        <button class="addRoundFixtures">Add Round Fixtures</button>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>
