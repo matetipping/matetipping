@@ -144,7 +144,7 @@ $(document).ready(function(){
 		var valid = true;
 		$("select.formInput").each(function() {
 			var thisClub = $(this).val();
-			if (thisClub != "") {
+			if (thisClub !== null) {
 				clubTips.push($(this).val());
 			} else {
 				valid = false;
@@ -173,6 +173,7 @@ $(document).ready(function(){
 		var roundCode = currentYear + "-" + roundNumber;
 		
 		if (valid) {
+			var db = firebase.firestore();
 			db.collection("tips").doc(roundCode).collection("participants").doc(user.uid).set({
 				clubs: clubTips,
 				margins: marginTips,
