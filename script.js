@@ -173,6 +173,8 @@ $(document).ready(function(){
 		var roundCode = currentYear + "-" + roundNumber;
 		
 		if (valid) {
+			console.log(roundCode);
+			console.log(user.uid);
 			firebase.firestore().collection("tips").doc(roundCode).collection("participants").doc(user.uid).set({
 				clubs: clubTips,
 				margins: marginTips,
