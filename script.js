@@ -123,6 +123,7 @@ $(document).ready(function(){
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
 				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
+				localStorage.setItem('username', user.displayName);
 				displayLogIn(user.displayName);
 			}
 		});
