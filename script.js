@@ -3,7 +3,6 @@ $(document).ready(function(){
 	var username = "You are logged out.";
 	try {
 		username = localStorage.getItem('username');
-		alert(username);
 		displayLogIn(username);
 	} catch(e) {
 		localStorage.setItem('username', username);
