@@ -239,30 +239,33 @@ function displayTippingForm() {
 	var fixtures;
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
-	var roundRef = db.collection("rounds").orderBy('date').limit(1);
-	roundRef.get().then(function(doc) {
-		if (doc.exists) {
-			var roundName = doc.data().name;
-			currentRound = roundName + ", " + currentYear;
-			htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
-			var i;
-			var roundCount = 23;
-			for (i = 1; i <= roundCount; i++) {
-				if(i < 10) {
-					var iString = "0" + i;
-				} else {
-					var iString = i;
+	var roundRef = db.collection("rounds").where('date', '>', timestamp).orderBy('date').limit(1);
+	roundRef.get().then(function(querySnapshot) {
+		querySnapshot.forEach(function(doc) {
+			if (doc.exists) {
+				roundRef = db.collection("rounds").doc(doc.id);
+				var roundName = doc.data().name;
+				currentRound = roundName + ", " + currentYear;
+				htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
+				var i;
+				var roundCount = 23;
+				for (i = 1; i <= roundCount; i++) {
+					if(i < 10) {
+						var iString = "0" + i;
+					} else {
+						var iString = i;
+					}
+					if (roundName === "Round " + i) {
+						htmlTitle = htmlTitle + "<option value='R" + iString + "' selected>Round " + i + "</option>";
+					} else {
+						htmlTitle = htmlTitle + "<option value='R" + iString + "'>Round " + i + "</option>";
+					}
 				}
-				if (roundName === "Round " + i) {
-					htmlTitle = htmlTitle + "<option value='R" + iString + "' selected>Round " + i + "</option>";
-				} else {
-					htmlTitle = htmlTitle + "<option value='R" + iString + "'>Round " + i + "</option>";
-				}
+				htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
+			} else {
+				console.log("Document does not exist");
 			}
-			htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
-		} else {
-			console.log("Document does not exist");
-		}
+		});
 	}).then(function(doc) {
 		htmlFields = htmlFields + htmlTitle;
 		roundRef.collection("fixtures").orderBy("date")
