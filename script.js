@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// username load
-	var user = firebase.auth().currentUser;
+	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
 	if (username !== null) {
 		displayLogIn(username);
