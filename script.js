@@ -164,7 +164,7 @@ $(document).ready(function(){
 		if (bonusDisposal == "") {
 			bonusDisposal = null;
 		}
-		if (bonusScorer = "") {
+		if (bonusScorer == "") {
 			bonusScorer = null;
 		}
 		
