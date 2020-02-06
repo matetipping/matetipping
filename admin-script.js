@@ -23,10 +23,11 @@ $(document).ready(function(){
 		var length = text.length;
 		for (i = 2; i < length; i++) {
 			var line = text[i].split(", ");
+			var date = firebase.firestore.Timestamp.fromDate(new Date(Date.parse(line[2])));
 			firebase.firestore().collection("rounds").doc(roundYear).collection("fixtures").doc((i - 1).toString()).set({
 				homeTeam: line[0],
 				awayTeam: line[1],
-				date: line[2],
+				date: date,
 				venue: line[3]
 			});
 		}
