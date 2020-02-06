@@ -239,6 +239,7 @@ function displayTippingForm() {
 	var htmlTitle = "";
 	var htmlFields = "";
 	var fixtures;
+	var roundCodeName = "";
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
 	var roundRef = db.collection("rounds").where('date', '>', timestamp).orderBy('date').limit(1);
@@ -247,6 +248,7 @@ function displayTippingForm() {
 			if (doc.exists) {
 				roundRef = db.collection("rounds").doc(doc.id);
 				var roundName = doc.data().name;
+				roundCodeName = doc.data().codeName;
 				currentRound = roundName + ", " + currentYear;
 				htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
 				var i;
@@ -364,7 +366,10 @@ function displayTippingForm() {
 			});
 		});
 	}).then(function(doc) {
-		var savedTipsRef = db.collection("rounds").doc(currentYear + "-" + 
+		var savedTipsRef = db.collection("rounds").doc(currentYear + "-" + roundCodeName).collection("participants").doc(user.uid);
+		savedTipsRef.get().then(function(doc) {
+			console.log("hi");
+		});
 	});
 }
 
