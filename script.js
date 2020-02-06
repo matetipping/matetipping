@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	// testing only
-	var loggedOutUsername = "You are logged out.";
+	var username = "You are logged out.";
 	try {
 		var username = localStorage.getItem('username');
 		displayLogIn(username);
 	} catch(e) {
-		localStorage.setItem('username', loggedOutUsername);
-		var username = loggedOutUsername;
+		localStorage.setItem('username', username);
+		var username = username;
 	}
 	
 	firebase.auth().onAuthStateChanged(function(user) {
