@@ -11,6 +11,15 @@ $(document).ready(function(){
 	});
 	// end test code
 	
+	// authentication persistence
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function() {
+    		return firebase.auth().signInWithEmailAndPassword(email, password);
+  	}).catch(function(error) {
+   		var errorCode = error.code;
+    		var errorMessage = error.message;
+  	});
+	// authentication persistence
+	
 	// Hamburger menu
 	$("nav").css("right", (-1*$("nav").width()) + "px");
 	$("#nav-hamburger").click(function(){
