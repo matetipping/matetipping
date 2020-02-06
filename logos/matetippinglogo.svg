@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="311.71414mm"
+   height="112.33837mm"
+   viewBox="0 0 311.71414 112.33837"
+   version="1.1"
+   id="svg6923"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="matetippinglogo.svg">
+  <defs
+     id="defs6917" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="196.02785"
+     inkscape:cy="108.68946"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g6901"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata6920">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(128.64279,-92.664149)">
+    <g
+       transform="translate(-150.09241,-42.625625)"
+       id="g6901">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6451"
+         d="M 79.028884,144.8455 A 38.104997,51.961371 45 0 0 40.052449,163.43123 38.104997,51.961371 45 0 0 28.053998,224.5953 c 0.204278,-2.30063 0.483359,-4.7109 0.871073,-7.12486 1.28134,-7.97781 3.733456,-15.97614 7.955645,-23.53343 4.222188,-7.55729 10.21493,-14.67475 16.221161,-20.68554 6.006231,-6.01081 12.026384,-10.91597 18.579285,-15.08587 6.552903,-4.16991 13.639769,-7.60536 20.148505,-9.59575 1.077148,-0.3294 2.137038,-0.61587 3.185153,-0.87269 A 38.104997,51.961371 45 0 0 79.028884,144.8455 Z m 19.540015,4.71303 c -0.772354,0.20125 -1.551571,0.42002 -2.339845,0.66109 -6.508727,1.9904 -13.595593,5.42584 -20.148496,9.59575 -6.552901,4.1699 -12.573054,9.07507 -18.579285,15.08587 -6.006231,6.01079 -11.998973,13.12825 -16.221161,20.68554 -4.222189,7.5573 -6.674305,15.55562 -7.955645,23.53344 -0.541632,3.37228 -0.872403,6.73745 -1.079981,9.80358 a 38.104997,51.961371 45 0 0 61.696269,-11.60426 38.104997,51.961371 45 0 0 9.798175,-63.68652 38.104997,51.961371 45 0 0 -5.170031,-4.07449 z"
+         style="fill:#f47d33;fill-opacity:1;stroke:#f8a978;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text6878"
+         y="180.22745"
+         x="118.45578"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:67.17140961px;line-height:1.25;font-family:'Lato Black';-inkscape-font-specification:'Lato Black, ';letter-spacing:0.14552082px;word-spacing:0px;fill:#e6ebf2;fill-opacity:1;stroke:none;stroke-width:0.26458335;"
+         xml:space="preserve"><tspan
+           id="tspan6880"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Lato Black';-inkscape-font-specification:'Lato Black, ';letter-spacing:0px;fill:#e6ebf2;fill-opacity:1;stroke-width:0.26458335;"
+           y="180.22745"
+           x="118.45578"
+           sodipodi:role="line">mate</tspan></text>
+      <text
+         id="text6886"
+         y="235.63805"
+         x="116.66822"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:67.17140961px;line-height:1.25;font-family:'Lato Black';-inkscape-font-specification:'Lato Black, ';letter-spacing:0px;word-spacing:0px;fill:#f47d33;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Lato Black';-inkscape-font-specification:'Lato Black, ';fill:#f47d33;fill-opacity:1;stroke-width:0.26458335"
+           y="235.63805"
+           x="116.66822"
+           id="tspan6884"
+           sodipodi:role="line">tipping</tspan></text>
+    </g>
+  </g>
+</svg>
