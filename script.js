@@ -2,11 +2,11 @@ $(document).ready(function(){
 	// testing only
 	var username = "You are logged out.";
 	try {
-		var username = localStorage.getItem('username');
+		username = localStorage.getItem('username');
+		alert(username);
 		displayLogIn(username);
 	} catch(e) {
 		localStorage.setItem('username', username);
-		var username = username;
 	}
 	
 	firebase.auth().onAuthStateChanged(function(user) {
