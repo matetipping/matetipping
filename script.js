@@ -239,7 +239,7 @@ function displayTippingForm() {
 	var fixtures;
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
-	var roundRef = db.collection("rounds").where('date', '>', timestamp).limit(1);
+	var roundRef = db.collection("rounds").where('date', '<', timestamp).limit(1);
 	roundRef.get().then(function(doc) {
 		if (doc.exists) {
 			var roundName = doc.data().name;
