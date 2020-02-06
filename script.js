@@ -6,7 +6,9 @@ $(document).ready(function(){
 	} else {
 		displayLogOff();
 	}
+	// end username load
 	
+	// display login when state changes
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			displayLogIn(user.displayName);
@@ -23,7 +25,7 @@ $(document).ready(function(){
    		var errorCode = error.code;
     		var errorMessage = error.message;
   	});
-	// authentication persistence
+	// end authentication persistence
 	
 	// Hamburger menu
 	$("nav").css("right", (-1*$("nav").width()) + "px");
@@ -49,7 +51,7 @@ $(document).ready(function(){
 	// Registration form //
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type=submit]").parent().replaceWith("<div class='loader'><img src='/logos/icon-load.png'></div>");
+		$("#form-register input[type=submit]").parent().replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
 		
 		var isRegistrationError = false;
 		var registrationErrorMessage;
@@ -82,6 +84,7 @@ $(document).ready(function(){
 				var registrationErrorCode = error.code;
 				registrationErrorMessage = error.message;
 				alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
+				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			});
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
@@ -96,7 +99,7 @@ $(document).ready(function(){
 							alert("Failed to save username");
 						});
 					}
-					$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
+					$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 				});
 			}
 		}
@@ -106,7 +109,7 @@ $(document).ready(function(){
 	// Login form //
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
-		$("#form-login input[type=submit]").replaceWith("<div class='loader'><img src='/logos/icon-load.png'></div>");
+		$("#form-login input[type=submit]").replaceWith("<div class='loader log-load'><img src='/logos/icon-load.png'></div>");
 		
 		var formData = {
 			"email": $("#input-login-email").val(),
@@ -117,6 +120,7 @@ $(document).ready(function(){
 			var loginErrorCode = error.code;
 			var loginErrorMessage = error.message;
 			alert("ERROR CODE " + loginErrorCode + ": " + loginErrorMessage);
+			$("#form-register div.loader.log-load").replaceWith("<input type='submit' value='Login'>");
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
