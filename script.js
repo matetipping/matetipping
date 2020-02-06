@@ -1,10 +1,17 @@
 $(document).ready(function(){
 	// testing only
-	username = "Your Username Here";
-	tokenCount = 478;
+	var loggedOutUsername = "You are logged out.";
+	try {
+		var username = localStorage.get('username');
+		displayLogIn(loggedOutUsername);
+	} catch(e) {
+		localStorage.set('username', loggedOutUsername);
+		var username = loggedOutUsername;
+	}
+	
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			displayLogIn(user.displayName, tokenCount);
+			displayLogIn(user.displayName);
 		} else {
 			displayLogOff();
 		}
@@ -85,7 +92,7 @@ $(document).ready(function(){
 							displayName: formData.username
 						}).then(function() {
 							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
-							displayLogIn(user.displayName, tokenCount);
+							displayLogIn(user.displayName);
 						}, function(error) {
 							alert("Failed to save username");
 						});
@@ -115,7 +122,7 @@ $(document).ready(function(){
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
 				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
-				displayLogIn(user.displayName, tokenCount);
+				displayLogIn(user.displayName);
 			}
 		});
 	});
@@ -139,9 +146,8 @@ function commitLogOff() {
 	}
 }
 
-function displayLogIn(username, tokenCount) {
+function displayLogIn(username) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
-	$(".username-container span span:nth-child(2)").html("[" + tokenCount + " tokens]");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:commitLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
@@ -157,12 +163,13 @@ function displayLogIn(username, tokenCount) {
 }
 
 function displayLogOff() {
+	localStorage.removeItem('username');
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
-	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>[Sign In]</a>");
+	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
 	$("nav ul li a").each(function() {
 		$(this).attr("href", "");
 	});
-	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username, tokenCount);'>Sign in</a>");
+	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
 	$(".offline").css("display", "block");
 	$(".online").css("display", "none");
 }
