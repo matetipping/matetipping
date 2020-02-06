@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$("button").click(function() {
-		var text = ("textarea").val().split("\n");
+		var text = $("textarea").val().split("\n");
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		var roundCode = "R" + text[0];
 		var roundName = "Round " + text[0];
