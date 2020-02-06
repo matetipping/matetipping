@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	// testing only
 	var username = localStorage.getItem('username');
-	if (username == null) {
+	if (username !== null) {
 		displayLogIn(username);
 	} else {
 		displayLogOff();
