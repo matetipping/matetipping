@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	// testing only
+	// username load
 	var username = localStorage.getItem('username');
 	if (username !== null) {
 		displayLogIn(username);
