@@ -19,7 +19,7 @@ $(document).ready(function(){
 		var i;
 		var length = text.length;
 		for (i = 2; i < length; i++) {
-			var line = text.split(", ");
+			var line = text[i].split(", ");
 			firebase.firestore().collection("rounds").doc(roundYear).collection("fixtures").doc(i - 1).set({
 				homeTeam: line[0],
 				awayTeam: line[1],
