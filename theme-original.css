@@ -529,6 +529,7 @@ nav {
   position: fixed;
   margin: 0;
   transition: 0.5s;
+  z-index: 2;
 }
 nav ul {
   text-decoration: none;
