@@ -92,6 +92,7 @@ $(document).ready(function(){
 							displayName: formData.username
 						}).then(function() {
 							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
+							localStorage.setItem('username', user.displayName);
 							displayLogIn(user.displayName);
 						}, function(error) {
 							alert("Failed to save username");
