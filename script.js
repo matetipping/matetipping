@@ -10,9 +10,9 @@ $(document).ready(function(){
 	// end username load
 	
 	// display login when state changes
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			displayLogIn(user.displayName);
+	firebase.auth().onAuthStateChanged(function(u) {
+		if (u) {
+			displayLogIn(u.displayName);
 			user = firebase.auth().currentUser;
 		} else {
 			displayLogOff();
