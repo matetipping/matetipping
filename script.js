@@ -248,10 +248,15 @@ function displayTippingForm() {
 			var i;
 			var roundCount = 23;
 			for (i = 1; i <= roundCount; i++) {
-				if (roundName === "Round " + i) {
-					htmlTitle = htmlTitle + "<option value='R" + i + "' selected>Round " + i + "</option>";
+				if(i < 10) {
+					var iString = "0" + i;
 				} else {
-					htmlTitle = htmlTitle + "<option value='R" + i + "'>Round " + i + "</option>";
+					var iString = i;
+				}
+				if (roundName === "Round " + i) {
+					htmlTitle = htmlTitle + "<option value='R" + iString + "' selected>Round " + i + "</option>";
+				} else {
+					htmlTitle = htmlTitle + "<option value='R" + iString + "'>Round " + i + "</option>";
 				}
 			}
 			htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
