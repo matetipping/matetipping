@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	// username load
+	var user = null;
 	var username = localStorage.getItem('username');
 	if (username !== null) {
 		displayLogIn(username);
@@ -12,6 +13,7 @@ $(document).ready(function(){
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			displayLogIn(user.displayName);
+			user = firebase.auth().currentUser
 		} else {
 			displayLogOff();
 		}
@@ -135,6 +137,57 @@ $(document).ready(function(){
 	// Tipping form //
 	$("#form-tipping").submit(function(e) {
 		e.preventDefault();
+		var clubTips = [];
+		var marginTips = [];
+		var bonusDisposal = $("input#bonusInput-1").val();
+		var bonusScorer = $("input#bonusInput-2").val();
+		var valid = true;
+		$("select.formInput").each(function() {
+			var thisClub = $(this).val();
+			if (thisClub != "") {
+				clubTips.push($(this).val());
+			} else {
+				valid = false;
+			}
+			
+		});
+		$("input.formInput[type=number]").each(function() {
+			var thisMargin = $(this).val();
+			if (thisMargin < 200) {
+				marginTips.push($(this).val());
+			} else {
+				marginTips.push(200);
+				valid = false;
+			}
+		});
+		
+		if (bonusDisposal == "") {
+			bonusDisposal = null;
+		}
+		if (bonusScorer = "") {
+			bonusScorer = null;
+		}
+		
+		var currentYear = new Date().getFullYear();
+		var roundNumber = $("select.roundSelector").val();
+		var roundCode = currentYear + "-" + roundNumber;
+		
+		if (valid) {
+			db.collection("tips").doc(roundCode).collection("participants").doc(user.uid).set({
+				clubs: clubTips,
+				margins: marginTips,
+				disposal: bonusDisposal,
+				scorer: bonusScorer,
+				valid: true
+			}).then(function() {
+			    console.log("Tips submitted.");
+			})
+			.catch(function(error) {
+			    console.error("Error writing document: ", error);
+			});
+		} else {
+			alert("There is an issue with your tips. Make sure that you have tipped for all matches.");
+		}
 	});
 	// END Tipping form //
 });
@@ -196,9 +249,9 @@ function displayTippingForm() {
 			var roundCount = 23;
 			for (i = 1; i <= roundCount; i++) {
 				if (roundName === "Round " + i) {
-					htmlTitle = htmlTitle + "<option value='Round " + i + "' selected>Round " + i + "</option>";
+					htmlTitle = htmlTitle + "<option value='R" + i + "' selected>Round " + i + "</option>";
 				} else {
-					htmlTitle = htmlTitle + "<option value='Round " + i + "'>Round " + i + "</option>";
+					htmlTitle = htmlTitle + "<option value='R" + i + "'>Round " + i + "</option>";
 				}
 			}
 			htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
