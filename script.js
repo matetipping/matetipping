@@ -365,33 +365,38 @@ function displayTippingForm() {
 	}).then(function(doc) {
 		var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
 		savedTipsRef.get().then(function(doc) {
-			var clubs = doc.data().clubs;
-			var margins = doc.data().margins;
-			var bonusDisposal = doc.data().disposal;
-			var bonusScorer = doc.data().scorer;
-			var i;
-			var leng = clubs.length;
-			for (i = 0; i < leng; i++) {
-				var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
-				$("#clubInput-" + (i+1)).val(clubs[i]);
-				$("#marginInput-" + (i+1)).val(margins[i]);
-				$("div.flag-" + (i+1)).attr("id", clubs[i]);
-				if (clubs[i] == "DRW") {
-					$("#marginInput-" + (i+1)).val(0);
-					$("#marginSlider-" + (i+1)).val(0);
-				} else {
-					if (clubs[i] == $("#home-" + (i+1)).val()) {
-						$("#marginSlider-" + (i+1)).val(-1*sliderVal);
+			if (doc.exists) {
+				var clubs = doc.data().clubs;
+				var margins = doc.data().margins;
+				var bonusDisposal = doc.data().disposal;
+				var bonusScorer = doc.data().scorer;
+				var i;
+				var leng = clubs.length;
+				for (i = 0; i < leng; i++) {
+					var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
+					$("#clubInput-" + (i+1)).val(clubs[i]);
+					$("#marginInput-" + (i+1)).val(margins[i]);
+					$("div.flag-" + (i+1)).attr("id", clubs[i]);
+					if (clubs[i] == "DRW") {
+						$("#marginInput-" + (i+1)).val(0);
+						$("#marginSlider-" + (i+1)).val(0);
 					} else {
-						$("#marginSlider-" + (i+1)).val(sliderVal);
+						if (clubs[i] == $("#home-" + (i+1)).val()) {
+							$("#marginSlider-" + (i+1)).val(-1*sliderVal);
+						} else {
+							$("#marginSlider-" + (i+1)).val(sliderVal);
+						}
 					}
 				}
-			}
-			if (bonusDisposal !== null) {
-				$("#bonusInput-1").val(bonusDisposal);
-			}
-			if (bonusScorer !== null) {
-				$("#bonusInput-2").val(bonusScorer);
+				if (bonusDisposal !== null) {
+					$("#bonusInput-1").val(bonusDisposal);
+				}
+				if (bonusScorer !== null) {
+					$("#bonusInput-2").val(bonusScorer);
+				}
+				$("button.submit").html("Update Tips");
+			} else {
+				$("button.submit").html("Submit Tips");
 			}
 		});
 	});
