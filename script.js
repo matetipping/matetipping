@@ -372,9 +372,9 @@ function displayTippingForm() {
 			var bonusScorer = doc.data().scorer;
 			var i;
 			var leng = clubs.length;
-			var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
 			console.log(sliderVal);
 			for (i = 0; i < leng; i++) {
+				var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
 				$("#clubInput-" + (i+1)).val(clubs[i]);
 				$("#marginInput-" + (i+1)).val(margins[i]);
 				$("div.flag-" + (i+1)).attr("id", clubs[i]);
