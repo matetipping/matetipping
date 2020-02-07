@@ -454,7 +454,7 @@ function displayTippingForm() {
 				console.log(bonusScorer);
 				if (bonusDisposal !== null) {
 					console.log("datalist.players option#" + bonusDisposal);
-					console.log($("datalist.players option#" + bonusDisposal).html());
+					console.log($("datalist.players").html());
 					// console.log(bonusValue);
 					$("#bonusInput-1").val(bonusValue);
 				}
