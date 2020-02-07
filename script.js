@@ -453,7 +453,7 @@ function displayTippingForm() {
 				console.log(bonusDisposal);
 				console.log(bonusScorer);
 				if (bonusDisposal !== null) {
-					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
+					console.log($("datalist.players option#" + bonusDisposal).html());
 					// console.log(bonusValue);
 					$("#bonusInput-1").val(bonusValue);
 				}
