@@ -363,7 +363,6 @@ function displayTippingForm() {
 			});
 		});
 	}).then(function(doc) {
-		console.log(currentYear + "-" + roundCodeName + " / " + user.uid);
 		var savedTipsRef = db.collection("tips").doc(currentYear + "-" + roundCodeName).collection("participants").doc(user.uid);
 		savedTipsRef.get().then(function(doc) {
 			var clubs = doc.data().clubs;
@@ -372,7 +371,6 @@ function displayTippingForm() {
 			var bonusScorer = doc.data().scorer;
 			var i;
 			var leng = clubs.length;
-			console.log(sliderVal);
 			for (i = 0; i < leng; i++) {
 				var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
 				$("#clubInput-" + (i+1)).val(clubs[i]);
