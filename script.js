@@ -139,8 +139,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var clubTips = [];
 		var marginTips = [];
-		var bonusDisposal = $("input#bonusInput-1").val();
-		var bonusScorer = $("input#bonusInput-2").val();
+		var bonusDisposal;
+		var bonusScorer;
 		var valid = true;
 		$("select.formInput").each(function() {
 			var thisClub = $(this).val();
@@ -159,6 +159,31 @@ $(document).ready(function(){
 				marginTips.push(200);
 				valid = false;
 			}
+		});
+		
+		var isDisposals = true;
+		$(".formInput[list='players']").each(function() {
+			var inputText = $(this).val();
+			var playerIndex = -1;
+			$("datalist.players option").each(function() {
+				if ($(this).html() === inputText) {
+					playerIndex = Number($(this).attr("id"));
+				}
+			});
+			if (playerIndex > -1) {
+				if (isDisposals) {
+					bonusDisposal = playerIndex;
+				} else {
+					bonusScorer = playerIndex;
+				}
+			} else {
+				if (isDisposals) {
+					bonusDisposal = null;
+				} else {
+					bonusScorer = null;
+				}
+			}
+			isDisposals = false;
 		});
 		
 		if (bonusDisposal == "") {
