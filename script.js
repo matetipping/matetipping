@@ -383,13 +383,13 @@ function displayTippingForm() {
 				} else {
 					if (margins[i] == 0) {
 						$("#marginInput-" + (i+1)).val(1);
-						if (club == $("#home-" + (i+1)).val()) {
+						if (clubs[i] == $("#home-" + (i+1)).val()) {
 							$("#marginSlider-" + (i+1)).val(-1000);
 						} else {
 							$("#marginSlider-" + (i+1)).val(1000);
 						}
 					} else {
-						if (club == $("#home-" + (i+1)).val()) {
+						if (clubs[i] == $("#home-" + (i+1)).val()) {
 							$("#marginSlider-" + (i+1)).val(-1*sliderVal);
 						} else {
 							$("#marginSlider-" + (i+1)).val(sliderVal);
