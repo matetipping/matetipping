@@ -313,6 +313,8 @@ function displayTippingForm() {
 				});
 				if (!matching) {
 					$(this).val("");
+				} else {
+					console.log($(this).val());
 				}
 			});
 			
