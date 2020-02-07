@@ -291,8 +291,24 @@ function displayTippingForm() {
 			var bonusMarkerHTML = "<span class='bonusMarkers'><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div></span>";
 			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal'>Disposal</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-1' list='players'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer'>Scorer</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players'></input></div></div></div>";
 			htmlFields = htmlFields + "<div class='game'><button class='submit'>Submit Tips</button></div>";
-			htmlFields = htmlFields + "<datalist id='players'><option id='1'>test</option></datalist>";
+			htmlFields = htmlFields + "<datalist id='players'><option val='1'>test</option></datalist>";
 			$("#form-tipping").html(htmlFields);
+			
+			var playersRef = db.collection("footballers").doc(currentYear);
+			playersRef.get().then(function(doc) {
+				if (doc.exists) {
+					var playerList = doc.data().players;
+					var i;
+					var length = playerList.length;
+					var dataListHTML = "";
+					for (i = 0; i < length; i++) {
+						dataListHTML = dataListHTML + "<option value='" + i + "' id='" + i + "'>" + playerList[i].name + " (" + playerList[i].club + ")</option>"
+					}
+				} else {
+					console.log("Document does not exist");
+				}
+			});
+			
 			$("select.formInput").change(function() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $(this).val();
