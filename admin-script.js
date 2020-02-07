@@ -47,7 +47,7 @@ $(document).ready(function(){
 			}
 		}
 		firebase.firestore().collection("footballers").doc(new Date().getFullYear()).set({
-			players: playerArray;
+			players: playerArray
 		});
 	});
 
