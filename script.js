@@ -458,10 +458,12 @@ function displayTippingForm() {
 					}
 				}
 				if (bonusDisposal !== null) {
-					$("#bonusInput-1").val(bonusDisposal);
+					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
+					$("#bonusInput-1").val(bonusValue);
 				}
 				if (bonusScorer !== null) {
-					$("#bonusInput-2").val(bonusScorer);
+					var bonusValue = $("datalist.players option#" + bonusScorer).html();
+					$("#bonusInput-2").val(bonusValue);
 				}
 				$("button.submit").html("Update Tips");
 			} else {
