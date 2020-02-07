@@ -373,6 +373,7 @@ function displayTippingForm() {
 			var i;
 			var leng = clubs.length;
 			var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
+			console.log(sliderVal);
 			for (i = 0; i < leng; i++) {
 				$("#clubInput-" + (i+1)).val(clubs[i]);
 				$("#marginInput-" + (i+1)).val(margins[i]);
@@ -381,19 +382,10 @@ function displayTippingForm() {
 					$("#marginInput-" + (i+1)).val(0);
 					$("#marginSlider-" + (i+1)).val(0);
 				} else {
-					if (margins[i] == 0) {
-						$("#marginInput-" + (i+1)).val(1);
-						if (clubs[i] == $("#home-" + (i+1)).val()) {
-							$("#marginSlider-" + (i+1)).val(-1000);
-						} else {
-							$("#marginSlider-" + (i+1)).val(1000);
-						}
+					if (clubs[i] == $("#home-" + (i+1)).val()) {
+						$("#marginSlider-" + (i+1)).val(-1*sliderVal);
 					} else {
-						if (clubs[i] == $("#home-" + (i+1)).val()) {
-							$("#marginSlider-" + (i+1)).val(-1*sliderVal);
-						} else {
-							$("#marginSlider-" + (i+1)).val(sliderVal);
-						}
+						$("#marginSlider-" + (i+1)).val(sliderVal);
 					}
 				}
 			}
