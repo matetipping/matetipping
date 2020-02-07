@@ -38,8 +38,13 @@ $(document).ready(function(){
 		var i;
 		var length = text.length;
 		var playerArray = [];
-		for (i = 1; i < length; i++) {
-			playerArray.push({name: text[i], club: text[0]});
+		var club = text[i];
+		for (i = 0; i < length; i++) {
+			if (text[i].length == 3) {
+				club = text[i];
+			} else {
+				playerArray.push({name: text[i], club: club});
+			}
 		}
 		console.log(playerArray);
 	});
