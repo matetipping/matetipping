@@ -310,8 +310,8 @@ function displayTippingForm() {
 				$("datalist.players option").each(function() {
 					if ($(this).html() === inputText) {
 						matching = true;
+						playerIndex = $(this).attr("id");
 					}
-					playerIndex = $(this).attr("id");
 				});
 				if (!matching) {
 					$(this).val("");
