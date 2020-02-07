@@ -139,8 +139,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var clubTips = [];
 		var marginTips = [];
-		var bonusDisposal;
-		var bonusScorer;
+		var bonusDisposal = null;
+		var bonusScorer = null;
 		var valid = true;
 		$("select.formInput").each(function() {
 			var thisClub = $(this).val();
@@ -168,7 +168,6 @@ $(document).ready(function(){
 			$("datalist.players option").each(function() {
 				if ($(this).html() === inputText) {
 					playerIndex = Number($(this).attr("id"));
-					console.log(playerIndex);
 				}
 			});
 			if (playerIndex > -1) {
@@ -186,13 +185,8 @@ $(document).ready(function(){
 			}
 			isDisposals = false;
 		});
-		
-		if (bonusDisposal == "") {
-			bonusDisposal = null;
-		}
-		if (bonusScorer == "") {
-			bonusScorer = null;
-		}
+		console.log(bonusDisposal);
+		console.log(bonusScorer);
 		
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
