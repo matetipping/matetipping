@@ -39,6 +39,7 @@ $(document).ready(function(){
 		var length = text.length;
 		var playerArray = [];
 		var club = text[i];
+		var currentYear = new Date().getFullYear().toString();
 		for (i = 0; i < length; i++) {
 			if (text[i].length == 3) {
 				club = text[i];
@@ -46,7 +47,7 @@ $(document).ready(function(){
 				playerArray.push({name: text[i], club: club});
 			}
 		}
-		firebase.firestore().collection("footballers").doc(new Date().getFullYear()).set({
+		firebase.firestore().collection("footballers").doc(currentYear).set({
 			players: playerArray
 		});
 	});
