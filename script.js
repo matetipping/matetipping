@@ -454,12 +454,12 @@ function displayTippingForm() {
 				console.log(bonusScorer);
 				if (bonusDisposal !== null) {
 					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
-					console.log(bonusValue);
+					// console.log(bonusValue);
 					$("#bonusInput-1").val(bonusValue);
 				}
 				if (bonusScorer !== null) {
 					var bonusValue = $("datalist.players option#" + bonusScorer).html();
-					console.log(bonusValue);
+					// console.log(bonusValue);
 					$("#bonusInput-2").val(bonusValue);
 				}
 				$("button.submit").html("Update Tips");
