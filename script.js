@@ -364,6 +364,7 @@ function displayTippingForm() {
 			});
 		});
 	}).then(function(doc) {
+		console.log(currentYear + "-" + roundCodeName + " / " + user.uid);
 		var savedTipsRef = db.collection("tips").doc(currentYear + "-" + roundCodeName).collection("participants").doc(user.uid);
 		savedTipsRef.get().then(function(doc) {
 			var clubs = doc.data().clubs;
