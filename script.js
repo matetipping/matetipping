@@ -170,8 +170,7 @@ $(document).ready(function(){
 		
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
-		var roundCode = currentYear + "-" + roundNumber;
-		
+		var roundCode = currentYear + "-" + roundNumber;		
 		if (valid) {
 			firebase.firestore().collection("rounds").doc(roundCode).collection("participants").doc(user.uid).set({
 				clubs: clubTips,
@@ -246,7 +245,7 @@ function displayTippingForm() {
 			if (doc.exists) {
 				roundRef = db.collection("rounds").doc(doc.id);
 				var roundName = doc.data().name;
-				roundCodeName = doc.data().codeName;
+				roundCodeName = doc.data().codename;
 				currentRound = roundName + ", " + currentYear;
 				htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
 				var i;
