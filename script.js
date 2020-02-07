@@ -291,29 +291,19 @@ function displayTippingForm() {
 			var bonusMarkerHTML = "<span class='bonusMarkers'><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div></span>";
 			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal'>Disposal</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-1' list='players'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer'>Scorer</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players'></input></div></div></div>";
 			htmlFields = htmlFields + "<div class='game'><button class='submit'>Submit Tips</button></div>";
-			htmlFields = htmlFields + "<datalist id='playersOff'><option val='1'>test</option></datalist>";
+			htmlFields = htmlFields + "<datalist class='players' id='playersOff'><option val='1'>test</option></datalist>";
 			$("#form-tipping").html(htmlFields);
 			
-			$("#bonusInput-1").keyup(function() {
+			$(".formInput[list='players']").keyup(function() {
 				var noChars = $(this).val().length;
 				if (noChars < 3) {
-					$("datalist#players").attr("id", "playersOff");
+					$("datalist.players").attr("id", "playersOff");
 				} else {
-					$("datalist#playersOff").attr("id", "players");
+					$("datalist.players").attr("id", "players");
 				}
-			});
-				
-			$("#bonusInput-2").keyup(function() {
-				var noChars = $(this).val().length;
-				if (noChars < 3) {
-					$("datalist#players").attr("id", "playersOff");
-				} else {
-					$("datalist#playersOff").attr("id", "players");
-				}
-				
 			});
 			
-			$("#bonusInput-1").blur(function() {
+			$(".formInput[list='players']").blur(function() {
 				var matching = false;
 				var inputText = $(this).val();
 				$("datalist option").each(function() {
@@ -336,7 +326,7 @@ function displayTippingForm() {
 					for (i = 0; i < length; i++) {
 						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
 					}
-					$("datalist#players").html(dataListHTML);
+					$("datalist.players").html(dataListHTML);
 				} else {
 					console.log("Document does not exist");
 				}
