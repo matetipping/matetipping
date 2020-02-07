@@ -372,9 +372,30 @@ function displayTippingForm() {
 			var bonusScorer = doc.data().scorer;
 			var i;
 			var leng = clubs.length;
+			var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
 			for (i = 0; i < leng; i++) {
 				$("#clubInput-" + (i+1)).val(clubs[i]);
 				$("#marginInput-" + (i+1)).val(margins[i]);
+				$("div.flag-" + (i+1)).attr("id", clubs[i]);
+				if (clubs[i] == "DRW") {
+					$("#marginInput-" + (i+1)).val(0);
+					$("#marginSlider-" + (i+1)).val(0);
+				} else {
+					if (margins[i] == 0) {
+						$("#marginInput-" + (i+1)).val(1);
+						if (club == $("#home-" + (i+1)).val()) {
+							$("#marginSlider-" + (i+1)).val(-1000);
+						} else {
+							$("#marginSlider-" + (i+1)).val(1000);
+						}
+					} else {
+						if (club == $("#home-" + (i+1)).val()) {
+							$("#marginSlider-" + (i+1)).val(-1*sliderVal);
+						} else {
+							$("#marginSlider-" + (i+1)).val(sliderVal);
+						}
+					}
+				}
 			}
 			if (bonusDisposal !== null) {
 				$("#bonusInput-1").val(bonusDisposal);
