@@ -38,7 +38,7 @@ $(document).ready(function(){
 		var i;
 		var length = text.length;
 		var playerArray = [];
-		for (i = 1, i < length; i++) {
+		for (i = 1; i < length; i++) {
 			playerArray.push({name: text[i], club: text[0]});
 		}
 		console.log(playerArray);
