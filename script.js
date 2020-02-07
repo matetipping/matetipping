@@ -228,8 +228,6 @@ function displayLogIn(username) {
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
-	$("nav ul li:nth-child(5) a:not(.selected)").attr("href", "/cards.html");
-	$("nav ul li:nth-child(6) a:not(.selected)").attr("href", "/games.html");
 	$(".offline input:not([type=submit])").each(function() {
 		$(this).val("");
 	});
@@ -452,6 +450,8 @@ function displayTippingForm() {
 						}
 					}
 				}
+				console.log(bonusDisposal);
+				console.log(bonusScorer);
 				if (bonusDisposal !== null) {
 					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
 					$("#bonusInput-1").val(bonusValue);
