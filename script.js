@@ -424,7 +424,7 @@ function displayTippingForm() {
 				$("#marginInput-" + gameNo).val(Math.abs(margin));
 			});
 		});
-	}).then(function(doc) {
+
 		var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
 		savedTipsRef.get().then(function(doc) {
 			if (doc.exists) {
@@ -450,12 +450,8 @@ function displayTippingForm() {
 						}
 					}
 				}
-				console.log(bonusDisposal);
-				console.log(bonusScorer);
 				if (bonusDisposal !== null) {
-					console.log("datalist.players option#" + bonusDisposal);
-					console.log($("datalist.players").html());
-					// console.log(bonusValue);
+					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
 					$("#bonusInput-1").val(bonusValue);
 				}
 				if (bonusScorer !== null) {
