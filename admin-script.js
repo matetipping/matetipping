@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("button").click(function() {
+	$("button.addRoundFixtures").click(function() {
 		var text = $("textarea").val().split("\n");
 		var roundName = "Round " + text[0];
 		if (text[0] < 10) {
@@ -32,5 +32,16 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	$("button.addFootballerList").click(function() {
+		var text = $("textarea").val().split("\n");
+		var i;
+		var length = text.length;
+		var playerArray = [];
+		for (i = 1, i < length; i++) {
+			playerArray.push({name: text[i], club: text[0]});
+		}
+		console.log(playerArray);
+	}
 
 });
