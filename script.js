@@ -3,7 +3,7 @@ $(document).ready(function(){
 	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
 	if (username !== null) {
-		displayLogIn(username);
+		$("username-container b").html(username);
 	} else {
 		displayLogOff();
 	}
