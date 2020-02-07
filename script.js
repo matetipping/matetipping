@@ -306,15 +306,16 @@ function displayTippingForm() {
 			$(".formInput[list='players']").blur(function() {
 				var matching = false;
 				var inputText = $(this).val();
+				var playerIndex = -1;
 				$("datalist.players option").each(function() {
 					if ($(this).html() === inputText) {
 						matching = true;
 					}
+					playerIndex = $(this).attr("id");
 				});
 				if (!matching) {
 					$(this).val("");
 				} else {
-					var playerIndex = $("datalist option[label='" + $(this).val() + "']").attr("id");
 					console.log(playerIndex);
 				}
 			});
@@ -327,7 +328,7 @@ function displayTippingForm() {
 					var length = playerList.length;
 					var dataListHTML = "";
 					for (i = 0; i < length; i++) {
-						dataListHTML = dataListHTML + "<option id='" + i + "' label='" + playerList[i].name + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
+						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
 					}
 					$("datalist.players").html(dataListHTML);
 				} else {
