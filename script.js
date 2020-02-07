@@ -349,7 +349,45 @@ function displayTippingForm() {
 						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
 					}
 					$("datalist.players").html(dataListHTML);
-					console.log("a) " + $("datalist.players").html());
+							var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
+							savedTipsRef.get().then(function(doc) {
+								if (doc.exists) {
+									var clubs = doc.data().clubs;
+									var margins = doc.data().margins;
+									var bonusDisposal = doc.data().disposal;
+									var bonusScorer = doc.data().scorer;
+									var i;
+									var leng = clubs.length;
+									for (i = 0; i < leng; i++) {
+										var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
+										$("#clubInput-" + (i+1)).val(clubs[i]);
+										$("#marginInput-" + (i+1)).val(margins[i]);
+										$("div.flag-" + (i+1)).attr("id", clubs[i]);
+										if (clubs[i] == "DRW") {
+											$("#marginInput-" + (i+1)).val(0);
+											$("#marginSlider-" + (i+1)).val(0);
+										} else {
+											if (clubs[i] == $("#home-" + (i+1)).val()) {
+												$("#marginSlider-" + (i+1)).val(-1*sliderVal);
+											} else {
+												$("#marginSlider-" + (i+1)).val(sliderVal);
+											}
+										}
+									}
+									if (bonusDisposal !== null) {
+										var bonusValue = $("datalist.players option#" + bonusDisposal).html();
+										$("#bonusInput-1").val(bonusValue);
+									}
+									if (bonusScorer !== null) {
+										var bonusValue = $("datalist.players option#" + bonusScorer).html();
+										// console.log(bonusValue);
+										$("#bonusInput-2").val(bonusValue);
+									}
+									$("button.submit").html("Update Tips");
+								} else {
+									$("button.submit").html("Submit Tips");
+								}
+							});
 				} else {
 					console.log("Document does not exist");
 				}
@@ -378,6 +416,7 @@ function displayTippingForm() {
 				}
 				
 			});
+			
 			$("input.formInput[type='number']").on('input', function() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
@@ -405,6 +444,7 @@ function displayTippingForm() {
 				}
 				$("#marginSlider-" + gameNo).val(sliderVal);
 			});
+			
 			$("input.formInput[type='range']").on('input', function() {
 				var gameNo = $(this).attr("id").split("-")[1];
 				var club = $("#clubInput-" + gameNo).val();
@@ -424,47 +464,6 @@ function displayTippingForm() {
 				}
 				$("#marginInput-" + gameNo).val(Math.abs(margin));
 			});
-		});
-		
-		var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
-		savedTipsRef.get().then(function(doc) {
-			if (doc.exists) {
-				var clubs = doc.data().clubs;
-				var margins = doc.data().margins;
-				var bonusDisposal = doc.data().disposal;
-				var bonusScorer = doc.data().scorer;
-				var i;
-				var leng = clubs.length;
-				for (i = 0; i < leng; i++) {
-					var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
-					$("#clubInput-" + (i+1)).val(clubs[i]);
-					$("#marginInput-" + (i+1)).val(margins[i]);
-					$("div.flag-" + (i+1)).attr("id", clubs[i]);
-					if (clubs[i] == "DRW") {
-						$("#marginInput-" + (i+1)).val(0);
-						$("#marginSlider-" + (i+1)).val(0);
-					} else {
-						if (clubs[i] == $("#home-" + (i+1)).val()) {
-							$("#marginSlider-" + (i+1)).val(-1*sliderVal);
-						} else {
-							$("#marginSlider-" + (i+1)).val(sliderVal);
-						}
-					}
-				}
-				if (bonusDisposal !== null) {
-					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
-					console.log("b) " + $("datalist.players").html());
-					$("#bonusInput-1").val(bonusValue);
-				}
-				if (bonusScorer !== null) {
-					var bonusValue = $("datalist.players option#" + bonusScorer).html();
-					// console.log(bonusValue);
-					$("#bonusInput-2").val(bonusValue);
-				}
-				$("button.submit").html("Update Tips");
-			} else {
-				$("button.submit").html("Submit Tips");
-			}
 		});
 	});
 }
