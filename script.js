@@ -172,7 +172,7 @@ $(document).ready(function(){
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
 		if (valid) {
-			firebase.firestore().collection("tips").doc(roundCode).collection("participants").doc(user.uid).set({
+			firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode).set({
 				clubs: clubTips,
 				margins: marginTips,
 				disposal: bonusDisposal,
@@ -363,7 +363,7 @@ function displayTippingForm() {
 			});
 		});
 	}).then(function(doc) {
-		var savedTipsRef = db.collection("tips").doc(currentYear + "-" + roundCodeName).collection("participants").doc(user.uid);
+		var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
 		savedTipsRef.get().then(function(doc) {
 			var clubs = doc.data().clubs;
 			var margins = doc.data().margins;
