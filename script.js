@@ -304,6 +304,7 @@ function displayTippingForm() {
 					for (i = 0; i < length; i++) {
 						dataListHTML = dataListHTML + "<option value='" + i + "' id='" + i + "'>" + playerList[i].name + " (" + playerList[i].club + ")</option>"
 					}
+					$("datalist#players").html(dataListHTML);
 				} else {
 					console.log("Document does not exist");
 				}
