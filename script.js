@@ -314,7 +314,7 @@ function displayTippingForm() {
 				if (!matching) {
 					$(this).val("");
 				} else {
-					console.log($(this).val());
+					console.log($(this).data('value'));
 				}
 			});
 			
