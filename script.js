@@ -302,7 +302,7 @@ function displayTippingForm() {
 					var length = playerList.length;
 					var dataListHTML = "";
 					for (i = 0; i < length; i++) {
-						dataListHTML = dataListHTML + "<option value='" + i + "' id='" + i + "'>" + playerList[i].name + " (" + playerList[i].club + ")</option>"
+						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + playerList[i].club + ")</option>"
 					}
 					$("datalist#players").html(dataListHTML);
 				} else {
