@@ -30,7 +30,7 @@ $(document).ready(function(){
 				date: date,
 				venue: line[3]
 			});
-		}
+		});
 	});
 	
 	$("button.addFootballerList").click(function() {
