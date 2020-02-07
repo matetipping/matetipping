@@ -46,7 +46,9 @@ $(document).ready(function(){
 				playerArray.push({name: text[i], club: club});
 			}
 		}
-		console.log(playerArray);
+		firebase.firestore().collection("footballers").doc(new Date().getFullYear()).set({
+			players: playerArray;
+		});
 	});
 
 });
