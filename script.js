@@ -166,6 +166,7 @@ $(document).ready(function(){
 			var inputText = $(this).val();
 			var playerIndex = -1;
 			$("datalist.players option").each(function() {
+				console.log($(this).html());
 				if ($(this).html() === inputText) {
 					playerIndex = Number($(this).attr("id"));
 				}
