@@ -30,7 +30,7 @@ $(document).ready(function(){
 				date: date,
 				venue: line[3]
 			});
-		});
+		}
 	});
 	
 	$("button.addFootballerList").click(function() {
@@ -42,6 +42,6 @@ $(document).ready(function(){
 			playerArray.push({name: text[i], club: text[0]});
 		}
 		console.log(playerArray);
-	}
+	});
 
 });
