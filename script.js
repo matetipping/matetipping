@@ -349,6 +349,7 @@ function displayTippingForm() {
 						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
 					}
 					$("datalist.players").html(dataListHTML);
+					console.log("a) " + $("datalist.players").html());
 				} else {
 					console.log("Document does not exist");
 				}
@@ -452,7 +453,7 @@ function displayTippingForm() {
 				}
 				if (bonusDisposal !== null) {
 					var bonusValue = $("datalist.players option#" + bonusDisposal).html();
-					console.log(bonusValue);
+					console.log("b) " + $("datalist.players").html());
 					$("#bonusInput-1").val(bonusValue);
 				}
 				if (bonusScorer !== null) {
