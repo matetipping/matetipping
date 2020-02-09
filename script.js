@@ -199,22 +199,25 @@ $(document).ready(function(){
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
 		if (valid) {
-			firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode).set({
+			var batch = firebase.firestore.batch();
+			
+			var roundsRef = firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode);
+			batch.set(roundsRef, {
 				clubs: clubTips,
 				margins: marginTips,
 				disposal: bonusDisposal,
 				scorer: bonusScorer,
-				valid: true
-			}).then(function() {
-			    console.log("Tips submitted.");
-			})
-			.catch(function(error) {
-			    console.error("Error writing document: ", error);
+				time: firebase.firestore.Timestamp.now()
 			});
-			firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString()).set({
+			
+			var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
+			batch.set(bonusesRef, {
 				usedBonusDisposals: newUsedDisposalsList,
-				usedBonusScorers: newUsedScorersList
-			}).then(function() {
+				usedBonusScorers: newUsedScorersList,
+				time: firebase.firestore.Timestamp.now()
+			});
+			
+			batch.commit().then(function() {
 				console.log("Bonuses confirmed.");
 			}).catch(function(error) {
 				console.error("Error writing document: ", error);
