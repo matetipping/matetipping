@@ -176,7 +176,9 @@ $(document).ready(function(){
 			if (playerIndex > -1) {
 				if (isDisposals) {
 					bonusDisposal = playerIndex;
+					console.log("Before push: " + usedDisposalsList);
 					usedDisposalsList = usedDisposalsList.push(bonusDisposal);
+					console.log("After push: " + usedDisposalsList);
 				} else {
 					bonusScorer = playerIndex;
 					usedScorersList = usedScorersList.push(bonusScorer);
