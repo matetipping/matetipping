@@ -199,7 +199,7 @@ $(document).ready(function(){
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
 		if (valid) {
-			var batch = firebase.firestore.batch();
+			var batch = firebase.firestore().batch();
 			
 			var roundsRef = firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode);
 			batch.set(roundsRef, {
