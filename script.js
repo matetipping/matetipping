@@ -178,6 +178,8 @@ $(document).ready(function(){
 				} else {
 					bonusScorer = playerIndex;
 				}
+				usedDisposalsList = usedDisposalsList.push(bonusDisposal);
+				usedScorersList = usedScorersList.push(bonusScorer);
 			} else {
 				if (isDisposals) {
 					bonusDisposal = null;
@@ -189,9 +191,6 @@ $(document).ready(function(){
 		});
 		console.log(bonusDisposal);
 		console.log(bonusScorer);
-		
-		// update usedDisposalsList and usedScorersList based on changes made in form.
-		
 		
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
@@ -209,8 +208,8 @@ $(document).ready(function(){
 			.catch(function(error) {
 			    console.error("Error writing document: ", error);
 			});
-			console.log(usedDisposalsList);
-			console.log(usedScorersList);
+			console.log("2) " + usedDisposalsList);
+			console.log("2) " + usedScorersList);
 			firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString()).set({
 				usedBonusDisposals: usedDisposalsList,
 				usedBonusScorers: usedScorersList
@@ -389,75 +388,77 @@ function displayTippingForm() {
 						dataListHTML = dataListHTML + "<option id='" + i + "'>" + playerList[i].name + " (" + getLongName(playerList[i].club) + ")</option>"
 					}
 					$("datalist.players").html(dataListHTML);
-							var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
-							savedTipsRef.get().then(function(doc) {
-								if (doc.exists) {
-									var clubs = doc.data().clubs;
-									var margins = doc.data().margins;
-									bonusDisposal = doc.data().disposal;
-									bonusScorer = doc.data().scorer;
-									var i;
-									var leng = clubs.length;
-									for (i = 0; i < leng; i++) {
-										var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
-										$("#clubInput-" + (i+1)).val(clubs[i]);
-										$("#marginInput-" + (i+1)).val(margins[i]);
-										$("div.flag-" + (i+1)).attr("id", clubs[i]);
-										if (clubs[i] == "DRW") {
-											$("#marginInput-" + (i+1)).val(0);
-											$("#marginSlider-" + (i+1)).val(0);
-										} else {
-											if (clubs[i] == $("#home-" + (i+1)).val()) {
-												$("#marginSlider-" + (i+1)).val(-1*sliderVal);
-											} else {
-												$("#marginSlider-" + (i+1)).val(sliderVal);
-											}
-										}
-									}
-									if (bonusDisposal !== null) {
-										$("button.buttonBonusDisposal").removeClass("off");
-										$("#bonusInput-1").css("display", "inline-block");
-										var bonusValue = $("datalist.players option#" + bonusDisposal).html();
-										$("#bonusInput-1").val(bonusValue);
-									}
-									if (bonusScorer !== null) {
-										$("button.buttonBonusScorer").removeClass("off");
-										$("#bonusInput-2").css("display", "inline-block");
-										var bonusValue = $("datalist.players option#" + bonusScorer).html();
-										$("#bonusInput-2").val(bonusValue);
-									}
-									$("button.submit").html("Update Tips");
+					var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
+					savedTipsRef.get().then(function(doc) {
+						if (doc.exists) {
+							var clubs = doc.data().clubs;
+							var margins = doc.data().margins;
+							bonusDisposal = doc.data().disposal;
+							bonusScorer = doc.data().scorer;
+							var i;
+							var leng = clubs.length;
+							for (i = 0; i < leng; i++) {
+								var sliderVal = Math.round(Math.cbrt(margins[i])*1000);
+								$("#clubInput-" + (i+1)).val(clubs[i]);
+								$("#marginInput-" + (i+1)).val(margins[i]);
+								$("div.flag-" + (i+1)).attr("id", clubs[i]);
+								if (clubs[i] == "DRW") {
+									$("#marginInput-" + (i+1)).val(0);
+									$("#marginSlider-" + (i+1)).val(0);
 								} else {
-									$("button.submit").html("Submit Tips");
-								}
-								
-								// TEST
-								var bonusesRef = db.collection("users").doc(user.uid).collection("bonuses").doc(currentYear);
-								bonusesRef.get().then(function(doc) {
-									if (doc.exists) {
-										usedDisposalsList = doc.data().usedBonusDisposals;
-										usedScorersList = doc.data().usedBonusScorers;
-										var i;
-										var length = usedDisposalsList.length;
-										for (i = 0; i < length; i++) {
-											if (usedDisposalsList[i] == bonusDisposal) {
-											    usedDisposalsList.splice(i, 1);
-											}
-										}
-										length = usedScorersList.length;
-										for (i = 0; i < length; i++) {
-											if (usedScorersList[i] == bonusScorer) {
-												usedScorersList.splice(i, 1);
-											}
-										}
+									if (clubs[i] == $("#home-" + (i+1)).val()) {
+										$("#marginSlider-" + (i+1)).val(-1*sliderVal);
 									} else {
-										usedDisposalsList = [];
-										usedScorersList = [];
+										$("#marginSlider-" + (i+1)).val(sliderVal);
 									}
-								});
-								// TEST
-								
-							});
+								}
+							}
+							if (bonusDisposal !== null) {
+								$("button.buttonBonusDisposal").removeClass("off");
+								$("#bonusInput-1").css("display", "inline-block");
+								var bonusValue = $("datalist.players option#" + bonusDisposal).html();
+								$("#bonusInput-1").val(bonusValue);
+							}
+							if (bonusScorer !== null) {
+								$("button.buttonBonusScorer").removeClass("off");
+								$("#bonusInput-2").css("display", "inline-block");
+								var bonusValue = $("datalist.players option#" + bonusScorer).html();
+								$("#bonusInput-2").val(bonusValue);
+							}
+							$("button.submit").html("Update Tips");
+						} else {
+							$("button.submit").html("Submit Tips");
+						}
+						
+						// TEST
+						var bonusesRef = db.collection("users").doc(user.uid).collection("bonuses").doc(currentYear);
+						bonusesRef.get().then(function(doc) {
+							if (doc.exists) {
+								usedDisposalsList = doc.data().usedBonusDisposals;
+								usedScorersList = doc.data().usedBonusScorers;
+								console.log("1) " + usedDisposalsList);
+								console.log("1) " + usedScorersList);
+								var i;
+								var length = usedDisposalsList.length;
+								for (i = 0; i < length; i++) {
+									if (usedDisposalsList[i] == bonusDisposal) {
+									    usedDisposalsList.splice(i, 1);
+									}
+								}
+								length = usedScorersList.length;
+								for (i = 0; i < length; i++) {
+									if (usedScorersList[i] == bonusScorer) {
+										usedScorersList.splice(i, 1);
+									}
+								}
+							} else {
+								usedDisposalsList = [];
+								usedScorersList = [];
+							}
+						});
+						// TEST
+						
+					});
 				} else {
 					console.log("Document does not exist");
 				}
