@@ -176,12 +176,10 @@ $(document).ready(function(){
 			if (playerIndex > -1) {
 				if (isDisposals) {
 					bonusDisposal = playerIndex;
-					console.log("Before push: " + usedDisposalsList);
-					usedDisposalsList = usedDisposalsList.push(bonusDisposal);
-					console.log("After push: " + usedDisposalsList);
+					usedDisposalsList.push(bonusDisposal);
 				} else {
 					bonusScorer = playerIndex;
-					usedScorersList = usedScorersList.push(bonusScorer);
+					usedScorersList.push(bonusScorer);
 				}
 			} else {
 				if (isDisposals) {
