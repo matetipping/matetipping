@@ -211,11 +211,9 @@ $(document).ready(function(){
 			.catch(function(error) {
 			    console.error("Error writing document: ", error);
 			});
-			console.log("2) " + usedDisposalsList);
-			console.log("2) " + usedScorersList);
 			firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString()).set({
-				usedBonusDisposals: usedDisposalsList,
-				usedBonusScorers: usedScorersList
+				usedBonusDisposals: newUsedDisposalsList,
+				usedBonusScorers: newUsedScorersList
 			}).then(function() {
 				console.log("Bonuses confirmed.");
 			}).catch(function(error) {
