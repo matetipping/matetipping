@@ -347,8 +347,8 @@ function displayTippingForm() {
 				htmlFields = htmlFields + "<div class='slider'><input type='range' min='-4642' max='4642' class='formInput' id='marginSlider-" + i + "'></input></div></div>";
 				i++;
 			});
-			var disposalBonusMarkerHTML = "<span id='disposalBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span></div><div><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span></div></span>";
-			var scorerBonusMarkerHTML = "<span id='scorerBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span></div><div><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span><span class='bonusMarker'></span></div></span>";
+			var disposalBonusMarkerHTML = "<span id='disposalBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
+			var scorerBonusMarkerHTML = "<span id='scorerBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
 			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button>" + disposalBonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer off' type='button'>Scorer</button>" + scorerBonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
 			htmlFields = htmlFields + "<div class='game'><button class='submit' type='submit'>Submit Tips</button></div>";
 			htmlFields = htmlFields + "<datalist class='players' id='playersOff'></datalist>";
@@ -423,6 +423,7 @@ function displayTippingForm() {
 								$("#bonusInput-1").css("display", "inline-block");
 								var bonusValue = $("datalist.players option#" + bonusDisposal).html();
 								$("#bonusInput-1").val(bonusValue);
+								
 							}
 							if (bonusScorer !== null) {
 								$("button.buttonBonusScorer").removeClass("off");
@@ -459,12 +460,18 @@ function displayTippingForm() {
 							}
 							var noDisposalsUsed = usedDisposalsList.length;
 							var noScorersUsed = usedScorersList.length;
-							$("span#disposalBonusMarkers span.bonusMarker").slice(0, noDisposalsUsed).each(function() {
-								$(this).addClass("used");
+							$("span#disposalBonusMarkers span.bonusMarker.unused").slice(0, noDisposalsUsed).each(function() {
+								$(this).removeClass("unused").addClass("used");
 							});
-							$("span#scorerBonusMarkers span.bonusMarker").slice(0, noScorersUsed).each(function() {
-								$(this).addClass("used");
+							$("span#scorerBonusMarkers span.bonusMarker.unused").slice(0, noScorersUsed).each(function() {
+								$(this).removeClass("unused").addClass("used");
 							});
+							if (bonusDisposal != null) {
+								$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+							}
+							if (bonusScorer != null) {
+								$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+							}
 						});
 						// TEST
 						
@@ -554,6 +561,7 @@ function displayTippingForm() {
 				} else {
 					$("input#bonusInput-1").css("display", "none").val("");
 					$(this).addClass("off");
+					$("span#disposalBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
 				}
 			});
 
@@ -564,6 +572,7 @@ function displayTippingForm() {
 				} else {
 					$("input#bonusInput-2").css("display", "none").val("");
 					$(this).addClass("off");
+					$("span#scorerBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
 				}
 			});
 		});
