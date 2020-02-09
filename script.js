@@ -285,7 +285,7 @@ function displayTippingForm() {
 				htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
 				var timer = setInterval(function() {
 					var currentTime = Date.now();
-					var rem = Math.floor((currentTime - lockout)/1000);
+					var rem = Math.floor((lockout - currentTime)/1000);
 					if (currentTime < lockout) {
 						var daysRem = Math.floor(rem/86400);
 						var hrsRem = Math.floor(rem/3600 - 24*daysRem);
