@@ -375,7 +375,11 @@ function displayTippingForm() {
 				});
 				if (!matching) {
 					$(this).val("");
+					$("span#disposalBonusMarkers span.bonusMarker.using").first().removeClass("using").addClass("unused");
 				} else {
+					if($("span#disposalBonusMarkers span.bonusMarker.using").length == 0) {
+						$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+					}
 					console.log(playerIndex);
 				}
 			});
