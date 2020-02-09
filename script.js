@@ -361,6 +361,19 @@ function displayTippingForm() {
 				} else {
 					$("datalist.players").attr("id", "players");
 				}
+				if ($(this).attr("id") == "bonusInput-1") {
+					if ($(this).val().length == 0) {
+						$("span#disposalBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
+					} else if($("span#disposalBonusMarkers span.bonusMarker.using").length == 0) {
+						$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+					}
+				} else if ($(this).attr("id") == "bonusInput-2") {
+					if ($(this).val().length == 0) {
+						$("span#disposalBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
+					} else if($("span#disposalBonusMarkers span.bonusMarker.using").length == 0) {
+						$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+					}
+				}
 			});
 			
 			$(".formInput[list='players']").blur(function() {
@@ -375,12 +388,6 @@ function displayTippingForm() {
 				});
 				if (!matching) {
 					$(this).val("");
-					$("span#disposalBonusMarkers span.bonusMarker.using").first().removeClass("using").addClass("unused");
-				} else {
-					if($("span#disposalBonusMarkers span.bonusMarker.using").length == 0) {
-						$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
-					}
-					console.log(playerIndex);
 				}
 			});
 			
