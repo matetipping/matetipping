@@ -369,9 +369,9 @@ function displayTippingForm() {
 					}
 				} else if ($(this).attr("id") == "bonusInput-2") {
 					if ($(this).val().length == 0) {
-						$("span#disposalBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
-					} else if($("span#disposalBonusMarkers span.bonusMarker.using").length == 0) {
-						$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+						$("span#scorerBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
+					} else if($("span#scorerBonusMarkers span.bonusMarker.using").length == 0) {
+						$("span#scorerBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
 					}
 				}
 			});
@@ -388,6 +388,11 @@ function displayTippingForm() {
 				});
 				if (!matching) {
 					$(this).val("");
+					if ($(this).attr("id") == "bonusInput-1") {
+						$("span#disposalBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
+					} else if ($(this).attr("id") == "bonusInput-2") {
+						$("span#scorerBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
+					}
 				}
 			});
 			
