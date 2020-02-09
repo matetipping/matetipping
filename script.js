@@ -153,7 +153,7 @@ $(document).ready(function(){
 		});
 		$("input.formInput[type=number]").each(function() {
 			var thisMargin = $(this).val();
-			if (thisMargin < 200) {
+			if (thisMargin <= 200) {
 				marginTips.push($(this).val());
 			} else {
 				marginTips.push(200);
