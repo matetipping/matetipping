@@ -286,7 +286,7 @@ function displayTippingForm() {
 				var timer = setInterval(function() {
 					var currentTime = Date.now();
 					var rem = Math.floor((currentTime - lockout)/1000);
-					if (currentTime > lockout) {
+					if (currentTime < lockout) {
 						var daysRem = Math.floor(rem/86400);
 						var hrsRem = Math.floor(rem/3600 - 24*daysRem);
 						var minsRem = Math.floor(rem/60 - 1440*daysRem - 60*hrsRem);
