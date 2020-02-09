@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	var usedDisposalsList = [];
-	var usedScorersList = [];
+	usedDisposalsList;
+	usedScorersList;
 	// username load
 	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
