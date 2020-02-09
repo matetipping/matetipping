@@ -207,7 +207,7 @@ $(document).ready(function(){
 				margins: marginTips,
 				disposal: bonusDisposal,
 				scorer: bonusScorer,
-				time: firebase.firestore.Timestamp.now()
+				time: firebase.firestore.FieldValue.serverTimestamp();
 			});
 			
 			var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
