@@ -250,6 +250,7 @@ function displayLogOff() {
 
 function displayTippingForm() {
 	var db = firebase.firestore();
+	var lockout;
 	var currentRound = "";
 	var htmlTitle = "";
 	var htmlFields = "";
@@ -261,6 +262,7 @@ function displayTippingForm() {
 	roundRef.get().then(function(querySnapshot) {
 		querySnapshot.forEach(function(doc) {
 			if (doc.exists) {
+				lockout = doc.data().date.toDate();
 				roundRef = db.collection("rounds").doc(doc.id);
 				var roundName = doc.data().name;
 				roundCodeName = doc.data().codename;
@@ -281,6 +283,27 @@ function displayTippingForm() {
 					}
 				}
 				htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
+				var timer = setInterval(function() {
+					var currentTime = Date.now();
+					var rem = Math.floor((currentTime - lockout)/1000);
+					if (currentTime > lockout) {
+						var daysRem = Math.floor(rem/86400);
+						var hrsRem = Math.floor(rem/3600 - 24*daysRem);
+						var minsRem = Math.floor(rem/60 - 1440*daysRem - 60*hrsRem);
+						var secsRem = rem - 86400*daysRem - 3600*hrsRem - 60*minsRem;
+						if (minsRem < 10) {
+							minsRem = "0" + minsRem;
+						}
+						if (secsRem < 10) {
+							secsRem = "0" + secsRem;
+						}
+						$("div.roundTitle").html("Lockout in: " + daysRem + " days, " + hrsRem + ":" + minsRem + ":" + secsRem);
+					} else {
+						clearInterval(timer);
+						$("div.game").html("").css("display", "none");
+						$("div.roundTitle").html("Locked out: this round has already started!");
+					}
+				}, 1000);
 			} else {
 				console.log("Document does not exist");
 			}
