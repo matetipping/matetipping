@@ -467,22 +467,20 @@ function displayTippingForm() {
 			
 			// START bonus tip settings //
 			$("button.buttonBonusDisposal").click(function() {
-				console.log('test');
 				if ($(this).hasClass("off")) {
 					$("input#bonusInput-1").css("display", "inline-block");
-					$(this).addClass("off");
 				} else {
-					$("input#bonusInput-1").css("display", "none");
+					$("input#bonusInput-1").css("display", "none").val("");
+					$(this).addClass("off");
 				}
 			});
 
 			$("button.buttonBonusScorer").click(function() {
-				console.log('test2');
 				if ($(this).hasClass("off")) {
 					$("input#bonusInput-2").css("display", "inline-block");
-					$(this).addClass("off");
 				} else {
-					$("input#bonusInput-2").css("display", "none");
+					$("input#bonusInput-2").css("display", "none").val("");
+					$(this).addClass("off");
 				}
 			});
 		});
