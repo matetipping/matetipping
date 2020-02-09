@@ -307,7 +307,7 @@ function displayTippingForm() {
 				i++;
 			});
 			var bonusMarkerHTML = "<span class='bonusMarkers'><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div><div><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span><span class='usedBonusMarker'></span></div></span>";
-			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal' type='button'>Disposal</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer' type='button'>Scorer</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
+			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer off' type='button'>Scorer</button>" + bonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
 			htmlFields = htmlFields + "<div class='game'><button class='submit' type='submit'>Submit Tips</button></div>";
 			htmlFields = htmlFields + "<datalist class='players' id='playersOff'></datalist>";
 			$("#form-tipping").html(htmlFields);
