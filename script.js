@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var usedDisposalsList;
+	var usedScorersList;
 	// username load
 	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
@@ -188,6 +190,8 @@ $(document).ready(function(){
 		console.log(bonusDisposal);
 		console.log(bonusScorer);
 		
+		// update usedDisposalsList and usedScorersList based on changes made in form.
+		
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
@@ -203,6 +207,14 @@ $(document).ready(function(){
 			})
 			.catch(function(error) {
 			    console.error("Error writing document: ", error);
+			});
+			firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString()).set({
+				usedBonusDisposals: usedDisposalsList,
+				usedBonusScorers: usedScorersList
+			}).then(function() {
+				console.log("Bonuses confirmed.");
+			}).catch(function(error) {
+				console.error("Error writing document: ", error);
 			});
 		} else {
 			alert("There is an issue with your tips. Make sure that you have tipped for all matches.");
@@ -416,6 +428,17 @@ function displayTippingForm() {
 							});
 				} else {
 					console.log("Document does not exist");
+				}
+			});
+			
+			var bonusesRef = db.collection("users").doc(user.uid).collection("bonuses").doc(currentYear);
+			bonusesRef.get().then(function(doc) {
+				if (doc.exists) {
+					usedDisposalsList = doc.data().usedBonusDisposals;
+					usedScorersList = doc.data().usedBonusScorers;
+				} else {
+					usedDisposalsList = [];
+					usedScorersList = [];
 				}
 			});
 			
