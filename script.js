@@ -217,12 +217,13 @@ $(document).ready(function(){
 				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
-			$("button.submit").replaceWith("<div class='loader'></div>");
+			$("button.submit").replaceWith("<div class='loader form-loader'></div>");
 			
 			batch.commit().then(function() {
 				console.log("Bonuses confirmed.");
 			}).catch(function(error) {
 				console.error("Error writing document: ", error);
+				$("div.loader.form-loader").replaceWith("<div>There was an error submitting your tips.</div><button class='submit' type='submit'>Submit Tips</button>");
 			});
 		} else {
 			alert("There is an issue with your tips. Make sure that you have tipped for all matches.");
