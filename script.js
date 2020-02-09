@@ -376,7 +376,7 @@ function displayTippingForm() {
 									}
 									if (bonusDisposal !== null) {
 										$("button.buttonBonusDisposal").removeClass("off");
-										$("#bonusInput-2").css("display", "inline-block");
+										$("#bonusInput-1").css("display", "inline-block");
 										var bonusValue = $("datalist.players option#" + bonusDisposal).html();
 										$("#bonusInput-1").val(bonusValue);
 									}
@@ -384,7 +384,6 @@ function displayTippingForm() {
 										$("button.buttonBonusScorer").removeClass("off");
 										$("#bonusInput-2").css("display", "inline-block");
 										var bonusValue = $("datalist.players option#" + bonusScorer).html();
-										// console.log(bonusValue);
 										$("#bonusInput-2").val(bonusValue);
 									}
 									$("button.submit").html("Update Tips");
