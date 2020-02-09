@@ -192,6 +192,7 @@ $(document).ready(function(){
 		
 		// update usedDisposalsList and usedScorersList based on changes made in form.
 		
+		
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
@@ -373,6 +374,8 @@ function displayTippingForm() {
 				}
 			});
 			
+			var bonusDisposal;
+			var bonusScorer;
 			var playersRef = db.collection("footballers").doc(currentYear);
 			playersRef.get().then(function(doc) {
 				if (doc.exists) {
@@ -389,8 +392,8 @@ function displayTippingForm() {
 								if (doc.exists) {
 									var clubs = doc.data().clubs;
 									var margins = doc.data().margins;
-									var bonusDisposal = doc.data().disposal;
-									var bonusScorer = doc.data().scorer;
+									bonusDisposal = doc.data().disposal;
+									bonusScorer = doc.data().scorer;
 									var i;
 									var leng = clubs.length;
 									for (i = 0; i < leng; i++) {
@@ -425,20 +428,36 @@ function displayTippingForm() {
 								} else {
 									$("button.submit").html("Submit Tips");
 								}
+								
+								// TEST
+								var bonusesRef = db.collection("users").doc(user.uid).collection("bonuses").doc(currentYear);
+								bonusesRef.get().then(function(doc) {
+									if (doc.exists) {
+										usedDisposalsList = doc.data().usedBonusDisposals;
+										usedScorersList = doc.data().usedBonusScorers;
+										var i;
+										var length = usedDisposalsList.length;
+										for (i = 0; i < length; i++) {
+											if (usedDisposalsList[i] == bonusDisposal) {
+											    usedDisposalsList.splice(i, 1);
+											}
+										}
+										length = usedScorersList.length;
+										for (i = 0; i < length; i++) {
+											if (usedScorersList[i] == bonusScorer) {
+												usedScorersList.splice(i, 1);
+											}
+										}
+									} else {
+										usedDisposalsList = [];
+										usedScorersList = [];
+									}
+								});
+								// TEST
+								
 							});
 				} else {
 					console.log("Document does not exist");
-				}
-			});
-			
-			var bonusesRef = db.collection("users").doc(user.uid).collection("bonuses").doc(currentYear);
-			bonusesRef.get().then(function(doc) {
-				if (doc.exists) {
-					usedDisposalsList = doc.data().usedBonusDisposals;
-					usedScorersList = doc.data().usedBonusScorers;
-				} else {
-					usedDisposalsList = [];
-					usedScorersList = [];
 				}
 			});
 			
