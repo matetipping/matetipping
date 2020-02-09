@@ -441,18 +441,13 @@ function displayTippingForm() {
 								usedScorersList = doc.data().usedBonusScorers;
 								console.log("1) " + usedDisposalsList);
 								console.log("1) " + usedScorersList);
-								var i;
-								var length = usedDisposalsList.length;
-								for (i = 0; i < length; i++) {
-									if (usedDisposalsList[i] == bonusDisposal) {
-									    usedDisposalsList.splice(i, 1);
-									}
+								var indexUsedDisposal = usedDisposalsList.indexOf(bonusDisposal);
+								var indexUsedScorer = usedScorersList.indexOf(bonusScorer);
+								if (indexUsedDisposal > -1) {
+									usedDisposalsList.splice(indexUsedDisposal, 1);
 								}
-								length = usedScorersList.length;
-								for (i = 0; i < length; i++) {
-									if (usedScorersList[i] == bonusScorer) {
-										usedScorersList.splice(i, 1);
-									}
+								if (indexUsedScorer > -1) {
+									usedScorersList.splice(indexUsedScorer, 1);
 								}
 								console.log("2) " + usedDisposalsList);
 								console.log("2) " + usedScorersList);
