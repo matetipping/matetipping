@@ -217,7 +217,7 @@ $(document).ready(function(){
 				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
-			$("button.submit").replaceWith("<div class='loader form-loader'></div>");
+			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			
 			batch.commit().then(function() {
 				console.log("Bonuses confirmed.");
