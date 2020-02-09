@@ -207,14 +207,14 @@ $(document).ready(function(){
 				margins: marginTips,
 				disposal: bonusDisposal,
 				scorer: bonusScorer,
-				time: firebase.firestore.FieldValue.serverTimestamp();
+				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
 			var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
 			batch.set(bonusesRef, {
 				usedBonusDisposals: newUsedDisposalsList,
 				usedBonusScorers: newUsedScorersList,
-				time: firebase.firestore.FieldValue.serverTimestamp();
+				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
 			batch.commit().then(function() {
