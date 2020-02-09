@@ -469,6 +469,7 @@ function displayTippingForm() {
 			$("button.buttonBonusDisposal").click(function() {
 				if ($(this).hasClass("off")) {
 					$("input#bonusInput-1").css("display", "inline-block");
+					$(this).removeClass("off");
 				} else {
 					$("input#bonusInput-1").css("display", "none").val("");
 					$(this).addClass("off");
@@ -478,6 +479,7 @@ function displayTippingForm() {
 			$("button.buttonBonusScorer").click(function() {
 				if ($(this).hasClass("off")) {
 					$("input#bonusInput-2").css("display", "inline-block");
+					$(this).removeClass("off");
 				} else {
 					$("input#bonusInput-2").css("display", "none").val("");
 					$(this).addClass("off");
