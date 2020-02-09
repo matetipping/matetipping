@@ -1,6 +1,7 @@
+var usedDisposalsList;
+var usedScorersList;
+
 $(document).ready(function(){
-	var usedDisposalsList = [];
-	var usedScorersList = [];
 	// username load
 	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
@@ -175,11 +176,11 @@ $(document).ready(function(){
 			if (playerIndex > -1) {
 				if (isDisposals) {
 					bonusDisposal = playerIndex;
+					usedDisposalsList = usedDisposalsList.push(bonusDisposal);
 				} else {
 					bonusScorer = playerIndex;
+					usedScorersList = usedScorersList.push(bonusScorer);
 				}
-				usedDisposalsList = usedDisposalsList.push(bonusDisposal);
-				usedScorersList = usedScorersList.push(bonusScorer);
 			} else {
 				if (isDisposals) {
 					bonusDisposal = null;
