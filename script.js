@@ -474,7 +474,7 @@ function displayTippingForm() {
 								$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
 							}
 							if (bonusScorer != null) {
-								$("span#disposalBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
+								$("span#scorerBonusMarkers span.bonusMarker.unused").first().removeClass("unused").addClass("using");
 							}
 						});
 						// TEST
