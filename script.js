@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	usedDisposalsList;
-	usedScorersList;
+	var usedDisposalsList = [];
+	var usedScorersList = [];
 	// username load
 	user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
@@ -451,6 +451,8 @@ function displayTippingForm() {
 										usedScorersList.splice(i, 1);
 									}
 								}
+								console.log("2) " + usedDisposalsList);
+								console.log("2) " + usedScorersList);
 							} else {
 								usedDisposalsList = [];
 								usedScorersList = [];
