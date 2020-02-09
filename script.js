@@ -214,7 +214,7 @@ $(document).ready(function(){
 			batch.set(bonusesRef, {
 				usedBonusDisposals: newUsedDisposalsList,
 				usedBonusScorers: newUsedScorersList,
-				time: firebase.firestore.Timestamp.now()
+				time: firebase.firestore.FieldValue.serverTimestamp();
 			});
 			
 			batch.commit().then(function() {
