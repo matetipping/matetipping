@@ -209,25 +209,6 @@ $(document).ready(function(){
 		}
 	});
 	// END Tipping form //
-	
-	// START bonus tip settings //
-	$("button.buttonBonusDisposal").click(function() {
-		if ($(this).hasClass("off")) {
-			$("input#bonusInput-1").css("display", "none");
-		} else {
-			$("input#bonusInput-1").css("display", "inline-block");
-			$(this).addClass("off");
-		}
-	});
-	
-	$("button.buttonBonusScorer").click(function() {
-		if ($(this).hasClass("off")) {
-			$("input#bonusInput-2").css("display", "none");
-		} else {
-			$("input#bonusInput-2").css("display", "inline-block");
-			$(this).addClass("off");
-		}
-	});
 });
 
 function commitLogOff() {
@@ -482,6 +463,25 @@ function displayTippingForm() {
 					$(".flag-" + gameNo).attr("id", club);
 				}
 				$("#marginInput-" + gameNo).val(Math.abs(margin));
+			});
+			
+			// START bonus tip settings //
+			$("button.buttonBonusDisposal").click(function() {
+				if ($(this).hasClass("off")) {
+					$("input#bonusInput-1").css("display", "none");
+				} else {
+					$("input#bonusInput-1").css("display", "inline-block");
+					$(this).addClass("off");
+				}
+			});
+
+			$("button.buttonBonusScorer").click(function() {
+				if ($(this).hasClass("off")) {
+					$("input#bonusInput-2").css("display", "none");
+				} else {
+					$("input#bonusInput-2").css("display", "inline-block");
+					$(this).addClass("off");
+				}
 			});
 		});
 	});
