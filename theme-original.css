@@ -189,13 +189,21 @@ span.bonusMarkers div {
   display: block;
 }
 
-span.usedBonusMarker {
+span.bonusMarker {
   width: 12px;
   height: 12px;
   display: inline-block;
   background-color: #F47D33;
   margin: 2px;
   border-radius: 10px;
+}
+
+span.bonusMarker.used {
+  background-color: #EFEFEF;
+}
+
+span.bonusMarker.using {
+  background-color: #F2B793; 
 }
 
 div.flags {
