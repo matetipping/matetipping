@@ -165,6 +165,8 @@ $(document).ready(function(){
 		});
 		
 		var isDisposals = true;
+		var newUsedDisposalsList = usedDisposalsList.slice();
+		var newUsedScorersList = usedScorersList.slice();
 		$(".formInput[list='players']").each(function() {
 			var inputText = $(this).val();
 			var playerIndex = -1;
@@ -176,10 +178,10 @@ $(document).ready(function(){
 			if (playerIndex > -1) {
 				if (isDisposals) {
 					bonusDisposal = playerIndex;
-					usedDisposalsList.push(bonusDisposal);
+					newUsedDisposalsList.push(bonusDisposal);
 				} else {
 					bonusScorer = playerIndex;
-					usedScorersList.push(bonusScorer);
+					newUsedScorersList.push(bonusScorer);
 				}
 			} else {
 				if (isDisposals) {
