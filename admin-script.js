@@ -24,6 +24,7 @@ $(document).ready(function(){
 		for (i = 2; i < length; i++) {
 			var line = text[i].split(", ");
 			var date = firebase.firestore.Timestamp.fromDate(new Date(Date.parse(line[2])));
+			console.log(line);
 			firebase.firestore().collection("rounds").doc(roundYear).collection("fixtures").doc((i - 1).toString()).set({
 				homeTeam: line[0],
 				awayTeam: line[1],
