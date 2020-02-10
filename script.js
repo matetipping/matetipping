@@ -192,9 +192,13 @@ $(document).ready(function(){
 			}
 			isDisposals = false;
 		});
-		console.log(bonusDisposal);
-		console.log(bonusScorer);
 		
+		if usedDisposalsList.includes(bonusDisposal) {
+			alert("You have already used this player as a disposals bonus previously.");
+		}
+		if usedScorersList.includes(bonusScorer) {
+			alert("You have already used this player as a scorer bonus previously.");
+		}
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
@@ -222,9 +226,9 @@ $(document).ready(function(){
 			
 			batch.commit().then(function() {
 				$("div.loader.form-loader").replaceWith("<div>Tips submitted successfully!</div><button class='submit' type='submit'>Update Tips</button>");
-				console.log("Bonuses confirmed.");
+				console.log("Tips submitted successfully.");
 			}).catch(function(error) {
-				console.error("Error writing document: ", error);
+				console.error("Error submitting tips: ", error);
 				$("div.loader.form-loader").replaceWith("<div>There was an error submitting your tips.</div><button class='submit' type='submit'>Submit Tips</button>");
 			});
 		} else {
