@@ -148,16 +148,16 @@ $(document).ready(function(){
 		$("select.formInput").each(function() {
 			var thisClub = $(this).val();
 			if (thisClub !== null) {
-				clubTips.push($(this).val());
+				clubTips.push(thisClub);
 			} else {
 				valid = false;
 			}
 			
 		});
 		$("input.formInput[type=number]").each(function() {
-			var thisMargin = $(this).val();
+			var thisMargin = Number($(this).val());
 			if (thisMargin <= 200) {
-				marginTips.push($(this).val());
+				marginTips.push(thisMargin);
 			} else {
 				marginTips.push(200);
 				valid = false;
