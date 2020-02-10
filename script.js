@@ -214,7 +214,8 @@ $(document).ready(function(){
 			batch.set(bonusesRef, {
 				usedBonusDisposals: newUsedDisposalsList,
 				usedBonusScorers: newUsedScorersList,
-				time: firebase.firestore.FieldValue.serverTimestamp()
+				time: firebase.firestore.FieldValue.serverTimestamp(),
+				lastRoundUpdated: roundCode
 			});
 			
 			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
