@@ -193,10 +193,10 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		
-		if usedDisposalsList.includes(bonusDisposal) {
+		if (usedDisposalsList.includes(bonusDisposal)) {
 			alert("You have already used this player as a disposals bonus previously.");
 		}
-		if usedScorersList.includes(bonusScorer) {
+		if (usedScorersList.includes(bonusScorer)) {
 			alert("You have already used this player as a scorer bonus previously.");
 		}
 		var currentYear = new Date().getFullYear();
