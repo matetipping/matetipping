@@ -1,41 +1,40 @@
 // global variables
 var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
-// username load
-var user = firebase.auth().currentUser;
+var user = firebase.auth().currentUser; // loads the username of the current user
+var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
-	// username load
-	// user = firebase.auth().currentUser;
-	var username = localStorage.getItem('username');
+	// load and display username
+	username = localStorage.getItem('username');
 	if (username !== null) {
 		$("username-container b").html(username);
 	} else {
 		displayLogOff();
 	}
-	// end username load
 	
-	// display login when state changes
+	// display login when log-in state changes
 	firebase.auth().onAuthStateChanged(function(u) {
 		if (u) {
-			displayLogIn(u.displayName);
+			// logging on
+			username = u.displayName;
+			displayLogIn(username);
 			user = firebase.auth().currentUser;
 		} else {
+			// logging off
 			displayLogOff();
 		}
 	});
-	// end test code
 	
-	// authentication persistence
+	// authentication persistence - retains login on device unless logged off.
 	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function() {
     		return firebase.auth().signInWithEmailAndPassword(email, password);
   	}).catch(function(error) {
    		var errorCode = error.code;
     		var errorMessage = error.message;
   	});
-	// end authentication persistence
 	
-	// Hamburger menu
+	// hamburger menu functionality
 	$("nav").css("right", (-1*$("nav").width()) + "px");
 	$("#nav-hamburger").click(function(){
 		if ($(this).hasClass("animcomplete")) {
@@ -54,9 +53,8 @@ $(document).ready(function(){
 			}, 500);
 		}
 	});
-	// End hamburger menu //
 	
-	// Registration form //
+	// Registration form
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
 		$("#form-register input[type=submit]").parent().replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
@@ -112,9 +110,8 @@ $(document).ready(function(){
 			}
 		}
 	});
-	// END Registration form //
 	
-	// Login form //
+	// Login form
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
 		$("#form-login input[type=submit]").replaceWith("<div class='loader log-load'><img src='/logos/icon-load.png'></div>");
@@ -138,9 +135,8 @@ $(document).ready(function(){
 			}
 		});
 	});
-	// END Login form //
 	
-	// Tipping form //
+	// Tipping form
 	$("#form-tipping").submit(function(e) {
 		e.preventDefault();
 		var clubTips = [];
@@ -238,7 +234,7 @@ $(document).ready(function(){
 			alert("There is an issue with your tips. Make sure that you have tipped for all matches.");
 		}
 	});
-	// END Tipping form //
+
 });
 
 function commitLogOff() {
@@ -252,6 +248,7 @@ function commitLogOff() {
 	}
 }
 
+// sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:commitLogOff();'>Log off</a>");
