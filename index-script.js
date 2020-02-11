@@ -5,7 +5,8 @@ var usedScorersList;	// a list of scorer bonuses already used in other rounds
 $(document).ready(function(){
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
-		$("div.message").html("");
+		$("div.message").remove();
+		$("div.inputs").insertAfter("<div class='message'></div>");
 		e.preventDefault();
 		var clubTips = [];
 		var marginTips = [];
@@ -169,7 +170,6 @@ function loadPageData() {
 		});
 	}).then(function(doc) {
 		htmlFields = htmlFields + htmlTitle;
-		htmlFields = htmlFields + "<div class='message'></div>";
 		roundRef.collection("fixtures").orderBy("date")
 		  .get()
 		  .then(function(docs) {
