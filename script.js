@@ -1,9 +1,12 @@
-var usedDisposalsList;
-var usedScorersList;
+// global variables
+var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
+var usedScorersList;	// a list of scorer bonuses already used in other rounds
+// username load
+var user = firebase.auth().currentUser;
 
 $(document).ready(function(){
 	// username load
-	user = firebase.auth().currentUser;
+	// user = firebase.auth().currentUser;
 	var username = localStorage.getItem('username');
 	if (username !== null) {
 		$("username-container b").html(username);
