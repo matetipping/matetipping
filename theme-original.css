@@ -199,11 +199,11 @@ span.bonusMarker {
 }
 
 span.bonusMarker.used {
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 span.bonusMarker.using {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 div.flags {
