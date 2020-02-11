@@ -43,11 +43,11 @@ body {
 .message {
   text-align: center;
 }
-.message span {
+.message div {
   color: #3e3;
   font-size: 150%;
 }
-.message span.error {
+.message div.error {
   color: #e33;
 }
 
