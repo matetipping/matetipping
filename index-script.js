@@ -60,10 +60,10 @@ $(document).ready(function(){
 		});
 		
 		if (usedDisposalsList.includes(bonusDisposal)) {
-			alert("You have already used this player as a disposals bonus previously.");
+			$("div.message").append("<span class='error'>Disposal bonus already used.</span>");
 		}
 		if (usedScorersList.includes(bonusScorer)) {
-			alert("You have already used this player as a scorer bonus previously.");
+			$("div.message").append("<span class='error'>Scorer bonus already used.</span>");
 		}
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
@@ -92,15 +92,15 @@ $(document).ready(function(){
 			
 			batch.commit().then(function() {
 				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Update Tips</button>");
-				$("div.message").html("<span class='successful'>Tips saved successfully.</span>");
+				$("div.message").append("<span class='successful'>Tips saved successfully.</span>");
 				console.log("Tips submitted successfully.");
 			}).catch(function(error) {
-				$("div.message").html("<span class='error'>Error saving tips.</span>");
+				$("div.message").append("<span class='error'>Error saving tips.</span>");
 				console.error("Error submitting tips: ", error);
 				$("div.loader.form-loader").replaceWith("<div>There was an error submitting your tips.</div><button class='submit' type='submit'>Submit Tips</button>");
 			});
 		} else {
-			alert("There is an issue with your tips. Make sure that you have tipped for all matches.");
+			$("div.message").append("<span class='error'>You must tip all matches.</span>");
 		}
 	});
 
