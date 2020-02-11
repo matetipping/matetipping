@@ -62,11 +62,11 @@ $(document).ready(function(){
 		});
 		
 		if (usedDisposalsList.includes(bonusDisposal)) {
-			$("div.message").append("<span class='error'>Disposal bonus already used.</span>");
+			$("div.message").append("<div class='error'>Disposal bonus already used.</div>");
 			window.scrollTo(0, 0);
 		}
 		if (usedScorersList.includes(bonusScorer)) {
-			$("div.message").append("<span class='error'>Scorer bonus already used.</span>");
+			$("div.message").append("<div class='error'>Scorer bonus already used.</div>");
 			window.scrollTo(0, 0);
 		}
 		var currentYear = new Date().getFullYear();
@@ -96,15 +96,15 @@ $(document).ready(function(){
 			
 			batch.commit().then(function() {
 				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Update Tips</button>");
-				$("div.message").append("<span class='successful'>Tips saved successfully.</span>");
+				$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
 				window.scrollTo(0, 0);
 			}).catch(function(error) {
 				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Submit Tips</button>");
-				$("div.message").append("<span class='error'>Error saving tips.</span>");
+				$("div.message").append("<div class='error'>Error saving tips.</div>");
 				window.scrollTo(0, 0);
 			});
 		} else {
-			$("div.message").append("<span class='error'>You must tip all matches.</span>");
+			$("div.message").append("<div class='error'>You must tip all matches.</div>");
 			window.scrollTo(0, 0);
 		}
 	});
