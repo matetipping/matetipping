@@ -2,9 +2,10 @@
 var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
 
-$(document).ready(function(){	
+$(document).ready(function(){
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
+		$("div.message").html("");
 		e.preventDefault();
 		var clubTips = [];
 		var marginTips = [];
