@@ -91,9 +91,11 @@ $(document).ready(function(){
 			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			
 			batch.commit().then(function() {
-				$("div.loader.form-loader").replaceWith("<div>Tips submitted successfully!</div><button class='submit' type='submit'>Update Tips</button>");
+				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Update Tips</button>");
+				$("div.message").html("<span class='successful'>Tips saved successfully.</span>");
 				console.log("Tips submitted successfully.");
 			}).catch(function(error) {
+				$("div.message").html("<span class='error'>Error saving tips.</span>");
 				console.error("Error submitting tips: ", error);
 				$("div.loader.form-loader").replaceWith("<div>There was an error submitting your tips.</div><button class='submit' type='submit'>Submit Tips</button>");
 			});
@@ -166,6 +168,7 @@ function loadPageData() {
 		});
 	}).then(function(doc) {
 		htmlFields = htmlFields + htmlTitle;
+		htmlFields = htmlFields + "<div class='message'></div>";
 		roundRef.collection("fixtures").orderBy("date")
 		  .get()
 		  .then(function(docs) {
