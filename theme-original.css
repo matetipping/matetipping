@@ -40,10 +40,12 @@ body {
 .game:last-of-type {
   text-align: center;
 }
+.message {
+  text-align: center;
+}
 .message span {
   color: #3e3;
   font-size: 150%;
-  text-align: center;
 }
 .message span.error {
   color: #e33;
