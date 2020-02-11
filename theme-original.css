@@ -27,10 +27,10 @@ body {
   text-transform: uppercase;
   font-size: 75%;
 }
-.game {
+.game, .message {
   padding: 24px 0;
 }
-.game:nth-child(even) {
+.game:nth-child(even), .message:nth-child(even) {
   margin-right: -24px;
   margin-left: -24px;
   padding-left: 24px;
@@ -39,6 +39,14 @@ body {
 }
 .game:last-of-type {
   text-align: center;
+}
+.message span {
+  color: #3e3;
+  font-size: 150%;
+  text-align: center;
+}
+.message span.error {
+  color: #e33;
 }
 
 input[id*='marginInput'] {
