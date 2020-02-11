@@ -104,6 +104,7 @@ $(document).ready(function(){
 		} else {
 			$("div.message").append("<span class='error'>You must tip all matches.</span>");
 		}
+		window.scrollTo(0, 0);
 	});
 
 });
