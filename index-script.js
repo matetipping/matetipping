@@ -6,7 +6,7 @@ $(document).ready(function(){
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
 		$("div.message").remove();
-		$("div.inputs").after("<div class='message'></div>");
+		$("div.inputs").first().after("<div class='message'></div>");
 		e.preventDefault();
 		var clubTips = [];
 		var marginTips = [];
