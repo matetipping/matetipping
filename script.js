@@ -260,7 +260,7 @@ function displayLogIn(username) {
 	});
 	$(".offline").css("display", "none");
 	$(".online").css("display", "block");
-	displayTippingForm();
+	loadPageData();
 }
 
 function displayLogOff() {
@@ -275,7 +275,7 @@ function displayLogOff() {
 	$(".online").css("display", "none");
 }
 
-function displayTippingForm() {
+function loadPageData() {
 	var db = firebase.firestore();
 	var lockout;
 	var currentRound = "";
