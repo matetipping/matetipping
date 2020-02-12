@@ -230,64 +230,64 @@ div.flag {
   float: left;
 }
 div.flag#DRW {
-  background-image: url('images/flag_drw.png');
+  background-image: url('images/flag-drw.svg');
 }
 div.flag#NA {
-  background-image: url('images/flag_na.png');
+  background-image: url('images/flag-na.sng');
 }
 div.flag#ADE {
-  background-image: url('images/flag_ade.png');
+  background-image: url('images/flag-ade.svg');
 }
 div.flag#BRI {
-  background-image: url('images/flag_bri.png');
+  background-image: url('images/flag-bri.svg');
 }
 div.flag#CAR {
-  background-image: url('images/flag_car.png');
+  background-image: url('images/flag-car.svg');
 }
 div.flag#COL {
-  background-image: url('images/flag_col.png');
+  background-image: url('images/flag-col.svg');
 }
 div.flag#ESS {
-  background-image: url('images/flag_ess.png');
+  background-image: url('images/flag-ess.svg');
 }
 div.flag#FRE {
-  background-image: url('images/flag_fre.png');
+  background-image: url('images/flag-fre.svg');
 }
 div.flag#GEE {
-  background-image: url('images/flag_gee.png');
+  background-image: url('images/flag-gee.svg');
 }
 div.flag#GCS {
-  background-image: url('images/flag_gcs.png');
+  background-image: url('images/flag-gcs.svg');
 }
 div.flag#GWS {
-  background-image: url('images/flag_gws.png');
+  background-image: url('images/flag-gws.svg');
 }
 div.flag#HAW {
-  background-image: url('images/flag_haw.png');
+  background-image: url('images/flag-haw.svg');
 }
 div.flag#MEL {
-  background-image: url('images/flag_mel.png');
+  background-image: url('images/flag-mel.svg');
 }
 div.flag#NTH {
-  background-image: url('images/flag_nth.png');
+  background-image: url('images/flag-nth.svg');
 }
 div.flag#PTA {
-  background-image: url('images/flag_pta.png');
+  background-image: url('images/flag-pta.svg');
 }
 div.flag#RIC {
-  background-image: url('images/flag_ric.png');
+  background-image: url('images/flag-ric.svg');
 }
 div.flag#SYD {
-  background-image: url('images/flag_syd.png');
+  background-image: url('images/flag-syd.svg');
 }
 div.flag#STK {
-  background-image: url('images/flag_stk.png');
+  background-image: url('images/flag-stk.svg');
 }
 div.flag#WCE {
-  background-image: url('images/flag_wce.png');
+  background-image: url('images/flag-wce.svg');
 }
 div.flag#WBD {
-  background-image: url('images/flag_wbd.png');
+  background-image: url('images/flag-wbd.svg');
 }
 header, footer {
   background-color: #1E252F;
