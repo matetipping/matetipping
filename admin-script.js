@@ -64,6 +64,9 @@ $(document).ready(function(){
 		var fixturesLastGame = [];
 		var fixtures = [];
 		var i;
+		for (i = 0; i < (noTeams); i++) {
+			fixturesLastGame.push(-1);
+		}
 		for (i = 0; i < (noTeams-1); i++) {
 			var lastPlayersOpponent;
 			fixturesInitial.push([]);
@@ -75,7 +78,7 @@ $(document).ready(function(){
 				}
 				if (i == opponent) {
 					opponent = (noTeams - 1);
-					fixturesLastGame.push(i);
+					fixturesLastGame[j] = i;
 				}
 				fixturesInitial[i].push(opponent);
 			}
