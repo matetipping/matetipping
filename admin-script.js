@@ -57,30 +57,22 @@ $(document).ready(function(){
 	$("button.generateFixtures").click(function() {
 		var noRounds = 19;
 		var noTeams = Number($("textarea").val());
+		var fixturesInitial = [];
 		var fixtures = [];
-		function rotateIndex(index, iterations) {
-			var rotatedIndex = index + iterations;
-			while (rotatedIndex >= noTeams) {
-				rotatedIndex = rotatedIndex - noTeams + 1;
-			}
-			return rotatedIndex;
-		}
 		var i;
-		for (i = 0; i < noRounds; i++) {
+		for (i = 0; i < (noTeams-1); i++) {
 			fixtures.push([]);
 			var j;
-			for (j = 0; j < noTeams; j++) {
-				fixtures[i].push(-1);
-			}
-			for (j = 0; j < noTeams; j++) {
-				if (fixtures[i][j] == -1) {
-					var opponentIndex = rotateIndex(j, i+1);
-					fixtures[i][j] = opponentIndex;
-					fixtures[i][opponentIndex] = j;
+			for (j = 0; j < (noTeams-1); j++) {
+				if ((i+j) >= (noTeams-1)) {
+					fixtures[i].push((i+j) - (noTeams-1));
+				} else {
+					fixtures[i].push((i+j));
 				}
 			}
+			
 		}
-		console.log(fixtures);
+		console.log(fixturesInitial);
 	});
 
 });
