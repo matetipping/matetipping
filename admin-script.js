@@ -85,7 +85,7 @@ $(document).ready(function(){
 		}
 		fixturesInitial.push(fixturesLastPlayer);
 		
-		console.log(fixturesInitial);
+		console.log(fixturesInitial.slice());
 		
 		function swapTeams(x, y, fix) {
 			var i;
@@ -119,18 +119,19 @@ $(document).ready(function(){
 				fixtures = swapTeams(i, j, fixtures).slice();
 			}
 			
-			for (i = 0; i < noTeams; i++) {
-				fullFixtures.push([]);
-				for (j = 0; j < (noTeams-1); j++) {
-					if (k != n-1 || j < rem) {
-						fullFixtures[i].push(fixtures[i][j]);
-					}
-				}
-			}
+			//for (i = 0; i < noTeams; i++) {
+			//	fullFixtures.push([]);
+			//	for (j = 0; j < (noTeams-1); j++) {
+			//		if (k != n-1 || j < rem) {
+			//			fullFixtures[i].push(fixtures[i][j]);
+			//		}
+			//	}
+			//}
+			console.log(fixtures.slice());
 		}
 
-		console.log(fixtures);
-		console.log(fullFixtures);
+		console.log(fixtures.slice());
+		console.log(fullFixtures.slice());
 	});
 
 });
