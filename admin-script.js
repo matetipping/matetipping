@@ -66,7 +66,7 @@ $(document).ready(function(){
 			fixturesInitial.push([]);
 			var j;
 			for (j = 0; j < (noTeams-1); j++) {
-				var opponent = i-j;
+				var opponent = j-i;
 				if (opponent < 0) {
 					opponent = opponent + (noTeams - 1);
 				}
