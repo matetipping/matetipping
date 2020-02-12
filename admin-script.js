@@ -98,8 +98,8 @@ $(document).ready(function(){
 		
 		}
 		
-		var n = noRounds / noTeams;
-		var rem = noRounds % noTeams;
+		var n = noRounds / (noTeams-1);
+		var rem = noRounds % (noTeams-1);
 		var fullFixtures = [];
 		var k;
 		for (k = 0; k < n; k++) {
@@ -124,7 +124,7 @@ $(document).ready(function(){
 					fullFixtures.push([]);
 				}
 				for (j = 0; j < (noTeams-1); j++) {
-					if (!((k == (n-1)) && (j >= rem))) {
+					if (!((k >= (n-1)) && (j >= rem))) {
 						fullFixtures[i].push(fixtures[i][j]);
 					}
 				}
