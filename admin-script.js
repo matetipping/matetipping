@@ -125,9 +125,11 @@ $(document).ready(function(){
 				j = j - noTeams;
 			}
 			if (i != j) {
-				fixtures = swapTeams(i, j, fixtures).slice();
+				//fixtures = swapTeams(i, j, fixtures).slice();
 			}
 		}
+		fixtures = swapTeams(0,7, fixtures).slice();
+		fixtures = swapTeams(1,0, fixtures).slice();
 		console.log(fixtures);
 	});
 
