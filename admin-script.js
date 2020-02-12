@@ -53,5 +53,38 @@ $(document).ready(function(){
 			length: playerArray.length
 		});
 	});
+	
+	$("button.generateFixtures").click(function() {
+		var noRounds = 19;
+		var noTeams = Number($("textarea").val());
+		var minGames = Math.floor(noRounds/(noTeams-1));
+		var maxGames = Math.ceil(noRounds/(noTeams-1));
+		var fixtures = [];
+		function rotateIndex(index, iterations) {
+			var rotatedIndex = index + iterations;
+			while (rotatedIndex > (noTeams-1)) {
+				rotatedIndex = rotatedIndex - (noTeams-1);
+			}
+			return rotatedIndex;
+		}
+		var i;
+		for (i = 0; i < noTeams; i++) {
+			fixtures.push([]);
+		}
+		for (i = 0; i < noRounds; i++) {
+			var j;
+			for (j = 0; j < noRounds; j++) {
+				fixtures[i].push(-1);
+			}
+			for (j = 0; j < noTeams; j++) {
+				if (fixtures[i][j] == -1) {
+					var opponentIndex = rotatedIndex(j, i+1);
+					fixtures[i][j] = opponentIndex;
+					fixtures[i][opponentIndex] = j;
+				}
+			}
+		}
+		alert(fixtures);
+	});
 
 });
