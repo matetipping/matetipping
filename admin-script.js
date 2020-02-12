@@ -75,11 +75,10 @@ $(document).ready(function(){
 				}
 				if (i == opponent) {
 					opponent = (noTeams - 1);
-					lastPlayersOpponent = j;
+					fixturesLastGame.push(i);
 				}
 				fixturesInitial[i].push(opponent);
 			}
-			fixturesLastGame.push(lastPlayersOpponent);	
 		}
 		fixturesInitial.push(fixturesLastGame);
 		
