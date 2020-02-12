@@ -61,11 +61,11 @@ $(document).ready(function(){
 			noTeams ++;
 		}
 		var fixturesInitial = [];
-		var fixturesLastGame = [];
+		var fixturesLastPlayer = [];
 		var fixtures = [];
 		var i;
 		for (i = 0; i < (noTeams-1); i++) {
-			fixturesLastGame.push(-1);
+			fixturesLastPlayer.push(-1);
 		}
 		for (i = 0; i < (noTeams-1); i++) {
 			var lastPlayersOpponent;
@@ -78,12 +78,12 @@ $(document).ready(function(){
 				}
 				if (i == opponent) {
 					opponent = (noTeams - 1);
-					fixturesLastGame[j] = i;
+					fixturesLastPlayer[j] = i;
 				}
 				fixturesInitial[i].push(opponent);
 			}
 		}
-		fixturesInitial.push(fixturesLastGame);
+		fixturesInitial.push(fixturesLastPlayer);
 		
 		console.log(fixturesInitial);
 		
