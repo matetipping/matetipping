@@ -89,7 +89,7 @@ $(document).ready(function(){
 		
 		function swapTeams(x, y, fix) {
 			var i;
-			for (i = 0; i < (noTeams-1); i++) {
+			for (i = 0; i < noTeams-1; i++) {
 				var temp = fix[i][x];
 				fix[i][x] = fix[i][y];
 				fix[i][y] = fix[i][x];
@@ -99,13 +99,13 @@ $(document).ready(function(){
 		}
 		
 		fixtures = fixturesInitial.slice();
-		for (i = 0; i < noTeams; i++) {
+		for (i = 0; i < (noTeams-1); i++) {
 			var rand = Math.random();
 			var j = i;
 			if (rand < 0.25) {
-				j = (j + 1) % noTeams;
+				j = (j + 1) % (noTeams-1);
 			} else if (rand < 0.5) {
-				j = (j + 2) % noTeams;
+				j = (j + 2) % (noTeams-1);
 			}
 			fixtures = swapTeams(i, j, fixtures).slice();
 		}
