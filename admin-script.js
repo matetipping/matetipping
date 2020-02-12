@@ -78,6 +78,9 @@ $(document).ready(function(){
 			fixturesInitial[i].push(lastPlayersOpponent);	
 		}
 		console.log(fixturesInitial);
+		function swapTeams(i, j) {
+			
+		}
 		for (i = 0; i < noTeams; i++) {
 			var x = Math.random();
 			var j;
