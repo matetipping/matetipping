@@ -98,9 +98,17 @@ $(document).ready(function(){
 		
 		}
 		
-		fixtures = swapTeams(1, 2, fixtures).slice();
-		fixtures = swapTeams(5, 4, fixtures).slice();
-		fixtures = swapTeams(3, 4, fixtures).slice();
+		fixtures = fixturesInitial.slice();
+		for (i = 0; i < noTeams; i++) {
+			var rand = Math.random();
+			var j = i;
+			if (rand < 0.25) {
+				j = (j + 1) % noTeams;
+			} else if (rand < 0.5) {
+				j = (j + 2) % noTeams;
+			}
+			fixtures = swapTeams(i, j, fixtures).slice();
+		}
 
 		console.log(fixtures);
 	});
