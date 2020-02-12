@@ -70,8 +70,6 @@ $(document).ready(function(){
 		var i;
 		for (i = 0; i < noRounds; i++) {
 			fixtures.push([]);
-		}
-		for (i = 0; i < noRounds; i++) {
 			var j;
 			for (j = 0; j < noTeams; j++) {
 				fixtures[i].push(-1);
