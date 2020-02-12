@@ -84,7 +84,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-		alert(fixtures);
+		console.log(fixtures);
 	});
 
 });
