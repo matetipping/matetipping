@@ -69,15 +69,36 @@ $(document).ready(function(){
 				if (opponent < 0) {
 					opponent = opponent + (noTeams - 1);
 				}
-				if (i == j) {
+				if (opponent == i) {
 					opponent = (noTeams - 1);
-					lastPlayersOpponent = j;
+					lastPlayersOpponent = i;
 				}
 				fixturesInitial[i].push(opponent);
 			}
 			fixturesInitial[i].push(lastPlayersOpponent);	
 		}
 		console.log(fixturesInitial);
+		for (i = 0; i < noTeams; i++) {
+			var x = Math.random();
+			var j;
+			if (x < 0.1) {
+				j = i-2;
+			} else if (x < 0.25) {
+				j = i-1;
+			} else if (x < 0.4) {
+				j = i+1;
+			} else if (x < 0.5) {
+				j = i+2;
+			}
+			if (j < 0) {
+				j = j + noTeams;
+			} else if (j >= noTeams) {
+				j = j - noTeams;
+			}
+			if (i != j) {
+				swapTeams(i, j);
+			}
+		}
 	});
 
 });
