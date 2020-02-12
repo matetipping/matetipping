@@ -89,7 +89,7 @@ $(document).ready(function(){
 		
 		function swapTeams(x, y, fix) {
 			var i;
-			for (i = 0; i < noTeams; i++) {
+			for (i = 0; i < (noTeams-1); i++) {
 				var temp = fix[i][x];
 				fix[i][x] = fix[i][y];
 				fix[i][y] = fix[i][x];
