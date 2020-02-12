@@ -100,8 +100,8 @@ $(document).ready(function(){
 					newY[i] = x;
 				}
 			}
-			fix[x] = newX;
-			fix[y] = newY;
+			newFix[x] = newX;
+			newFix[y] = newY;
 			return newFix;
 		
 		}
