@@ -58,6 +58,7 @@ $(document).ready(function(){
 		var noRounds = 19;
 		var noTeams = Number($("textarea").val());
 		var fixturesInitial = [];
+		var fixturesLastGame = [];
 		var fixtures = [];
 		var i;
 		for (i = 0; i < (noTeams-1); i++) {
@@ -75,12 +76,17 @@ $(document).ready(function(){
 				}
 				fixturesInitial[i].push(opponent);
 			}
-			fixturesInitial[i].push(lastPlayersOpponent);	
+			fixturesLastGame.push(lastPlayersOpponent);	
 		}
+		fixturesInitial.push(fixturesLastGame);
+		
 		console.log(fixturesInitial);
+		
 		function swapTeams(i, j) {
-			
+		
+		
 		}
+		
 		for (i = 0; i < noTeams; i++) {
 			var x = Math.random();
 			var j;
