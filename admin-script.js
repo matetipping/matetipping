@@ -85,8 +85,6 @@ $(document).ready(function(){
 		}
 		fixturesInitial.push(fixturesLastPlayer);
 		
-		console.log(fixturesInitial.slice());
-		
 		function swapTeams(x, y, fix) {
 			var i;
 			for (i = 0; i < noTeams; i++) {
@@ -129,11 +127,7 @@ $(document).ready(function(){
 					}
 				}
 			}
-			console.log(fixtures.slice());
 		}
-
-		console.log(fixtures.slice());
-		console.log(fullFixtures.slice());
 	});
 
 });
