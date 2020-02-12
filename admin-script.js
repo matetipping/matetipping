@@ -109,16 +109,19 @@ $(document).ready(function(){
 				var rand = Math.random();
 				var j = i;
 				if (rand < 0.25) {
-					j = (j + 1) % (noTeams-1);
+					j = j + 1;
 				} else if (rand < 0.5) {
-					j = (j + 2) % (noTeams-1);
+					j = j + 2;
+				}
+				while (j > (noTeams-1)) {
+					j--;
 				}
 				fixtures = swapTeams(i, j, fixtures).slice();
 			}
 			
 			for (i = 0; i < noTeams; i++) {
 				fullFixtures.push([]);
-				for (j = 0; j < noTeams; j++) {
+				for (j = 0; j < (noTeams-1); j++) {
 					if (k != n-1 || j < rem) {
 						fullFixtures[i].push(fixtures[i][j]);
 					}
