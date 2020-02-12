@@ -124,7 +124,7 @@ $(document).ready(function(){
 					fullFixtures.push([]);
 				}
 				for (j = 0; j < (noTeams-1); j++) {
-					if (k != n-1 || j < rem) {
+					if (!(k == n-1 && j >= rem)) {
 						fullFixtures[i].push(fixtures[i][j]);
 					}
 				}
