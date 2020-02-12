@@ -61,12 +61,21 @@ $(document).ready(function(){
 		var fixtures = [];
 		var i;
 		for (i = 0; i < (noTeams-1); i++) {
+			var lastPlayersOpponent;
 			fixturesInitial.push([]);
 			var j;
 			for (j = 0; j < (noTeams-1); j++) {
-				fixturesInitial[i].push((i+j) % (noTeams-1));
+				var opponent = (j-i);
+				if (opponent < 0) {
+					opponent = opponent + (noTeams-1);
+				}
+				if (opponent == j) {
+					opponent = noTeams - 1;
+					lastPlayersOpponent = j;
+				}
+				fixturesInitial[i].push(opponent);
 			}
-			
+			fixturesInitial[i].push(lastPlayersOpponent);	
 		}
 		console.log(fixturesInitial);
 	});
