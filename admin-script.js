@@ -98,6 +98,9 @@ $(document).ready(function(){
 		
 		var n = Math.ceil(noRounds / (noTeams-1));
 		var rem = noRounds % (noTeams-1);
+		if (rem == 0) {
+			n++;
+		}
 		var fullFixtures = [];
 		var k;
 		for (k = 0; k < n; k++) {
