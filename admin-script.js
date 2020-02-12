@@ -88,6 +88,7 @@ $(document).ready(function(){
 		console.log(fixturesInitial);
 		
 		function swapTeams(x, y, fix) {
+			var newFix = fix.slice();
 			var newX = fix[y].slice();
 			var newY = fix[x].slice();
 			var i;
@@ -101,7 +102,7 @@ $(document).ready(function(){
 			}
 			fix[x] = newX;
 			fix[y] = newY;
-			return fix;
+			return newFix;
 		
 		}
 		
