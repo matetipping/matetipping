@@ -107,6 +107,7 @@ $(document).ready(function(){
 		
 		}
 		
+		fixtures = fixturesInitial;
 		for (i = 0; i < noTeams; i++) {
 			var x = Math.random();
 			var j;
@@ -125,7 +126,7 @@ $(document).ready(function(){
 				j = j - noTeams;
 			}
 			if (i != j) {
-				fixtures = swapTeams(i, j, fixturesInitial);
+				fixtures = swapTeams(i, j, fixtures);
 			}
 		}
 		console.log(fixtures);
