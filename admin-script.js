@@ -119,7 +119,7 @@ $(document).ready(function(){
 			for (i = 0; i < noTeams; i++) {
 				fullFixtures.push([]);
 				for (j = 0; j < noTeams; j++) {
-					if (k != n-1 || j < rem)) {
+					if (k != n-1 || j < rem) {
 						fullFixtures[i].push(fixtures[i][j]);
 					}
 				}
