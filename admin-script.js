@@ -78,7 +78,7 @@ $(document).ready(function(){
 			}
 			for (j = 0; j < noTeams; j++) {
 				if (fixtures[i][j] == -1) {
-					var opponentIndex = rotatedIndex(j, i+1);
+					var opponentIndex = rotateIndex(j, i+1);
 					fixtures[i][j] = opponentIndex;
 					fixtures[i][opponentIndex] = j;
 				}
