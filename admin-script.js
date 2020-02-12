@@ -57,12 +57,10 @@ $(document).ready(function(){
 	$("button.generateFixtures").click(function() {
 		var noRounds = 19;
 		var noTeams = Number($("textarea").val());
-		var minGames = Math.floor(noRounds/(noTeams-1));
-		var maxGames = Math.ceil(noRounds/(noTeams-1));
 		var fixtures = [];
 		function rotateIndex(index, iterations) {
 			var rotatedIndex = index + iterations;
-			while (rotatedIndex > (noTeams-1)) {
+			while (rotatedIndex >= noTeams) {
 				rotatedIndex = rotatedIndex - (noTeams-1);
 			}
 			return rotatedIndex;
