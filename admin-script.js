@@ -98,19 +98,36 @@ $(document).ready(function(){
 		
 		}
 		
-		fixtures = fixturesInitial.slice();
-		for (i = 0; i < (noTeams-1); i++) {
-			var rand = Math.random();
-			var j = i;
-			if (rand < 0.25) {
-				j = (j + 1) % (noTeams-1);
-			} else if (rand < 0.5) {
-				j = (j + 2) % (noTeams-1);
+		var n = noRounds / noTeams;
+		var rem = noRounds % noTeams;
+		var fullFixtures = [];
+		var k;
+		for (k = 0; k < n; k++) {
+			fixtures = fixturesInitial.slice();
+
+			for (i = 0; i < (noTeams-1); i++) {
+				var rand = Math.random();
+				var j = i;
+				if (rand < 0.25) {
+					j = (j + 1) % (noTeams-1);
+				} else if (rand < 0.5) {
+					j = (j + 2) % (noTeams-1);
+				}
+				fixtures = swapTeams(i, j, fixtures).slice();
 			}
-			fixtures = swapTeams(i, j, fixtures).slice();
+			
+			for (i = 0; i < noTeams; i++) {
+				fullFixtures.push([]);
+				for (j = 0; j < noTeams; j++) {
+					if (k != n-1 || j < rem)) {
+						fullFixtures[i].push(fixtures[i][j]);
+					}
+				}
+			}
 		}
 
 		console.log(fixtures);
+		console.log(fullFixtures);
 	});
 
 });
