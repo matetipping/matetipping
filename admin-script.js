@@ -68,12 +68,12 @@ $(document).ready(function(){
 			return rotatedIndex;
 		}
 		var i;
-		for (i = 0; i < noTeams; i++) {
+		for (i = 0; i < noRounds; i++) {
 			fixtures.push([]);
 		}
 		for (i = 0; i < noRounds; i++) {
 			var j;
-			for (j = 0; j < noRounds; j++) {
+			for (j = 0; j < noTeams; j++) {
 				fixtures[i].push(-1);
 			}
 			for (j = 0; j < noTeams; j++) {
