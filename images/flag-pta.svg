@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="149.67865mm"
+   height="74.839294mm"
+   viewBox="0 0 149.67865 74.839294"
+   version="1.1"
+   id="svg9653"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="portadelaide-flag.svg">
+  <defs
+     id="defs9647">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10219">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.19607843"
+         offset="0"
+         id="stop10215" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1"
+         id="stop10217" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10219"
+       id="radialGradient10221"
+       cx="87.036469"
+       cy="197.31425"
+       fx="87.036469"
+       fy="197.31425"
+       r="74.839287"
+       gradientTransform="matrix(0.53850714,1.4538482,-1.6799039,0.62223852,358.1156,-81.015237)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="11.335151"
+     inkscape:cy="101.54568"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata9650">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-31.75,-139.00595)">
+    <rect
+       style="fill:#202020;fill-opacity:1;stroke:#caa165;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect9655"
+       width="149.67857"
+       height="74.839287"
+       x="31.75"
+       y="139.00595" />
+    <path
+       style="fill:#4e1e6b;fill-opacity:1;stroke:#f47d33;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="m 31.75,151.89502 74.83936,37.64308 74.83936,-37.64308 z"
+       id="path11463"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path11465"
+       d="m 31.75015,151.97047 74.83936,37.64308 74.83936,-37.64308 -1.5e-4,-12.47322 -74.83921,12.47322 -74.83936,-12.47322 z"
+       style="fill:#f7f7f7;fill-opacity:1;stroke:#f47d33;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+    <path
+       style="fill:#43b7b3;fill-opacity:1;stroke:#f47d33;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="m 31.75015,139.00581 v 0.49144 l 74.83936,37.64318 74.83936,-37.64318 v -0.49144 h -71.89071 l -2.94865,0.49144 -2.94866,-0.49144 z"
+       id="rect11428"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#202020;fill-opacity:1;stroke:#f47d33;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="M 90.033203 0 L 282.85742 96.986328 L 475.68164 0 L 90.033203 0 z "
+       transform="matrix(0.26458333,0,0,0.26458333,31.75,139.00595)"
+       id="path11433" />
+    <rect
+       style="fill:url(#radialGradient10221);fill-opacity:1;stroke:#caa165;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10213"
+       width="149.67857"
+       height="74.839294"
+       x="31.75"
+       y="139.00595" />
+  </g>
+</svg>
