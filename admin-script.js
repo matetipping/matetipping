@@ -125,7 +125,7 @@ $(document).ready(function(){
 				j = j - noTeams;
 			}
 			if (i != j) {
-				fixtures = swapTeams(i, j, fixtures);
+				fixtures = swapTeams(i, j, fixtures).slice();
 			}
 		}
 		console.log(fixtures);
