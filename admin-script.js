@@ -87,8 +87,23 @@ $(document).ready(function(){
 		
 		console.log(fixturesInitial);
 		
-		function swapTeams(i, j) {
-		
+		function swapTeams(x, y, fix) {
+			var newFixtures = [];
+			var i;
+			for (i = 0; i < noTeams; i++) {
+				newFixtures.push([]);
+				var j;
+				for (j = 0; j < (noTeams-1); j++) {
+					if (fix[i][j] == x) {
+						newFixtures[i].push(y);
+					} else if (fix[i][j] == y) {
+						newFixtures[i].push(x);
+					} else {
+						newFixtures[i].push(fix[i][j]);
+					}
+				}
+			}
+			return newFixtures;
 		
 		}
 		
@@ -110,9 +125,10 @@ $(document).ready(function(){
 				j = j - noTeams;
 			}
 			if (i != j) {
-				swapTeams(i, j);
+				fixtures = swapTeams(i, j, fixturesInitial);
 			}
 		}
+		console.log(fixtures);
 	});
 
 });
