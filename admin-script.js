@@ -64,7 +64,7 @@ $(document).ready(function(){
 		var fixturesLastGame = [];
 		var fixtures = [];
 		var i;
-		for (i = 0; i < (noTeams); i++) {
+		for (i = 0; i < (noTeams-1); i++) {
 			fixturesLastGame.push(-1);
 		}
 		for (i = 0; i < (noTeams-1); i++) {
