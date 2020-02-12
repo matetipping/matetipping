@@ -228,7 +228,8 @@ div.flag {
   background-size: contain;
   display: inline-block;
   float: left;
-  border: 1px solid #F47D33;
+  border: 2px solid #fff;
+  box-shadow: 1px 0px 3px #000;
 }
 div.flag#DRW {
   background-image: url('images/flag-drw.svg');
