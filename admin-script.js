@@ -88,22 +88,20 @@ $(document).ready(function(){
 		console.log(fixturesInitial);
 		
 		function swapTeams(x, y, fix) {
-			var newFixtures = [];
+			var newX = fix[y].slice();
+			var newY = fix[x].slice();
 			var i;
 			for (i = 0; i < noTeams; i++) {
-				newFixtures.push([]);
-				var j;
-				for (j = 0; j < (noTeams-1); j++) {
-					if (fix[i][j] == x) {
-						newFixtures[i].push(y);
-					} else if (fix[i][j] == y) {
-						newFixtures[i].push(x);
-					} else {
-						newFixtures[i].push(fix[i][j]);
-					}
+				if (newX[i] == x) {
+					newX[i] = y;
+				}
+				if (newY[i] == y) {
+					newY[i] = x;
 				}
 			}
-			return newFixtures;
+			fix[x] = newX;
+			fix[y] = newY;
+			return fix;
 		
 		}
 		
