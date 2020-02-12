@@ -119,14 +119,16 @@ $(document).ready(function(){
 				fixtures = swapTeams(i, j, fixtures).slice();
 			}
 			
-			//for (i = 0; i < noTeams; i++) {
-			//	fullFixtures.push([]);
-			//	for (j = 0; j < (noTeams-1); j++) {
-			//		if (k != n-1 || j < rem) {
-			//			fullFixtures[i].push(fixtures[i][j]);
-			//		}
-			//	}
-			//}
+			for (i = 0; i < noTeams; i++) {
+				if (k == 0) {
+					fullFixtures.push([]);
+				}
+				for (j = 0; j < (noTeams-1); j++) {
+					if (k != n-1 || j < rem) {
+						fullFixtures[i].push(fixtures[i][j]);
+					}
+				}
+			}
 			console.log(fixtures.slice());
 		}
 
