@@ -92,7 +92,7 @@ $(document).ready(function(){
 			for (i = 0; i < noTeams-1; i++) {
 				var temp = fix[i][x];
 				fix[i][x] = fix[i][y];
-				fix[i][y] = fix[i][x];
+				fix[i][y] = temp;
 			}
 			return fix;
 		
