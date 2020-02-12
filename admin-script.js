@@ -57,6 +57,9 @@ $(document).ready(function(){
 	$("button.generateFixtures").click(function() {
 		var noRounds = 19;
 		var noTeams = Number($("textarea").val());
+		if (noTeams % 2 == 0) {
+			noTeams ++;
+		}
 		var fixturesInitial = [];
 		var fixturesLastGame = [];
 		var fixtures = [];
