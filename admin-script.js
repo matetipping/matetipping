@@ -96,7 +96,7 @@ $(document).ready(function(){
 		
 		}
 		
-		var n = noRounds / (noTeams-1);
+		var n = Math.ceil(noRounds / (noTeams-1));
 		var rem = noRounds % (noTeams-1);
 		var fullFixtures = [];
 		var k;
@@ -128,6 +128,8 @@ $(document).ready(function(){
 				}
 			}
 		}
+		
+		console.log(fullFixtures);
 	});
 
 });
