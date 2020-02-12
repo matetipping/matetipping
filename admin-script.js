@@ -72,7 +72,7 @@ $(document).ready(function(){
 				}
 				if (i == opponent) {
 					opponent = (noTeams - 1);
-					lastPlayersOpponent = i;
+					lastPlayersOpponent = j;
 				}
 				fixturesInitial[i].push(opponent);
 			}
