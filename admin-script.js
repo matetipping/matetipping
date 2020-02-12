@@ -113,7 +113,7 @@ $(document).ready(function(){
 				} else if (rand < 0.5) {
 					j = j + 2;
 				}
-				while (j >= noTeams-1) {
+				while (j >= (noTeams-1)) {
 					j--;
 				}
 				fixtures = swapTeams(i, j, fixtures).slice();
