@@ -61,7 +61,7 @@ $(document).ready(function(){
 		function rotateIndex(index, iterations) {
 			var rotatedIndex = index + iterations;
 			while (rotatedIndex >= noTeams) {
-				rotatedIndex = rotatedIndex - (noTeams-1);
+				rotatedIndex = rotatedIndex - noTeams + 1;
 			}
 			return rotatedIndex;
 		}
