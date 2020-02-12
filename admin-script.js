@@ -64,11 +64,7 @@ $(document).ready(function(){
 			fixturesInitial.push([]);
 			var j;
 			for (j = 0; j < (noTeams-1); j++) {
-				if ((i+j) >= (noTeams-1)) {
-					fixturesInitial[i].push((i+j) - (noTeams-1));
-				} else {
-					fixturesInitial[i].push((i+j));
-				}
+				fixturesInitial[i].push((i+j) % (noTeams-1));
 			}
 			
 		}
