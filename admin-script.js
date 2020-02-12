@@ -70,7 +70,7 @@ $(document).ready(function(){
 				if (opponent < 0) {
 					opponent = opponent + (noTeams - 1);
 				}
-				if (i == j) {
+				if (i == opponent) {
 					opponent = (noTeams - 1);
 					lastPlayersOpponent = i;
 				}
