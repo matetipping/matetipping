@@ -61,13 +61,13 @@ $(document).ready(function(){
 		var fixtures = [];
 		var i;
 		for (i = 0; i < (noTeams-1); i++) {
-			fixtures.push([]);
+			fixturesInitial.push([]);
 			var j;
 			for (j = 0; j < (noTeams-1); j++) {
 				if ((i+j) >= (noTeams-1)) {
-					fixtures[i].push((i+j) - (noTeams-1));
+					fixturesInitial[i].push((i+j) - (noTeams-1));
 				} else {
-					fixtures[i].push((i+j));
+					fixturesInitial[i].push((i+j));
 				}
 			}
 			
