@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$("form#league-create").submit(function(e) {
+		e.preventDefault();
 		var name = $("#input-league-name").val();
 		var maxMembers = $("#input-league-max").val();
 		createNewLeague(name, maxMembers);
