@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$("form#league-join").submit(function(e) {
 		e.preventDefault();
 		var code = $("#input-league-join").val();
-		
+		joinExistingLeague(code);
 	});
 });
 
@@ -78,6 +78,33 @@ function createNewLeague(name, maxMembers) {
 		setLeagueList(myLeagueNames);
 	});
 	
+}
+
+function joinExistingLeague(code) {
+	var db = firebase.firestore();
+	var user = firebase.auth().currentUser;
+	var leagueRef = db.collection("leagues").doc(code);
+	db.runTransaction(function(transaction) {
+		return transaction.get(leagueRef).then(function(doc) {
+			if (!doc.exists) {
+			    throw "League does not exist.";
+			}
+			var participants = doc.data().participants;
+			participants.push(user.uid);
+			if (participants.length <= doc.data().maxMembers) {
+				transaction.update(doc, {
+					participants: participants
+				});
+				return participants;
+			} else {
+				return Promise.reject("League is full."); 
+			}
+		});
+	}).then(function(newParticipants) {
+	    console.log("Participants updated to " + newParticipants);
+	}).catch(function(e) {
+	    console.error(e);
+	});
 }
 		
 function leagueCreated(leagueID) {
