@@ -137,6 +137,9 @@ function leagueCreated(leagueID, leagueName, players, maxPlayers) {
 		copyThis.setSelectionRange(0, 99999);
 		document.execCommand("copy");
 		document.getSelection().removeAllRanges();
-		$("div.copy-code::after").css("content", "copied");
+		$(this).addClass("copied");
+		$(this).mouseenter(function() {
+			$(this).removeClass("copied");
+		});
 	});
 }
