@@ -48,16 +48,26 @@ body {
 }
 .copy-code::after {
   content: 'copy to clipboard';
+  color: #F47D33;
+}
+.message .successful::after, .message .error::after {
+  content: 'dismiss message';
+}
+.message .successful::after {
+  color: #3e3;
+}
+.message .error::after {
+  color: #e33;
+}
+.message .successful::after, .message .error::after, .copy-code::after {
   display: block;
   font-size: 1px;
   opacity: 0;
   transition: 0.2s;
   text-align: center;
-  color: #F47D33;
   height: 0;
 }
-.copy-code:hover::after {
-  content: 'copy to clipboard';
+.message .successful:hover::after, .message .error:hover::after, .copy-code:hover::after {
   font-size: 80%;
   opacity: 1;
   height: auto;
