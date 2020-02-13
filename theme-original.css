@@ -43,6 +43,7 @@ body {
 }
 .copy-code:hover {
   cursor: pointer;
+  padding: 24px;
 }
 .copy-code::after {
   content: 'copy to clipboard';
