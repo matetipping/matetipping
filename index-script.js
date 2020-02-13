@@ -148,6 +148,7 @@ function loadPageData() {
 					}
 				}
 				htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
+				htmlFields = htmlTitle + htmlFields;
 				var timer = setInterval(function() {
 					var currentTime = Date.now();
 					var rem = Math.floor((lockout - currentTime)/1000);
