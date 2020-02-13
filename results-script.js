@@ -123,7 +123,9 @@ function joinExistingLeague(code) {
 function leagueCreated(leagueID, leagueName) {
 	$("form#league-create").replaceWith("<div><span class='highlight'>" + leagueName + "</span> code: <span class='highlight' id='league-code'>" + leagueID + "</span><div id='copy-code'>[Copy]</div></div>");
 	$("div#copy-code").click(function() {
-		document.getElementById('league-code').select();
+		var copyThis = document.getElementById('league-code');
+		copyThis.select();
+		copyThis.setSelectionRange(0, 99999);
 		document.execCommand("copy");
 	});
 }
