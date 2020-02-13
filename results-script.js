@@ -84,12 +84,14 @@ function joinExistingLeague(code) {
 	var db = firebase.firestore();
 	var user = firebase.auth().currentUser;
 	var leagueRef = db.collection("leagues").doc(code);
+	var leagueName;
 	db.runTransaction(function(transaction) {
 		return transaction.get(leagueRef).then(function(doc) {
 			if (!doc.exists) {
 			    throw "League does not exist.";
 			}
 			var participants = doc.data().participants;
+			var leagueName = doc.data().name;
 			participants.push(user.uid);
 			if (participants.length <= doc.data().maxMembers) {
 				transaction.update(leagueRef, {
@@ -101,9 +103,11 @@ function joinExistingLeague(code) {
 			}
 		});
 	}).then(function(newParticipants) {
-	    console.log("Participants updated to " + newParticipants);
+		myLeagues.push(code);
+		myLeagueNames.push(leagueName);
+		setLeagueList(myLeagueNames);
 	}).catch(function(e) {
-	    console.error(e);
+		console.log("We couldn't add you to the league.");
 	});
 }
 		
