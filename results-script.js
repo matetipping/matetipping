@@ -36,7 +36,7 @@ function loadPageData() {
 }
 
 function setLeagueList(leagues) {
-	$("div#leaguesList").html("");
+	$("div#leaguesList").empty();
 	var i;
 	var length = leagues.length;
 	for (i = 0; i < length; i++) {
