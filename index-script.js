@@ -173,6 +173,7 @@ function loadPageData() {
 				var homeTeams = doc.data().fixturesHome;
 				var dates = doc.data().fixturesDates;
 				var venues = doc.data().fixturesVenues;
+				var fixtures = [];
 				var j;
 				for (j = 0; j < awayTeams.length; j++) {
 					var i = j+1;
