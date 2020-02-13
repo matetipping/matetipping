@@ -119,7 +119,6 @@ function loadPageData() {
 	var currentRound = "";
 	var htmlTitle = "";
 	var htmlFields = "";
-	var fixtures;
 	var roundCodeName = "";
 	var timestamp = firebase.firestore.Timestamp.now();
 	var currentYear = timestamp.toDate().getFullYear().toString();
@@ -174,7 +173,6 @@ function loadPageData() {
 				var homeTeams = doc.data().fixturesHome;
 				var dates = doc.data().fixturesDates;
 				var venues = doc.data().fixturesVenues;
-				var fixtures = [];
 				var j;
 				for (j = 0; j < awayTeams.length; j++) {
 					var i = j+1;
@@ -184,7 +182,6 @@ function loadPageData() {
 					var awayTeamLong = getLongName(awayTeam);
 					var venue = venues[j];
 					var date = dates[j].toDate();
-					fixtures.push([homeTeam, awayTeam, date]);
 					var formattedDate = getFormattedDate(date);
 					htmlFields = htmlFields + "<div class='game'><div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
 					htmlFields = htmlFields + "<div class='flags'><div class='flag flag-" + i + "' id='NA'></div></div><div class='inputs'><span class='downArrow'>&#9660;</span><select class='formInput' id='clubInput-" + i + "'><option disabled selected value style='display: none;'></option><option id='home-" + i + "' value='" + homeTeam + "'>" + homeTeamLong + "</option><option id='away-" + i + "' value='" + awayTeam + "'>" + awayTeamLong + "</option><option id='draw-" + i + "' value='DRW'>Draw</option></select><input type='number' min='0' max='200' class='formInput' id='marginInput-" + i + "' value='0'></input></div>";
