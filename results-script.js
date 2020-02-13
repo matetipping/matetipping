@@ -60,7 +60,7 @@ function createNewLeague(name, maxMembers) {
 	});
 	
 	var usersRef = db.collection("users").doc(user.uid);
-	batch.set(usersRef, {
+	batch.update(usersRef, {
 		ownedLeague: leagueID
 	});
 	
