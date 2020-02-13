@@ -54,13 +54,6 @@ body {
 .message {
   text-align: center;
 }
-.message div {
-  color: #3e3;
-  font-size: 150%;
-}
-.message div.error {
-  color: #e33;
-}
 
 input[id*='marginInput'] {
   width: 25%;
