@@ -19,5 +19,7 @@ function loadPageData() {
 		if (myLeagues.length == 0) {
 			$("div#leaguesList").append("<div>You are not currently in any leagues.</div>");
 		}
-  	});
+  	}).catch(function(error) {
+		$("div#leaguesList").append("<div>Error retrieving leagues.</div>");
+	});
 }
