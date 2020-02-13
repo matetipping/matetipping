@@ -1,3 +1,11 @@
+$(document).ready(function(){
+	$("form#league-create").submit(function(e) {
+		var name = $("#input-league-name").val();
+		var maxMembers = $("#input-league-max").val();
+		createNewLeague(name, maxMembers);
+	});
+});
+
 function loadPageData() {
   	var db = firebase.firestore();
 	var user = firebase.auth().currentUser; 
