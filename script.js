@@ -144,6 +144,10 @@ $(document).ready(function(){
 
 });
 
+$("body").on("click", ".message .successful, .message .error", function() {
+	$(this).remove();
+});
+
 function commitLogOff() {
 	var user = firebase.auth().currentUser;
 	if (user) {
