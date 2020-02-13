@@ -9,29 +9,39 @@ $(document).ready(function(){
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		var roundCode = "R" + text[0];
 		var date = firebase.firestore.Timestamp.fromDate(new Date(Date.parse(text[1])));
+		var i;
+		var length = text.length;
+		var fixturesHome = [];
+		var fixturesAway = [];
+		var fixturesDates = [];
+		var fixturesVenues = [];
+		for (i = 2; i < length; i++) {
+			var line = text[i].split(", ");
+			var fixDate = firebase.firestore.Timestamp.fromDate(new Date(Date.parse(line[2])));
+			fixturesHome.push(line[0]);
+			fixturesAway.push(line[1]);
+			fixturesDates.push(fixDate);
+			fixturesVenues.push(line[3]);
+		}
 		firebase.firestore().collection("rounds").doc(roundYear).set({
 			date: date,
 			codename: roundCode,
-			name: roundName
+			name: roundName,
+			fixturesHome: fixturesHome,
+			fixturesAway: fixturesAway,
+			fixturesDates: fixturesDates,
+			fixturesVenues: fixturesVenues
 		}).then(function() {
 		    console.log("Tips submitted.");
 		}).catch(function(error) {
 		    console.error("Error writing document: ", error);
 		});
-    
-		var i;
-		var length = text.length;
-		for (i = 2; i < length; i++) {
-			var line = text[i].split(", ");
-			var date = firebase.firestore.Timestamp.fromDate(new Date(Date.parse(line[2])));
-			console.log(line);
-			firebase.firestore().collection("rounds").doc(roundYear).collection("fixtures").doc((i - 1).toString()).set({
-				homeTeam: line[0],
-				awayTeam: line[1],
-				date: date,
-				venue: line[3]
-			});
-		}
+		//	firebase.firestore().collection("rounds").doc(roundYear).collection("fixtures").doc((i - 1).toString()).set({
+		//		homeTeam: line[0],
+		//		awayTeam: line[1],
+		//		date: date,
+		//		venue: line[3]
+		//	});
 	});
 	
 	$("button.addFootballerList").click(function() {
