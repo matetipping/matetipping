@@ -54,6 +54,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	// error message dismissal
+	$("body").on("click", ".message .successful, .message .error", function() {
+		$(this).remove();
+	});
+	
 	// Registration form
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
@@ -142,10 +147,6 @@ $(document).ready(function(){
 		});
 	});
 
-});
-
-$("body").on("click", ".message .successful, .message .error", function() {
-	$(this).remove();
 });
 
 function commitLogOff() {
