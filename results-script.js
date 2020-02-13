@@ -122,7 +122,7 @@ function joinExistingLeague(code) {
 		
 function leagueCreated(leagueID, leagueName) {
 	$("form#league-create").replaceWith("<div>Your league is <span class='highlight'>" + leagueName + "</span>. To invite other tippers to this league, send them the following code.</div><div><span class='highlight' id='league-code'>" + leagueID + "</span><span id='copy-code'> [Copy] </span></div>");
-	$("div#copy-code").click(function() {
+	$("span#copy-code").click(function() {
 		var copyThis = document.getElementById('league-code');
 		copyThis.select();
 		copyThis.setSelectionRange(0, 99999);
