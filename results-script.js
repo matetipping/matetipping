@@ -65,7 +65,7 @@ function createNewLeague(name, maxMembers) {
 	});
 	
 	batch.commit().then(function(doc) {
-		leagueCreated(doc.id);
+		leagueCreated(leagueID);
 		myLeagues = myLeagues.push(doc.id);
 		myLeagueNames = myLeagueNames.push(name + " ★");
 		setLeagueList(myLeagueNames);
