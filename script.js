@@ -56,7 +56,11 @@ $(document).ready(function(){
 	
 	// error message dismissal
 	$("body").on("click", ".message .successful, .message .error", function() {
-		$(this).remove();
+		var thisElement = $(this);
+		$(this).css("opacity", "0");
+		setTimeout(function () {
+			thisElement.remove();
+		}, 300);
 	});
 	
 	// Registration form
