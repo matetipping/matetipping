@@ -6,8 +6,14 @@ $(document).ready(function(){
 	$("form#league-create").submit(function(e) {
 		e.preventDefault();
 		var name = $("#input-league-name").val();
-		var maxMembers = $("#input-league-max").val();
+		var maxMembers = Number($("#input-league-max").val());
 		createNewLeague(name, maxMembers);
+	});
+	
+	$("form#league-join").submit(function(e) {
+		e.preventDefault();
+		var code = $("#input-league-join").val();
+		
 	});
 });
 
