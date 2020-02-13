@@ -65,10 +65,12 @@ function createNewLeague(name, maxMembers) {
 	});
 	
 	batch.commit().then(function(doc) {
+		console.log(myLeagueNames);
 		leagueCreated(leagueID);
 		myLeagues = myLeagues.push(leagueID);
 		myLeagueNames = myLeagueNames.push(name + " ★");
 		setLeagueList(myLeagueNames);
+		console.log(myLeagueNames);
 	});
 	
 }
