@@ -37,12 +37,13 @@ function loadPageData() {
 			}
 		});
 		if (myLeagues.length == 0) {
-			$("div#leaguesList").append("<div class='error'>You are not currently in any leagues.</div>");
+			$("div#leaguesList").append("You are not currently in any leagues.");
 		} else {
 			setLeagueList(myLeagueNames);
 		}
-  	}).catch(function(error) {
-		$("div#leaguesList").append("<div class='error'>Error retrieving leagues.</div>");
+  	}).catch(function(error) 
+		 $("div.messages").html("<div class='error'>Error retrieving leagues.</div>");
+		 window.scrollTo(0, 0);
 	});
 }
 
@@ -81,6 +82,11 @@ function createNewLeague(name, maxMembers) {
 		myLeagues.unshift(leagueID);
 		myLeagueNames.unshift(name + " ★");
 		setLeagueList(myLeagueNames);
+		$("div.messages").html("<div class='successful'>League created successfully.</div>");
+		window.scrollTo(0, 0);
+	}).catch(function(e) {
+		$("div.messages").html("<div class='error'>League could not be created.</div>");
+		window.scrollTo(0, 0);
 	});
 	
 }
@@ -93,13 +99,11 @@ function joinExistingLeague(code) {
 	db.runTransaction(function(transaction) {
 		return transaction.get(leagueRef).then(function(doc) {
 			if (!doc.exists) {
-				console.log("League does not exist.");
 				throw "League does not exist.";
 			}
 			var participants = doc.data().participants;
 			leagueName = doc.data().name;
 			if (participants.includes(user.uid)) {
-				console.log("League already joined.");
 				throw "League already joined.";
 			} else {
 				participants.push(user.uid);
@@ -110,7 +114,6 @@ function joinExistingLeague(code) {
 				});
 				return participants;
 			} else {
-				console.log("League is full.");
 				throw "League is full.";
 			}
 		});
@@ -118,7 +121,11 @@ function joinExistingLeague(code) {
 		myLeagues.push(code);
 		myLeagueNames.push(leagueName);
 		setLeagueList(myLeagueNames);
+		$("div.messages").html("<div class='successful'>League joined successfully.</div>");
+		window.scrollTo(0, 0);
 	}).catch(function(e) {
+		$("div.messages").html("<div class='error'>" + e + "</div>");
+		window.scrollTo(0, 0);
 	});
 }
 		
