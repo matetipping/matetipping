@@ -182,7 +182,7 @@ function loadPageData() {
 					var homeTeamLong = getLongName(homeTeam);
 					var awayTeamLong = getLongName(awayTeam);
 					var venue = venues[j];
-					var date = dates[i].toDate();
+					var date = dates[j].toDate();
 					fixtures.push([homeTeam, awayTeam, date]);
 					var formattedDate = getFormattedDate(date);
 					htmlFields = htmlFields + "<div class='game'><div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
