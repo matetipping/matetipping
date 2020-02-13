@@ -41,6 +41,9 @@ body {
 .copy-code {
   border: 2px solid #F47D33;
 }
+.copy-code:hover {
+  cursor: pointer;
+}
 .game, .message {
   padding: 24px 0;
 }
