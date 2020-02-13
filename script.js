@@ -59,7 +59,10 @@ $(document).ready(function(){
 		var thisElement = $(this);
 		$(this).css("opacity", "0");
 		setTimeout(function () {
-			$(this).css("height", "0");
+			thisElement.css("height", "0").css("margin", "0").css("padding", "0");
+			setTimeout(function() {
+				thisElement.remove();
+			}, 200);
 		}, 200);
 	});
 	
