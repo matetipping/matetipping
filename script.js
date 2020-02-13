@@ -59,8 +59,8 @@ $(document).ready(function(){
 		var thisElement = $(this);
 		$(this).css("opacity", "0");
 		setTimeout(function () {
-			thisElement.remove();
-		}, 300);
+			$(this).css("height", "0");
+		}, 200);
 	});
 	
 	// Registration form
