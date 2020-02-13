@@ -56,7 +56,7 @@ function createNewLeague(name, maxMembers) {
 	}).then(function(doc) {
 		leagueCreated(doc.id);
 		myLeagues = myLeagues.push(doc.id);
-		myLeagueNames = myLeagueNames.push(doc.data().name + " ★");
+		myLeagueNames = myLeagueNames.push(name + " ★");
 	});
 	
 }
