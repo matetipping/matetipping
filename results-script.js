@@ -88,18 +88,25 @@ function joinExistingLeague(code) {
 	db.runTransaction(function(transaction) {
 		return transaction.get(leagueRef).then(function(doc) {
 			if (!doc.exists) {
-			    throw "League does not exist.";
+				console.log("League does not exist.");
+				throw "League does not exist.";
 			}
 			var participants = doc.data().participants;
-			var leagueName = doc.data().name;
-			participants.push(user.uid);
+			leagueName = doc.data().name;
+			if (participants.includes(user.uid)) {
+				console.log("League already joined.");
+				throw "League already joined.";
+			} else {
+				participants.push(user.uid);
+			}
 			if (participants.length <= doc.data().maxMembers) {
 				transaction.update(leagueRef, {
 					participants: participants
 				});
 				return participants;
 			} else {
-				return Promise.reject("League is full."); 
+				console.log("League is full.");
+				throw "League is full.";
 			}
 		});
 	}).then(function(newParticipants) {
@@ -107,7 +114,6 @@ function joinExistingLeague(code) {
 		myLeagueNames.push(leagueName);
 		setLeagueList(myLeagueNames);
 	}).catch(function(e) {
-		console.log("We couldn't add you to the league.");
 	});
 }
 		
