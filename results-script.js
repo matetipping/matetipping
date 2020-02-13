@@ -42,7 +42,7 @@ function loadPageData() {
 			setLeagueList(myLeagueNames);
 		}
   	}).catch(function(error) {
-		 $("div.messages").html("<div class='error'>Error retrieving leagues.</div>");
+		 $("div.message").html("<div class='error'>Error retrieving leagues.</div>");
 		 window.scrollTo(0, 0);
 	});
 }
@@ -82,10 +82,10 @@ function createNewLeague(name, maxMembers) {
 		myLeagues.unshift(leagueID);
 		myLeagueNames.unshift(name + " ★");
 		setLeagueList(myLeagueNames);
-		$("div.messages").html("<div class='successful'>League created successfully.</div>");
+		$("div.message").html("<div class='successful'>League created successfully.</div>");
 		window.scrollTo(0, 0);
 	}).catch(function(e) {
-		$("div.messages").html("<div class='error'>League could not be created.</div>");
+		$("div.message").html("<div class='error'>League could not be created.</div>");
 		window.scrollTo(0, 0);
 	});
 	
@@ -121,10 +121,10 @@ function joinExistingLeague(code) {
 		myLeagues.push(code);
 		myLeagueNames.push(leagueName);
 		setLeagueList(myLeagueNames);
-		$("div.messages").html("<div class='successful'>League joined successfully.</div>");
+		$("div.message").html("<div class='successful'>League joined successfully.</div>");
 		window.scrollTo(0, 0);
 	}).catch(function(e) {
-		$("div.messages").html("<div class='error'>" + e + "</div>");
+		$("div.message").html("<div class='error'>" + e + "</div>");
 		window.scrollTo(0, 0);
 	});
 }
