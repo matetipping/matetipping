@@ -19,6 +19,7 @@ $(document).ready(function(){
 				clubTips.push(thisClub);
 			} else {
 				valid = false;
+				console.log("a");
 			}
 			
 		});
@@ -29,6 +30,7 @@ $(document).ready(function(){
 			} else {
 				marginTips.push(200);
 				valid = false;
+				console.log("b");
 			}
 		});
 		
@@ -64,11 +66,13 @@ $(document).ready(function(){
 		if (usedDisposalsList.includes(bonusDisposal)) {
 			$("div.message").append("<div class='error'>Disposal bonus already used.</div>");
 			valid = false;
+			console.log("c");
 			window.scrollTo(0, 0);
 		}
 		if (usedScorersList.includes(bonusScorer)) {
 			$("div.message").append("<div class='error'>Scorer bonus already used.</div>");
 			valid = false;
+			console.log("d");
 			window.scrollTo(0, 0);
 		}
 		var currentYear = new Date().getFullYear();
