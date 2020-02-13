@@ -25,8 +25,8 @@ function loadPageData() {
       			var creator = doc.data().creator;
 			var name = doc.data().name;
 		  	if (creator == user.uid) {
-				name = name + " ★";
 				leagueCreated(doc.id, name);
+				name = name + " ★";
 				myLeagueNames.unshift(name);
 				myLeagues.unshift(doc.id);
 			} else {
