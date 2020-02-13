@@ -42,7 +42,7 @@ body {
 .copy-code {
   border: 2px solid #F47D33;
 }
-.copy-code.copied {
+.copy-code:active {
   border: 2px solid white;
 }
 .message .successful:hover, .message .error:hover, .copy-code:hover {
