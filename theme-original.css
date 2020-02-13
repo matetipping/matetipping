@@ -42,6 +42,9 @@ body {
 .copy-code {
   border: 2px solid #F47D33;
 }
+.copy-code.copied {
+  border: 2px solid white;
+}
 .message .successful:hover, .message .error:hover, .copy-code:hover {
   cursor: pointer;
   padding: 24px;
@@ -49,6 +52,9 @@ body {
 .copy-code::after {
   content: 'copy to clipboard';
   color: #F47D33;
+}
+.copy-code.copied::after {
+  content: 'copied';
 }
 .message .successful::after, .message .error::after {
   content: 'dismiss message';
