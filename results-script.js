@@ -2,6 +2,7 @@ function loadPageData() {
   	var db = firebase.firestore();
 	var user = firebase.auth().currentUser; 
   	var myLeagues = [];
+	var myLeagueNames = [];
 	console.log(user.uid);
 	db.collection("leagues").where("participants", "array-contains", user.uid).get().then(function(querySnapshot) {
     		querySnapshot.forEach(function(doc) {
@@ -12,18 +13,25 @@ function loadPageData() {
 				name = name + " ★";
 				leagueCreated(doc.id);
 			}
-			$("div#leaguesList").append("<div>" + name + "</div>");
+			myLeagueNames.push(name);
 		});
 		if (myLeagues.length == 0) {
-			$("div#leaguesList").append("<div>You are not currently in any leagues.</div>");
+			$("div#leaguesList").append("<div class='error'>You are not currently in any leagues.</div>");
+		} else {
+			setLeagueList(myLeagues);
 		}
   	}).catch(function(error) {
-		$("div#leaguesList").append("<div>Error retrieving leagues.</div>");
+		$("div#leaguesList").append("<div class='error'>Error retrieving leagues.</div>");
 	});
 }
 
-function leagueCreated(leagueID) {
-	$("form#league-create").replaceWith("<div>Your league code is: " + leagueID + "</div>");
+function setLeagueList(leagues) {
+	$("div#leaguesList").html("");
+	var i;
+	var length = leagues.length;
+	for (i = 0; i < length; i++) {
+		$("div#leaguesList").append(leagues);
+	}
 }
 
 function createNewLeague(name, maxMembers) {
@@ -37,6 +45,12 @@ function createNewLeague(name, maxMembers) {
 		type: "default"
 	}).then(function(doc) {
 		leagueCreated(doc.id);
+		myLeagues = myLeagues.push(doc.id);
+		myLeagueNames = myLeagueNames.push(doc.data().name + " ★");
 	});
 	
+}
+		
+function leagueCreated(leagueID) {
+	$("form#league-create").replaceWith("<div>Your league code is: " + leagueID + "</div>");
 }
