@@ -12,7 +12,7 @@ $(document).ready(function(){
 	
 	$("form#league-join").submit(function(e) {
 		e.preventDefault();
-		var code = $("#input-league-join").val();
+		var code = $("#input-league-code").val();
 		joinExistingLeague(code);
 	});
 });
