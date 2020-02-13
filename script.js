@@ -95,6 +95,12 @@ $(document).ready(function(){
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
+						var userRef = firebase.firestore().collection("users").doc(user.uid);
+						userRef.set({
+							admin: false,
+							ownedLeague: null
+						});
+						
 						user.updateProfile({
 							displayName: formData.username
 						}).then(function() {
