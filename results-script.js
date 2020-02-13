@@ -24,12 +24,15 @@ function loadPageData() {
     		querySnapshot.forEach(function(doc) {
       			var creator = doc.data().creator;
 			var name = doc.data().name;
-			myLeagues.push(doc.id);
 		  	if (creator == user.uid) {
 				name = name + " ★";
 				leagueCreated(doc.id);
+				myLeagueNames.unshift(name);
+				myLeagues.unshift(doc.id);
+			} else {
+				myLeagueNames.push(name);
+				myLeagues.push(doc.id);
 			}
-			myLeagueNames.push(name);
 		});
 		if (myLeagues.length == 0) {
 			$("div#leaguesList").append("<div class='error'>You are not currently in any leagues.</div>");
@@ -73,8 +76,8 @@ function createNewLeague(name, maxMembers) {
 	batch.commit().then(function(doc) {
 		console.log(myLeagueNames);
 		leagueCreated(leagueID);
-		myLeagues.push(leagueID);
-		myLeagueNames.push(name + " ★");
+		myLeagues.unshift(leagueID);
+		myLeagueNames.unshift(name + " ★");
 		setLeagueList(myLeagueNames);
 	});
 	
