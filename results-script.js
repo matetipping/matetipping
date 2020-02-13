@@ -5,6 +5,7 @@ function loadPageData() {
 	var user = firebase.auth().currentUser; 
   	var inALeague = false;
   	var myLeagues = [];
+	console.log(user.uid);
 	db.collection("leagues").where("participants", "array-contains", user.uid).get().then(function(querySnapshot) {
     		querySnapshot.forEach(function(doc) {
       			var creator = doc.data().creator;
