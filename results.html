@@ -30,7 +30,7 @@
       firebase.initializeApp(config);
     </script>
     <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="index-script.js"></script>
+    <script type="text/javascript" src="results-script.js"></script>
   </head>
   <body>
     <header>
@@ -61,8 +61,8 @@
     <nav id="hamburger-menu">
       <ul>
         <li><a href="javascript:attemptLogIn(username);">Sign in</a></li>
-        <li><a href="" class="selected">Tipping</a></li>
-        <li><a href="">Results</a></li>
+        <li><a href="">Tipping</a></li>
+        <li><a href="" class="selected">Results</a></li>
         <li><a href="">Profile</a></li>
       </ul>
     </nav>
@@ -116,8 +116,46 @@
         </table>
       </div>
       <div class="online">
-        <form id="form-tipping">
-        </form>
+        <div id="results-navigation">
+          <button>Leagues</button><button class="selected">Results</button><button>Ladder</button>
+        </div>
+        <div id="leagues">
+          <h2>Your Leagues:</h2>
+          <div id="leaguesList">
+          </div>
+          <h2>Create League</h2>
+          <div>If you wish to start a new league, create it here.</div>
+          <form id="league-create">
+            <div>
+              <label for="input-league-name">League Name:</label></br>
+              <input type="text" id="input-league-name">
+            </div>
+            <div>
+              <label for="input-league-max">Maximum Size:</label></br>
+              <input type="text" id="input-league-max" min="2" max="100">
+            </div>
+            <div>
+              <input type="submit" value="Create League">
+            </div>
+          </form>
+          <h3>Join League</h3>
+          <div>If you have been sent a league code by a friend, enter it here.</div>
+          <form id="league-join">
+            <div>
+              <label for="input-league-code">League Code:</label></br>
+              <input type="text" id="input-league-code">
+            </div>
+            <div>
+              <input type="submit" value="Join League">
+            </div>
+          </form>
+        </div>
+        <div id="results">
+          <table>
+          </table>
+        </div>
+        <div id="ladder">
+        </div>
       </div>
     </main>
     <footer>
