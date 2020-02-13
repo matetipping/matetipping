@@ -34,13 +34,13 @@ body {
   border-radius: 18px;
   margin: auto;
   font-size: 18px;
+  transition: 0.2s;
 }
 .message .error {
   border: 2px solid #e33;
 }
 .copy-code {
   border: 2px solid #F47D33;
-  transition: 0.2s;
 }
 .copy-code:hover {
   cursor: pointer;
