@@ -24,8 +24,10 @@ function loadPageData() {
     		querySnapshot.forEach(function(doc) {
       			var creator = doc.data().creator;
 			var name = doc.data().name;
+			var noMembers = doc.data().participants.length;
+			var maxMembers = doc.data().maxMembers;
 		  	if (creator == user.uid) {
-				leagueCreated(doc.id, name);
+				leagueCreated(doc.id, name, noMembers, maxMembers);
 				name = name + " ★";
 				myLeagueNames.unshift(name);
 				myLeagues.unshift(doc.id);
@@ -75,7 +77,7 @@ function createNewLeague(name, maxMembers) {
 	
 	batch.commit().then(function(doc) {
 		console.log(myLeagueNames);
-		leagueCreated(leagueID, name);
+		leagueCreated(leagueID, name, 1, maxMembers);
 		myLeagues.unshift(leagueID);
 		myLeagueNames.unshift(name + " ★");
 		setLeagueList(myLeagueNames);
