@@ -41,7 +41,7 @@ function loadPageData() {
 		} else {
 			setLeagueList(myLeagueNames);
 		}
-  	}).catch(function(error) 
+  	}).catch(function(error) {
 		 $("div.messages").html("<div class='error'>Error retrieving leagues.</div>");
 		 window.scrollTo(0, 0);
 	});
