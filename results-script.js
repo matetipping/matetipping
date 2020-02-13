@@ -47,13 +47,24 @@ function setLeagueList(leagues) {
 function createNewLeague(name, maxMembers) {
 	var db = firebase.firestore();
 	var user = firebase.auth().currentUser;
-	db.collection("leagues").add({
+	var batch = db.batch();
+	
+	var leaguesRef = db.collection("leagues").doc();
+	var leagueID = leaguesRef.id;
+	batch.set(leaguesRef, {
 		name: name,
 		maxMembers: maxMembers,
 		participants: [user.uid],
 		creator: user.uid,
 		type: "default"
-	}).then(function(doc) {
+	});
+	
+	var usersRef = db.collection("users").doc(user.uid);
+	batch.set(usersRef, {
+		ownedLeague: leagueID
+	});
+	
+	batch.commit().then(function(doc) {
 		leagueCreated(doc.id);
 		myLeagues = myLeagues.push(doc.id);
 		myLeagueNames = myLeagueNames.push(name + " ★");
