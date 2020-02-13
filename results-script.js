@@ -92,7 +92,7 @@ function joinExistingLeague(code) {
 			var participants = doc.data().participants;
 			participants.push(user.uid);
 			if (participants.length <= doc.data().maxMembers) {
-				transaction.update(doc, {
+				transaction.update(leagueRef, {
 					participants: participants
 				});
 				return participants;
