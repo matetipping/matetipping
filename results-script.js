@@ -26,7 +26,7 @@ function loadPageData() {
 			var name = doc.data().name;
 		  	if (creator == user.uid) {
 				name = name + " ★";
-				leagueCreated(doc.id);
+				leagueCreated(doc.id, name);
 				myLeagueNames.unshift(name);
 				myLeagues.unshift(doc.id);
 			} else {
@@ -75,7 +75,7 @@ function createNewLeague(name, maxMembers) {
 	
 	batch.commit().then(function(doc) {
 		console.log(myLeagueNames);
-		leagueCreated(leagueID);
+		leagueCreated(leagueID, name);
 		myLeagues.unshift(leagueID);
 		myLeagueNames.unshift(name + " ★");
 		setLeagueList(myLeagueNames);
@@ -120,6 +120,10 @@ function joinExistingLeague(code) {
 	});
 }
 		
-function leagueCreated(leagueID) {
-	$("form#league-create").replaceWith("<div>Your league code is: " + leagueID + "</div>");
+function leagueCreated(leagueID, leagueName) {
+	$("form#league-create").replaceWith("<div><span class='highlight'>" + leagueName + "</span> code: <span class='highlight' id='league-code'>" + leagueID + "</span><div id='copy-code'>[Copy]</div></div>");
+	$("div#copy-code").click(function() {
+		document.getElementById('league-code').select();
+		document.execCommand("copy");
+	});
 }
