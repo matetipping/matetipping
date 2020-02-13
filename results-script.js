@@ -40,7 +40,7 @@ function setLeagueList(leagues) {
 	var i;
 	var length = leagues.length;
 	for (i = 0; i < length; i++) {
-		$("div#leaguesList").append("<div>" + leagues + "</div>");
+		$("div#leaguesList").append("<div>" + leagues[i] + "</div>");
 	}
 }
 
