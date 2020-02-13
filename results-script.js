@@ -1,3 +1,8 @@
+var myLeagues = [];
+var myLeagueNames = [];
+var db = firebase.firestore();
+var user = firebase.auth().currentUser; 
+
 $(document).ready(function(){
 	$("form#league-create").submit(function(e) {
 		e.preventDefault();
@@ -8,10 +13,6 @@ $(document).ready(function(){
 });
 
 function loadPageData() {
-  	var db = firebase.firestore();
-	var user = firebase.auth().currentUser; 
-  	var myLeagues = [];
-	var myLeagueNames = [];
 	console.log(user.uid);
 	db.collection("leagues").where("participants", "array-contains", user.uid).get().then(function(querySnapshot) {
     		querySnapshot.forEach(function(doc) {
