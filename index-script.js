@@ -61,15 +61,14 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		
-		if (usedDisposalsList.includes(bonusDisposal)) {
-			$("div.message").append("<div class='error'>Disposal bonus already used.</div>");
-			valid = false;
-			window.scrollTo(0, 0);
-		}
+		var errorMessage = "You must tip all matches.";
 		if (usedScorersList.includes(bonusScorer)) {
-			$("div.message").append("<div class='error'>Scorer bonus already used.</div>");
+			errorMessage = "Scorers bonus already used.";
 			valid = false;
-			window.scrollTo(0, 0);
+		}
+		if (usedDisposalsList.includes(bonusDisposal)) {
+			errorMessage = "Disposal bonus already used.";
+			valid = false;
 		}
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
@@ -102,11 +101,11 @@ $(document).ready(function(){
 				window.scrollTo(0, 0);
 			}).catch(function(error) {
 				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Submit Tips</button>");
-				$("div.message").append("<div class='error'>Error saving tips.</div>");
+				$("div.message").html("<div class='error'>Error saving tips.</div>");
 				window.scrollTo(0, 0);
 			});
 		} else {
-			$("div.message").append("<div class='error'>You must tip all matches.</div>");
+			$("div.message").html("<div class='error'>" + errorMessage + "</div>");
 			window.scrollTo(0, 0);
 		}
 	});
