@@ -177,12 +177,12 @@ function loadPageData() {
 				var j;
 				for (j = 0; j < awayTeams.length; j++) {
 					var i = j+1;
-					var homeTeam = doc.data().homeTeam;
-					var awayTeam = doc.data().awayTeam;
+					var homeTeam = homeTeams[j];
+					var awayTeam = awayTeams[j];
 					var homeTeamLong = getLongName(homeTeam);
 					var awayTeamLong = getLongName(awayTeam);
-					var venue = doc.data().venue;
-					var date = doc.data().date.toDate();
+					var venue = venues[j];
+					var date = dates[i].toDate();
 					fixtures.push([homeTeam, awayTeam, date]);
 					var formattedDate = getFormattedDate(date);
 					htmlFields = htmlFields + "<div class='game'><div class='details'><span class='align-left'>" + homeTeamLong + " vs " + awayTeamLong + "</span><span class='align-right'>" + venue + " | " + formattedDate + "</span></div>";
