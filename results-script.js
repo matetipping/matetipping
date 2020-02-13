@@ -1,3 +1,5 @@
+var user = firebase.auth().currentUser; 
+
 function loadPageData() {
   var db = firebase.firestore();
   var inALeague = false;
