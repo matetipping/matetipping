@@ -40,6 +40,7 @@ body {
 }
 .copy-code {
   border: 2px solid #F47D33;
+  transition: 0.2s;
 }
 .copy-code:hover {
   cursor: pointer;
