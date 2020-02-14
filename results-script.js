@@ -98,9 +98,11 @@ function updateResults(doc) {
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
+		var opponentRef = db.collection("users").doc(participants[opponentIndex]);
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
+		var opponentName = "";
 		var resultsData = null;
 		myTipsRef.get().then(function(doc) {
 			myTipData = doc.data();
@@ -108,9 +110,12 @@ function updateResults(doc) {
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
 		});
+		opponentRef.get().then(function(doc) {
+			opponentName = doc.data().username;
+		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			calculateScores(myTipData, opponentTipData, resultsData);
+			calculateScores(user.displayName, opponentName, myTipData, opponentTipData, resultsData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
@@ -124,7 +129,7 @@ function updateLadder(doc) {
 	}
 }
 
-function calculateScores(myTips, oppTips, results) {
+function calculateScores(me, opp, myTips, oppTips, results) {
 	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
@@ -141,7 +146,7 @@ function calculateScores(myTips, oppTips, results) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = "<table><thead><tr><th colspan='3'>" + "YOU" + "</th><th colspan='3'>" + "OPPONENT" + "</th></tr>" +
+	var htmlContent = "<table><thead><tr><th colspan='3'>" + me + "</th><th colspan='3'>" + opp + "</th></tr>" +
 	    "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
 	var i;
 	var length = myClubs.length;
