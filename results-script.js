@@ -156,12 +156,14 @@ function calculateScores(myTips, oppTips, results) {
 				myScore = myScore + correctTipBonus;
 				myDiff = Math.abs(myMargins[i] - resMargins[i]);
 			} else {
+				myScore = myScore - correctTipBonus;
 				myDiff = myMargins[i] + resMargins[i];
 			}
 			if (oppClubs[i] == resClubs[i]) {
 				oppScore = oppScore + correctTipBonus;
 				oppDiff = Math.abs(oppMargins[i] - resMargins[i]);
 			} else {
+				oppScore = oppScore - correctTipBonus;
 				oppDiff = oppMargins[i] + resMargins[i];
 			}
 			diff = oppDiff - myDiff;
