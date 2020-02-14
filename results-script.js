@@ -116,7 +116,7 @@ function setLeagueList(leagues, leagueIDs) {
 	var i;
 	var length = leagues.length;
 	for (i = 0; i < length; i++) {
-		$("div#leaguesList").append("<div id='" + leagueIDs + "'>" + leagues[i] + "</div>");
+		$("div#leaguesList").append("<div id='" + leagueIDs[i] + "'>" + leagues[i] + "</div>");
 	}
 	$("div#leaguesList div").click(function() {
 		var currentLeague = $(this).attr("id");
