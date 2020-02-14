@@ -177,8 +177,8 @@ function calculateScores(myTips, oppTips, results) {
 			myScore = 0;
 			oppScore = 0;
 		}
-		console.score(myScore);
-		console.score(oppScore);
+		console.log(myScore);
+		console.log(oppScore);
 		myScores.push(myScore);
 		myTotal = myTotal + myScore;
 		oppScores.push(oppScore);
