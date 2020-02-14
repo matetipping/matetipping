@@ -137,7 +137,22 @@ div#results table tr:nth-child(odd) {
 div#results table tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.4);
 }
-
+#results-navigation button {
+  width: 33.333%;
+  margin: 0;
+  margin-bottom: 24px;
+  font-size: 120%;
+  border: 2px solid #333F50;
+  height: 40px;
+}
+#results-navigation button:first-child, #results-navigation button:nth-child(2) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#results-navigation button:last-child, #results-navigation button:nth-child(2) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 input[id*='marginInput'] {
   width: 25%;
   text-align: right;
