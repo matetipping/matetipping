@@ -96,6 +96,8 @@ function joinExistingLeague(code) {
 	var user = firebase.auth().currentUser;
 	var leagueRef = db.collection("leagues").doc(code);
 	var leagueName;
+	var htmlBefore = $("form#league-join").html();
+	$("form#league-join").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 	db.runTransaction(function(transaction) {
 		return transaction.get(leagueRef).then(function(doc) {
 			if (!doc.exists) {
@@ -123,9 +125,11 @@ function joinExistingLeague(code) {
 		setLeagueList(myLeagueNames);
 		$("div.message").html("<div class='successful'>League joined successfully.</div>");
 		window.scrollTo(0, 0);
+		$("form#league-join").html(htmlBefore);
 	}).catch(function(e) {
 		$("div.message").html("<div class='error'>" + e + "</div>");
 		window.scrollTo(0, 0);
+		$("form#league-join").html(htmlBefore);
 	});
 }
 		
