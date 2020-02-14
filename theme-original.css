@@ -109,9 +109,12 @@ div#leaguesList div {
 div#leaguesList div:hover {
   cursor: pointer;
 }
+div#results table {
+  margin: auto;
+}
 div#results table td {
   text-align: center;
-  width: 17%;
+  width: 100px;
 }
 div#results table tr {
   height: 50px;
