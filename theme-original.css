@@ -140,18 +140,21 @@ div#results table tr:nth-child(even) {
 #results-navigation button {
   width: 33.333%;
   margin: 0;
-  margin-bottom: 24px;
   font-size: 120%;
   border: 2px solid #333F50;
   height: 40px;
+  top: -24px;
+  position: relative;
+  border-radius: 0;
 }
-#results-navigation button:first-child, #results-navigation button:nth-child(2) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+#results-navigation button:first-child {
+  border-bottom-left-radius: 24px;
 }
-#results-navigation button:last-child, #results-navigation button:nth-child(2) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+#results-navigation button:last-child {
+  border-bottom-right-radius: 24px;
+}
+#results-navigation button.selected {
+  border-bottom: 2px solid #F47D33; 
 }
 input[id*='marginInput'] {
   width: 25%;
