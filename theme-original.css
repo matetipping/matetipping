@@ -32,7 +32,7 @@ body {
   padding: 12px 24px;
   width: fit-content;
   border-radius: 18px;
-  margin: auto;
+  margin: 20px auto;
   font-size: 18px;
   transition: 0.2s;
 }
@@ -78,7 +78,10 @@ body {
   opacity: 1;
   height: auto;
 }
-.game, .message {
+.message {
+  padding: 0;
+}
+.game {
   padding: 24px 0;
 }
 .game:nth-child(even), .message:nth-child(even) {
