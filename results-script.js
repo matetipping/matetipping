@@ -14,7 +14,7 @@ $(document).ready(function(){
 		querySnapshot.forEach(function(doc) {
 			roundName = doc.data().name;
 			roundIndex = Number(roundName.split(" ")[1]) - 1;
-			roundCode = doc.data().codename;
+			roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
 		});
 	});
 	
