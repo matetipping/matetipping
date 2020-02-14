@@ -221,7 +221,7 @@ function calculateScores(myTips, oppTips, results) {
 	oppTotal = oppTotal + oppDB + oppSB;
 	
 	htmlContent = htmlContent + "<tr><td colspan = '2'></td>" +
-		"<td colspan = '2'><span class='highlight'>" + myTotal + "</span> vs <span class='highlight'>" + oppTotal + "</span></td>" +
+		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
 		"<td colspan = '2'></td></tr>";
 	
 	$("div#results").html(htmlContent);
