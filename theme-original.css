@@ -97,6 +97,9 @@ body {
 .message {
   text-align: center;
 }
+div#leaguesList {
+  text-align: center;
+}
 div#leaguesList div {
   padding: 8px 16px;
   color: #F37D33;
@@ -136,9 +139,6 @@ div#results table tr:nth-child(odd) {
 }
 div#results table tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.4);
-}
-#results-navigation {
-  text-align: center;
 }
 #results-navigation button {
   width: 33.333%;
