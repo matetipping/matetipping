@@ -1,8 +1,24 @@
 var myLeagues = [];
 var myLeagueNames = [];
 var db = firebase.firestore();
+var roundIndex = 0;
+var roundName = "";
+var roundCode = "";
 
 $(document).ready(function(){
+	
+	// calculate the current round
+	var timestamp = firebase.firestore.Timestamp.now();
+	var roundRef = db.collection("rounds").where('date', '<', timestamp).orderBy('date',  'desc').limit(1);
+	roundRef.get().then(function(querySnapshot) {
+		querySnapshot.forEach(function(doc) {
+			roundName = doc.data().name;
+			roundIndex = Number(roundName.split(" ")[1]) - 1;
+			roundCode = doc.data().codename;
+		});
+	});
+	
+	// create league on form submission
 	$("form#league-create").submit(function(e) {
 		e.preventDefault();
 		var name = $("#input-league-name").val();
@@ -21,6 +37,7 @@ $(document).ready(function(){
 		}
 	});
 	
+	// join league on form submission
 	$("form#league-join").submit(function(e) {
 		e.preventDefault();
 		var code = $("#input-league-code").val();
@@ -61,6 +78,34 @@ function loadPageData() {
 		 $("div.message").html("<div class='error'>Error retrieving leagues.</div>");
 		 window.scrollTo(0, 0);
 	});
+	var currentLeague = localStorage.getItem("league");
+	if (currentLeague != null) {
+		db.collection("leagues").doc(currentLeague).get().then(function(doc) {
+			updateResults(doc);
+			updateLadder(doc);
+		}).then(function() {
+		});
+		
+	}
+}
+
+function updateResults(doc) {
+	if (doc.exists) {
+		var playerIndex = doc.data().participants.indexOf(user.uid);
+		var fixtures = doc.data().fixtures;
+		var name = doc.data().name;
+		var opponentIndex = fixtures[playerIndex][roundIndex];
+		console.log(opponentIndex);
+	} else {
+		$("div#results").html("Select a league to see live results.");
+	}
+}
+			
+function updateLadder(doc) {
+	if (doc.exists) {
+	} else {
+		$("div#results").html("Select a league to see live results.");
+	}
 }
 
 function setLeagueList(leagues, leagueIDs) {
@@ -71,7 +116,16 @@ function setLeagueList(leagues, leagueIDs) {
 		$("div#leaguesList").append("<div id='" + leagueIDs + "'>" + leagues[i] + "</div>");
 	}
 	$("div#leaguesList div").click(function() {
-		localStorage.setItem("league", $(this).attr("id"));
+		var currentLeague = $(this).attr("id");
+		localStorage.setItem("league", currentLeague);
+		if (currentLeague != null) {
+			db.collection("leagues").doc(currentLeague).get().then(function(doc) {
+				updateResults(doc);
+				updateLadder(doc);
+			}).then(function() {
+			});
+
+		}
 	});
 }
 
