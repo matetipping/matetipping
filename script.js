@@ -110,7 +110,8 @@ $(document).ready(function(){
 						var userRef = firebase.firestore().collection("users").doc(user.uid);
 						userRef.set({
 							admin: false,
-							ownedLeague: null
+							ownedLeague: null,
+							username: user.displayName
 						});
 						
 						user.updateProfile({
