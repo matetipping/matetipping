@@ -97,6 +97,14 @@ body {
 .message {
   text-align: center;
 }
+div#leaguesList div {
+  padding: 8px 16px;
+  border: 2px solid #F37D33;
+  width: fit-content;
+  display: inline-block;
+  border-radius: 24px;
+  margin-right: 24px;
+}
 
 input[id*='marginInput'] {
   width: 25%;
