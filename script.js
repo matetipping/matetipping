@@ -191,7 +191,7 @@ function displayLogIn(username) {
 }
 
 function displayLogOff() {
-	localStorage.removeItem('username');
+	localStorage.clear();
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
 	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
 	$("nav ul li a").each(function() {
