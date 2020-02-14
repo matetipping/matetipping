@@ -173,11 +173,14 @@ function calculateScores(myTips, oppTips, results) {
 			} else if (diff < 0) {
 				oppScore = oppScore - diff;
 			}
-			myScores.push(myScore);
-			myTotal = myTotal + myScore;
-			oppScores.push(oppScore);
-			oppTotal = oppTotal + myTotal;
+		} else {
+			myScore = 0;
+			oppScore = 0;
 		}
+		myScores.push(myScore);
+		myTotal = myTotal + myScore;
+		oppScores.push(oppScore);
+		oppTotal = oppTotal + myTotal;
 	}
 	
 	if (myDisposal != null && resDisposal != null) {
