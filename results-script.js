@@ -167,6 +167,7 @@ function calculateScores(myTips, oppTips, results) {
 				oppDiff = oppMargins[i] + resMargins[i];
 			}
 			diff = oppDiff - myDiff;
+			console.log(diff);
 			if (myDiff == 0 || oppDiff == 0) {
 				diff = diff*2;
 			}
@@ -183,8 +184,6 @@ function calculateScores(myTips, oppTips, results) {
 		myTotal = myTotal + myScore;
 		oppScores.push(oppScore);
 		oppTotal = oppTotal + oppScore;
-		console.log(myTotal);
-		console.log(oppTotal);
 	}
 	
 	console.log(myTotal);
