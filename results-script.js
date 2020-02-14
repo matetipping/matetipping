@@ -102,14 +102,19 @@ function updateResults(doc) {
 		var myTipData = null;
 		var opponentTipData = null;
 		var resultsData = null;
+		var loadedCount = 0;
 		myTipsRef.get().then(function(doc) {
 			myTipData = doc.data();
+			loadedCount ++;
 		});
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
+			loadedCount ++;
 		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
+			loadedCount ++;
+			while (loadedCount < 3) {}
 			calculateScores(myTipData, opponentTipData, resultsData);
 		});
 	} else {
