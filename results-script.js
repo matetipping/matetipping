@@ -183,6 +183,8 @@ function calculateScores(myTips, oppTips, results) {
 		myTotal = myTotal + myScore;
 		oppScores.push(oppScore);
 		oppTotal = oppTotal + oppScore;
+		console.log(myTotal);
+		console.log(oppTotal);
 	}
 	
 	console.log(myTotal);
