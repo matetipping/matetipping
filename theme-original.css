@@ -109,7 +109,7 @@ div#leaguesList div {
   border: 2px solid #333F50;
 }
 div #leaguesList div.selected {
-  border-color: 2px solid #E6EBF2;
+  border: 2px solid #F37D33;
 }
 div#leaguesList div:hover {
   cursor: pointer;
