@@ -98,7 +98,7 @@ function updateResults(doc) {
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
-		var opponentRef = db.collection("users").doc(participants[opponentIndex]);
+		var opponentRef = db.collection("users").doc(participants[opponentIndex]).collection("preferences").doc("profile");
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
@@ -110,9 +110,12 @@ function updateResults(doc) {
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
 		});
+		opponentRef.get().then(function(doc) {
+			opponentName = doc.data().displayName;
+		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			calculateScores(myTipData, opponentTipData, resultsData);
+			calculateScores(opponentName, myTipData, opponentTipData, resultsData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
@@ -126,7 +129,7 @@ function updateLadder(doc) {
 	}
 }
 
-function calculateScores(me, opp, myTips, oppTips, results) {
+function calculateScores(opp, myTips, oppTips, results) {
 	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
@@ -141,7 +144,6 @@ function calculateScores(me, opp, myTips, oppTips, results) {
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
 	var me = user.displayName;
-	var opp = oppTips.username;
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
