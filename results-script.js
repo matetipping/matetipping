@@ -110,12 +110,9 @@ function updateResults(doc) {
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
 		});
-		opponentRef.get().then(function(doc) {
-			opponentName = doc.data().username;
-		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			calculateScores(user.displayName, opponentName, myTipData, opponentTipData, resultsData);
+			calculateScores(myTipData, opponentTipData, resultsData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
@@ -143,6 +140,8 @@ function calculateScores(me, opp, myTips, oppTips, results) {
 	var resMargins = results.resultsMargins;
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
+	var me = user.displayName;
+	var opp = oppTips.username;
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
