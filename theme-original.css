@@ -99,10 +99,11 @@ body {
 }
 div#leaguesList div {
   padding: 8px 16px;
-  border: 2px solid #F37D33;
+  color: #F37D33;
   width: fit-content;
   display: inline-block;
   border-radius: 24px;
+  background-color: #333F50;
   margin-right: 24px;
 }
 div#leaguesList div:hover {
