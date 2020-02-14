@@ -55,7 +55,7 @@ function loadPageData() {
 		if (myLeagues.length == 0) {
 			$("div#leaguesList").append("You are not currently in any leagues.");
 		} else {
-			setLeagueList(myLeagueNames);
+			setLeagueList(myLeagueNames, myLeagues);
 		}
   	}).catch(function(error) {
 		 $("div.message").html("<div class='error'>Error retrieving leagues.</div>");
@@ -63,12 +63,12 @@ function loadPageData() {
 	});
 }
 
-function setLeagueList(leagues) {
+function setLeagueList(leagues, leagueIDs) {
 	$("div#leaguesList").empty();
 	var i;
 	var length = leagues.length;
 	for (i = 0; i < length; i++) {
-		$("div#leaguesList").append("<div>" + leagues[i] + "</div>");
+		$("div#leaguesList").append("<div id='" + leagueIDs + "'>" + leagues[i] + "</div>");
 	}
 }
 
@@ -100,7 +100,7 @@ function createNewLeague(name, maxMembers) {
 		leagueCreated(leagueID, name, 1, maxMembers);
 		myLeagues.unshift(leagueID);
 		myLeagueNames.unshift(name + " ★");
-		setLeagueList(myLeagueNames);
+		setLeagueList(myLeagueNames, myLeagues);
 		$("div.message").html("<div class='successful'>League created successfully.</div>");
 		window.scrollTo(0, 0);
 		$("form#league-create").html(htmlBefore);
@@ -143,7 +143,7 @@ function joinExistingLeague(code) {
 	}).then(function(newParticipants) {
 		myLeagues.push(code);
 		myLeagueNames.push(leagueName);
-		setLeagueList(myLeagueNames);
+		setLeagueList(myLeagueNames, myLeagues);
 		$("div.message").html("<div class='successful'>League joined successfully.</div>");
 		window.scrollTo(0, 0);
 		$("form#league-join").html(htmlBefore);
