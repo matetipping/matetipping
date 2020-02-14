@@ -8,8 +8,8 @@ var currentLeague = localStorage.getItem("league");
 
 $(document).ready(function(){
 	
-	$("results-navigation button").click(function() {
-		$("results-navigation button.selected").removeClass("selected");
+	$("#results-navigation button").click(function() {
+		$("#results-navigation button.selected").removeClass("selected");
 		$(this).addClass("selected");
 		var buttonType = $(this).html();
 		if (buttonType == "Leagues") {
