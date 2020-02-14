@@ -93,15 +93,25 @@ function updateResults(doc) {
 	if (doc.exists) {
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(user.uid);
-		console.log(playerIndex);
 		var fixtures = doc.data().fixtures;
-		console.log(fixtures);
 		var name = doc.data().name;
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
-		console.log(opponentIndex);
-		console.log(participants[opponentIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
+		var results = db.collection("rounds").doc(roundCode);
+		var myTipData = null;
+		var opponentTipData = null;
+		var resultsData = null;
+		myTipsRef.get().then(function(doc) {
+			myTipData = doc.data();
+		});
+		opponentTipsRef.get().then(function(doc) {
+			opponentTipData = doc.data();
+		});
+		results.get().then(function(doc) {
+			resultsData = doc.data();
+			calculateScores(myTipData, opponentTipData, resultsData);
+		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
 	}
@@ -112,6 +122,10 @@ function updateLadder(doc) {
 	} else {
 		$("div#results").html("Select a league to see live results.");
 	}
+}
+
+function resultsData(doc) {
+	console.log("Calculate results here");
 }
 
 function setLeagueList(leagues, leagueIDs) {
