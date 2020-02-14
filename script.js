@@ -108,11 +108,18 @@ $(document).ready(function(){
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
 						var userRef = firebase.firestore().collection("users").doc(user.uid);
-						userRef.set({
+						var profileRef = userRef.collection("preferences").profile("");
+						var batch = firebase.firestore().batch();
+						
+						batch.set(userRef, {
 							admin: false,
-							ownedLeague: null,
-							username: user.displayName
+							ownedLeague: null
 						});
+						
+						batch.set(profileRef, {
+							displayName: formData.username
+						});
+						batch.commit();
 						
 						user.updateProfile({
 							displayName: formData.username
