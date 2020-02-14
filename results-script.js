@@ -281,8 +281,9 @@ function setLeagueList(leagues, leagueIDs) {
 	$("div#leaguesList div").click(function() {
 		$("div#leaguesList div.selected").removeClass("selected");
 		$(this).addClass("selected");
-		var currentLeague = $(this).attr("id");
-		localStorage.setItem("league", currentLeague);
+		var newLeague = $(this).attr("id");
+		localStorage.setItem("league", newLeague);
+		currentLeague = newLeague;
 		if (currentLeague != null) {
 			db.collection("leagues").doc(currentLeague).get().then(function(doc) {
 				updateResults(doc);
