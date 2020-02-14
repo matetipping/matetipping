@@ -99,7 +99,7 @@ function updateResults(doc) {
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var opponentRef = db.collection("users").doc(participants[opponentIndex]).collection("preferences").doc("profile");
-		var playersRef = db.collection("footballers").doc(currentYear);
+		var playersRef = db.collection("footballers").doc(new Date().getFullYear().toString());
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
