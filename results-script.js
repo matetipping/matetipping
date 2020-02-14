@@ -181,8 +181,8 @@ function calculateScores(myTips, oppTips, results) {
 		myTotal = myTotal + myScore;
 		oppTotal = oppTotal + oppScore;
 		htmlContent = htmlContent + "<tr><td><div class='flag' style='width:100px; height:50px;' id='" + myClubs[i] + "'></div></td>" +
-			"<td>" + myMargins[i] + "</td><td>" + myScore + "</td>" +
-			"<td>" + oppScore + "</td><td>" + oppMargins[i] + "</td>" +
+			"<td>" + myMargins[i] + "</td><td><span class='highlight'>" + myScore + "</span></td>" +
+			"<td><span class='highlight'>" + oppScore + "</span></td><td>" + oppMargins[i] + "</td>" +
 			"<td><div class='flag' style='width:100px; height:50px;' id='" + oppClubs[i] + "'></div></td></tr>";
 	}
 	
@@ -211,17 +211,17 @@ function calculateScores(myTips, oppTips, results) {
 	}
 	
 	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDisposal + "</td>" +
-		"<td>" + myDB + "</td><td>" + oppDB + "</td>" +
+		"<td><span class='highlight'>" + myDB + "</span></td><td><span class='highlight'>" + oppDB + "</span></td>" +
 		"<td colspan = '2'>" + oppDisposal + "</td></tr>" +
 		"<tr><td colspan = '2'>" + myScorer + "</td>" +
-		"<td>" + mySB + "</td><td>" + oppSB + "</td>" +
+		"<td><span class='highlight'>" + mySB + "</span></td><td><span class='highlight'>" + oppSB + "</span></td>" +
 		"<td colspan = '2'>" + oppScorer + "</td></tr>";
 	
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
 	
 	htmlContent = htmlContent + "<tr><td colspan = '2'></td>" +
-		"<td>" + myTotal + "</td><td>" + oppTotal + "</td>" +
+		"<td colspan = '2'><span class='highlight'>" + myTotal + "</span> vs <span class='highlight'>" + oppTotal + "</span></td>" +
 		"<td colspan = '2'></td></tr>";
 	
 	$("div#results").html(htmlContent);
