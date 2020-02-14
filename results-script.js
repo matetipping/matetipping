@@ -126,6 +126,93 @@ function updateLadder(doc) {
 
 function calculateScores(myTips, oppTips, results) {
 	console.log("Calculate results here");
+	var myClubs = myTips.clubs;
+	var myMargins = myTips.margins;
+	var myDisposal = myTips.disposal;
+	var myScorer = myTips.scorer;
+	var oppClubs = oppTips.clubs;
+	var oppMargins = oppTips.margins;
+	var oppDisposal = oppTips.disposal;
+	var oppScorer = oppTips.scorer;
+	var resClubs = results.resultsClubs;
+	var resMargins = results.resultsMargins;
+	var resDisposal = results.resultsDisposals;
+	var resScorer = results.resultsScorers;
+	var myScores = [];
+	var oppScores = [];
+	var myTotal = 0;
+	var oppTotal = 0;
+	var correctTipBonus = 5;
+	var i;
+	var length = myClubs.length;
+	for (i = 0; i < length; i++) {
+		if (resClubs.length > i) {
+			var myScore = 0;
+			var oppScore = 0;
+			var myDiff;
+			var oppDiff;
+			var diff;
+			if (myClubs[i] == resClubs[i]) {
+				myScore = myScore + correctTipBonus;
+				myDiff = Math.abs(myMargins[i] - resMargins[i]);
+			} else {
+				myDiff = myMargins[i] + resMargins[i];
+			}
+			if (oppClubs[i] == resClubs[i]) {
+				oppScore = oppScore + correctTipBonus;
+				oppDiff = Math.abs(oppMargins[i] - resMargins[i]);
+			} else {
+				oppDiff = oppMargins[i] + resMargins[i];
+			}
+			diff = oppDiff - myDiff;
+			if (myDiff == 0 || oppDiff == 0) {
+				diff = diff*2;
+			}
+			if (diff > 0) {
+				myScore = myScore + diff;
+			} else if (diff < 0) {
+				oppScore = oppScore - diff;
+			}
+			myScores.push(myScore);
+			myTotal = myTotal + myScore;
+			oppScores.push(oppScore);
+			oppTotal = oppTotal + myTotal;
+		}
+	}
+	
+	if (myDisposal != null) {
+		var myDB = resDisposal[myDisposal];
+	} else {
+		var myDB = 0;
+	}
+	
+	if (myScorer != null) {
+		var mySB = resScorer[myScorer];
+	} else {
+		var myDB = 0;
+	}
+	
+	if (oppDisposal != null) {
+		var oppDB = resDisposal[oppDisposal];
+	} else {
+		var oppDB = 0;
+	}
+	
+	if (oppScorer != null) {
+		var oppSB = resScorer[oppScorer];
+	} else {
+		var oppDB = 0;
+	}
+	
+	myScores.push(myDB);
+	myScores.push(mySB);
+	oppScores.push(oppDB);
+	oppScores.push(oppSB);
+	myTotal = myTotal + myDB + mySB;
+	oppTotal = oppTotal + oppDB + oppSB;
+	
+	console.log(myTotal);
+	console.log(oppTotal);
 }
 
 function setLeagueList(leagues, leagueIDs) {
