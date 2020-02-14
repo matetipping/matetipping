@@ -13,7 +13,7 @@ $(document).ready(function(){
 		} else if (maxMembers < 6 || maxMembers > 100) {
 			$("div.message").html("<div class='error'>Member limit must be between 6 and 100.</div>");
 			window.scrollTo(0, 0);
-		} else if (maxMembers % 2 != 1) {
+		} else if (maxMembers % 2 != 0) {
 			$("div.message").html("<div class='error'>Member limit must be even.</div>");
 			window.scrollTo(0, 0);
 		} else {
