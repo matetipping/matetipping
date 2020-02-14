@@ -147,8 +147,7 @@ function calculateScores(opp, myTips, oppTips, results) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = "<table><thead><tr><th colspan='3'>" + me + "</th><th colspan='3'>" + opp + "</th></tr>" +
-	    "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
+	var htmlContent = "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
@@ -230,6 +229,9 @@ function calculateScores(opp, myTips, oppTips, results) {
 	htmlContent = htmlContent + "<tr><td colspan = '2'></td>" +
 		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
 		"<td colspan = '2'></td></tr></tbody></table>";
+	
+	htmlContent = "<table><thead><tr><th colspan='2'>" + me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
+		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" + opp + "</th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
 	
