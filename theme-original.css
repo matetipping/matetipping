@@ -110,6 +110,7 @@ div#leaguesList div {
 }
 div #leaguesList div.selected, div#leaguesList div:hover {
   border: 2px solid #F37D33;
+  color: #E6EBF2;
 }
 div#leaguesList div:hover {
   cursor: pointer;
