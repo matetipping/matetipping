@@ -146,9 +146,9 @@ function calculateScores(myTips, oppTips, results) {
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
+		var myScore = 0;
+		var oppScore = 0;
 		if (resClubs.length > i) {
-			var myScore = 0;
-			var oppScore = 0;
 			var myDiff;
 			var oppDiff;
 			var diff;
@@ -180,31 +180,32 @@ function calculateScores(myTips, oppTips, results) {
 		myScores.push(myScore);
 		myTotal = myTotal + myScore;
 		oppScores.push(oppScore);
-		oppTotal = oppTotal + myTotal;
+		oppTotal = oppTotal + oppScore;
 	}
 	
 	console.log(myTotal);
 	console.log(oppTotal);
 	
-	if (myDisposal != null && resDisposal != null) {
+	if (myDisposal != null) {
 		var myDB = resDisposal[myDisposal];
+		console.log(myDB);
 	} else {
 		var myDB = 0;
 	}
 	
-	if (myScorer != null && resScorer != null) {
+	if (myScorer != null) {
 		var mySB = resScorer[myScorer];
 	} else {
 		var myDB = 0;
 	}
 	
-	if (oppDisposal != null && resDisposal != null) {
+	if (oppDisposal != null) {
 		var oppDB = resDisposal[oppDisposal];
 	} else {
 		var oppDB = 0;
 	}
 	
-	if (oppScorer != null && resScorer != null) {
+	if (oppScorer != null) {
 		var oppSB = resScorer[oppScorer];
 	} else {
 		var oppDB = 0;
