@@ -114,8 +114,13 @@ function updateResults(doc) {
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
 			loadedCount ++;
-			while (loadedCount < 3) {}
-			calculateScores(myTipData, opponentTipData, resultsData);
+			var loaded = false;
+			while (!loaded) {
+				if (loadedCount >= 3) {
+					loaded = true;
+					calculateScores(myTipData, opponentTipData, resultsData);
+				}
+			}
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
