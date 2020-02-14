@@ -97,7 +97,6 @@ function updateResults(doc) {
 		var name = doc.data().name;
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
-		console.log("users/" + user.uid + "/tips/" + roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
@@ -181,25 +180,25 @@ function calculateScores(myTips, oppTips, results) {
 		}
 	}
 	
-	if (myDisposal != null) {
+	if (myDisposal != null && resDisposal != null) {
 		var myDB = resDisposal[myDisposal];
 	} else {
 		var myDB = 0;
 	}
 	
-	if (myScorer != null) {
+	if (myScorer != null && resScorer != null) {
 		var mySB = resScorer[myScorer];
 	} else {
 		var myDB = 0;
 	}
 	
-	if (oppDisposal != null) {
+	if (oppDisposal != null && resDisposal != null) {
 		var oppDB = resDisposal[oppDisposal];
 	} else {
 		var oppDB = 0;
 	}
 	
-	if (oppScorer != null) {
+	if (oppScorer != null && resScorer != null) {
 		var oppSB = resScorer[oppScorer];
 	} else {
 		var oppDB = 0;
