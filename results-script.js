@@ -99,10 +99,12 @@ function updateResults(doc) {
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var opponentRef = db.collection("users").doc(participants[opponentIndex]).collection("preferences").doc("profile");
+		var playersRef = db.collection("footballers").doc(currentYear);
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
 		var opponentName = "";
+		var footballersData = null;
 		var resultsData = null;
 		myTipsRef.get().then(function(doc) {
 			myTipData = doc.data();
@@ -113,9 +115,12 @@ function updateResults(doc) {
 		opponentRef.get().then(function(doc) {
 			opponentName = doc.data().displayName;
 		});
+		playersRef.get().then(function(doc) {
+			footballersData = doc.data();
+		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			calculateScores(opponentName, myTipData, opponentTipData, resultsData);
+			calculateScores(opponentName, myTipData, opponentTipData, resultsData, footballersData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
@@ -129,7 +134,7 @@ function updateLadder(doc) {
 	}
 }
 
-function calculateScores(opp, myTips, oppTips, results) {
+function calculateScores(opp, myTips, oppTips, results, footballersData) {
 	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
@@ -143,6 +148,7 @@ function calculateScores(opp, myTips, oppTips, results) {
 	var resMargins = results.resultsMargins;
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
+	var players = footballersData.players;
 	var me = user.displayName;
 	var myTotal = 0;
 	var oppTotal = 0;
@@ -216,12 +222,12 @@ function calculateScores(opp, myTips, oppTips, results) {
 		var oppSB = 0;
 	}
 	
-	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDisposal + "</td>" +
+	htmlContent = htmlContent + "<tr><td colspan = '2'>" + players[myDisposal].name + "</td>" +
 		"<td><span class='highlight'>" + myDB + "</span></td><td><span class='highlight'>" + oppDB + "</span></td>" +
-		"<td colspan = '2'>" + oppDisposal + "</td></tr>" +
-		"<tr><td colspan = '2'>" + myScorer + "</td>" +
+		"<td colspan = '2'>" + players[oppDisposal].name + "</td></tr>" +
+		"<tr><td colspan = '2'>" + players[myScorer].name + "</td>" +
 		"<td><span class='highlight'>" + mySB + "</span></td><td><span class='highlight'>" + oppSB + "</span></td>" +
-		"<td colspan = '2'>" + oppScorer + "</td></tr>";
+		"<td colspan = '2'>" + players[oppScorer].name + "</td></tr>";
 	
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
