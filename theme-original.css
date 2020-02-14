@@ -109,6 +109,18 @@ div#leaguesList div {
 div#leaguesList div:hover {
   cursor: pointer;
 }
+div#results table td {
+  text-align: center;
+  width: 17%;
+}
+div#results table tr {
+  height: 50px;
+}
+div#results table tr:last-child {
+  font-size: 200%;
+  font-family: Lato Black;
+  color: #F37D33;
+}
 
 input[id*='marginInput'] {
   width: 25%;
