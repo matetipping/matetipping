@@ -198,36 +198,61 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 			"<td><div class='flag' style='width:100px; height:50px;' id='" + oppClubs[i] + "'></div></td></tr>";
 	}
 	
-	if (myDisposal != null && typeof resDisposal !== 'undefined') {
-		var myDB = resDisposal[myDisposal];
+	if (myDisposal != null) {
+		var myDN = players[myDisposal].name;
+		if (typeof resDisposal !== 'undefined') {
+			var myDB = resDisposal[myDisposal];
+		} else {
+			var myDB = 0;
+		}
 	} else {
+		myDN = "";
 		var myDB = 0;
 	}
 	
-	if (myScorer != null && typeof resDisposal !== 'undefined') {
-		var mySB = resScorer[myScorer];
+	if (myScorer != null) {
+		var mySN = players[myScorer].name;
+		if (typeof resScorer !== 'undefined') {
+			var mySB = resScorer[myScorer];
+		} else {
+			var mySB = 0;
+		}
 	} else {
+		mySN = "";
 		var mySB = 0;
 	}
 	
-	if (oppDisposal != null && typeof resDisposal !== 'undefined') {
-		var oppDB = resDisposal[oppDisposal];
+	if (oppDisposal != null) {
+		var oppDN = players[oppDisposal].name;
+		if (typeof resDisposal !== 'undefined') {
+			var oppDB = resDisposal[oppDisposal];
+		} else {
+			var oppDB = 0;
+		}
 	} else {
+		oppDN = "";
 		var oppDB = 0;
 	}
 	
-	if (oppScorer != null && typeof resDisposal !== 'undefined') {
-		var oppSB = resScorer[oppScorer];
+	if (oppScorer != null) {
+		var oppSN = players[oppScorer].name;
+		if (typeof resScorer !== 'undefined') {
+			var oppSB = resScorer[oppScorer];
+		} else {
+			var oppSB = 0;
+		}
 	} else {
+		oppSN = "";
 		var oppSB = 0;
 	}
 	
-	htmlContent = htmlContent + "<tr><td colspan = '2'>" + players[myDisposal].name + "</td>" +
+	
+	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDN + "</td>" +
 		"<td><span class='highlight'>" + myDB + "</span></td><td><span class='highlight'>" + oppDB + "</span></td>" +
-		"<td colspan = '2'>" + players[oppDisposal].name + "</td></tr>" +
-		"<tr><td colspan = '2'>" + players[myScorer].name + "</td>" +
+		"<td colspan = '2'>" + oppDN + "</td></tr>" +
+		"<tr><td colspan = '2'>" + mySN + "</td>" +
 		"<td><span class='highlight'>" + mySB + "</span></td><td><span class='highlight'>" + oppSB + "</span></td>" +
-		"<td colspan = '2'>" + players[oppScorer].name + "</td></tr>";
+		"<td colspan = '2'>" + oppSN + "</td></tr>";
 	
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
