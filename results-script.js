@@ -15,6 +15,7 @@ $(document).ready(function(){
 			roundName = doc.data().name;
 			roundIndex = Number(roundName.split(" ")[1]) - 1;
 			roundCode = doc.data().codename;
+			console.log(roundIndex);
 		});
 	});
 	
