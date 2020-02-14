@@ -309,6 +309,8 @@ div.flag {
   float: left;
   border: 2px solid #fff;
   box-shadow: 1px 0px 3px #000;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 div.flag#DRW {
   background-image: url('images/flag-drw.svg');
