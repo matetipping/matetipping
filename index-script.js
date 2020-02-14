@@ -93,7 +93,7 @@ $(document).ready(function(){
 				lastRoundUpdated: roundCode
 			});
 			
-			var htmlBefore = $("button.submit").html();
+			var htmlBefore = $("button.submit").parent().html();
 			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			
 			batch.commit().then(function() {
