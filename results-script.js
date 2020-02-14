@@ -183,7 +183,7 @@ function calculateScores(myTips, oppTips, results) {
 		htmlContent = htmlContent + "<tr><td><div class='flag' style='width:100px; height:50px;' id='" + myClubs[i] + "'></div></td>" +
 			"<td>" + myMargins[i] + "</td><td>" + myScore + "</td>" +
 			"<td>" + oppScore + "</td><td>" + oppMargins[i] + "</td>" +
-			"<td><div class='flag' id='" + oppClubs[i] + "'></div></td></tr>";
+			"<td><div class='flag' style='width:100px; height:50px;' id='" + oppClubs[i] + "'></div></td></tr>";
 	}
 	
 	if (myDisposal != null && typeof resDisposal !== 'undefined') {
