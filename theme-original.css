@@ -105,6 +105,9 @@ div#leaguesList div {
   border-radius: 24px;
   margin-right: 24px;
 }
+div#leaguesList div:hover {
+  cursor: pointer;
+}
 
 input[id*='marginInput'] {
   width: 25%;
