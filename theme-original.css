@@ -119,7 +119,6 @@ div#results table tr {
 div#results table tr:last-child {
   font-size: 200%;
   font-family: Lato Black;
-  color: #F37D33;
 }
 
 input[id*='marginInput'] {
