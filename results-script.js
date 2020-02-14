@@ -97,30 +97,21 @@ function updateResults(doc) {
 		var name = doc.data().name;
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
+		console.log("users/" + user.uid + "/tips/" + roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
 		var resultsData = null;
-		var loadedCount = 0;
 		myTipsRef.get().then(function(doc) {
 			myTipData = doc.data();
-			loadedCount ++;
 		});
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
-			loadedCount ++;
 		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			loadedCount ++;
-			var loaded = false;
-			while (!loaded) {
-				if (loadedCount >= 3) {
-					loaded = true;
-					calculateScores(myTipData, opponentTipData, resultsData);
-				}
-			}
+			calculateScores(myTipData, opponentTipData, resultsData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
