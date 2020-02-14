@@ -13,14 +13,17 @@ $(document).ready(function(){
 		$(this).addClass("selected");
 		var buttonType = $(this).html();
 		if (buttonType == "Leagues") {
+			$("div#leaguesList").hide();
 			$("div#leagues").show();
 			$("div#results").hide();
 			$("div#ladder").hide();
 		} else if (buttonType == "Results") {
+			$("div#leaguesList").show();
 			$("div#leagues").hide();
 			$("div#results").show();
 			$("div#ladder").hide();
 		} else if (buttonType == "Ladder") {
+			$("div#leaguesList").show();
 			$("div#leagues").hide();
 			$("div#results").hide();
 			$("div#ladder").show();
