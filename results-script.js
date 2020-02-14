@@ -180,7 +180,7 @@ function calculateScores(myTips, oppTips, results) {
 		}
 		myTotal = myTotal + myScore;
 		oppTotal = oppTotal + oppScore;
-		htmlContent = htmlContent + "<tr><td><div class='flag' id='" + myClubs[i] + "'></div></td>" +
+		htmlContent = htmlContent + "<tr><td><div class='flag' style='width:100px; height:50px;' id='" + myClubs[i] + "'></div></td>" +
 			"<td>" + myMargins[i] + "</td><td>" + myScore + "</td>" +
 			"<td>" + oppScore + "</td><td>" + oppMargins[i] + "</td>" +
 			"<td><div class='flag' id='" + oppClubs[i] + "'></div></td></tr>";
