@@ -154,8 +154,10 @@ div#results table tr:nth-child(even) {
   border-bottom-right-radius: 24px;
 }
 #results-navigation button.selected {
-  border-bottom: 2px solid #F47D33; 
   color: #E6EBF2;
+}
+#results-navigation button.selected, #results-navigation button:hover {
+  border-bottom: 2px solid #F47D33;
 }
 input[id*='marginInput'] {
   width: 25%;
