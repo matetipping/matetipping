@@ -91,10 +91,13 @@ function loadPageData() {
 
 function updateResults(doc) {
 	if (doc.exists) {
-		var playerIndex = doc.data().participants.indexOf(user.uid);
+		var participants = doc.data().participants;
+		var playerIndex = participants.indexOf(user.uid);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
 		var opponentIndex = fixtures[playerIndex][roundIndex];
+		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
+		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		console.log(opponentIndex);
 	} else {
 		$("div#results").html("Select a league to see live results.");
