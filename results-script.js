@@ -195,18 +195,21 @@ function calculateScores(myTips, oppTips, results) {
 	
 	if (myScorer != null && typeof resDisposal !== 'undefined') {
 		var mySB = resScorer[myScorer];
+		console.log(mySB);
 	} else {
 		var myDB = 0;
 	}
 	
 	if (oppDisposal != null && typeof resDisposal !== 'undefined') {
 		var oppDB = resDisposal[oppDisposal];
+		console.log(oppDB);
 	} else {
 		var oppDB = 0;
 	}
 	
 	if (oppScorer != null && typeof resDisposal !== 'undefined') {
 		var oppSB = resScorer[oppScorer];
+		console.log(oppSB);
 	} else {
 		var oppDB = 0;
 	}
