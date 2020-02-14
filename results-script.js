@@ -95,7 +95,7 @@ function updateResults(doc) {
 		var playerIndex = participants.indexOf(user.uid);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
-		var opponentIndex = fixtures[playerIndex].split(", ")[roundIndex];
+		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		console.log(opponentIndex);
