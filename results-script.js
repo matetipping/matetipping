@@ -186,26 +186,26 @@ function calculateScores(myTips, oppTips, results) {
 	console.log(myTotal);
 	console.log(oppTotal);
 	
-	if (myDisposal != null) {
+	if (myDisposal != null && typeof resDisposal !== 'undefined') {
 		var myDB = resDisposal[myDisposal];
 		console.log(myDB);
 	} else {
 		var myDB = 0;
 	}
 	
-	if (myScorer != null) {
+	if (myScorer != null && typeof resDisposal !== 'undefined') {
 		var mySB = resScorer[myScorer];
 	} else {
 		var myDB = 0;
 	}
 	
-	if (oppDisposal != null) {
+	if (oppDisposal != null && typeof resDisposal !== 'undefined') {
 		var oppDB = resDisposal[oppDisposal];
 	} else {
 		var oppDB = 0;
 	}
 	
-	if (oppScorer != null) {
+	if (oppScorer != null && typeof resDisposal !== 'undefined') {
 		var oppSB = resScorer[oppScorer];
 	} else {
 		var oppDB = 0;
