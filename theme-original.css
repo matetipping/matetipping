@@ -108,12 +108,11 @@ div#leaguesList div {
   transition: 0.2s;
   border: 2px solid #333F50;
 }
-div #leaguesList div.selected {
+div #leaguesList div.selected, div#leaguesList div:hover {
   border: 2px solid #F37D33;
 }
 div#leaguesList div:hover {
   cursor: pointer;
-  
 }
 div#results table {
   margin: auto;
