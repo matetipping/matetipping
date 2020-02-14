@@ -8,6 +8,25 @@ var currentLeague = localStorage.getItem("league");
 
 $(document).ready(function(){
 	
+	$("results-navigation button").click(function() {
+		$("results-navigation button.selected").removeClass("selected");
+		$(this).addClass("selected");
+		var buttonType = $(this).html();
+		if (buttonType == "Leagues") {
+			$("div#leagues").show();
+			$("div#results").hide();
+			$("div#ladder").hide();
+		} else if (buttonType == "Results") {
+			$("div#leagues").hide();
+			$("div#results").show();
+			$("div#ladder").hide();
+		} else if (buttonType == "Ladder") {
+			$("div#leagues").hide();
+			$("div#results").hide();
+			$("div#ladder").show();
+		}
+	});
+	
 	// calculate the current round
 	var timestamp = firebase.firestore.Timestamp.now();
 	var roundRef = db.collection("rounds").where('date', '<', timestamp).orderBy('date',  'desc').limit(1);
