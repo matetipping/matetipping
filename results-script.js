@@ -7,7 +7,18 @@ $(document).ready(function(){
 		e.preventDefault();
 		var name = $("#input-league-name").val();
 		var maxMembers = Number($("#input-league-max").val());
-		createNewLeague(name, maxMembers);
+		if (name.length < 3) {
+			$("div.message").html("<div class='error'>Name too short.</div>");
+			window.scrollTo(0, 0);
+		} else if (maxMembers < 6 || maxMembers > 100) {
+			$("div.message").html("<div class='error'>Member limit must be between 6 and 100.</div>");
+			window.scrollTo(0, 0);
+		} else if (maxMembers % 2 != 1) {
+			$("div.message").html("<div class='error'>Member limit must be even.</div>");
+			window.scrollTo(0, 0);
+		} else {
+			createNewLeague(name, maxMembers);
+		}
 	});
 	
 	$("form#league-join").submit(function(e) {
@@ -81,6 +92,9 @@ function createNewLeague(name, maxMembers) {
 		ownedLeague: leagueID
 	});
 	
+	var htmlBefore = $("form#league-create").html();
+	$("form#league-create").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
+	
 	batch.commit().then(function(doc) {
 		console.log(myLeagueNames);
 		leagueCreated(leagueID, name, 1, maxMembers);
@@ -89,9 +103,11 @@ function createNewLeague(name, maxMembers) {
 		setLeagueList(myLeagueNames);
 		$("div.message").html("<div class='successful'>League created successfully.</div>");
 		window.scrollTo(0, 0);
+		$("form#league-create").html(htmlBefore);
 	}).catch(function(e) {
 		$("div.message").html("<div class='error'>League could not be created.</div>");
 		window.scrollTo(0, 0);
+		$("form#league-create").html(htmlBefore);
 	});
 	
 }
