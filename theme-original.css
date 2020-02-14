@@ -158,6 +158,7 @@ div#results table tr:nth-child(even) {
 }
 #results-navigation button.selected, #results-navigation button:hover {
   border-bottom: 2px solid #F47D33;
+  background-color: #222A35;
 }
 input[id*='marginInput'] {
   width: 25%;
