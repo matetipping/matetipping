@@ -141,7 +141,8 @@ function calculateScores(myTips, oppTips, results) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = "<table>";
+	var htmlContent = "<table><thead><tr><th colspan='3'>" + "YOU" + "</th><th colspan='3'>" + "OPPONENT" + "</th></tr>" +
+	    "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead>";
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
