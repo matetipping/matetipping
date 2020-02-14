@@ -116,7 +116,7 @@ div#results table td {
 div#results table tr {
   height: 50px;
 }
-div#results table tr:last-child {
+div#results table tbody tr:last-child {
   font-size: 200%;
   font-family: Lato Black;
 }
