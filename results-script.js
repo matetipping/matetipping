@@ -70,6 +70,9 @@ function setLeagueList(leagues, leagueIDs) {
 	for (i = 0; i < length; i++) {
 		$("div#leaguesList").append("<div id='" + leagueIDs + "'>" + leagues[i] + "</div>");
 	}
+	$("div#leaguesList div").click(function() {
+		localStorage.setItem("league", $(this).attr("id"));
+	});
 }
 
 function createNewLeague(name, maxMembers) {
