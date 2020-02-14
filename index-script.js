@@ -93,14 +93,15 @@ $(document).ready(function(){
 				lastRoundUpdated: roundCode
 			});
 			
+			var htmlBefore = $("button.submit").html();
 			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			
 			batch.commit().then(function() {
-				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Update Tips</button>");
+				$("div.loader.form-loader").replaceWith(htmlBefore);
 				$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
 				window.scrollTo(0, 0);
 			}).catch(function(error) {
-				$("div.loader.form-loader").replaceWith("<button class='submit' type='submit'>Submit Tips</button>");
+				$("div.loader.form-loader").replaceWith(htmlBefore);
 				$("div.message").html("<div class='error'>Error saving tips.</div>");
 				window.scrollTo(0, 0);
 			});
