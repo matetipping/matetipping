@@ -13,7 +13,12 @@ $(document).ready(function(){
 	$("form#league-join").submit(function(e) {
 		e.preventDefault();
 		var code = $("#input-league-code").val();
-		joinExistingLeague(code);
+		if (code != "") {
+			joinExistingLeague(code);
+		} else {
+			$("div.message").html("<div class='error'>Must enter code.</div>");
+			window.scrollTo(0, 0);
+		}
 	});
 });
 
