@@ -177,13 +177,14 @@ function calculateScores(myTips, oppTips, results) {
 			myScore = 0;
 			oppScore = 0;
 		}
-		console.log(myScore);
-		console.log(oppScore);
 		myScores.push(myScore);
 		myTotal = myTotal + myScore;
 		oppScores.push(oppScore);
 		oppTotal = oppTotal + myTotal;
 	}
+	
+	console.log(myTotal);
+	console.log(oppTotal);
 	
 	if (myDisposal != null && resDisposal != null) {
 		var myDB = resDisposal[myDisposal];
