@@ -138,11 +138,10 @@ function calculateScores(myTips, oppTips, results) {
 	var resMargins = results.resultsMargins;
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
-	var myScores = [];
-	var oppScores = [];
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
+	var htmlContent = "<table>";
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
@@ -179,10 +178,12 @@ function calculateScores(myTips, oppTips, results) {
 			myScore = 0;
 			oppScore = 0;
 		}
-		myScores.push(myScore);
 		myTotal = myTotal + myScore;
-		oppScores.push(oppScore);
 		oppTotal = oppTotal + oppScore;
+		htmlContent = htmlContent + "<tr><td><div class='flag' id='" + myClubs[i] + "'></div></td>" +
+			"<td>" + myMargins[i] + "</td><td>" + myScore + "</td>" +
+			"<td>" + oppScore + "</td><td>" + oppMargins[i] + "</td>" +
+			"<td><div class='flag' id='" + oppClubs[i] + "'></div></td></tr>";
 	}
 	
 	if (myDisposal != null && typeof resDisposal !== 'undefined') {
@@ -209,16 +210,23 @@ function calculateScores(myTips, oppTips, results) {
 		var oppSB = 0;
 	}
 	
-	myScores.push(myDB);
-	myScores.push(mySB);
-	oppScores.push(oppDB);
-	oppScores.push(oppSB);
+	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDisposal + "</td>" +
+		"<td>" + myDB + "</td><td>" + oppDB + "</td>" +
+		"<td colspan = '2'>" + oppDisposal + "</td></tr>" +
+		"<tr><td colspan = '2'>" + myScorer + "</td>" +
+		"<td>" + mySB + "</td><td>" + oppSB + "</td>" +
+		"<td colspan = '2'>" + oppScorer + "</td></tr>";
+	
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
 	
-	console.log(myScores);
+	htmlContent = htmlContent + "<tr><td colspan = '2'></td>" +
+		"<td>" + myTotal + "</td><td>" + oppTotal + "</td>" +
+		"<td colspan = '2'></td></tr>";
+	
+	$("div#results").html(htmlContent);
+	
 	console.log(myTotal);
-	console.log(oppScores);
 	console.log(oppTotal);
 }
 
