@@ -4,6 +4,7 @@ var db = firebase.firestore();
 var roundIndex = 0;
 var roundName = "";
 var roundCode = "";
+var currentLeague = localStorage.getItem("league");
 
 $(document).ready(function(){
 	
@@ -78,7 +79,6 @@ function loadPageData() {
 		 $("div.message").html("<div class='error'>Error retrieving leagues.</div>");
 		 window.scrollTo(0, 0);
 	});
-	var currentLeague = localStorage.getItem("league");
 	if (currentLeague != null) {
 		db.collection("leagues").doc(currentLeague).get().then(function(doc) {
 			updateResults(doc);
@@ -277,7 +277,10 @@ function setLeagueList(leagues, leagueIDs) {
 	for (i = 0; i < length; i++) {
 		$("div#leaguesList").append("<div id='" + leagueIDs[i] + "'>" + leagues[i] + "</div>");
 	}
+	$("div#leaguesList div#" + currentLeague).addClass("selected");
 	$("div#leaguesList div").click(function() {
+		$("div#leaguesList div.selected").removeClass("selected");
+		$(this).addClass("selected");
 		var currentLeague = $(this).attr("id");
 		localStorage.setItem("league", currentLeague);
 		if (currentLeague != null) {
