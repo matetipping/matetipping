@@ -119,7 +119,7 @@ div#results table td {
 div#results table tr {
   height: 50px;
 }
-div#results table tbody tr:last-child {
+div#results table tbody tr:last-child .highlight, div#results table thead tr:first-child .highlight {
   font-size: 200%;
   font-family: Lato Black;
 }
