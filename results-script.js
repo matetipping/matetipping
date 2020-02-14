@@ -7,8 +7,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var name = $("#input-league-name").val();
 		var maxMembers = Number($("#input-league-max").val());
-		if (name.length < 3) {
-			$("div.message").html("<div class='error'>Name too short.</div>");
+		if (name.length < 3 || name.length > 32) {
+			$("div.message").html("<div class='error'>Name must be between 3 and 32 characters.</div>");
 			window.scrollTo(0, 0);
 		} else if (maxMembers < 6 || maxMembers > 100) {
 			$("div.message").html("<div class='error'>Member limit must be between 6 and 100.</div>");
