@@ -167,7 +167,6 @@ function calculateScores(myTips, oppTips, results) {
 				oppDiff = oppMargins[i] + resMargins[i];
 			}
 			diff = oppDiff - myDiff;
-			console.log(diff);
 			if (myDiff == 0 || oppDiff == 0) {
 				diff = diff*2;
 			}
@@ -185,9 +184,6 @@ function calculateScores(myTips, oppTips, results) {
 		oppScores.push(oppScore);
 		oppTotal = oppTotal + oppScore;
 	}
-	
-	console.log(myTotal);
-	console.log(oppTotal);
 	
 	if (myDisposal != null && typeof resDisposal !== 'undefined') {
 		var myDB = resDisposal[myDisposal];
@@ -220,7 +216,9 @@ function calculateScores(myTips, oppTips, results) {
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
 	
+	console.log(myScores);
 	console.log(myTotal);
+	console.log(oppScores);
 	console.log(oppTotal);
 }
 
