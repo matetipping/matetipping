@@ -405,7 +405,7 @@ div.flag#WCE {
 div.flag#WBD {
   background-image: url('images/flag-wbd.svg');
 }
-header, footer {
+header {
   background-color: #1E252F;
   height: 128px;
   width: 100%;
@@ -417,7 +417,7 @@ header {
   font-size: 32px;
   z-index: 2;
 }
-header::after, footer::before { 
+header::after { 
   content: "";
   background-color: #F47D33;
   height: 32px;
@@ -705,7 +705,6 @@ main {
   margin: 0;
   margin-top: 160px;
   padding: 24px;
-  min-height: 100vh;
 }
 
 select {
@@ -765,11 +764,6 @@ input:-webkit-autofill {
   margin-top: 6px;
 }
 
-footer::before {
-  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: 128px;
-}
 footer {
   position: relative;
   bottom: 0;
@@ -980,10 +974,6 @@ footer {
   nav li:nth-child(1)::after {
     height: 2px;
     margin-top: 5px;
-  }
-  footer::before {
-    height: 16px;
-    bottom: 64px;
   }
   main {
     margin-bottom: 64px;
