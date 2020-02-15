@@ -69,7 +69,7 @@ $(document).ready(function(){
 	// Registration form
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type=submit]").parent().replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
+		$("#form-register input[type=submit]").replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
 		
 		var isRegistrationError = false;
 		var registrationErrorMessage;
