@@ -132,6 +132,9 @@ function loadPageData() {
 			loadTippingForm(doc);
 		});
 	});
+	var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
+	var usedScorersList;	// a list of scorer bonuses already used in other rounds
+	var currentYear;
 }
 
 function loadTippingForm(doc) {
