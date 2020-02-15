@@ -127,7 +127,7 @@ $(document).ready(function(){
 						}).then(function() {
 							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
 							localStorage.setItem('username', user.displayName);
-							displayLogIn(user.displayName);
+							//displayLogIn(user.displayName);
 						}, function(error) {
 							alert("Failed to save username");
 						});
@@ -158,7 +158,7 @@ $(document).ready(function(){
 			if (user) {
 				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 				localStorage.setItem('username', user.displayName);
-				displayLogIn(user.displayName);
+				//displayLogIn(user.displayName);
 			}
 		});
 	});
