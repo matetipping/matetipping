@@ -131,8 +131,9 @@ $(document).ready(function(){
 						}, function(error) {
 							alert("Failed to save username");
 						});
+					} else {
+						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'");
 					}
-					$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 				});
 			}
 		}
@@ -159,6 +160,8 @@ $(document).ready(function(){
 				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 				localStorage.setItem('username', user.displayName);
 				//displayLogIn(user.displayName);
+			} else {
+				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 			}
 		});
 	});
