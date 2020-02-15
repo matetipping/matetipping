@@ -5,6 +5,8 @@ var user = firebase.auth().currentUser; // loads the username of the current use
 var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
+	console.log(localStorage.getItem('username'));
+	console.log(localStorage.getItem('leagues'));
 	// load and display username
 	username = localStorage.getItem('username');
 	if (username !== null) {
