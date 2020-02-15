@@ -72,6 +72,14 @@ $(document).ready(function(){
 			errorMessage = "Disposal bonus already used.";
 			valid = false;
 		}
+		if (newUsedDisposalsList.length > 8) {
+			errorMessage = "No disposal bonuses remaining.";
+			valid = false;
+		}
+		if (newUsedScorersList.length > 8) {
+			errorMessage = "No scorer bonuses remaining.";
+			valid = false;
+		}
 		var currentYear = new Date().getFullYear();
 		var roundNumber = $("select.roundSelector").val();
 		var roundCode = currentYear + "-" + roundNumber;		
