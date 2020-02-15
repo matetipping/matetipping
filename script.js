@@ -170,6 +170,7 @@ function commitLogOff() {
 	var user = firebase.auth().currentUser;
 	if (user) {
 		firebase.auth().signOut().then(function() {
+			location.reload();
 			displayLogOff();
 		}).catch(function(error) {
 			alert("Could not log out");
