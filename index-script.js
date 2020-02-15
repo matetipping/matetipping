@@ -4,7 +4,7 @@ var usedScorersList;	// a list of scorer bonuses already used in other rounds
 var currentYear;
 
 $(document).ready(function(){
-	currentYear = new Date.getFullYear().toString();
+	currentYear = new Date().getFullYear().toString();
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
 		$("div.message").remove();
