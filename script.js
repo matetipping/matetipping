@@ -105,9 +105,9 @@ $(document).ready(function(){
 				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			});
 			if (!isRegistrationError) {
+				username = formData.username;
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
-						username = formData.username;
 						user.updateProfile({
 							displayName: username
 						}).then(function() {
