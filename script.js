@@ -107,6 +107,16 @@ $(document).ready(function(){
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
+						user.updateProfile({
+							displayName: formData.username
+						}).then(function() {
+							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
+							localStorage.setItem('username', user.displayName);
+							//displayLogIn(user.displayName);
+						}, function(error) {
+							alert("Failed to save username");
+						});
+						
 						var userRef = firebase.firestore().collection("users").doc(user.uid);
 						var profileRef = userRef.collection("preferences").doc("profile");
 						var batch = firebase.firestore().batch();
@@ -120,16 +130,6 @@ $(document).ready(function(){
 						});
 						batch.commit().then(function() {
 							console.log("User data set!");
-						});
-						
-						user.updateProfile({
-							displayName: formData.username
-						}).then(function() {
-							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
-							localStorage.setItem('username', user.displayName);
-							//displayLogIn(user.displayName);
-						}, function(error) {
-							alert("Failed to save username");
 						});
 					} else {
 						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'");
