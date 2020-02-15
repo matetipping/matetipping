@@ -118,7 +118,9 @@ $(document).ready(function(){
 						batch.set(profileRef, {
 							displayName: formData.username
 						});
-						batch.commit();
+						batch.commit().then(function() {
+							console.log("User data set!");
+						});
 						
 						user.updateProfile({
 							displayName: formData.username
