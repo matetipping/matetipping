@@ -107,11 +107,12 @@ $(document).ready(function(){
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
+						username = formData.username;
 						user.updateProfile({
-							displayName: formData.username
+							displayName: username
 						}).then(function() {
 							$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
-							localStorage.setItem('username', user.displayName);
+							localStorage.setItem('username', username);
 							//displayLogIn(user.displayName);
 						}, function(error) {
 							alert("Failed to save username");
@@ -125,7 +126,7 @@ $(document).ready(function(){
 							ownedLeague: null
 						});
 						batch.set(profileRef, {
-							displayName: user.displayName
+							displayName: username
 						});
 						batch.commit().then(function() {
 							console.log("User data set!");
