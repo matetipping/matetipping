@@ -1,9 +1,10 @@
 // global variables
 var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
-var currentYear = new Date.getFullYear().toString();
+var currentYear;
 
 $(document).ready(function(){
+	currentYear = new Date.getFullYear().toString();
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
 		$("div.message").remove();
