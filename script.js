@@ -166,8 +166,8 @@ $(document).ready(function(){
 });
 
 function commitLogOff() {
-	localStorage.removeItem("username");
-	localStorage.removeItem("leagues");
+	window.localStorage.removeItem("username");
+	window.localStorage.removeItem("leagues");
 	var user = firebase.auth().currentUser;
 	if (user) {
 		firebase.auth().signOut().then(function() {
