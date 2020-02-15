@@ -166,6 +166,7 @@ $(document).ready(function(){
 });
 
 function commitLogOff() {
+	localStorage. clear();
 	var user = firebase.auth().currentUser;
 	if (user) {
 		firebase.auth().signOut().then(function() {
@@ -192,7 +193,6 @@ function displayLogIn(username) {
 }
 
 function displayLogOff() {
-	localStorage.clear();
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
 	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
 	$("nav ul li a").each(function() {
