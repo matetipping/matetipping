@@ -132,7 +132,7 @@ $(document).ready(function(){
 						});
 						
 					} else {
-						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'");
+						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>")'
 					}
 				});
 			}
