@@ -110,7 +110,7 @@ $(document).ready(function(){
 						user.updateProfile({
 							displayName: formData.username
 						}).then(function() {
-							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
+							$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 							localStorage.setItem('username', user.displayName);
 							//displayLogIn(user.displayName);
 						}, function(error) {
@@ -132,7 +132,7 @@ $(document).ready(function(){
 						});
 						
 					} else {
-						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>")'
+						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 					}
 				});
 			}
