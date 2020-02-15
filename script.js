@@ -122,7 +122,7 @@ $(document).ready(function(){
 								ownedLeague: null
 							});
 							batch.set(profileRef, {
-								displayName: formData.username
+								displayName: user.displayName
 							});
 							batch.commit().then(function() {
 								console.log("User data set!");
