@@ -437,7 +437,7 @@ function loadTippingForm(doc) {
 				$("span#scorerBonusMarkers span.bonusMarker.using").removeClass("using").addClass("unused");
 			}
 		});
-		$("select#roundSelector").change(function() {
+		$("select.roundSelector").change(function() {
 			var roundCode = currentYear + "-" + $(this).val();
 			var newRoundRef = db.collection("rounds").doc(roundCode);
 			newRoundRef.get().then(function(doc) {
