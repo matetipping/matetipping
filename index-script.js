@@ -439,7 +439,7 @@ function loadTippingForm(doc) {
 		});
 		$("select.roundSelector").change(function() {
 			$("form#form-tipping").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
-			timer.clearInterval();
+			clearInterval(timer);
 			var roundCode = currentYear + "-" + $(this).val();
 			var newRoundRef = db.collection("rounds").doc(roundCode);
 			newRoundRef.get().then(function(doc) {
