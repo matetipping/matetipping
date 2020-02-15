@@ -113,24 +113,24 @@ $(document).ready(function(){
 							$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
 							localStorage.setItem('username', user.displayName);
 							//displayLogIn(user.displayName);
+							var userRef = firebase.firestore().collection("users").doc(user.uid);
+							var profileRef = userRef.collection("preferences").doc("profile");
+							var batch = firebase.firestore().batch();
+
+							batch.set(userRef, {
+								admin: false,
+								ownedLeague: null
+							});
+							batch.set(profileRef, {
+								displayName: formData.username
+							});
+							batch.commit().then(function() {
+								console.log("User data set!");
+							});
 						}, function(error) {
 							alert("Failed to save username");
 						});
 						
-						var userRef = firebase.firestore().collection("users").doc(user.uid);
-						var profileRef = userRef.collection("preferences").doc("profile");
-						var batch = firebase.firestore().batch();
-						
-						batch.set(userRef, {
-							admin: false,
-							ownedLeague: null
-						});
-						batch.set(profileRef, {
-							displayName: formData.username
-						});
-						batch.commit().then(function() {
-							console.log("User data set!");
-						});
 					} else {
 						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'");
 					}
