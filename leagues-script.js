@@ -23,7 +23,6 @@ $(document).ready(function() {
 			});
 		}
 	}
-	history.pushState({}, "Leagues", "");
 	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
@@ -74,18 +73,6 @@ $(document).ready(function() {
 			window.scrollTo(0, 0);
 		} else {
 			createNewLeague(name, maxMembers);
-		}
-	});
-	
-	// join league on form submission
-	$("form#league-join").submit(function(e) {
-		e.preventDefault();
-		var code = $("#input-league-code").val();
-		if (code != "") {
-			joinExistingLeague(code);
-		} else {
-			$("div.message").html("<div class='error'>Must enter code.</div>");
-			window.scrollTo(0, 0);
 		}
 	});
 });
