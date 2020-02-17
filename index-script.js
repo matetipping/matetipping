@@ -84,18 +84,20 @@ $(document).ready(function(){
 		var currentYear = new Date().getFullYear();
 		var roundCode = currentYear + "-" + roundNumber;
 		if (valid) {
-			var batch = firebase.firestore().batch();
-			
 			var roundsRef = firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode);
-			batch.set(roundsRef, {
-				clubs: clubTips,
-				margins: marginTips,
-				disposal: bonusDisposal,
-				scorer: bonusScorer,
-				time: firebase.firestore.FieldValue.serverTimestamp()
-			});
-			
+			var htmlBefore = $("button.submit").parent().html();
+			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			if (!isFinals) {
+				var batch = firebase.firestore().batch();
+
+				var roundsRef = firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode);
+				batch.set(roundsRef, {
+					clubs: clubTips,
+					margins: marginTips,
+					disposal: bonusDisposal,
+					scorer: bonusScorer,
+					time: firebase.firestore.FieldValue.serverTimestamp()
+				});
 				var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
 				batch.set(bonusesRef, {
 					usedBonusDisposals: newUsedDisposalsList,
@@ -103,20 +105,33 @@ $(document).ready(function(){
 					time: firebase.firestore.FieldValue.serverTimestamp(),
 					lastRoundUpdated: roundCode
 				});
+				
+				batch.commit().then(function() {
+					$("div.loader.form-loader").replaceWith(htmlBefore);
+					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
+					window.scrollTo(0, 0);
+				}).catch(function(error) {
+					$("div.loader.form-loader").replaceWith(htmlBefore);
+					$("div.message").html("<div class='error'>Error saving tips.</div>");
+					window.scrollTo(0, 0);
+				});
+			} else {
+				roundsRef.set(roundsRef, {
+					clubs: clubTips,
+					margins: marginTips,
+					disposal: bonusDisposal,
+					scorer: bonusScorer,
+					time: firebase.firestore.FieldValue.serverTimestamp()
+				}).then(function() {
+					$("div.loader.form-loader").replaceWith(htmlBefore);
+					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
+					window.scrollTo(0, 0);
+				}).catch(function(error) {
+					$("div.loader.form-loader").replaceWith(htmlBefore);
+					$("div.message").html("<div class='error'>Error saving tips.</div>");
+					window.scrollTo(0, 0);
+				});;
 			}
-
-			var htmlBefore = $("button.submit").parent().html();
-			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
-			
-			batch.commit().then(function() {
-				$("div.loader.form-loader").replaceWith(htmlBefore);
-				$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
-				window.scrollTo(0, 0);
-			}).catch(function(error) {
-				$("div.loader.form-loader").replaceWith(htmlBefore);
-				$("div.message").html("<div class='error'>Error saving tips.</div>");
-				window.scrollTo(0, 0);
-			});
 		} else {
 			$("div.message").html("<div class='error'>" + errorMessage + "</div>");
 			window.scrollTo(0, 0);
