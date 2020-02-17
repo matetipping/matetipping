@@ -116,7 +116,7 @@ $(document).ready(function(){
 					window.scrollTo(0, 0);
 				});
 			} else {
-				roundsRef.set(roundsRef, {
+				roundsRef.set({
 					clubs: clubTips,
 					margins: marginTips,
 					disposal: bonusDisposal,
