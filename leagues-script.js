@@ -416,7 +416,7 @@ function joinExistingLeague(code) {
 }
 		
 function leagueCreated(leagueID, leagueName, players, maxPlayers) {
-	$("form#league-create").replaceWith("<div>Your league is called <span class='highlight'>" + leagueName + "</span>. There are currently <span class='highlight'>" + players + "</span>/<span class='highlight'>" + maxPlayers + "</span> tippers in this league.</div><div>To invite other tippers to this league, send them the following code. Click on the code to copy it to your clipboard.</div><div><input id='league-code' style='position: absolute; left: -9999px;' value='" + leagueID + "'><div class='copy-code'>" + leagueID + "</div></div>");
+	$("form#league-create").replaceWith("<div>Your league is called <span class='highlight'>" + leagueName + "</span>. There are currently <span class='highlight'>" + players + "</span>/<span class='highlight'>" + maxPlayers + "</span> tippers in this league.</div><div>To invite other tippers to this league, send them the following code. Click on the code to copy it to your clipboard.</div><div><input id='league-code' style='position: absolute; left: -9999px;' value='https://matetipping.com/leagues?join=" + leagueID + "'><div class='copy-code'>https://matetipping.com/leagues?join=" + leagueID + "</div></div>");
 	$("div.copy-code").click(function() {
 		var copyThis = document.getElementById('league-code');
 		copyThis.select();
