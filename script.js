@@ -178,7 +178,6 @@ function commitLogOff() {
 			alert("Could not log out");
 		});
 	}
-	window.location.reload();
 }
 
 // sets the username, hamburger menu and main content blocks with 
