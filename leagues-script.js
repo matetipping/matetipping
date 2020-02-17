@@ -23,7 +23,7 @@ $(document).ready(function() {
 			});
 		}
 	}
-	window.history.pushState({}, document.title, "/leagues");
+	window.history.replaceState({}, document.title, "/leagues");
 	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
