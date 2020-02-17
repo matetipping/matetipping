@@ -10,15 +10,15 @@ $(document).ready(function() {
 	var user = firebase.auth().currentUser;
 	var leagueCode = getURLParameter("join");
 	if (user) {
-		if (leagueCode != null) {
+		if (leagueCode != "") {
 			joinExistingLeague(leagueCode);
 		}
 	} else {
-		if (leagueCode != null) {
+		if (leagueCode != "") {
 			firebase.auth().onAuthStateChanged(function(user) {
 				if (user && leagueCode != null) {
 					joinExistingLeague(leagueCode);
-					leagueCode = null;
+					leagueCode = "";
 				}
 			});
 		}
