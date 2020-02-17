@@ -185,7 +185,7 @@ function displayLogIn(username) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:commitLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
-	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/results.html");
+	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
 	$(".offline input:not([type=submit])").each(function() {
 		$(this).val("");
