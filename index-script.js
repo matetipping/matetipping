@@ -62,27 +62,26 @@ $(document).ready(function(){
 			}
 			isDisposals = false;
 		});
-		
+		var roundNumber = $("select.roundSelector").val();
 		var errorMessage = "You must tip all matches.";
-		if (usedScorersList.includes(bonusScorer)) {
+		if (usedScorersList.includes(bonusScorer) && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
 			errorMessage = "Scorers bonus already used.";
 			valid = false;
 		}
-		if (usedDisposalsList.includes(bonusDisposal)) {
+		if (usedDisposalsList.includes(bonusDisposal) && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
 			errorMessage = "Disposal bonus already used.";
 			valid = false;
 		}
-		if (newUsedDisposalsList.length > 8) {
+		if (newUsedDisposalsList.length > 8 && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
 			errorMessage = "No disposal bonuses remaining.";
 			valid = false;
 		}
-		if (newUsedScorersList.length > 8) {
+		if (newUsedScorersList.length > 8 && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
 			errorMessage = "No scorer bonuses remaining.";
 			valid = false;
 		}
 		var currentYear = new Date().getFullYear();
-		var roundNumber = $("select.roundSelector").val();
-		var roundCode = currentYear + "-" + roundNumber;		
+		var roundCode = currentYear + "-" + roundNumber;
 		if (valid) {
 			var batch = firebase.firestore().batch();
 			
@@ -95,14 +94,16 @@ $(document).ready(function(){
 				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
-			var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
-			batch.set(bonusesRef, {
-				usedBonusDisposals: newUsedDisposalsList,
-				usedBonusScorers: newUsedScorersList,
-				time: firebase.firestore.FieldValue.serverTimestamp(),
-				lastRoundUpdated: roundCode
-			});
-			
+			if (!(["R20", "R21", "R22", "R23"].includes(roundNumber))) {
+				var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
+				batch.set(bonusesRef, {
+					usedBonusDisposals: newUsedDisposalsList,
+					usedBonusScorers: newUsedScorersList,
+					time: firebase.firestore.FieldValue.serverTimestamp(),
+					lastRoundUpdated: roundCode
+				});
+			}
+
 			var htmlBefore = $("button.submit").parent().html();
 			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			
