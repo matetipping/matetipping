@@ -81,6 +81,15 @@ $(document).ready(function(){
 			errorMessage = "No scorer bonuses remaining.";
 			valid = false;
 		}
+		if (isFinals && bonusDisposal == null) {
+			errorMessage = "Must select a disposal bonus.";
+			valid = false;
+		}
+		if (isFinals && bonusScorer == null) {
+			errorMessage = "Must select a scorer bonus.";
+			valid = false;
+		}
+		
 		var currentYear = new Date().getFullYear();
 		var roundCode = currentYear + "-" + roundNumber;
 		if (valid) {
