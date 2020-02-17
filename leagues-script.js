@@ -19,6 +19,7 @@ $(document).ready(function() {
 				if (user && leagueCode != null) {
 					joinExistingLeague(leagueCode);
 					leagueCode = "";
+					history.pushState({}, "Leagues", "");
 				}
 			});
 		}
