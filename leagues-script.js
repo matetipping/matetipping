@@ -19,11 +19,11 @@ $(document).ready(function() {
 				if (user && leagueCode != null) {
 					joinExistingLeague(leagueCode);
 					leagueCode = "";
-					history.pushState({}, "Leagues", "");
 				}
 			});
 		}
 	}
+	history.pushState({}, "Leagues", "");
 	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
