@@ -6,7 +6,23 @@ var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
 
-$(document).ready(function(){
+$(document).ready(function() {
+	var user = firebase.auth().currentUser;
+	var leagueCode = getURLParameter("join");
+	if (user) {
+		if (leagueCode != null) {
+			joinExistingLeague(leagueCode);
+		}
+	} else {
+		if (leagueCode != null) {
+			firebase.auth().onAuthStateChanged(function(user) {
+				if (user && leagueCode != null) {
+					joinExistingLeague(leagueCode);
+					leagueCode = null;
+				}
+			});
+		}
+	}
 	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
@@ -413,3 +429,10 @@ function leagueCreated(leagueID, leagueName, players, maxPlayers) {
 		});
 	});
 }
+
+function getURLParameter(paramKey) {
+    paramKey = paramKey.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + paramKey + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
