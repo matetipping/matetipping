@@ -28,7 +28,7 @@ $(document).ready(function() {
 		$("#results-navigation button.selected").removeClass("selected");
 		$(this).addClass("selected");
 		var buttonType = $(this).html();
-		if (buttonType == "Leagues") {
+		if (buttonType == "Create") {
 			$("div#leaguesList").hide();
 			$("div#leagues").show();
 			$("div#results").hide();
