@@ -181,10 +181,14 @@ select[id*='clubInput'] {
 }
 
 .slider, .inputs {
-  text-align: right;
   max-width: 496px;
   padding-left: 224px;
   height: 50px;
+}
+
+.inputs span {
+  font-size: 80%;
+  color: #F47D33;
 }
 span.downArrow {
   height: 24px;
