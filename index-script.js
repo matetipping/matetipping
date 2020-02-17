@@ -63,20 +63,21 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		var roundNumber = $("select.roundSelector").val();
+		var isFinals = ["R20", "R21", "R22", "R23"].includes(roundNumber);
 		var errorMessage = "You must tip all matches.";
-		if (usedScorersList.includes(bonusScorer) && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
+		if (usedScorersList.includes(bonusScorer) && !isFinals) {
 			errorMessage = "Scorers bonus already used.";
 			valid = false;
 		}
-		if (usedDisposalsList.includes(bonusDisposal) && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
+		if (usedDisposalsList.includes(bonusDisposal) && !isFinals) {
 			errorMessage = "Disposal bonus already used.";
 			valid = false;
 		}
-		if (newUsedDisposalsList.length > 8 && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
+		if (newUsedDisposalsList.length > 8 && !isFinals) {
 			errorMessage = "No disposal bonuses remaining.";
 			valid = false;
 		}
-		if (newUsedScorersList.length > 8 && !(["R20", "R21", "R22", "R23"].includes(roundNumber)) {
+		if (newUsedScorersList.length > 8 && !isFinals) {
 			errorMessage = "No scorer bonuses remaining.";
 			valid = false;
 		}
@@ -94,7 +95,7 @@ $(document).ready(function(){
 				time: firebase.firestore.FieldValue.serverTimestamp()
 			});
 			
-			if (!(["R20", "R21", "R22", "R23"].includes(roundNumber))) {
+			if (!isFinals) {
 				var bonusesRef = firebase.firestore().collection("users").doc(user.uid).collection("bonuses").doc(currentYear.toString());
 				batch.set(bonusesRef, {
 					usedBonusDisposals: newUsedDisposalsList,
