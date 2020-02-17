@@ -206,7 +206,7 @@ function loadTippingForm(doc) {
 		var disposalBonusMarkerHTML = "<span id='disposalBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
 		var scorerBonusMarkerHTML = "<span id='scorerBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
 		if (["R20", "R21", "R22", "R23"].includes(roundCodeName)) {
-			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><div class='inputs'><span>Between Rounds 1 and 19, you can pick AFL players to be your 8 disposal and 8 scorer bonuses. You cannot reuse any player you have previously selected for the same bonus type. Disposal bonuses score points per disposal, while scorer bonuses score points per goal and behind scored.</span>";
+			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><div class='inputs'><span>For the finals (Round 20 to Round 23), you must tip both a disposal and scorer bonus. The higher ranked player in your leagues' finals will score for both players, while the lower ranked player will score half points for each player.</span>";
 			htmlFields = htmlFields + "<input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer off' type='button'>Scorer</button><div class='inputs'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
 		} else {
 			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button>" + disposalBonusMarkerHTML + "<div class='inputs'>";
@@ -432,6 +432,7 @@ function loadTippingForm(doc) {
 
 		// START bonus tip settings //
 		$("button.buttonBonusDisposal").click(function() {
+			$("div.inputs span").remove();
 			if ($(this).hasClass("off")) {
 				$("input#bonusInput-1").css("display", "inline-block");
 				$(this).removeClass("off");
