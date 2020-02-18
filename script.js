@@ -154,7 +154,8 @@ $(document).ready(function(){
 		firebase.auth().signInWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 			var loginErrorCode = error.code;
 			var loginErrorMessage = error.message;
-			alert("ERROR CODE " + loginErrorCode + ": " + loginErrorMessage);
+			displayError("Could not log in.");
+			console.log(error.code);
 			$("#form-register div.loader.log-load").replaceWith("<input type='submit' value='Login'>");
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
