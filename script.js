@@ -24,7 +24,6 @@ $(document).ready(function(){
 			// logging off
 			displayLogOff();
 		}
-		window.location.reload();
 	});
 	
 	// authentication persistence - retains login on device unless logged off.
