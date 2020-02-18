@@ -18,8 +18,10 @@ $(document).ready(function(){
 		if (u) {
 			// logging on
 			username = u.displayName;
-			displayLogIn(username);
-			user = firebase.auth().currentUser;
+			if (username != null) {
+				displayLogIn(username);
+				user = firebase.auth().currentUser;
+			}
 		} else {
 			// logging off
 			displayLogOff();
@@ -109,11 +111,13 @@ $(document).ready(function(){
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
 					displaySuccess("Registration successful.");
+					username = formData.username;
+					displayLogIn(username);
 					if (user) {
 						user.updateProfile({
-							displayName: formData.username
+							displayName: username
 						}).then(function() {
-							localStorage.setItem('username', user.displayName);
+							localStorage.setItem('username', username);
 							//displayLogIn(user.displayName);
 						}, function(error) {
 							displayError("Failed to save username.");
