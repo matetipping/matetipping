@@ -180,10 +180,15 @@ function commitLogOff() {
 	}
 }
 
+function fullLogOff() {
+	commitLogOff();
+	window.location.reload();
+}
+
 // sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
-	$("nav ul li:nth-child(1)").html("<a href='javascript:commitLogOff();'>Log off</a>");
+	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
