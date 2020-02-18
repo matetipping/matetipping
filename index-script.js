@@ -118,6 +118,7 @@ $(document).ready(function(){
 				batch.commit().then(function() {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
 					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
+					$("span.lock").html("<img src='/images/checkmark.svg'>");
 					window.scrollTo(0, 0);
 				}).catch(function(error) {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
@@ -134,6 +135,7 @@ $(document).ready(function(){
 				}).then(function() {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
 					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
+					$("span.lock").html("<img src='/images/checkmark.svg'>");
 					window.scrollTo(0, 0);
 				}).catch(function(error) {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
@@ -305,6 +307,7 @@ function loadTippingForm(doc) {
 				var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
 				savedTipsRef.get().then(function(doc) {
 					if (doc.exists) {
+						$("span.lock").html("<img src='/images/checkmark.svg'>");
 						var clubs = doc.data().clubs;
 						var margins = doc.data().margins;
 						bonusDisposal = doc.data().disposal;
