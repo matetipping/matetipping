@@ -69,7 +69,7 @@ $(document).ready(function(){
 	// Registration form
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type=submit]").replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
+		$("#form-register input[type='submit']").replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
 		
 		var isRegistrationError = false;
 		var registrationErrorMessage;
@@ -142,7 +142,7 @@ $(document).ready(function(){
 	// Login form
 	$("#form-login").submit(function(e) {
 		e.preventDefault();
-		$("#form-login input[type=submit]").replaceWith("<div class='loader log-load'><img src='/logos/icon-load.png'></div>");
+		$("#form-login input[type='submit']").replaceWith("<div class='loader log-load'><img src='/logos/icon-load.png'></div>");
 		
 		var formData = {
 			"email": $("#input-login-email").val(),
@@ -192,7 +192,7 @@ function displayLogIn(username) {
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
-	$(".offline input:not([type=submit])").each(function() {
+	$(".offline input:not([type='submit'])").each(function() {
 		$(this).val("");
 	});
 	$(".offline").css("display", "none");
