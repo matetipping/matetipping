@@ -2,6 +2,7 @@
 var usedDisposalsList;	// a list of disposals bonuses already used in other rounds
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
 var currentYear;
+var tipsSaved = false;
 
 $(document).ready(function(){
 	currentYear = new Date().getFullYear().toString();
@@ -118,7 +119,7 @@ $(document).ready(function(){
 				batch.commit().then(function() {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
 					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
-					$("span.lock").html("<img src='/images/checkmark.svg'>");
+					tipsSaved = true;
 					window.scrollTo(0, 0);
 				}).catch(function(error) {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
@@ -135,7 +136,7 @@ $(document).ready(function(){
 				}).then(function() {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
 					$("div.message").append("<div class='successful'>Tips saved successfully.</div>");
-					$("span.lock").html("<img src='/images/checkmark.svg'>");
+					tipsSaved = true;
 					window.scrollTo(0, 0);
 				}).catch(function(error) {
 					$("div.loader.form-loader").replaceWith(htmlBefore);
@@ -211,7 +212,12 @@ function loadTippingForm(doc) {
 				} else {
 					var daysHTML = "";
 				}
-				$("div.roundTitle").html("<span class='lock'><img src='/images/lock-unlocked.svg'></span> " + daysHTML + hrsRem + ":" + minsRem + ":" + secsRem);
+				if (tipsSaved) {
+					var lockHTML = "<img src='/images/checkmark.svg'>";
+				} else {
+					var lockHTML = "<img src='/images/lock-unlocked.svg'>";
+				}
+				$("div.roundTitle").html("<span class='lock'>" + lockHTML + "</span> " + daysHTML + hrsRem + ":" + minsRem + ":" + secsRem);
 			} else {
 				clearInterval(timer);
 				$("div.game").html("").css("display", "none");
@@ -307,7 +313,7 @@ function loadTippingForm(doc) {
 				var savedTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(currentYear + "-" + roundCodeName);
 				savedTipsRef.get().then(function(doc) {
 					if (doc.exists) {
-						$("span.lock").html("<img src='/images/checkmark.svg'>");
+						tipsSaved = true;
 						var clubs = doc.data().clubs;
 						var margins = doc.data().margins;
 						bonusDisposal = doc.data().disposal;
