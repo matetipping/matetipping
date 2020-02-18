@@ -93,28 +93,26 @@ $(document).ready(function(){
 			registrationErrorMessage = "Passwords do not match.";
 		}
 		if (isRegistrationError) {
-			alert("ERROR CODE 1: " + registrationErrorMessage);
-			$("#form-register div.loader").replaceWith("<input type='submit' value='Register'>");
+			displayError(registrationErrorMessage);
+			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 		} else {
 			commitLogOff();
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 				var isRegistrationError = true;
-				var registrationErrorCode = error.code;
-				registrationErrorMessage = error.message;
-				alert("ERROR CODE " + registrationErrorCode + ": " + registrationErrorMessage);
+				displayError("Registration failed unexpectedly.");
 				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			});
 			if (!isRegistrationError) {
 				firebase.auth().onAuthStateChanged(function(user) {
+					displaySuccess("Registration successful.");
 					if (user) {
 						user.updateProfile({
 							displayName: formData.username
 						}).then(function() {
-							$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 							localStorage.setItem('username', user.displayName);
 							//displayLogIn(user.displayName);
 						}, function(error) {
-							alert("Failed to save username");
+							displayError("Failed to save username.");
 							$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");		
 						});
 						var userRef = firebase.firestore().collection("users").doc(user.uid);
@@ -130,6 +128,8 @@ $(document).ready(function(){
 						});
 						batch.commit().then(function() {
 							console.log("User data set!");
+						}).catch(function(e) {
+							displayError("Failed to save important data.");
 						});
 					}
 				});
@@ -205,6 +205,14 @@ function displayLogOff() {
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
 	$(".offline").css("display", "block");
 	$(".online").css("display", "none");
+}
+
+function displayError(message) {
+	$("div.message").html("<div class='error'>" + message + "</div>");
+}
+
+function displaySuccess(message) {
+	$("div.message").html("<div class='successful'>" + message + "</div>");
 }
 
 function getFormattedDate(date) {
