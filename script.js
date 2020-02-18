@@ -220,10 +220,12 @@ function displayLogOff() {
 
 function displayError(message) {
 	$("div.message").html("<div class='error'>" + message + "</div>");
+	window.scrollTo(0, 0);
 }
 
 function displaySuccess(message) {
 	$("div.message").html("<div class='successful'>" + message + "</div>");
+	window.scrollTo(0, 0);
 }
 
 function getFormattedDate(date) {
