@@ -90,6 +90,10 @@ $(document).ready(function(){
 			errorMessage = "Must select a scorer bonus.";
 			valid = false;
 		}
+		if (tipsSaved) {
+			errorMessage = "Tips unchanged since last submission.";
+			valid = false;
+		}
 		
 		var currentYear = new Date().getFullYear();
 		var roundCode = currentYear + "-" + roundNumber;
