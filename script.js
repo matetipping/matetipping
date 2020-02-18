@@ -158,8 +158,6 @@ $(document).ready(function(){
 				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 				localStorage.setItem('username', user.displayName);
 				//displayLogIn(user.displayName);
-			} else {
-				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
 			}
 		});
 	});
