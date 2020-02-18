@@ -163,6 +163,11 @@ div#results table tr:nth-child(even) {
   border-bottom: 2px solid #F47D33;
   background-color: #333F50;
 }
+
+span.lock img {
+  height: 24px;
+}
+
 input[id*='marginInput'] {
   width: 25%;
   text-align: right;
