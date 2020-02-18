@@ -99,8 +99,11 @@ $(document).ready(function(){
 			commitLogOff();
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 				var isRegistrationError = true;
-				console.log(error.code);
-				displayError("Email address already taken.");
+				if (error.code == "auth/email-already-in-use") {
+					displayError("Email address already taken.");
+				} else {
+					displayError("Registration failed unexpectedly.");
+				}
 				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			});
 			if (!isRegistrationError) {
