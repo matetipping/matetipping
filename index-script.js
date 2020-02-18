@@ -323,7 +323,7 @@ function loadTippingForm(doc) {
 							}
 						}
 						if (bonusDisposal !== null) {
-							$("div.inputs span").remove();
+							$("div.game div.inputs span").remove();
 							$("button.buttonBonusDisposal").removeClass("off");
 							$("#bonusInput-1").css("display", "inline-block");
 							var bonusValue = $("datalist.players option#" + bonusDisposal).html();
@@ -331,7 +331,7 @@ function loadTippingForm(doc) {
 
 						}
 						if (bonusScorer !== null) {
-							$("div.inputs span").remove();
+							$("div.game div.inputs span").remove();
 							$("button.buttonBonusScorer").removeClass("off");
 							$("#bonusInput-2").css("display", "inline-block");
 							var bonusValue = $("datalist.players option#" + bonusScorer).html();
