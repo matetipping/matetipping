@@ -115,6 +115,7 @@ $(document).ready(function(){
 							//displayLogIn(user.displayName);
 						}, function(error) {
 							alert("Failed to save username");
+							$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");		
 						});
 						var userRef = firebase.firestore().collection("users").doc(user.uid);
 						var profileRef = userRef.collection("preferences").doc("profile");
@@ -130,9 +131,6 @@ $(document).ready(function(){
 						batch.commit().then(function() {
 							console.log("User data set!");
 						});
-						
-					} else {
-						$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 					}
 				});
 			}
