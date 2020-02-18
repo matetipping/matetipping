@@ -402,6 +402,7 @@ function loadTippingForm(doc) {
 		});
 
 		$("select.formInput").change(function() {
+			tipsSaved = false;
 			var gameNo = $(this).attr("id").split("-")[1];
 			var club = $(this).val();
 			var margin = $("#marginInput-" + gameNo).val();
