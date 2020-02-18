@@ -84,7 +84,7 @@ $(document).ready(function(){
 			registrationErrorMessage = "Username must be between 3 and 20 characters."
 		} else if (!formData.email.includes("@")) {
 			isRegistrationError = true;
-			registrationErrorMessage = "Email does not appear to be valid."			
+			registrationErrorMessage = "Email address is invalid."			
 		} else if (formData.password.length < 6) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
@@ -99,7 +99,7 @@ $(document).ready(function(){
 			commitLogOff();
 			firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 				var isRegistrationError = true;
-				displayError("Registration failed unexpectedly.");
+				displayError("Email address already taken.");
 				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			});
 			if (!isRegistrationError) {
