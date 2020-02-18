@@ -261,6 +261,7 @@ function loadTippingForm(doc) {
 		$("#form-tipping").html(htmlFields);
 		
 		$(".formInput[list='players']").keyup(function() {
+			tipsSaved = false;
 			var noChars = $(this).val().length;
 			if (noChars < 3) {
 				$("datalist.players").attr("id", "playersOff");
@@ -283,6 +284,7 @@ function loadTippingForm(doc) {
 		});
 
 		$(".formInput[list='players']").blur(function() {
+			tipsSaved = false;
 			var matching = false;
 			var inputText = $(this).val();
 			var playerIndex = -1;
