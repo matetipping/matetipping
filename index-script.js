@@ -426,6 +426,7 @@ function loadTippingForm(doc) {
 		});
 
 		$("input.formInput[type='number']").on('input', function() {
+			tipsSaved = false;
 			var gameNo = $(this).attr("id").split("-")[1];
 			var club = $("#clubInput-" + gameNo).val();
 			var margin = Math.round($(this).val());
@@ -454,6 +455,7 @@ function loadTippingForm(doc) {
 		});
 
 		$("input.formInput[type='range']").on('input', function() {
+			tipsSaved = false;
 			var gameNo = $(this).attr("id").split("-")[1];
 			var club = $("#clubInput-" + gameNo).val();
 			var sliderVal = $(this).val();
@@ -498,6 +500,7 @@ function loadTippingForm(doc) {
 			}
 		});
 		$("select.roundSelector").change(function() {
+			tipsSaved = false;
 			$("form#form-tipping").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
 			clearInterval(timer);
 			var roundCode = currentYear + "-" + $(this).val();
