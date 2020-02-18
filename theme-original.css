@@ -165,7 +165,8 @@ div#results table tr:nth-child(even) {
 }
 
 span.lock img {
-  height: 24px;
+  height: 16px;
+  margin: 0 4px;
 }
 
 input[id*='marginInput'] {
