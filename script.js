@@ -154,13 +154,18 @@ $(document).ready(function(){
 		firebase.auth().signInWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 			var loginErrorCode = error.code;
 			var loginErrorMessage = error.message;
-			displayError("Could not log in.");
-			console.log(error.code);
-			$("#form-register div.loader.log-load").replaceWith("<input type='submit' value='Login'>");
+			if (loginErrorCode == "auth/wrong-password") {
+				displayError("Password is incorrect.");
+			} else if (loginErrorCode == "auth/user-not-found") {
+				displayError("Email address does not match any user.");
+			} else {
+				displayError("Log-in failed unexpectedly.");
+			}
+			$("#form-login div.loader.log-load").replaceWith("<input type='submit' value='Login'>");
 		});
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
-				$("#form-login div.loader").replaceWith("<input type='submit' value='Log in'>");
+				$("#form-login div.loader.log-load").replaceWith("<input type='submit' value='Log in'>");
 				localStorage.setItem('username', user.displayName);
 				//displayLogIn(user.displayName);
 			}
