@@ -204,11 +204,11 @@ function loadTippingForm(doc) {
 				if (secsRem < 10) {
 					secsRem = "0" + secsRem;
 				}
-				$("div.roundTitle").html("Lockout in: " + daysRem + " days, " + hrsRem + ":" + minsRem + ":" + secsRem);
+				$("div.roundTitle").html("<span class='lock'><img src='/images/lock-unlocked.svg'></span> " + daysRem + " days, " + hrsRem + ":" + minsRem + ":" + secsRem);
 			} else {
 				clearInterval(timer);
 				$("div.game").html("").css("display", "none");
-				$("div.roundTitle").html("Locked out: this round has already started!");
+				$("div.roundTitle").html("<span class='lock'><img src='/images/lock-locked.svg'></span> This round has already started.");
 			}
 		}, 1000);
 		var awayTeams = doc.data().fixturesAway;
