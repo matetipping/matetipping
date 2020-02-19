@@ -18,13 +18,29 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + clubs[index] + ".svg");
                 } else if ($(this).hasClass("body")) {
-                        var index = $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0] + iteration;
+                        var index = Number($("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0]) + iteration;
                         if (index > 5) {
                                 index = 1;
                         } else if (index == 0) {
                                 index = 5;
                         }
                         $("div.avatar-display img#body").attr("src", "/images/profile/body-" + index + ".svg");
+                } else if ($(this).hasClass("head")) {
+                        var index = Number($("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 6) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 6;
+                        }
+                        $("div.avatar-display img#head").attr("src", "/images/profile/head-" + index + ".svg");
+                } else if ($(this).hasClass("hairstyle")) {
+                        var index = Number($("div.avatar-display img#hairstyle").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 20) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 20;
+                        }
+                        $("div.avatar-display img#hairstyle").attr("src", "/images/profile/hair-" + index + ".svg");
                 }
         });
 });
