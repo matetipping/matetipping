@@ -60,9 +60,9 @@ $(document).ready(function() {
                 } else if ($(this).hasClass("facialhair")) {
                         facialhair = facialhair + iteration;
                         if (facialhair > 12) {
-                                hairstyle = 1;
+                                facialhair = 1;
                         } else if (hairstyle == 0) {
-                                hairstyle = 12;
+                                facialhair = 12;
                         }
                         $("div.avatar-display img#facialhair").attr("src", "/images/profile/facialhair-" + head + "-" + facialhair + ".svg");
                 } else if ($(this).hasClass("eyebrows")) {
