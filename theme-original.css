@@ -37,6 +37,7 @@ span.buttonLabel {
   width: 200px;
   color: #F47D33;
   text-transform: uppercase;
+  display: inline-block;
 }
 
 a {
