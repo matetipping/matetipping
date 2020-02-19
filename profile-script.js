@@ -117,13 +117,13 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ")");
                 } else if ($(this).hasClass("haircolour")) {
-                        hairBrightness = hairBrightness + iteration*0.1;
-                        hairSaturation = hairSaturation + iteration*0.35;
+                        hairBrightness = hairBrightness + iteration*0.2;
                         if (hairBrightness > 1.8) {
                                 hairBrightness = 0.2;
+                                hairSaturation = hairSaturation + iteration*0.35;
                         } else if (hairBrightness < 0.2) {
                                 hairBrightness = 1.8;
-                                hairSaturation = 1;
+                                hairSaturation = hairSaturation - iteration*0.35;
                         }
                         if (hairSaturation > 1.4) {
                                 hairSaturation = 0;
