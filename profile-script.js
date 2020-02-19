@@ -15,6 +15,6 @@ $("div.avatar-controls button").click(function() {
                 } else if (index == 0) {
                         index = clubs.length - 1;
                 }
-                $("avatar-display img#club").attr("src", "/images/profile/jumper-" + clubs[index] + ".svg");
+                $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + clubs[index] + ".svg");
         }
 });
