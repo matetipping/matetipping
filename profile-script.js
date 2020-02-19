@@ -48,7 +48,7 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img#hairstyle").attr("src", "/images/profile/hair-" + head + "-" + hairstyle + ".svg");
                         $("div.avatar-display img#hairback").attr("src", "/images/profile/hairback-" + hairstyle + ".svg");
-                } else if ($(this).hasClass("hairstyle")) {
+                } else if ($(this).hasClass("facialhair")) {
                         facialhair = facialhair + iteration;
                         if (facialhair > 12) {
                                 hairstyle = 1;
