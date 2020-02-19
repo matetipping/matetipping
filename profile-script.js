@@ -9,6 +9,11 @@ $(document).ready(function() {
                 if ($(this).hasClass("back")) {
                         iteration = -1;
                         console.log("back");
+                } else if ($(this).hasClass("off")) {
+                        iteration = 2;
+                        $(this).removeClass("off").addClass("on");
+                } else if ($(this).hasClass("on")) {
+                        $(this).removeClass("on").addClass("off");
                 }
                 if ($(this).hasClass("club")) {
                         var clubs = ["ade", "bri", "car", "col", "ess", "fre", "gee", "gcs", "gws", "haw", "mel", "nth", "pta", "ric", "stk", "syd", "wce", "wbd"];
@@ -88,6 +93,14 @@ $(document).ready(function() {
                                 index = 3;
                         }
                         $("div.avatar-display img#glasses").attr("src", "/images/profile/glasses-" + index + ".svg");
+                } else if ($(this).hasClass("eyelashes")) {
+                        $("div.avatar-display img#eyelashes").attr("src", "/images/profile/eyelashes-" + iteration + ".svg");
+                } else if ($(this).hasClass("freckles")) {
+                        $("div.avatar-display img#freckles").attr("src", "/images/profile/freckles-" + iteration + ".svg");
+                } else if ($(this).hasClass("wrinkles")) {
+                        $("div.avatar-display img#wrinkles").attr("src", "/images/profile/wrinkles-" + iteration + ".svg");
+                } else if ($(this).hasClass("bandages")) {
+                        $("div.avatar-display img#bandages").attr("src", "/images/profile/bandages-" + iteration + ".svg");
                 }
         });
 });
