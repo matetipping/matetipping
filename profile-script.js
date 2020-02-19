@@ -134,7 +134,7 @@ $(document).ready(function() {
                         facialSaturation = hairSaturation;
                         $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
                         $("div.avatar-display img.facialhair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
-                } else if ($(this).hasClass("haircolour")) {
+                } else if ($(this).hasClass("facialcolour")) {
                         facialBrightness = facialBrightness + iteration*0.2;
                         if (facialBrightness > 1.8) {
                                 facialBrightness = 0.2;
