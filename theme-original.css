@@ -12,6 +12,16 @@ div.avatar-controls button.back, div.avatar-controls button.forward {
   width: 48px;
   border-radius: 0;
 }
+div.colourOption {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin: 0px 10px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+
 button.back {
   background-image: url('/images/arrow-left.svg');
 }
