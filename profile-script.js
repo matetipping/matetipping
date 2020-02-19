@@ -80,6 +80,14 @@ $(document).ready(function() {
                                 index = 8;
                         }
                         $("div.avatar-display img#mouth").attr("src", "/images/profile/mouth-" + index + ".svg");
+                } else if ($(this).hasClass("glasses")) {
+                        var index = Number($("div.avatar-display img#glasses").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 3) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 3;
+                        }
+                        $("div.avatar-display img#glasses").attr("src", "/images/profile/glasses-" + index + ".svg");
                 }
         });
 });
