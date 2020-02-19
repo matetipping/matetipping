@@ -1,6 +1,8 @@
 var head = 1;
 var hairstyle = 1;
 var facialhair = 1;
+var skinBrightness = 1;
+var skinSaturation = 1;
 
 $(document).ready(function() {        
         $("div.avatar-controls button").click(function() {
@@ -101,6 +103,28 @@ $(document).ready(function() {
                         $("div.avatar-display img#wrinkles").attr("src", "/images/profile/wrinkles-" + iteration + ".svg");
                 } else if ($(this).hasClass("bandages")) {
                         $("div.avatar-display img#bandages").attr("src", "/images/profile/bandages-" + iteration + ".svg");
+                } else if ($(this).hasClass("skincolour")) {
+                        skinBrightness = skinBrightness + iteration/10;
+                        skinSaturation = skinSaturation - iteration/5;
+                        if (skinBrightness > 1.2) {
+                                skinBrightness = 0.2;
+                                skinSaturation = 
+                        } else if (skinBrightness < 0.2) {
+                                skinBrightness = 0.2;
+                                skinSaturation = 2.6;
+                        }
+                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ");");
+                } else if ($(this).hasClass("haircolour")) {
+                        skinBrightness = skinBrightness + iteration/10;
+                        skinSaturation = skinSaturation - iteration/5;
+                        if (skinBrightness > 1.2) {
+                                skinBrightness = 0.2;
+                                skinSaturation = 
+                        } else if (skinBrightness < 0.2) {
+                                skinBrightness = 0.2;
+                                skinSaturation = 2.6;
+                        }
+                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ");");
                 }
         });
 });
