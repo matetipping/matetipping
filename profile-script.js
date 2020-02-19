@@ -2,10 +2,12 @@ $("avatar-controls button").click(function() {
         var iteration = 1;
         if ($(this).hasClass("back")) {
                 iteration = -1;
+                console.log("back");
         }
         if ($(this).hasClass("club")) {
                 var clubs = ["ade", "bri", "car", "col", "ess", "fre", "gee", "gcs", "gws", "haw", "mel", "nth", "pta", "ric", "stk", "syd", "wce", "wbd"];
                 var currentClub = $("avatar-display img#club").attr("src").split("-")[1].split(".")[0];
+                console.log("currentClub");
                 var index = clubs.indexOf(currentClub) + iteration;
                 if (index >= clubs.length) {
                         index = 0;
