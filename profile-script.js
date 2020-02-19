@@ -61,7 +61,7 @@ $(document).ready(function() {
                         facialhair = facialhair + iteration;
                         if (facialhair > 12) {
                                 facialhair = 1;
-                        } else if (hairstyle == 0) {
+                        } else if (facialhair == 0) {
                                 facialhair = 12;
                         }
                         var oldMouth = $("div.avatar-display img#mouth");
