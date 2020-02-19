@@ -130,7 +130,25 @@ $(document).ready(function() {
                         } else if (hairSaturation < 0) {
                                 hairBrightness = 1.4;
                         }
+                        facialBrightness = hairBrightness;
+                        facialSaturation = hairSaturation;
                         $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
+                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
+                } else if ($(this).hasClass("haircolour")) {
+                        facialBrightness = facialBrightness + iteration*0.2;
+                        if (facialBrightness > 1.8) {
+                                facialBrightness = 0.2;
+                                facialSaturation = facialSaturation + iteration*0.35;
+                        } else if (facialBrightness < 0.2) {
+                                facialBrightness = 1.8;
+                                facialSaturation = facialSaturation - iteration*0.35;
+                        }
+                        if (facialSaturation > 1.4) {
+                                facialSaturation = 0;
+                        } else if (facialSaturation < 0) {
+                                facialBrightness = 1.4;
+                        }
+                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
                 }
         });
 });
