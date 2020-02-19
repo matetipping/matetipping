@@ -64,6 +64,13 @@ $(document).ready(function() {
                         } else if (hairstyle == 0) {
                                 facialhair = 12;
                         }
+                        var oldMouth = $("div.avatar-display img#mouth");
+                        $("div.avatar-display img#mouth").remove();
+                        if (facialhair == 12) {
+                                $("div.avatar-display img#facialhair").after(oldMouth);
+                        } else {
+                                $("div.avatar-display img#facialhair").before(oldMouth);
+                        }
                         $("div.avatar-display img#facialhair").attr("src", "/images/profile/facialhair-" + head + "-" + facialhair + ".svg");
                 } else if ($(this).hasClass("eyebrows")) {
                         var index = Number($("div.avatar-display img#eyebrows").attr("src").split("-")[1].split(".")[0]) + iteration;
