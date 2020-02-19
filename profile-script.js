@@ -3,6 +3,8 @@ var hairstyle = 1;
 var facialhair = 1;
 var skinBrightness = 1;
 var skinSaturation = 1;
+var hairBrightness = 1;
+var hairSaturation = 1;
 
 $(document).ready(function() {        
         $("div.avatar-controls button").click(function() {
@@ -108,23 +110,26 @@ $(document).ready(function() {
                         skinSaturation = skinSaturation - iteration/5;
                         if (skinBrightness > 1.2) {
                                 skinBrightness = 0.2;
-                                skinSaturation = 
+                                skinSaturation = 2.6
                         } else if (skinBrightness < 0.2) {
-                                skinBrightness = 0.2;
-                                skinSaturation = 2.6;
+                                skinBrightness = 1.2;
+                                skinSaturation = 0.6;
                         }
                         $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ");");
                 } else if ($(this).hasClass("haircolour")) {
-                        skinBrightness = skinBrightness + iteration/10;
-                        skinSaturation = skinSaturation - iteration/5;
-                        if (skinBrightness > 1.2) {
-                                skinBrightness = 0.2;
-                                skinSaturation = 
-                        } else if (skinBrightness < 0.2) {
-                                skinBrightness = 0.2;
-                                skinSaturation = 2.6;
+                        hairBrightness = hairBrightness + iteration/10;
+                        hairSaturation = hairSaturation - iteration/10;
+                        if (hairBrightness > 1.2) {
+                                hairBrightness = 0.2;
+                        } else if (hairBrightness < 0.2) {
+                                hairBrightness = 1.2;
                         }
-                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ");");
+                        if (hairSaturation > 1.5) {
+                                hairSaturation = 0;
+                        } else if (hairSaturation < 0) {
+                                hairBrightness = 1.5;
+                        }
+                        $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ");");
                 }
         });
 });
