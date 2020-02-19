@@ -1,3 +1,11 @@
+div.avatar-display {
+  height: 200px;
+  width: 100%;
+}
+div.avatar-display img {
+  position: absolute;
+}
+
 a {
   color: #F47D33;
   text-decoration: none;
