@@ -117,7 +117,7 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ")");
                 } else if ($(this).hasClass("haircolour")) {
-                        hairBrightness = hairBrightness + iteration/10;
+                        hairBrightness = hairBrightness + iteration/5;
                         hairSaturation = hairSaturation - iteration/10;
                         if (hairBrightness > 1.2) {
                                 hairBrightness = 0.2;
