@@ -136,7 +136,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -173,12 +173,13 @@
        id="ellipse12557"
        style="fill:#ffffff;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
     <path
-       style="fill:#ffffff;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 98.226856,116.98424 c 3.434064,0.75662 5.729254,0.67524 9.347394,-0.17832 3.61814,-0.85355 8.57158,-2.48298 13.5195,-4.11058 -2.32747,5.27344 -4.65442,10.54567 -7.87723,13.63056 -3.22281,3.08489 -7.33971,3.97986 -11.12464,3.89042 -3.784934,-0.0894 -7.234483,-1.16336 -9.920621,-4.19152 -2.686138,-3.02816 -4.606154,-8.00719 -6.526727,-12.98766 4.573568,1.59504 9.148265,3.19047 12.582324,3.9471 z"
        id="path13194"
        inkscape:connector-curvature="0"
        inkscape:path-effect="#path-effect13196"
        inkscape:original-d="m 99.365236,117.82226 c 2.295644,-0.0824 4.590844,-0.16374 6.884764,-0.24411 4.94702,-1.6117 14.84375,-4.88281 14.84375,-4.88281 0,0 -4.65395,10.54588 -6.98242,15.82031 -4.11778,0.89439 -8.23468,1.78937 -12.35352,2.68555 -3.450492,-1.07552 -6.900039,-2.14944 -10.351559,-3.22265 -1.919924,-4.98238 -5.761719,-14.94141 -5.761719,-14.94141 0,0 9.148685,3.18927 13.720704,4.78512 z"
-       sodipodi:nodetypes="cccccccc" />
+       sodipodi:nodetypes="cccccccc"
+       transform="matrix(1,0,0,0.84931168,0,25.622981)" />
   </g>
 </svg>
