@@ -33,6 +33,11 @@ button.back:hover, button.forward:hover {
   filter: brightness(2) saturate(0);
   background-color: transparent;
 }
+span.buttonLabel {
+  width: 200px;
+  color: #F47D33;
+  text-transform: uppercase;
+}
 
 a {
   color: #F47D33;
