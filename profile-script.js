@@ -117,17 +117,18 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ")");
                 } else if ($(this).hasClass("haircolour")) {
-                        hairBrightness = hairBrightness + iteration/5;
-                        hairSaturation = hairSaturation - iteration/10;
-                        if (hairBrightness > 1.2) {
+                        hairBrightness = hairBrightness + iteration*0.1;
+                        hairSaturation = hairSaturation + iteration*0.35;
+                        if (hairBrightness > 1.8) {
                                 hairBrightness = 0.2;
                         } else if (hairBrightness < 0.2) {
-                                hairBrightness = 1.2;
+                                hairBrightness = 1.8;
+                                hairSaturation = 1;
                         }
-                        if (hairSaturation > 2) {
+                        if (hairSaturation > 1.4) {
                                 hairSaturation = 0;
                         } else if (hairSaturation < 0) {
-                                hairBrightness = 2;
+                                hairBrightness = 1.4;
                         }
                         $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
                 }
