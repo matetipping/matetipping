@@ -124,10 +124,10 @@ $(document).ready(function() {
                         } else if (hairBrightness < 0.2) {
                                 hairBrightness = 1.2;
                         }
-                        if (hairSaturation > 1.5) {
+                        if (hairSaturation > 2) {
                                 hairSaturation = 0;
                         } else if (hairSaturation < 0) {
-                                hairBrightness = 1.5;
+                                hairBrightness = 2;
                         }
                         $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
                 }
