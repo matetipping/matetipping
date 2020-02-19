@@ -115,7 +115,7 @@ $(document).ready(function() {
                                 skinBrightness = 1.2;
                                 skinSaturation = 0.6;
                         }
-                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ");");
+                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ")");
                 } else if ($(this).hasClass("haircolour")) {
                         hairBrightness = hairBrightness + iteration/10;
                         hairSaturation = hairSaturation - iteration/10;
@@ -129,7 +129,7 @@ $(document).ready(function() {
                         } else if (hairSaturation < 0) {
                                 hairBrightness = 1.5;
                         }
-                        $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ");");
+                        $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
                 }
         });
 });
