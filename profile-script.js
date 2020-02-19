@@ -1,6 +1,6 @@
 $("avatar-controls").click(function() {
         var iteration = 1;
-        if ($(this).hasClass("back") {
+        if ($(this).hasClass("back")) {
                 iteration = -1;
         }
         if ($(this).hasClass("club")) {
