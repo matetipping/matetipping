@@ -1,4 +1,4 @@
-$("avatar-controls button").click(function() {
+$("div.avatar-controls button").click(function() {
         console.log("hi");
         var iteration = 1;
         if ($(this).hasClass("back")) {
