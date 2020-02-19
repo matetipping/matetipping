@@ -1,4 +1,8 @@
-$(document).ready(function() {
+var head = 1;
+var hairstyle = 1;
+var facialhair = 1;
+
+$(document).ready(function() {        
         $("div.avatar-controls button").click(function() {
                 console.log("hi");
                 var iteration = 1;
@@ -26,21 +30,24 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img#body").attr("src", "/images/profile/body-" + index + ".svg");
                 } else if ($(this).hasClass("head")) {
-                        var index = Number($("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0]) + iteration;
-                        if (index > 6) {
-                                index = 1;
-                        } else if (index == 0) {
-                                index = 6;
+                        head = head + iteration;
+                        if (head > 6) {
+                                head = 1;
+                        } else if (head == 0) {
+                                head = 6;
                         }
-                        $("div.avatar-display img#head").attr("src", "/images/profile/head-" + index + ".svg");
+                        $("div.avatar-display img#head").attr("src", "/images/profile/head-" + head + ".svg");
+                        $("div.avatar-display img#hairstyle").attr("src", "/images/profile/hair-" + head + "-" + hairstyle + ".svg");
+                        $("div.avatar-display img#facialhair").attr("src", "/images/profile/facialhair-" + head + "-" + facialhair + ".svg");
                 } else if ($(this).hasClass("hairstyle")) {
-                        var index = Number($("div.avatar-display img#hairstyle").attr("src").split("-")[1].split(".")[0]) + iteration;
-                        if (index > 20) {
-                                index = 1;
-                        } else if (index == 0) {
-                                index = 20;
+                        hairstyle = hairstyle + iteration;
+                        if (hairstyle > 20) {
+                                hairstyle = 1;
+                        } else if (hairstyle == 0) {
+                                hairstyle = 20;
                         }
-                        $("div.avatar-display img#hairstyle").attr("src", "/images/profile/hair-" + index + ".svg");
+                        $("div.avatar-display img#hairstyle").attr("src", "/images/profile/hair-" + head + "-" + hairstyle + ".svg");
+                        $("div.avatar-display img#hairback").attr("src", "/images/profile/hairback-" + hairstyle + ".svg");
                 }
         });
 });
