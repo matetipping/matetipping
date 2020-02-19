@@ -1,30 +1,162 @@
-<body>
-  <div class="user-profile">
-    <img class="hair" src="/images/profile/hairback-1.svg"></svg>
-    <img class="skin" src="/images/profile/body-1.svg"></svg>
-    <img src="/images/profile/jumper-ade.svg"></svg>
-    <img class="skin" src="/images/profile/head-1.svg"></svg>
-    <img src="/images/profile/freckles-1.svg"></svg>
-    <img src="/images/profile/wrinkles-1.svg"></svg>
-    <img class="hair" src="/images/profile/eyelashes-1.svg"></svg>
-    <img class="hair" src="/images/profile/eyebrows-1.svg"></svg>
-    <img class="hair" src="/images/profile/facialhair-1-1.svg"></svg>
-    <img src="/images/profile/mouth-1.svg"></svg>
-    <img class="skin" src="/images/profile/nose-1.svg"></svg>
-    <img class="hair" src="/images/profile/glasses-1.svg"></svg>
-    <img class="hair" src="/images/profile/hair-1-1.svg"></svg>
-    <img src="/images/profile/bandages-1.svg"></svg>
-  </div>
-</body>
-<style>
-  img {
-    position: absolute;
-  }
-  img.hair {
-    filter: none;
-  }
-  img.skin {
-    filter: none;
-  }
-</style>
+<html>
+  <head>
+    <title>MATE Tipping</title>
+    <link rel="stylesheet" type="text/css" href="theme-original.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="/favicon.ico/site.webmanifest">
+    <link rel="mask-icon" href="/favicon.ico/safari-pinned-tab.svg" color="#f47d33">
+    <link rel="shortcut icon" href="/favicon.ico/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1e252f">
+    <meta name="msapplication-config" content="/favicon.ico/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyBEduYbG9nwxiif677ot7WLAAG8AuRiqoI",
+        authDomain: "mate-tipping.firebaseapp.com",
+        databaseURL: "https://mate-tipping.firebaseio.com",
+        projectId: "mate-tipping",
+        storageBucket: "mate-tipping.appspot.com",
+        messagingSenderId: "650624140459"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="profile-script.js"></script>
+    
+    <script data-ad-client="ca-pub-3401252325683626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+  </head>
+  <body>
+    <header>
+      <span class="logo-container">
+        <img class="logo-small" src="/logos/matetippinglogo-footy.svg">
+      </span>
+      <span class="title-container">
+        <h1>
+          <span>mate </span>
+          <span class="highlight">tipping</span>
+        </h1>
+      </span>
+      <span class="username-container">
+        <span class="float-right">
+          <span></span>
+        </span>
+      </span>
+      <span class="hamburger-container">
+        <div id="nav-hamburger" class="float-right">
+          <div id="container-hamburger">
+            <span id="hamburgerTop"></span>
+            <span id="hamburgerMid"></span>
+            <span id="hamburgerBottom"></span>
+          </div>
+        </div>
+      </span>
+    </header>
+    <nav id="hamburger-menu">
+      <ul>
+        <li><a href="javascript:attemptLogIn(username);">Sign in</a></li>
+        <li><a href="" class="selected">Tipping</a></li>
+        <li><a href="">Leagues</a></li>
+        <li><a href="">Profile</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="offline">
+        <div class="message"></div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <form id="form-register">
+                  <h2>Register</h2>
+                  <div>
+                    <label for="input-register-email">Email:</label></br>
+                    <input type="email" id="input-register-email" name="email">
+                  </div>
+                  <div>
+                    <label for="input-register-username">Username:</label></br>
+                    <input type="text" id="input-register-username" name="username">
+                  </div>
+                  <div>
+                    <label for="input-register-password">Password:</label></br>
+                    <input type="password" id="input-register-password" name="username">
+                  </div>
+                  <div>
+                    <label for="input-register-password-confirm">Confirm Password:</label></br>
+                    <input type="password" id="input-register-password-confirm" name="username">
+                  </div>
+                  <div>
+                    <input type="submit" value="Register">
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form id="form-login">
+                  <h2>Log in</h2>
+                  <div>
+                    <label for="input-login-email">Email:</label></br>
+                    <input type="email" id="input-login-email" name="email">
+                  </div>
+                  <div>
+                    <label for="input-password">Password:</label></br>
+                    <input type="password" id="input-login-password" name="username">
+                  </div>
+                  <div>
+                    <input type="submit" value="Log in">
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="online">
+        <div class="avatar-display">
+          <img class="hair" src="/images/profile/hairback-1.svg"></svg>
+          <img class="skin" src="/images/profile/body-1.svg"></svg>
+          <img src="/images/profile/jumper-ade.svg"></svg>
+          <img class="skin" src="/images/profile/head-1.svg"></svg>
+          <img src="/images/profile/freckles-1.svg"></svg>
+          <img src="/images/profile/wrinkles-1.svg"></svg>
+          <img class="hair" src="/images/profile/eyelashes-1.svg"></svg>
+          <img class="hair" src="/images/profile/eyebrows-1.svg"></svg>
+          <img class="hair" src="/images/profile/facialhair-1-1.svg"></svg>
+          <img src="/images/profile/mouth-1.svg"></svg>
+          <img class="skin" src="/images/profile/nose-1.svg"></svg>
+          <img class="hair" src="/images/profile/glasses-1.svg"></svg>
+          <img class="hair" src="/images/profile/hair-1-1.svg"></svg>
+          <img src="/images/profile/bandages-1.svg"></svg>
+        </div>
+        <div class="avatar-controls">
+          <button class="club back">&lt;</button>Club<button class="club forward">&gt;</button>
+          <button class="skincolour back">&lt;</button>Skin Colour<button class="skincolour forward">&gt;</button>
+          <button class="body back">&lt;</button>Body<button class="body forward">&gt;</button>
+          <button class="head back">&lt;</button>Head<button class="head forward">&gt;</button>
+          <button class="hairstyle back">&lt;</button>Hairstyle<button class="hairstyle forward">&gt;</button>
+          <button class="facial back">&lt;</button>Facial Hair<button class="facial forward">&gt;</button>
+          <button class="haircolour back">&lt;</button>Hair Colour<button class="haircolour forward">&gt;</button>
+          <button class="facialcolour back">&lt;</button>Facial Hair Colour<button class="facialcolour forward">&gt;</button>
+          <button class="eyebrows back">&lt;</button>Eyebrows<button class="eyebrows forward">&gt;</button>
+          <button class="nose back">&lt;</button>Nose<button class="nose forward">&gt;</button>
+          <button class="mouth back">&lt;</button>Mouth<button class="mouth forward">&gt;</button>
+          <button class="glasses back">&lt;</button>Mouth<button class="glasses forward">&gt;</button>
+          <button class="eyelashes off">Eyelashes</button>
+          <button class="freckles off">Freckles</button>
+          <button class="wrinkles off">Wrinkles</button>
+          <button class="bandages off">Bandages</button>
+        </div>
+      </div>
+    </main>
+    <footer>&copy; 2020 Daniel Terrington</footer>
+  </body>
+</html>
 
