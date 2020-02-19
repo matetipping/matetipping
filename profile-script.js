@@ -155,7 +155,7 @@ $(document).ready(function() {
                         } else if (facialSaturation < 0) {
                                 facialBrightness = 1.4;
                         }
-                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
+                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + facialBrightness + ") saturate(" + facialSaturation + ")");
                 }
         });
 });
