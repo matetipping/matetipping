@@ -37,6 +37,10 @@ $(document).ready(function() {
                 var colValue = $(this).attr("alt").split("x");
                 if (currentColour == "skin") {
                         $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
+                } else if (currentColour == "hair") {
+                        $("div.avatar-display img.hair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
+                } else if (currentColour == "facial") {
+                        $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 }
         });
         
