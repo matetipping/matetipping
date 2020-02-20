@@ -59,6 +59,46 @@
        apply_with_weight="true"
        only_selected="false" />
     <inkscape:path-effect
+       effect="bspline"
+       id="path-effect13267"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect56117"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect31582"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect31578"
+       effect="bspline" />
+    <inkscape:path-effect
        only_selected="false"
        apply_with_weight="true"
        apply_no_weight="true"
@@ -166,7 +206,7 @@
        steps="2"
        weight="33.333333"
        is_visible="true"
-       id="path-effect12527-8"
+       id="path-effect12527-0"
        effect="bspline" />
     <inkscape:path-effect
        only_selected="false"
@@ -176,7 +216,7 @@
        steps="2"
        weight="33.333333"
        is_visible="true"
-       id="path-effect12520-4"
+       id="path-effect12520-2"
        effect="bspline" />
     <inkscape:path-effect
        only_selected="false"
@@ -196,7 +236,97 @@
        steps="2"
        weight="33.333333"
        is_visible="true"
+       id="path-effect1853-5"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect12527-6"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect12520-6"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect1868-5"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
        id="path-effect1853-1"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect13238"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect13267-0"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect56117-9"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect13204"
+       effect="bspline" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect13200"
        effect="bspline" />
   </defs>
   <sodipodi:namedview
@@ -206,9 +336,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.56"
-     inkscape:cx="-46.960641"
-     inkscape:cy="155.81665"
+     inkscape:zoom="3.6203867"
+     inkscape:cx="36.282882"
+     inkscape:cy="129.71086"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -233,5 +363,9 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1" />
+     id="layer1">
+    <g
+       id="layer1-8"
+       inkscape:label="Layer 1" />
+  </g>
 </svg>
