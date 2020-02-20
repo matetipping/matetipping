@@ -67,6 +67,9 @@ div.avatar-display img.skin {
 div.avatar-display img.hair, div.avatar-display img.facialhair {
   filter: hue-rotate(20deg) saturate(0.5) brightness(1.5);
 }
+div#styleSelector div {
+  display: inline-block;
+}
 
 
 button.back {
@@ -91,7 +94,7 @@ button.back:hover, button.forward:hover {
   background-color: transparent;
 }
 span.buttonLabel {
-	width: 60px;
+  width: 100px;
   color: #F47D33;
   text-transform: uppercase;
   display: inline-block;
