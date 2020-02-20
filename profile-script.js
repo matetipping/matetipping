@@ -143,6 +143,8 @@ function setColourPanels(colType) {
         currentColour = colType;
         $("div.colourOption.selected").removeClass("selected");
         if (colType == "style") {
+                $("div#colourTypeSelector button.selected").removeClass("selected");
+                $("button#colourTypeStyle").addClass("selected");
                 $("div#colourSelector").hide();
                 $("div#styleSelector").show();
         } else {
@@ -150,6 +152,8 @@ function setColourPanels(colType) {
                 $("div#styleSelector").hide();
         }
         if (colType == "club") {
+                $("div#colourTypeSelector button.selected").removeClass("selected");
+                $("button#colourTypeClub").addClass("selected");
                 $("div.colourOption#colOption" + clubOptionSelected).addClass("selected");
                 $("div.colourOption").css("background-size", "contain").css("width", "64px").css("margin", "12px 6px");
                 $("div.colourOption#colOption1").css("background-image", "url(images/flag-ade.svg").attr("alt", "ade");
@@ -177,6 +181,8 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption23").hide();
                 $("div.colourOption#colOption24").hide();
         } else if (colType == "skin") {
+                $("div#colourTypeSelector button.selected").removeClass("selected");
+                $("button#colourTypeSkin").addClass("selected");
                 $("div.colourOption#colOption" + skinOptionSelected).addClass("selected");
                 $("div.colourOption").css("width", "32px").css("background-image", "none").css("margin", "12px").show();
                 $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0x0.6x1.2");
@@ -205,8 +211,12 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption24").css("background-color", "#993E4D").attr("alt", "-40x9x0.6");
         } else {
                 if (colType == "hair") {
+                        $("div#colourTypeSelector button.selected").removeClass("selected");
+                        $("button#colourTypeHair").addClass("selected");
                         $("div.colourOption#colOption" + hairOptionSelected).addClass("selected");
                 } else {
+                        $("div#colourTypeSelector button.selected").removeClass("selected");
+                        $("button#colourTypeFacial").addClass("selected");
                         $("div.colourOption#colOption" + facialOptionSelected).addClass("selected");
                 }
                 $("div.colourOption").css("width", "32px").css("background-image", "none").css("margin", "12px").show();
