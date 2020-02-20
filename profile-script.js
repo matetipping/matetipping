@@ -5,7 +5,7 @@ var skinBrightness = 1;
 var skinSaturation = 1;
 var hairBrightness = 1;
 var hairSaturation = 1;
-var currentColour = "skin";
+var currentColour = "club";
 
 $(document).ready(function() {
         
