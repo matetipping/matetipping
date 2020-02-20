@@ -31,7 +31,7 @@ $(document).ready(function() {
         $("div.colourOption#colOption21").css("background-color", "#372421").attr("alt", "-30x2.2x0.2");     // 0, 1, 1
         $("div.colourOption#colOption22").css("background-color", "#8CAD44").attr("alt", "50x3x0.8");     // 0, 1, 1
         $("div.colourOption#colOption23").css("background-color", "#336B9F").attr("alt", "180x3x0.5");     // 0, 1, 1
-        $("div.colourOption#colOption24").css("background-color", "#A31D39").attr("alt", "-50x9x0.3");     // 0, 1, 1
+        $("div.colourOption#colOption24").css("background-color", "#993E4D").attr("alt", "-40x9x0.6");     // 0, 1, 1
         
         $("div.colourOption").click(function() {
                 var colValue = $(this).attr("alt").split("x");
