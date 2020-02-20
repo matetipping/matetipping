@@ -27,6 +27,12 @@ div.colourOption:hover {
 div.colourOption.selected {
   opacity: 0.5;
 }
+div.avatar-display img.skin {
+  filter: hue-rotate(0deg) saturate(0.6) brightness(1.2);
+}
+div.avatar-display img.hair, div.avatar-display img.facialhair {
+  filter: hue-rotate(20deg) saturate(0.5) brightness(1.5);
+}
 
 
 button.back {
