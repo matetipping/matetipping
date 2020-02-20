@@ -177,7 +177,7 @@ function setColourPanels(colType) {
                 } else {
                         $("div.colourOption#colOption" + facialOptionSelected).addClass("selected");
                 }
-                $("div.colourOption").css("background-image", "none").show();
+                $("div.colourOption").css("width", "32px").css("background-image", "none").show();
                 $("div.colourOption#colOption1").css("background-color", "#F2E7AB").attr("alt", "20x0.5x1.5");
                 $("div.colourOption#colOption2").css("background-color", "#CAAC6E").attr("alt", "20x0.7x1.1");
                 $("div.colourOption#colOption3").css("background-color", "#AE8A5F").attr("alt", "10x0.7x0.9");
