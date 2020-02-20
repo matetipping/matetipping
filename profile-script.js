@@ -1,10 +1,10 @@
 var head = 1;
 var hairstyle = 1;
 var facialhair = 1;
-var skinBrightness = 1;
-var skinSaturation = 1;
-var hairBrightness = 1;
-var hairSaturation = 1;
+var clubOptionSelected = 1;
+var skinOptionSelected = 1;
+var hairOptionSelected = 1;
+var facialOptionSelected = 1;
 var currentColour = "club";
 
 $(document).ready(function() {
@@ -15,10 +15,13 @@ $(document).ready(function() {
                 var colValue = $(this).attr("alt").split("x");
                 if (currentColour == "club") {
                         $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + colValue[0] + ".svg");
+                        clubOptionSelected = colID;
                 } else if (currentColour == "skin") {
                         $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
+                        skinOptionSelected = colID;
                 } else if (currentColour == "hair") {
                         $("div.avatar-display img.hair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
+                        
                 } else if (currentColour == "facial") {
                         $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 }
@@ -183,7 +186,9 @@ $(document).ready(function() {
 
 function setColourPanels(colType) {
         currentColour = colType;
+        $("div.colourOption.selected").removeClass("selected");
         if (colType == "club") {
+                $("div.colourOption#colOption" + clubOptionSelected).addClass("selected");
                 $("div.colourOption").css("background-size", "contain").css("width", "64px");
                 $("div.colourOption#colOption1").css("background-image", "url(images/flag-ade.svg").attr("alt", "ade");
                 $("div.colourOption#colOption2").css("background-image", "url(images/flag-bri.svg").attr("alt", "bri");
@@ -210,6 +215,7 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption23").hide();
                 $("div.colourOption#colOption24").hide();
         } else if (colType == "skin") {
+                $("div.colourOption#colOption" + skinOptionSelected).addClass("selected");
                 $("div.colourOption").css("width", "32px").css("background-image", "none").show();
                 $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0x0.6x1.2");
                 $("div.colourOption#colOption2").css("background-color", "#EFD6BF").attr("alt", "0x0.8x1.1");
@@ -236,6 +242,11 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption23").css("background-color", "#336B9F").attr("alt", "180x3x0.5");
                 $("div.colourOption#colOption24").css("background-color", "#993E4D").attr("alt", "-40x9x0.6");
         } else {
+                if (colType == "hair") {
+                        $("div.colourOption#colOption" + hairOptionSelected).addClass("selected");
+                } else {
+                        $("div.colourOption#colOption" + facialOptionSelected).addClass("selected");
+                }
                 $("div.colourOption").css("background-image", "none").show();
                 $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0x0.6x1.2");
                 $("div.colourOption#colOption2").css("background-color", "#EFD6BF").attr("alt", "0x0.8x1.1");
@@ -265,14 +276,21 @@ function setColourPanels(colType) {
         
         $("div.colourOption").unbind();
         $("div.colourOption").click(function() {
+                $("div.colourOption.selected").removeClass("selected");
+                $(this).addClass("selected");
+                var colID = Number($(this).attr("id").split("Option")[1]);
                 var colValue = $(this).attr("alt").split("x");
                 if (currentColour == "club") {
+                        clubOptionSelected = colID;
                         $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + colValue[0] + ".svg");
                 } else if (currentColour == "skin") {
+                        skinOptionSelected = colID;
                         $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 } else if (currentColour == "hair") {
+                        hairOptionSelected = colID;
                         $("div.avatar-display img.hair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 } else if (currentColour == "facial") {
+                        facialOptionSelected = colID;
                         $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 }
         });
