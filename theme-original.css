@@ -36,8 +36,10 @@ div#colourTypeSelector button {
   display: inline-block;
   font-family: Lato;
 }
-div#colourTypeSelector button.selected {
+div#colourTypeSelector button.selected, div#colourTypeSelector button:hover {
   border-bottom: 2px solid #F47D33;
+  background: #333F50;
+  color: white;
 }
 div#colourTypeSelector button:first-child {
   border-top-left-radius: 16px;
