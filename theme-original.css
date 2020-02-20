@@ -32,8 +32,12 @@ div#colourTypeSelector button {
   text-transform: uppercase;
   margin: 0px -2px;
   border-radius: 0;
+  border: 2px solid #333F50;
   display: inline-block;
   font-family: Lato;
+}
+div#colourTypeSelector button.selected {
+  border-bottom: 2px solid #F47D33;
 }
 div#colourTypeSelector button:first-child {
   border-top-left-radius: 16px;
