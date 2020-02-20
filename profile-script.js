@@ -5,32 +5,40 @@ var skinBrightness = 1;
 var skinSaturation = 1;
 var hairBrightness = 1;
 var hairSaturation = 1;
+var currentColour = "skin";
 
 $(document).ready(function() {
-        $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0-0.6-1.2");     // 0, 0.6, 1.2
-        $("div.colourOption#colOption2").css("background-color", "#EFD6BF").attr("alt", "0-0.8-1.1");     // 0, 0.8, 1
-        $("div.colourOption#colOption3").css("background-color", "#DEC2A8").attr("alt", "0-1-1");     // 0, 1, 1
-        $("div.colourOption#colOption4").css("background-color", "#CCAE92").attr("alt", "0-1.2-0.9");     // 0, 1, 1
-        $("div.colourOption#colOption5").css("background-color", "#B99A7D").attr("alt", "0-1.4-0.8");     // 0, 1, 1
-        $("div.colourOption#colOption6").css("background-color", "#A58669").attr("alt", "0-1.5-0.7");     // 0, 1, 1
-        $("div.colourOption#colOption7").css("background-color", "#917256").attr("alt", "0-1.8-0.6");     // 0, 1, 1
-        $("div.colourOption#colOption8").css("background-color", "#7B5F45").attr("alt", "0-2-0.5");     // 0, 1, 1
-        $("div.colourOption#colOption9").css("background-color", "#624C37").attr("alt", "0-2-0.4");     // 0, 1, 1
-        $("div.colourOption#colOption10").css("background-color", "#4A3929").attr("alt", "0-2-0.3");     // 0, 1, 1
-        $("div.colourOption#colOption11").css("background-color", "#342518").attr("alt", "0-2-0.2");     // 0, 1, 1
-        $("div.colourOption#colOption12").css("background-color", "#231D17").attr("alt", "0-1.5-0.15");     // 0, 1, 1
-        $("div.colourOption#colOption13").css("background-color", "#F8D7A2").attr("alt", "10-1.5-1.1");     // 0, 1, 1
-        $("div.colourOption#colOption14").css("background-color", "#E7C289").attr("alt", "10-1.8-1");     // 0, 1, 1
-        $("div.colourOption#colOption15").css("background-color", "#C09B60").attr("alt", "10-2.3-0.8");     // 0, 1, 1
-        $("div.colourOption#colOption16").css("background-color", "#FFCCAF").attr("alt", "-30-5-1.2");     // 0, 1, 1
-        $("div.colourOption#colOption17").css("background-color", "#FFB8A5").attr("alt", "-30-3.5-1.1");     // 0, 1, 1
-        $("div.colourOption#colOption18").css("background-color", "#BC674D").attr("alt", "-20-3.5-0.6");     // 0, 1, 1
-        $("div.colourOption#colOption19").css("background-color", "#E99050").attr("alt", "-5-3.5-0.8");     // 0, 1, 1
-        $("div.colourOption#colOption20").css("background-color", "#513633").attr("alt", "-30-2-0.3");     // 0, 1, 1
-        $("div.colourOption#colOption21").css("background-color", "#372421").attr("alt", "-30-2.2-0.2");     // 0, 1, 1
-        $("div.colourOption#colOption22").css("background-color", "#8CAD44").attr("alt", "50-3-0.8");     // 0, 1, 1
-        $("div.colourOption#colOption23").css("background-color", "#336B9F").attr("alt", "180-3-0.5");     // 0, 1, 1
-        $("div.colourOption#colOption24").css("background-color", "#A31D39").attr("alt", "-50-9-0.3");     // 0, 1, 1
+        $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0x0.6x1.2");     // 0, 0.6, 1.2
+        $("div.colourOption#colOption2").css("background-color", "#EFD6BF").attr("alt", "0x0.8x1.1");     // 0, 0.8, 1
+        $("div.colourOption#colOption3").css("background-color", "#DEC2A8").attr("alt", "0x1x1");     // 0, 1, 1
+        $("div.colourOption#colOption4").css("background-color", "#CCAE92").attr("alt", "0x1.2x0.9");     // 0, 1, 1
+        $("div.colourOption#colOption5").css("background-color", "#B99A7D").attr("alt", "0x1.4x0.8");     // 0, 1, 1
+        $("div.colourOption#colOption6").css("background-color", "#A58669").attr("alt", "0x1.5x0.7");     // 0, 1, 1
+        $("div.colourOption#colOption7").css("background-color", "#917256").attr("alt", "0x1.8x0.6");     // 0, 1, 1
+        $("div.colourOption#colOption8").css("background-color", "#7B5F45").attr("alt", "0x2x0.5");     // 0, 1, 1
+        $("div.colourOption#colOption9").css("background-color", "#624C37").attr("alt", "0x2x0.4");     // 0, 1, 1
+        $("div.colourOption#colOption10").css("background-color", "#4A3929").attr("alt", "0x2x0.3");     // 0, 1, 1
+        $("div.colourOption#colOption11").css("background-color", "#342518").attr("alt", "0x2x0.2");     // 0, 1, 1
+        $("div.colourOption#colOption12").css("background-color", "#231D17").attr("alt", "0x1.5x0.15");     // 0, 1, 1
+        $("div.colourOption#colOption13").css("background-color", "#F8D7A2").attr("alt", "10x1.5x1.1");     // 0, 1, 1
+        $("div.colourOption#colOption14").css("background-color", "#E7C289").attr("alt", "10x1.8x1");     // 0, 1, 1
+        $("div.colourOption#colOption15").css("background-color", "#C09B60").attr("alt", "10x2.3x0.8");     // 0, 1, 1
+        $("div.colourOption#colOption16").css("background-color", "#FFCCAF").attr("alt", "-30x5x1.2");     // 0, 1, 1
+        $("div.colourOption#colOption17").css("background-color", "#FFB8A5").attr("alt", "-30x3.5x1.1");     // 0, 1, 1
+        $("div.colourOption#colOption18").css("background-color", "#BC674D").attr("alt", "-20x3.5x0.6");     // 0, 1, 1
+        $("div.colourOption#colOption19").css("background-color", "#E99050").attr("alt", "-5x3.5x0.8");     // 0, 1, 1
+        $("div.colourOption#colOption20").css("background-color", "#513633").attr("alt", "-30x2x0.3");     // 0, 1, 1
+        $("div.colourOption#colOption21").css("background-color", "#372421").attr("alt", "-30x2.2x0.2");     // 0, 1, 1
+        $("div.colourOption#colOption22").css("background-color", "#8CAD44").attr("alt", "50x3x0.8");     // 0, 1, 1
+        $("div.colourOption#colOption23").css("background-color", "#336B9F").attr("alt", "180x3x0.5");     // 0, 1, 1
+        $("div.colourOption#colOption24").css("background-color", "#A31D39").attr("alt", "-50x9x0.3");     // 0, 1, 1
+        
+        $("div.colourOption").click(function() {
+                var colValue = $(this).attr("alt").split("x");
+                if (currentColour == "skin") {
+                        $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
+                }
+        });
         
         $("div.avatar-controls button").click(function() {
                 console.log("hi");
