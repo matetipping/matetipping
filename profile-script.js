@@ -13,7 +13,9 @@ $(document).ready(function() {
         
         $("div.colourOption").click(function() {
                 var colValue = $(this).attr("alt").split("x");
-                if (currentColour == "skin") {
+                if (currentCcolour == "club") {
+                        $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + colValue[0] + ".svg");
+                } else if (currentColour == "skin") {
                         $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 } else if (currentColour == "hair") {
                         $("div.avatar-display img.hair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
