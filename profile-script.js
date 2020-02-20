@@ -22,9 +22,9 @@ $(document).ready(function() {
                 }
         });
         
-        $("div.colourTypeSkin").click(function() {setColourPanels("skin")});
-        $("div.colourTypeHair").click(function() {setColourPanels("hair")});
-        $("div.colourTypeFacial").click(function() {setColourPanels("facial")});
+        $("button#colourTypeSkin").click(function() {setColourPanels("skin")});
+        $("button#colourTypeHair").click(function() {setColourPanels("hair")});
+        $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
         
         $("div.avatar-controls button").click(function() {
                 console.log("hi");
