@@ -12,6 +12,7 @@ $(document).ready(function() {
         setColourPanels(currentColour);
         
         $("button#colourTypeClub").click(function() {setColourPanels("club")});
+        $("button#colourTypeStyle").click(function() {setColourPanels("style")});
         $("button#colourTypeSkin").click(function() {setColourPanels("skin")});
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
@@ -117,6 +118,13 @@ $(document).ready(function() {
 function setColourPanels(colType) {
         currentColour = colType;
         $("div.colourOption.selected").removeClass("selected");
+        if (colType == "style") {
+                $("div.colourSelector").hide();
+                $("div.styleSelector").show();
+        } else {
+                $("div.colourSelector").show();
+                $("div.styleSelector").hide();
+        }
         if (colType == "club") {
                 $("div.colourOption#colOption" + clubOptionSelected).addClass("selected");
                 $("div.colourOption").css("background-size", "contain").css("width", "64px").css("margin", "6px 12px");
