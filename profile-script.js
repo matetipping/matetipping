@@ -11,22 +11,6 @@ $(document).ready(function() {
         
         setColourPanels(currentColour);
         
-        $("div.colourOption").click(function() {
-                var colValue = $(this).attr("alt").split("x");
-                if (currentColour == "club") {
-                        $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + colValue[0] + ".svg");
-                        clubOptionSelected = colID;
-                } else if (currentColour == "skin") {
-                        $("div.avatar-display img.skin").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
-                        skinOptionSelected = colID;
-                } else if (currentColour == "hair") {
-                        $("div.avatar-display img.hair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
-                        
-                } else if (currentColour == "facial") {
-                        $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
-                }
-        });
-        
         $("button#colourTypeSkin").click(function() {setColourPanels("skin")});
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
