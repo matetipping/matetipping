@@ -1,39 +1,39 @@
 div.avatar-display {
-  height: 100%;
-  max-width: 360px;
-  width: 50%;
+	height: 100%;
+  max-width: 200px;
+  width: 200px;
   position: absolute;
 }
 div.avatar-display img {
-  width: 360px;
-  position: absolute;
+	width: 200px;
+	position: absolute;
 }
 div.avatar-controls button.back, div.avatar-controls button.forward {
-  height: 24px;
+	height: 24px;
   padding: 6px 0;
   margin: 6px 0;
-  width: 48px;
+  width: 32px;
   border-radius: 0;
 }
 div.avatar-controls {
-  max-width: 360px;
-  height: 100%;
-  position: relative;
-  left: 360px;
+	max-width: 520px;
+	height: 100%;
+	position: relative;
+	left: 200px;
 }
 div#colourTypeSelector {
-  padding: 0;
-  margin: auto;
-  width: fit-content;
+	padding: 0;
+	margin: auto;
+	width: fit-content;
 }
 div#colourTypeSelector button {
-  width: 48px;
-  text-transform: lowercase;
-  font-size: 80%;
-  margin: 0px -2px;
-  padding: 0;
-  border-radius: 0;
-  display: inline-block;
+	width: fit-content;
+	padding: 0 10px;
+	text-transform: uppercase;
+	margin: 0px -2px;
+	border-radius: 0;
+	display: inline-block;
+	font-family: Lato;
 }
 div#colourTypeSelector button:first-child {
   border-top-left-radius: 16px;
@@ -48,16 +48,15 @@ div#colourSelector {
   text-align: center;
 }
 div.colourOption {
-  width: 32px;
+	width: 32px;
   height: 32px;
   display: inline-block;
-  margin: 0px 10px;
+  margin: 12px;
   border: 2px solid white;
   cursor: pointer;
-  transition: 0.2s;
 }
 div.colourOption:hover {
-  filter: saturate(0.8) brightness(1.2);
+  border: 2px solid #F47D33;
 }
 div.colourOption.selected {
   opacity: 0.5;
@@ -92,10 +91,11 @@ button.back:hover, button.forward:hover {
   background-color: transparent;
 }
 span.buttonLabel {
-  width: 80px;
+	width: 60px;
   color: #F47D33;
   text-transform: uppercase;
   display: inline-block;
+  text-align: center;
 }
 
 a {
