@@ -11,7 +11,7 @@ $(document).ready(function() {
         
         setColourPanels(currentColour);
         
-        $("button#colourTypeClub").click(function() {setColourPanels("slub")});
+        $("button#colourTypeClub").click(function() {setColourPanels("club")});
         $("button#colourTypeSkin").click(function() {setColourPanels("skin")});
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
