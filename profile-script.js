@@ -119,7 +119,7 @@ function setColourPanels(colType) {
         $("div.colourOption.selected").removeClass("selected");
         if (colType == "club") {
                 $("div.colourOption#colOption" + clubOptionSelected).addClass("selected");
-                $("div.colourOption").css("background-size", "contain").css("width", "64px");
+                $("div.colourOption").css("background-size", "contain").css("width", "64px").css("margin", "6px 12px");
                 $("div.colourOption#colOption1").css("background-image", "url(images/flag-ade.svg").attr("alt", "ade");
                 $("div.colourOption#colOption2").css("background-image", "url(images/flag-bri.svg").attr("alt", "bri");
                 $("div.colourOption#colOption3").css("background-image", "url(images/flag-car.svg").attr("alt", "car");
@@ -146,7 +146,7 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption24").hide();
         } else if (colType == "skin") {
                 $("div.colourOption#colOption" + skinOptionSelected).addClass("selected");
-                $("div.colourOption").css("width", "32px").css("background-image", "none").show();
+                $("div.colourOption").css("width", "32px").css("background-image", "none").css("margin", "12px").show();
                 $("div.colourOption#colOption1").css("background-color", "#F7EAD7").attr("alt", "0x0.6x1.2");
                 $("div.colourOption#colOption2").css("background-color", "#EFD6BF").attr("alt", "0x0.8x1.1");
                 $("div.colourOption#colOption3").css("background-color", "#DEC2A8").attr("alt", "0x1x1");
