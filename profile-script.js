@@ -208,7 +208,7 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption22").css("background-color", "#8CAD44").attr("alt", "50x3x0.8");
                 $("div.colourOption#colOption23").css("background-color", "#336B9F").attr("alt", "180x3x0.5");
                 $("div.colourOption#colOption24").css("background-color", "#993E4D").attr("alt", "-40x9x0.6");
-        } else {
+        } else if (colType == "hair" || colType == "facial") {
                 if (colType == "hair") {
                         $("button#colourTypeHair").addClass("selected");
                         $("div.colourOption#colOption" + hairOptionSelected).addClass("selected");
