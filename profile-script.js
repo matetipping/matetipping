@@ -104,13 +104,37 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img#glasses").attr("src", "/images/profile/glasses-" + index + ".svg");
                 } else if ($(this).hasClass("eyelashes")) {
-                        $("div.avatar-display img#eyelashes").attr("src", "/images/profile/eyelashes-" + iteration + ".svg");
+                        var index = Number($("div.avatar-display img#eyelashes").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 2) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 2;
+                        }
+                        $("div.avatar-display img#eyelashes").attr("src", "/images/profile/eyelashes-" + index + ".svg");
                 } else if ($(this).hasClass("freckles")) {
-                        $("div.avatar-display img#freckles").attr("src", "/images/profile/freckles-" + iteration + ".svg");
+                        var index = Number($("div.avatar-display img#freckles").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 2) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 2;
+                        }
+                        $("div.avatar-display img#freckles").attr("src", "/images/profile/freckles-" + index + ".svg");
                 } else if ($(this).hasClass("wrinkles")) {
-                        $("div.avatar-display img#wrinkles").attr("src", "/images/profile/wrinkles-" + iteration + ".svg");
+                        var index = Number($("div.avatar-display img#wrinkles").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 2) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 2;
+                        }
+                        $("div.avatar-display img#wrinkles").attr("src", "/images/profile/wrinkles-" + index + ".svg");
                 } else if ($(this).hasClass("bandages")) {
-                        $("div.avatar-display img#bandages").attr("src", "/images/profile/bandages-" + iteration + ".svg");
+                        var index = Number($("div.avatar-display img#bandages").attr("src").split("-")[1].split(".")[0]) + iteration;
+                        if (index > 2) {
+                                index = 1;
+                        } else if (index == 0) {
+                                index = 2;
+                        }
+                        $("div.avatar-display img#bandages").attr("src", "/images/profile/bandages-" + index + ".svg");
                 }
         });
 });
