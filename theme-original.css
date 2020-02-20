@@ -69,6 +69,7 @@ div.avatar-display img.hair, div.avatar-display img.facialhair {
 }
 div#styleSelector div {
   display: inline-block;
+  height: 48px;
 }
 
 
