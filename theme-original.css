@@ -19,6 +19,13 @@ div.colourOption {
   margin: 0px 10px;
   border: 2px solid white;
   cursor: pointer;
+  transition: 0.2s;
+}
+div.colourOption:hover {
+  filter: saturate(0.8) brightness(1.2);
+}
+div.colourOption.selected {
+  opacity: 0.5;
 }
 
 
