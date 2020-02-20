@@ -233,8 +233,8 @@ function setColourPanels(colType) {
                 $("div.colourOption#colOption14").css("background-color", "#FAFAFA").attr("alt", "0x0x2");
                 $("div.colourOption#colOption15").css("background-color", "#9E9E9E").attr("alt", "0x0x1");
                 $("div.colourOption#colOption16").css("background-color", "#4F4F4F").attr("alt", "0x0x0.5");
-                $("div.colourOption#colOption17").css("background-color", "#000000").attr("alt", "0x0x0");
-                $("div.colourOption#colOption18").css("background-color", "#C19594").attr("alt", "-30x0.4x1");
+                $("div.colourOption#colOption17").css("background-color", "#202020").attr("alt", "0x0x0.2");
+                $("div.colourOption#colOption18").css("background-color", "#0D0600").attr("alt", "0x3x0.05");
                 $("div.colourOption#colOption19").css("background-color", "#5D7A32").attr("alt", "60x1x0.7");
                 $("div.colourOption#colOption20").css("background-color", "#105B90").attr("alt", "180x2x0.5");
                 $("div.colourOption#colOption21").css("background-color", "#CD60CA").attr("alt", "-90x1.5x0.8");
