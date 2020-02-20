@@ -27,18 +27,7 @@ $(document).ready(function() {
                 } else if ($(this).hasClass("on")) {
                         $(this).removeClass("on").addClass("off");
                 }
-                if ($(this).hasClass("club")) {
-                        var clubs = ["ade", "bri", "car", "col", "ess", "fre", "gee", "gcs", "gws", "haw", "mel", "nth", "pta", "ric", "stk", "syd", "wce", "wbd"];
-                        var currentClub = $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0];
-                        console.log(currentClub);
-                        var index = clubs.indexOf(currentClub) + iteration;
-                        if (index >= clubs.length) {
-                                index = 0;
-                        } else if (index < 0) {
-                                index = clubs.length - 1;
-                        }
-                        $("div.avatar-display img#club").attr("src", "/images/profile/jumper-" + clubs[index] + ".svg");
-                } else if ($(this).hasClass("body")) {
+                if ($(this).hasClass("body")) {
                         var index = Number($("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0]) + iteration;
                         if (index > 5) {
                                 index = 1;
@@ -120,50 +109,6 @@ $(document).ready(function() {
                         $("div.avatar-display img#wrinkles").attr("src", "/images/profile/wrinkles-" + iteration + ".svg");
                 } else if ($(this).hasClass("bandages")) {
                         $("div.avatar-display img#bandages").attr("src", "/images/profile/bandages-" + iteration + ".svg");
-                } else if ($(this).hasClass("skincolour")) {
-                        skinBrightness = skinBrightness + iteration/10;
-                        skinSaturation = skinSaturation - iteration/5;
-                        if (skinBrightness > 1.2) {
-                                skinBrightness = 0.2;
-                                skinSaturation = 2.6
-                        } else if (skinBrightness < 0.2) {
-                                skinBrightness = 1.2;
-                                skinSaturation = 0.6;
-                        }
-                        $("div.avatar-display img.skin").css("filter", "brightness(" + skinBrightness + ") saturate(" + skinSaturation + ")");
-                } else if ($(this).hasClass("haircolour")) {
-                        hairBrightness = hairBrightness + iteration*0.2;
-                        if (hairBrightness > 1.8) {
-                                hairBrightness = 0.2;
-                                hairSaturation = hairSaturation + iteration*0.35;
-                        } else if (hairBrightness < 0.2) {
-                                hairBrightness = 1.8;
-                                hairSaturation = hairSaturation - iteration*0.35;
-                        }
-                        if (hairSaturation > 1.4) {
-                                hairSaturation = 0;
-                        } else if (hairSaturation < 0) {
-                                hairBrightness = 1.4;
-                        }
-                        facialBrightness = hairBrightness;
-                        facialSaturation = hairSaturation;
-                        $("div.avatar-display img.hair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
-                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + hairBrightness + ") saturate(" + hairSaturation + ")");
-                } else if ($(this).hasClass("facialcolour")) {
-                        facialBrightness = facialBrightness + iteration*0.2;
-                        if (facialBrightness > 1.8) {
-                                facialBrightness = 0.2;
-                                facialSaturation = facialSaturation + iteration*0.35;
-                        } else if (facialBrightness < 0.2) {
-                                facialBrightness = 1.8;
-                                facialSaturation = facialSaturation - iteration*0.35;
-                        }
-                        if (facialSaturation > 1.4) {
-                                facialSaturation = 0;
-                        } else if (facialSaturation < 0) {
-                                facialBrightness = 1.4;
-                        }
-                        $("div.avatar-display img.facialhair").css("filter", "brightness(" + facialBrightness + ") saturate(" + facialSaturation + ")");
                 }
         });
 });
