@@ -17,6 +17,28 @@ $(document).ready(function() {
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
         
+        $("div#profileSave button.submit").click(function() {
+                var profileAvatar = {
+                        club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
+                        body: $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0],
+                        head: $("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0],
+                        hairstyle: $("div.avatar-display img#hairstyle").attr("src").split("-")[1].split(".")[0],
+                        facialHair: $("div.avatar-display img#facialHair").attr("src").split("-")[1].split(".")[0],
+                        eyebrows: $("div.avatar-display img#eyebrows").attr("src").split("-")[1].split(".")[0],
+                        nose: $("div.avatar-display img#nose").attr("src").split("-")[1].split(".")[0],
+                        mouth: $("div.avatar-display img#mouth").attr("src").split("-")[1].split(".")[0],
+                        glasses: $("div.avatar-display img#glasses").attr("src").split("-")[1].split(".")[0],
+                        eyelashes: $("div.avatar-display img#eyelashes").attr("src").split("-")[1].split(".")[0],
+                        freckles: $("div.avatar-display img#freckles").attr("src").split("-")[1].split(".")[0],
+                        wrinkles: $("div.avatar-display img#wrinkles").attr("src").split("-")[1].split(".")[0],
+                        bandages: $("div.avatar-display img#bandages").attr("src").split("-")[1].split(".")[0],
+                        skinColour: $("div.avatar-display img.skin").css("filter"),
+                        hairColour: $("div.avatar-display img.hair").css("filter"),
+                        facialHairColour: $("div.avatar-display img.facialHair").css("filter")
+                };
+                console.log(profileAvatar);
+        });
+        
         $("div.avatar-controls button").click(function() {
                 console.log("hi");
                 var iteration = 1;
