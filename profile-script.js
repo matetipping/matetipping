@@ -6,6 +6,7 @@ var skinOptionSelected = 1;
 var hairOptionSelected = 1;
 var facialOptionSelected = 1;
 var currentColour = "club";
+var user = firebase.auth().currentUser;
 
 $(document).ready(function() {
         
