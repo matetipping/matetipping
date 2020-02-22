@@ -36,6 +36,9 @@ $(document).ready(function() {
                         hairColour: $("div.avatar-display img.hair").css("filter"),
                         facialHairColour: $("div.avatar-display img.facialHair").css("filter")
                 };
+                firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                        avatar: profileAvatar
+                });
                 console.log(profileAvatar);
         });
         
