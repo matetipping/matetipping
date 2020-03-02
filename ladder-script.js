@@ -27,8 +27,16 @@ function swapOrder(a, b) {
   var idB = $("div.flag-" + b).attr("id");
   var nameA = $("td.name-" + a).html();
   var nameB = $("td.name-" + b).html();
-  $("div.flag-" + a).attr("id", idB);
-  $("div.flag-" + b).attr("id", idA);
+  if (idA == null) {
+    $("div.flag-" + b).removeAttr("id");
+  } else {
+    $("div.flag-" + b).attr("id", idA);
+  }
+  if (idB == null) {
+    $("div.flag-" + a).removeAttr("id");
+  } else {
+    $("div.flag-" + a).attr("id", idB);
+  }
   $("td.name-" + a).html(nameB);
   $("td.name-" + b).html(nameA);
 }
