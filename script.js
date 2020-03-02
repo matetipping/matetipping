@@ -62,6 +62,51 @@ $(document).ready(function(){
 			}, 200);
 		}, 200);
 	});
+
+});
+
+function commitLogOff() {
+	localStorage.clear();
+	var user = firebase.auth().currentUser;
+	if (user) {
+		firebase.auth().signOut().then(function() {
+			displayLogOff();
+		}).catch(function(error) {
+			alert("Could not log out");
+		});
+	}
+}
+
+function fullLogOff() {
+	commitLogOff();
+	window.location.reload();
+}
+
+// sets the username, hamburger menu and main content blocks with 
+function displayLogIn(username) {
+	$("main").load("modules/tipping.html");
+	$.getScript("scripts/index.js");
+	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
+	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
+	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
+	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
+	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
+	$(".offline input:not([type='submit'])").each(function() {
+		$(this).val("");
+	});
+	$(".offline").css("display", "none");
+	$(".online").css("display", "block");
+	loadPageData();
+}
+
+function displayLogOff() {
+	$(".username-container span span:nth-child(1)").text("You are logged off.");
+	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
+	$("nav ul li a").each(function() {
+		$(this).attr("href", "");
+	});
+	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
+	$("main").load("modules/offline.html");
 	
 	// Registration form
 	$("#form-register").submit(function(e) {
@@ -170,51 +215,6 @@ $(document).ready(function(){
 		});
 		return false;
 	});
-
-});
-
-function commitLogOff() {
-	localStorage.clear();
-	var user = firebase.auth().currentUser;
-	if (user) {
-		firebase.auth().signOut().then(function() {
-			displayLogOff();
-		}).catch(function(error) {
-			alert("Could not log out");
-		});
-	}
-}
-
-function fullLogOff() {
-	commitLogOff();
-	window.location.reload();
-}
-
-// sets the username, hamburger menu and main content blocks with 
-function displayLogIn(username) {
-	$("main").load("modules/tipping.html");
-	$.getScript("scripts/index.js");
-	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
-	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
-	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
-	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
-	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
-	$(".offline input:not([type='submit'])").each(function() {
-		$(this).val("");
-	});
-	$(".offline").css("display", "none");
-	$(".online").css("display", "block");
-	loadPageData();
-}
-
-function displayLogOff() {
-	$(".username-container span span:nth-child(1)").text("You are logged off.");
-	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
-	$("nav ul li a").each(function() {
-		$(this).attr("href", "");
-	});
-	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
-	$("main").load("modules/offline.html");
 }
 
 function displayError(message) {
