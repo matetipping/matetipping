@@ -100,14 +100,14 @@ function displayLogIn(username) {
 }
 
 function displayLogOff() {
+	$("main").load("modules/offline.html");
+	$.getScript("scripts/offline.js");
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
 	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
 	$("nav ul li a").each(function() {
 		$(this).attr("href", "");
 	});
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
-	$("main").load("modules/offline.html");
-	$.getScript("scripts/offline.js");
 }
 
 function displayError(message) {
