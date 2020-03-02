@@ -12,7 +12,7 @@ $(document).ready(function(){
   $("div#remainingTeams div.flag").click(function() {
     var thisID = $(this).attr("id");
     $(this).remove();
-    var thisPosition = $("div#ladderPrediction div.flag:not([id])").parent().attr("id");
+    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().parent().attr("id");
     console.log(thisPosition);
     $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID);
     $("td.name-" + thisPosition).html(thisID);
