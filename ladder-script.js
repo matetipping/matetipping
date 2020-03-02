@@ -9,6 +9,12 @@ $(document).ready(function(){
     var otherPosition = thisPosition + 1;
     swapOrder(thisPosition, otherPosition);
   });
+  $("div#remainingTeams div.flag").click(function() {
+    var thisID = $(this).attr("id");
+    $(this).remove();
+    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent.attr("class");
+    $("td.name-" + thisPosition).html(thisID);
+  });
 });
 
 function swapOrder(a, b) {
