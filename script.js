@@ -87,10 +87,10 @@ function displayLogIn(username) {
 	if (window.location.pathname == "/") {
 		$("main").load("modules/tipping.html");
 		$.getScript("scripts/index.js");
-	} else if (window.location.pathname == "/leagues/") {
+	} else if (window.location.pathname == "/leagues") {
 		$("main").load("modules/leagues.html");
 		$.getScript("scripts/leagues.js");
-	} else if (window.location.pathname == "/profile/") {
+	} else if (window.location.pathname == "/profile") {
 		console.log(window.location.pathname);
 		$("main").load("modules/profile.html");
 		$.getScript("scripts/profile.js");
