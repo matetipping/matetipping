@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("div#ladderPrediction td.shiftUp").click(function() {
     var thisPosition = Number($(this).parent().attr("class"));
+    console.log(thisPosition);
     var otherPosition = thisPosition - 1;
     swapOrder(thisPosition, otherPosition);
     console.log("up");
@@ -21,6 +22,7 @@ $(document).ready(function(){
 });
 
 function swapOrder(a, b) {
+  console.log(a + " " + b);
   var idA = $("div.flag-" + a).attr("id");
   var idB = $("div.flag-" + b).attr("id");
   var nameA = $("td.name-" + a).html();
