@@ -91,6 +91,7 @@ function displayLogIn(username) {
 		$("main").load("modules/leagues.html");
 		$.getScript("scripts/leagues.js");
 	} else if (window.location.pathname == "/profile/") {
+		console.log(window.location.pathname);
 		$("main").load("modules/profile.html");
 		$.getScript("scripts/profile.js");
 	}
