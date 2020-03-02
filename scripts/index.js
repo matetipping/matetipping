@@ -6,6 +6,8 @@ var tipsSaved = false;
 
 $(document).ready(function(){
 	currentYear = new Date().getFullYear().toString();
+	loadPageData();
+	
 	// Tipping form
 	$("#form-tipping").submit(function(e) {
 		$("div.message").remove();
@@ -152,9 +154,6 @@ $(document).ready(function(){
 			$("div.message").html("<div class='error'>" + errorMessage + "</div>");
 			window.scrollTo(0, 0);
 		}
-	});
-	$(document).ready(function() {
-		loadPageData();
 	});
 
 });
