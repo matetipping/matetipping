@@ -42,6 +42,7 @@ $(document).ready(function() {
                 });
                 console.log(profileAvatar);
                 $("div.online").load("ladder.html");
+                $.getScript("ladder-script.js");
         });
         
         $("div.avatar-controls button").click(function() {
