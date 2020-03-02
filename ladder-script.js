@@ -14,7 +14,7 @@ $(document).ready(function(){
     $(this).remove();
     var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent().parent().attr("id");
     console.log(thisPosition);
-    $("td.name-" + thisPosition).html(thisID);
+    $("td.name-" + thisPosition).html(getLongName(thisID));
   });
 });
 
