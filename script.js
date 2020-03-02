@@ -22,7 +22,6 @@ $(document).ready(function(){
 				displayLogIn(username);
 				user = firebase.auth().currentUser;
 			}
-			$("main").load("modules/tipping.html");
 		} else {
 			// logging off
 			displayLogOff();
