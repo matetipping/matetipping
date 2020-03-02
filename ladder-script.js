@@ -14,7 +14,8 @@ $(document).ready(function(){
   $("div#remainingTeams div.flag").click(function() {
     var thisID = $(this).attr("id");
     $(this).remove();
-    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent().attr("class");
+    var thisPosition = $("div#ladderPrediction div.flag:not([id])").parent().attr("class");
+    $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID);
     $("td.name-" + thisPosition).html(thisID);
   });
 });
