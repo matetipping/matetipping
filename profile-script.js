@@ -41,6 +41,7 @@ $(document).ready(function() {
                         avatar: profileAvatar
                 });
                 console.log(profileAvatar);
+                $("div.online").load("ladder.html");
         });
         
         $("div.avatar-controls button").click(function() {
@@ -289,4 +290,7 @@ function setColourPanels(colType) {
                         $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 }
         });
+}
+
+function loadPageData() {
 }
