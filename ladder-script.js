@@ -1,28 +1,25 @@
 $(document).ready(function(){
   $("div#ladderPrediction td.shiftUp").click(function() {
     var thisPosition = Number($(this).parent().attr("id"));
-    console.log(thisPosition);
     var otherPosition = thisPosition - 1;
     swapOrder(thisPosition, otherPosition);
-    console.log("up");
   });
   $("div#ladderPrediction td.shiftDown").click(function() {
     var thisPosition = Number($(this).parent().attr("id"));
     var otherPosition = thisPosition + 1;
     swapOrder(thisPosition, otherPosition);
-    console.log("down");
   });
   $("div#remainingTeams div.flag").click(function() {
     var thisID = $(this).attr("id");
     $(this).remove();
     var thisPosition = $("div#ladderPrediction div.flag:not([id])").parent().attr("id");
+    console.log(thisPosition);
     $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID);
     $("td.name-" + thisPosition).html(thisID);
   });
 });
 
 function swapOrder(a, b) {
-  console.log(a + " " + b);
   var idA = $("div.flag-" + a).attr("id");
   var idB = $("div.flag-" + b).attr("id");
   var nameA = $("td.name-" + a).html();
