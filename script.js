@@ -198,6 +198,7 @@ function fullLogOff() {
 // sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
 	$("main").load("modules/tipping.html");
+	$.getScript("scripts/index.js");
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
