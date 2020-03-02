@@ -94,9 +94,6 @@ function displayLogIn(username) {
 	$(".offline input:not([type='submit'])").each(function() {
 		$(this).val("");
 	});
-	$(".offline").css("display", "none");
-	$(".online").css("display", "block");
-	loadPageData();
 }
 
 function displayLogOff() {
