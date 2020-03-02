@@ -84,13 +84,21 @@ function fullLogOff() {
 
 // sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
-	$("main").load("modules/tipping.html");
-	$.getScript("scripts/index.js");
+	if (window.location.pathname == "/") {
+		$("main").load("modules/tipping.html");
+		$.getScript("scripts/index.js");
+	} else if (window.location.pathname == "/leagues/") {
+		$("main").load("modules/leagues.html");
+		$.getScript("scripts/leagues.js");
+	} else if (window.location.pathname == "/profile/") {
+		$("main").load("modules/profile.html");
+		$.getScript("scripts/profile.js");
+	}
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
-	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
-	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues.html");
-	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile.html");
+	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "");
+	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues");
+	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile");
 	$(".offline input:not([type='submit'])").each(function() {
 		$(this).val("");
 	});
