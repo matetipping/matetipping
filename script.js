@@ -7,11 +7,6 @@ var username = "";		// the displayed username of the logged in user
 $(document).ready(function(){
 	// load and display username
 	username = localStorage.getItem('username');
-	//if (username !== null) {
-	//	$("username-container b").html(username);
-	//} else {
-	//	displayLogOff();
-	//}
 	
 	// display login when log-in state changes
 	firebase.auth().onAuthStateChanged(function(u) {
@@ -112,7 +107,6 @@ $(document).ready(function(){
 				firebase.auth().onAuthStateChanged(function(user) {
 					displaySuccess("Registration successful.");
 					username = formData.username;
-					displayLogIn(username);
 					if (user) {
 						user.updateProfile({
 							displayName: username
@@ -171,7 +165,6 @@ $(document).ready(function(){
 			if (user) {
 				$("#form-login div.loader.log-load").replaceWith("<input type='submit' value='Log in'>");
 				localStorage.setItem('username', user.displayName);
-				//displayLogIn(user.displayName);
 			}
 		});
 	});
