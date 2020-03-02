@@ -3,16 +3,18 @@ $(document).ready(function(){
     var thisPosition = Number($(this).parent().attr("class"));
     var otherPosition = thisPosition - 1;
     swapOrder(thisPosition, otherPosition);
+    console.log("up");
   });
   $("div#ladderPrediction td.shiftDown").click(function() {
     var thisPosition = Number($(this).parent().attr("class"));
     var otherPosition = thisPosition + 1;
     swapOrder(thisPosition, otherPosition);
+    console.log("down");
   });
   $("div#remainingTeams div.flag").click(function() {
     var thisID = $(this).attr("id");
     $(this).remove();
-    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent.attr("class");
+    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent().attr("class");
     $("td.name-" + thisPosition).html(thisID);
   });
 });
