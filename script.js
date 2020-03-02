@@ -107,6 +107,7 @@ function displayLogOff() {
 	});
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
 	$("main").load("modules/offline.html");
+	$.getScript("scripts/offline.js");
 }
 
 function displayError(message) {
