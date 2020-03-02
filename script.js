@@ -5,7 +5,6 @@ var user = firebase.auth().currentUser; // loads the username of the current use
 var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
-	$("main").load("modules/offline.html");
 	// load and display username
 	username = localStorage.getItem('username');
 	if (username !== null) {
@@ -199,7 +198,7 @@ function fullLogOff() {
 
 // sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
-	$("div.offline").remove();
+	$("main").load("modules/tipping.html");
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/index.html");
@@ -220,8 +219,7 @@ function displayLogOff() {
 		$(this).attr("href", "");
 	});
 	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
-	$(".offline").css("display", "block");
-	$(".online").css("display", "none");
+	$("main").load("modules/offline.html");
 }
 
 function displayError(message) {
