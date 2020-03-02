@@ -137,6 +137,7 @@ $(document).ready(function(){
 				});
 			}
 		}
+		return false;
 	});
 	
 	// Login form
@@ -167,6 +168,7 @@ $(document).ready(function(){
 				localStorage.setItem('username', user.displayName);
 			}
 		});
+		return false;
 	});
 
 });
