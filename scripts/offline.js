@@ -2,7 +2,7 @@
     // Registration form
     $("#form-register").submit(function(e) {
       e.preventDefault();
-      $("#form-register input[type='submit']").replaceWith("<div class='loader reg-load'><img src='/logos/icon-load.png'></div>");
+      $("#form-register input[type='submit']").replaceWith("<div class='loader reg-load'></div>");
 
       var isRegistrationError = false;
       var registrationErrorMessage;
@@ -78,7 +78,7 @@
     // Login form
     $("#form-login").submit(function(e) {
       e.preventDefault();
-      $("#form-login input[type='submit']").replaceWith("<div class='loader log-load'><img src='/logos/icon-load.png'></div>");
+      $("#form-login input[type='submit']").replaceWith("<div class='loader log-load'></div>");
 
       var formData = {
         "email": $("#input-login-email").val(),
