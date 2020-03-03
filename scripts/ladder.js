@@ -2,8 +2,9 @@ $(document).ready(function(){
         $("div#profileSave button.submit").click(function() {
                 var ladder = [];
                 $("div#ladderPrediction div.flag").each(function() {
-                        if ($(this).hasAttribute("id")) {
-                                ladder.push($(this).attr("id"));
+                        var thisID = $(this).attr("id");
+                        if (typeof thisID !== typeof undefined && thisID !== false) {
+                                ladder.push(thisID);
                         }
                 });
                 if (ladder.length == 18) {
