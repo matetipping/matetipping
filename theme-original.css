@@ -759,12 +759,13 @@ span.hamburger-container {
   margin-right: 24px;
 }
 div.loader {
-  text-align: center;
-}
-div.loader img {
+  background-image: url(/logos/icon-load.png);
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  margin: auto;
   animation: loadingSpinner 0.5s linear 0s infinite normal forwards;
 }
-
 @keyframes loadingSpinner {
   0% {
     transform: rotate(0deg);
