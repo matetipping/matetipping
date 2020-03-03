@@ -12,6 +12,8 @@
                         $.getScript("scripts/avatar-editor.js");
                 } else if (navValue == "Profile") {
                         $("div#profile-content").load("modules/avatar.html");
+                } else if (navValue == "Settings") {
+                        $("div#profile-content").load("");
                 }
         });
 });
