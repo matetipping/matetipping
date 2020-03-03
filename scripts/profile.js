@@ -1,4 +1,5 @@
  $(document).ready(function() {
+        $("div#profile-content").load("modules/avatar.html");
         $(".menu-major button").click(function() {
                 $(".menu-major button.selected").removeClass("selected");
                 $(this).addClass("selected");
