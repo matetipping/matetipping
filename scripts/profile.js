@@ -44,6 +44,8 @@ $(document).ready(function() {
         });
         
         $(".menu-major button").click(function() {
+                $(".menu-major button.selected").removeClass("selected");
+                $(this).addClass("selected");
                 var navValue = $(this).html();
                 if (navValue == "Ladder") {
                         $("div#profile-content").load("ladder.html");
