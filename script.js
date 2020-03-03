@@ -4,8 +4,11 @@ var usedScorersList;	// a list of scorer bonuses already used in other rounds
 var user = firebase.auth().currentUser; // loads the username of the current user
 var username = "";		// the displayed username of the logged in user
 
-$(document).ready(function(){
+$(document).ready(function() {
 	$("header").load("modules/header.html");
+});
+
+$(document).ready(function(){
 	// load and display username
 	username = localStorage.getItem('username');
 	if (username != null) {
