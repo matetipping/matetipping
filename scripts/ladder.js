@@ -2,7 +2,9 @@ $(document).ready(function(){
         $("div#profileSave button.submit").click(function() {
                 var ladder = [];
                 $("div#ladderPrediction div.flag").each(function() {
-                        ladder.push($(this).attr("id"));
+                        if ($(this).hasAttribute("id")) {
+                                ladder.push($(this).attr("id"));
+                        }
                 });
                 if (ladder.length == 18) {
                         firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
