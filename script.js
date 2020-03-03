@@ -63,7 +63,7 @@ $(document).ready(function(){
 	});
 	
 	// error message dismissal
-	$("body").on("click", ".message .successful, .message .error", function() {
+	$("body").on("click", ".message .successful, .message .error, .message .info", function() {
 		var thisElement = $(this);
 		$(this).css("opacity", "0");
 		setTimeout(function () {
@@ -134,6 +134,11 @@ function displayError(message) {
 
 function displaySuccess(message) {
 	$("div.message").html("<div class='successful'>" + message + "</div>");
+	window.scrollTo(0, 0);
+}
+
+function displayInfo(message) {
+	$("div.message").html("<div class='info'>" + message + "</div>");
 	window.scrollTo(0, 0);
 }
 
