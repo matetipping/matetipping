@@ -299,7 +299,7 @@ function saveAvatar() {
                 $("div#profileSave button.submit").click(function() {
                         saveAvatar();
                 });
-        }).catch(e) {
+        }).catch(function(e) {
                 $("div.loader").replaceWith(htmlBefore);
                 displayError("Avatar could not be saved.");
                 $("div#profileSave button.submit").click(function() {
