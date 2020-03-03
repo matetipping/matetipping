@@ -1,17 +1,17 @@
-div.col1 {
+.col1 {
   width: 100%;
 }
-div.col2 {
+.col2 {
   width: 50%;
 
 }
-div.col3 {
+.col3 {
   width: 33.333%
 }
-div.col4 {
+.col4 {
   width: 25%;
 }
-div.col5 {
+.col5 {
   width: 20%;
 }
 
