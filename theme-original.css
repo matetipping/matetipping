@@ -37,7 +37,7 @@ div.avatar-controls button.back, div.avatar-controls button.forward {
   border-radius: 0;
 }
 div#ladderPrediction button.up, div#ladderPrediction button.down {
-  height: 32px;
+  height: 16px;
   padding: 6px 0;
   margin: 6px 0;
   width: 24px;
