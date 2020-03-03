@@ -9,6 +9,8 @@
                 } else if (navValue == "Avatar") {
                         $("div#profile-content").load("modules/avatar-editor.html");
                         $.getScript("scripts/avatar-editor.js");
+                } else if (navValue == "Profile") {
+                        $("div#profile-content").load("modules/avatar.html");
                 }
         });
 });
