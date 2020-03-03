@@ -41,8 +41,13 @@ $(document).ready(function() {
                         avatar: profileAvatar
                 });
                 console.log(profileAvatar);
-                $("div.online").load("ladder.html");
-                $.getScript("ladder-script.js");
+        });
+        
+        $(".menu-major button").click(function() {
+                var navValue = $(this).html();
+                if (navValue == "Ladder") {
+                        $("div#profile-content").load("ladder.html");
+                }
         });
         
         $("div.avatar-controls button").click(function() {
