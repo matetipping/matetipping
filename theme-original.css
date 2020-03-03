@@ -1,3 +1,7 @@
+span.logo-container, span.title-container span, span.username-container span {
+  cursor: pointer;
+}
+
 div.avatar-display {
   height: 200px;
   max-width: 200px;
