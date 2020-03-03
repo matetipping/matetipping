@@ -759,7 +759,7 @@ span.hamburger-container {
   margin-right: 24px;
 }
 div.loader {
-  background-image: url(/logos/icon-load.png);
+  background-image: url(/images/loader.svg);
   background-size: cover;
   width: 64px;
   height: 64px;
