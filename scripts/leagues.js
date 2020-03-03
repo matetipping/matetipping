@@ -344,7 +344,7 @@ function createNewLeague(name, maxMembers) {
 	});
 	
 	var htmlBefore = $("form#league-create").html();
-	$("form#league-create").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
+	$("form#league-create").html("<div class='loader form-loader'></div>");
 	
 	batch.commit().then(function(doc) {
 		console.log(myLeagueNames);
@@ -369,7 +369,7 @@ function joinExistingLeague(code) {
 	var leagueRef = db.collection("leagues").doc(code);
 	var leagueName;
 	var htmlBefore = $("form#league-join").html();
-	$("form#league-join").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
+	$("form#league-join").html("<div class='loader form-loader'></div>");
 	db.runTransaction(function(transaction) {
 		return transaction.get(leagueRef).then(function(doc) {
 			if (!doc.exists) {
