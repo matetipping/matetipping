@@ -49,6 +49,7 @@ $(document).ready(function() {
                 var navValue = $(this).html();
                 if (navValue == "Ladder") {
                         $("div#profile-content").load("ladder.html");
+                        $.getScript("ladder.js");
                 }
         });
         
