@@ -188,7 +188,7 @@ body {
   text-transform: uppercase;
   font-size: 75%;
 }
-.message .successful, .message .error, .copy-code {
+.message .successful, .message .error, .message .info, .copy-code {
   border: 2px solid #3e3;
   padding: 12px 24px;
   width: fit-content;
@@ -200,13 +200,13 @@ body {
 .message .error {
   border: 2px solid #e33;
 }
-.copy-code {
+.message .info, .copy-code {
   border: 2px solid #F47D33;
 }
 .copy-code:active {
   border: 2px solid white;
 }
-.message .successful:hover, .message .error:hover, .copy-code:hover {
+.message .successful:hover, .message .error:hover, .message .info, .copy-code:hover {
   cursor: pointer;
   padding: 24px;
 }
@@ -217,7 +217,7 @@ body {
 .copy-code.copied::after {
   content: 'copied';
 }
-.message .successful::after, .message .error::after {
+.message .successful::after, .message .error::after, .message .info::after {
   content: 'dismiss message';
 }
 .message .successful::after {
@@ -234,7 +234,7 @@ body {
   text-align: center;
   height: 0;
 }
-.message .successful:hover::after, .message .error:hover::after, .copy-code:hover::after {
+.message .successful:hover::after, .message .error:hover::after, .message .info:hover::after, .copy-code:hover::after {
   font-size: 80%;
   opacity: 1;
   height: auto;
