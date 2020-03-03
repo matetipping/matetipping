@@ -102,7 +102,7 @@ $(document).ready(function(){
 		if (valid) {
 			var roundsRef = firebase.firestore().collection("users").doc(user.uid).collection("tips").doc(roundCode);
 			var htmlBefore = $("button.submit").parent().html();
-			$("button.submit").replaceWith("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
+			$("button.submit").replaceWith("<div class='loader form-loader'></div>");
 			if (!isFinals) {
 				var batch = firebase.firestore().batch();
 
@@ -509,7 +509,7 @@ function loadTippingForm(doc) {
 		});
 		$("select.roundSelector").change(function() {
 			tipsSaved = false;
-			$("form#form-tipping").html("<div class='loader form-loader'><img src='/logos/icon-load.png'></div>");
+			$("form#form-tipping").html("<div class='loader form-loader'></div>");
 			clearInterval(timer);
 			var roundCode = currentYear + "-" + $(this).val();
 			var newRoundRef = db.collection("rounds").doc(roundCode);
