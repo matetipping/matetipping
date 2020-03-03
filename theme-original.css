@@ -206,7 +206,7 @@ body {
 .copy-code:active {
   border: 2px solid white;
 }
-.message .successful:hover, .message .error:hover, .message .info, .copy-code:hover {
+.message .successful:hover, .message .error:hover, .message .info:hover, .copy-code:hover {
   cursor: pointer;
   padding: 24px;
 }
@@ -226,7 +226,7 @@ body {
 .message .error::after {
   color: #e33;
 }
-.message .successful::after, .message .error::after, .copy-code::after {
+.message .successful::after, .message .error::after, .message .info::after, .copy-code::after {
   display: block;
   font-size: 1px;
   opacity: 0;
