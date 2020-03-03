@@ -52,10 +52,6 @@ div.menu-minor button:first-child {
 div.menu-minor button:last-child {
   border-bottom-right-radius: 24px;
 }
-div.menu-minor {
-  padding: 0;
-  text-align: center;
-}
 div.colourOption {
   width: 32px;
   height: 32px;
