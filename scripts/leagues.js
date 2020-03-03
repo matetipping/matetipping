@@ -7,6 +7,7 @@ var roundCode = "";
 var currentLeague = localStorage.getItem("league");
 
 $(document).ready(function() {
+	loadPageData();
 	var user = firebase.auth().currentUser;
 	var leagueCode = getURLParameter("join");
 	if (user) {
