@@ -5,6 +5,14 @@ var user = firebase.auth().currentUser; // loads the username of the current use
 var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
+	
+	$("span.logo-container, span.title-container span").click(function() {
+		window.location.pathname = "/";
+	});
+	$("span.username-container span").click(function() {
+		window.location.pathname = "/profile";
+	});
+	
 	// load and display username
 	username = localStorage.getItem('username');
 	if (username != null) {
