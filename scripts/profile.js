@@ -50,6 +50,9 @@ $(document).ready(function() {
                 if (navValue == "Ladder") {
                         $("div#profile-content").load("modules/ladder.html");
                         $.getScript("scripts/ladder.js");
+                } else if (navValue == "Avatar") {
+                        $("div#profile-content").load("modules/avatar-editor.html");
+                        $.getScript("scripts/avatar-editor.js");
                 }
         });
         
