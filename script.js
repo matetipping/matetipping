@@ -7,6 +7,9 @@ var username = "";		// the displayed username of the logged in user
 $(document).ready(function(){
 	// load and display username
 	username = localStorage.getItem('username');
+	if (username != null) {
+		$("span.username-container b").html(username);
+	}
 	
 	// display login when log-in state changes
 	firebase.auth().onAuthStateChanged(function(u) {
