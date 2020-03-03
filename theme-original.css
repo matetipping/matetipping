@@ -19,6 +19,13 @@ div.avatar-controls button.back, div.avatar-controls button.forward {
   width: 32px;
   border-radius: 0;
 }
+div#ladderPrediction button.up, div#ladderPrediction button.down {
+  height: 32px;
+  padding: 6px 0;
+  margin: 6px 0;
+  width: 24px;
+  border-radius: 0;
+}
 div.avatar-controls {
   max-width: 520px;
   height: 200px;
@@ -94,7 +101,13 @@ button.back {
 button.forward {
   background-image: url('/images/arrow-right.svg');
 }
-button.back, button.forward {
+button.up {
+  background-image: url('/images/arrow-up.svg');
+}
+button.down {
+  background-image: url('/images/arrow-down.svg');
+}
+button.back, button.forward, button.up, button.down {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -105,7 +118,7 @@ button.back, button.forward {
   background-repeat: no-repeat;
   background-position: center;
 }
-button.back:hover, button.forward:hover {
+button.back:hover, button.forward:hover, button.up:hover, button.down:hover {
   filter: brightness(2) saturate(0);
   background-color: transparent;
 }
