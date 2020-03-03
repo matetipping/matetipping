@@ -26,8 +26,21 @@ div.avatar-display {
   position: absolute;
 }
 div.avatar-display img {
-  width: 200px;
+  width: inherit;
   position: absolute;
+}
+.avatar-pair div.avatar-display {
+  width: 150px;
+  height: 150px;
+  max-width: 150px;
+  margin: 0 80px;
+  position: relative;
+}
+div#avatar-user {
+  float: left;
+}
+div#avatar-opponent {
+  float: right;
 }
 div.avatar-controls button.back, div.avatar-controls button.forward {
   height: 24px;
