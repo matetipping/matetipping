@@ -1,3 +1,20 @@
+div.col1 {
+  width: 100%;
+}
+div.col2 {
+  width: 50%;
+
+}
+div.col3 {
+  width: 33.333%
+}
+div.col4 {
+  width: 25%;
+}
+div.col5 {
+  width: 20%;
+}
+
 span.logo-container, span.title-container span, span.username-container span {
   cursor: pointer;
 }
@@ -273,7 +290,6 @@ div#results table tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.4);
 }
 div.menu-major button {
-  width: 33.333%;
   margin: 0;
   font-size: 120%;
   border: 2px solid #333F50;
