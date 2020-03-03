@@ -70,83 +70,8 @@
       </ul>
     </nav>
     <main>
-      <div class="offline">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <form id="form-register">
-                  <h2>Register</h2>
-                  <div>
-                    <label for="input-register-email">Email:</label></br>
-                    <input type="email" id="input-register-email" name="email">
-                  </div>
-                  <div>
-                    <label for="input-register-username">Username:</label></br>
-                    <input type="text" id="input-register-username" name="username">
-                  </div>
-                  <div>
-                    <label for="input-register-password">Password:</label></br>
-                    <input type="password" id="input-register-password" name="username">
-                  </div>
-                  <div>
-                    <label for="input-register-password-confirm">Confirm Password:</label></br>
-                    <input type="password" id="input-register-password-confirm" name="username">
-                  </div>
-                  <div>
-                    <input type="submit" value="Register">
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form id="form-login">
-                  <h2>Log in</h2>
-                  <div>
-                    <label for="input-login-email">Email:</label></br>
-                    <input type="email" id="input-login-email" name="email">
-                  </div>
-                  <div>
-                    <label for="input-password">Password:</label></br>
-                    <input type="password" id="input-login-password" name="username">
-                  </div>
-                  <div>
-                    <input type="submit" value="Log in">
-                  </div>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="online">
-        <div id="results-navigation">
-          <button>Create</button><button class="selected">Results</button><button>Ladder</button>
-        </div>
-        <div class="message"></div>
-        <div id="leaguesList"></div>
-        <div id="leagues" style="display: none;">
-          <h2>Your League:</h2>
-          <form id="league-create">
-            <div>If you wish to start a new league, create it here.</div>
-            <div>
-              <label for="input-league-name">League Name:</label></br>
-              <input type="text" id="input-league-name" spellcheck="false">
-            </div>
-            <div>
-              <label for="input-league-max">Maximum Players:</label></br>
-              <input type="number" id="input-league-max" min="2" max="100">
-            </div>
-            <div>
-              <input type="submit" value="Create League">
-            </div>
-          </form>
-        </div>
-        <div id="results">
-          <table>
-          </table>
-        </div>
-        <div id="ladder" style="display: none;">
-        </div>
+      <div class='loader'>
+        <img src='/logos/icon-load.png'>
       </div>
     </main>
     <footer>&copy; 2020 Daniel Terrington</footer>
