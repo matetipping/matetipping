@@ -1,21 +1,33 @@
 $(document).ready(function(){
-  $("div#ladderPrediction td.shiftUp").click(function() {
-    var thisPosition = Number($(this).parent().attr("id"));
-    var otherPosition = thisPosition - 1;
-    swapOrder(thisPosition, otherPosition);
-  });
-  $("div#ladderPrediction td.shiftDown").click(function() {
-    var thisPosition = Number($(this).parent().attr("id"));
-    var otherPosition = thisPosition + 1;
-    swapOrder(thisPosition, otherPosition);
-  });
-  $("div#remainingTeams div.flag").click(function() {
-    var thisID = $(this).attr("id");
-    $(this).remove();
-    var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent().parent().attr("id");
-    console.log(thisPosition);
-    $("td.name-" + thisPosition).html(getLongName(thisID));
-  });
+        $("div#profileSave button.submit").click(function() {
+                var ladder = [];
+                $("div#ladderPrediction div.flag").each(function() {
+                        ladder.push($(this).attr("id"));
+                });
+                if (ladder.length == 18) {
+                        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                                ladderPrediction: ladder
+                        });
+                        console.log(ladder);
+                }
+        });
+        $("div#ladderPrediction td.shiftUp").click(function() {
+                var thisPosition = Number($(this).parent().attr("id"));
+                var otherPosition = thisPosition - 1;
+                swapOrder(thisPosition, otherPosition);
+        });
+        $("div#ladderPrediction td.shiftDown").click(function() {
+                var thisPosition = Number($(this).parent().attr("id"));
+                var otherPosition = thisPosition + 1;
+                swapOrder(thisPosition, otherPosition);
+        });
+        $("div#remainingTeams div.flag").click(function() {
+                var thisID = $(this).attr("id");
+                $(this).remove();
+                var thisPosition = $("div#ladderPrediction div.flag:not([id])").first().attr("id", thisID).parent().parent().attr("id");
+                console.log(thisPosition);
+                $("td.name-" + thisPosition).html(getLongName(thisID));
+        });
 });
 
 function swapOrder(a, b) {
