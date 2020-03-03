@@ -181,8 +181,8 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = "<div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html');</script></div>" +
-	    	"<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div>" +
+	var htmlContent = "<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html');</script></div>" +
+	    	"<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div>" +
 		"<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
 	var i;
 	var length = myClubs.length;
