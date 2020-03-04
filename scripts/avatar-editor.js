@@ -271,8 +271,7 @@ function setColourPanels(colType) {
 }
 
 function saveAvatar() {
-        var htmlBefore = $("button.submit").parent().html();
-        $("button.submit").replaceWith("<div class='loader'></div>");
+        var htmlBefore = startLoad($("button.submit"));
         var profileAvatar = {
                 club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
                 body: $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0],
@@ -294,17 +293,11 @@ function saveAvatar() {
         firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
                 avatar: profileAvatar
         }).then(function() {
-                $("div.loader").replaceWith(htmlBefore);
+                endLoad(htmlBefore, saveAvatar);
                 displaySuccess("Avatar saved successfully.");
-                $("div#profileSave button.submit").click(function() {
-                        saveAvatar();
-                });
         }).catch(function(e) {
-                $("div.loader").replaceWith(htmlBefore);
+                endLoad(htmlBefore, saveAvatar);
                 displayError("Avatar could not be saved.");
-                $("div#profileSave button.submit").click(function() {
-                        saveAvatar();
-                });
         });
         console.log(profileAvatar);
 }
