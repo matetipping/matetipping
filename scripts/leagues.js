@@ -291,7 +291,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
 		me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
 		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
-		+ "<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
+		+ "<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div>" +
 		opp + "</th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
