@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  var avatarHTML = localStorage.getItem("avatar");
+  if (avatarHTML !== null) {
+    $(".avatar-display").html(avatarHTML);
+  }
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
       if (doc.exists) {
           setInitialGlobalVariables(doc.data().avatar);
