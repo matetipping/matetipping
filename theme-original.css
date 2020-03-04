@@ -15,6 +15,11 @@
   width: 20%;
 }
 
+span#resendEmail {
+  color: #F47D33;
+  cursor: pointer;
+}
+
 span.logo-container, span.title-container span, span.username-container span {
   cursor: pointer;
 }
@@ -159,7 +164,7 @@ span.buttonLabel {
   text-align: center;
 }
 
-a, span#resendEmail {
+a {
   color: #F47D33;
   text-decoration: none;
   transition: 0.25s;
