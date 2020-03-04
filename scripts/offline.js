@@ -82,7 +82,7 @@
 	}).catch(function(e) {
 	    if (e.code == "auth/user-not-found" || e.code == "auth/invalid-email") {
 	    	displayError("Enter a valid email address.");
-		$("#input-login-email").css("border", "2px solid #f33").css("transition", "2s").css("border", "none").css("transition", "0");
+		$("#input-login-email").css("border", "2px solid #f33").css("transition", "2s").css("border", "none");
 	    } else {
   	    	displayError("Could not send reset email.");
 	    }
