@@ -419,10 +419,3 @@ function leagueCreated(leagueID, leagueName, players, maxPlayers) {
 		});
 	});
 }
-
-function getURLParameter(paramKey) {
-    paramKey = paramKey.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + paramKey + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
