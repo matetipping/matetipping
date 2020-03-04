@@ -74,6 +74,19 @@
         }
       }
     });
+    
+    $("span#resendEmail").click(function() {
+	var email = $("#input-login-email").val();
+    	firebase.auth().sendPasswordResetEmail(email).then(function() {
+  	    displaySuccess("A password reset email has been sent to: " + email);
+	}).catch(function(e) {
+	    if (e.code == "auth/user-not-found" || e.code == "auth/invalid-email") {
+	    	displayError("Enter a valid email address.");
+	    } else {
+  	    	displayError("Could not send reset email.");
+	    }
+	});
+    });
 
     // Login form
     $("#form-login").submit(function(e) {
