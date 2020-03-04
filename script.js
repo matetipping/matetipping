@@ -154,7 +154,7 @@ function startLoad(elem) {
 
 function endLoad(prevHTML, clickFunction) {
 	var thisElem = $(prevHTML).replaceAll("div.loader");
-	if (clickFunction !=== undefined) {
+	if (clickFunction !== undefined) {
 		thisElem.click(function() {
 			clickFunction;
 		});
