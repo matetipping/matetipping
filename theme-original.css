@@ -17,6 +17,9 @@
 
 span#resendEmail {
   color: #F47D33;
+}
+span#resendEmail:hover {
+  color: #FFAE7C;
   cursor: pointer;
 }
 
