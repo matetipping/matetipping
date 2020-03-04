@@ -15,7 +15,6 @@ $(document).ready(function() {
 			roundName = doc.data().name;
 			roundIndex = Number(roundName.split(" ")[1]) - 1;
 			roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
-		}).then(function() {
 			loadPageData();
 		});
 	});
