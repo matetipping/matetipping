@@ -142,6 +142,25 @@ function displayInfo(message) {
 	window.scrollTo(0, 0);
 }
 
+function startLoad(elem) {
+	var prevHTML = elem.parent().html();
+	if ($("div.loader").length == 0) {
+		elem.replaceWith("<div class='loader'></div>");
+		return prevHTML;
+	} else {
+		return null;
+	}
+}
+
+function endLoad(prevHTML, clickFunction) {
+	var thisElem = $(prevHTML).replaceAll("div.loader");
+	if (clickFunction !=== undefined) {
+		thisElem.click(function() {
+			clickFunction;
+		});
+	}
+}
+
 function getFormattedDate(date) {
 	var intDay = date.getDay();
 	var stringDay = "";
