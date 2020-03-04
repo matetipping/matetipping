@@ -17,6 +17,7 @@
 
 span#resendEmail {
   color: #F47D33;
+  transition: 0.25s;
 }
 span#resendEmail:hover {
   color: #FFAE7C;
