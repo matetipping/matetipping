@@ -14,16 +14,21 @@
       }
       if (formData.username.length < 3 || formData.username.length > 20) {
         isRegistrationError = true;
-        registrationErrorMessage = "Username must be between 3 and 20 characters."
+        registrationErrorMessage = "Username must be between 3 and 20 characters.";
+	fixFields($("#input-register-username"));
       } else if (!formData.email.includes("@")) {
         isRegistrationError = true;
-        registrationErrorMessage = "Email address is invalid."			
+        registrationErrorMessage = "Email address is invalid.";
+	fixFields($("#input-register-email"));
       } else if (formData.password.length < 6) {
         isRegistrationError = true;
         registrationErrorMessage = "Password is too short.";
+	fixFields($("#input-register-password"));
+	fixFields($("#input-register-password-confirm"));
       } else if (formData.password != formData.passwordConfirm) {
         isRegistrationError = true;
         registrationErrorMessage = "Passwords do not match.";
+	fixFields($("#input-register-password-confirm"));
       }
       if (isRegistrationError) {
         displayError(registrationErrorMessage);
@@ -33,7 +38,9 @@
         firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
           var isRegistrationError = true;
           if (error.code == "auth/email-already-in-use") {
-            displayError("Email address already taken.");
+            displayError("Email address already in use.");
+	    fixFields($("#input-register-password"));
+	    fixFields($("#input-register-password-confirm"));
           } else {
             displayError("Registration failed unexpectedly.");
           }
@@ -104,8 +111,10 @@
         var loginErrorMessage = error.message;
         if (loginErrorCode == "auth/wrong-password") {
           displayError("Password is incorrect.");
+	  fixFields($("#input-login-password"));
         } else if (loginErrorCode == "auth/user-not-found") {
           displayError("Email address does not match any user.");
+	  fixFields($("#input-login-email"));
         } else {
           displayError("Log-in failed unexpectedly.");
         }
