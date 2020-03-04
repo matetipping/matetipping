@@ -2,6 +2,9 @@ $(document).ready(function() {
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
       if (doc.exists) {
           setInitialGlobalVariables(doc.data().avatar);
+          console.log(head);
+          console.log(facialhair);
+          console.log(hairstyle);
           $("img#hairback").last().attr("src", "/images/profile/hairback-" + doc.data().avatar.hairstyle + ".svg");
           $("img#body").last().attr("src", "/images/profile/body-" + doc.data().avatar.body + ".svg");
           $("img#club").last().attr("src", "/images/profile/jumper-" + doc.data().avatar.club + ".svg");
