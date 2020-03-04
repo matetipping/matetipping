@@ -176,6 +176,11 @@ function getURLParameter(paramKey) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
+function fixFields(elem) {
+	elem.css("border", "2px solid #f33").focus(function() {
+		elem.css("border", "none");
+	});
+}
 
 function getFormattedDate(date) {
 	var intDay = date.getDay();
