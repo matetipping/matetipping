@@ -1,7 +1,7 @@
 $(document).ready(function(){
-        displayInfo("You must enter the AFL ladder you predict for the end of the season." +
-                "This ladder will be used to generate default tips in matches where you fail to tip" +
-                "(you cannot win such matches but your percentage will be affected)." +
+        displayInfo("You must enter the AFL ladder you predict for the end of the season. " +
+                "This ladder will be used to generate default tips in matches where you fail to tip " +
+                "(you cannot win such matches but your percentage will be affected). " +
                 "It is also used as a finals tie-breaker.");
         $("div#profileSave button.submit").click(function() {
                 submitLadder();
