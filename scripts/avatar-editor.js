@@ -23,7 +23,9 @@ $(document).ready(function() {
         });
         
         $("div.avatar-controls button").click(function() {
-                console.log("hi");
+                console.log(head);
+                console.log(facialhair);
+                console.log(hairstyle);
                 var iteration = 1;
                 if ($(this).hasClass("back")) {
                         iteration = -1;
