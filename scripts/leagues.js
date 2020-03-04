@@ -179,9 +179,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = //"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div>" +
-	    	//"<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
-		"<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
+	var htmlContent = "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
@@ -293,7 +291,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
 		me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
 		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
-		+ "<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
+		+ "<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
 		opp + "</th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
