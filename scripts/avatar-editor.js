@@ -307,9 +307,9 @@ function saveAvatar() {
 }
 
 function setInitialGlobalVariables(docData) {
-        head = docData.head;
-        hairstyle = docData.hairstyle;
-        facialhair = docData.facialHair;
+        head = Number(docData.head);
+        hairstyle = Number(docData.hairstyle);
+        facialhair = Number(docData.facialHair);
 }
 
 function loadPageData() {
