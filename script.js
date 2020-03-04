@@ -108,6 +108,8 @@ function displayLogIn(username) {
 		$("main").load("modules/profile.html", function() {
 			$.getScript("scripts/profile.js");
 		});
+	} else if (window.location.pathname =="/password-reset") {
+		commitLogOff();
 	}
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
