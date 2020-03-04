@@ -24,6 +24,11 @@ span#resendEmail:hover {
   cursor: pointer;
 }
 
+div#username {
+  padding: 24px 0;
+  font-size: 120%;
+}
+
 span.logo-container, span.title-container span, span.username-container span {
   cursor: pointer;
 }
