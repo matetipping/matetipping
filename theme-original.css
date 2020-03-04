@@ -159,7 +159,7 @@ span.buttonLabel {
   text-align: center;
 }
 
-a {
+a, span#resendEmail {
   color: #F47D33;
   text-decoration: none;
   transition: 0.25s;
