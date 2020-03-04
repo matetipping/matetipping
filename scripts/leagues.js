@@ -5,10 +5,11 @@ var roundIndex = 0;
 var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
+var user = firebase.auth().currentUser;
 
 $(document).ready(function() {
 	loadPageData();
-	var user = firebase.auth().currentUser;
+	user = firebase.auth().currentUser;
 	var leagueCode = getURLParameter("join");
 	if (user) {
 		if (leagueCode != "") {
