@@ -1,8 +1,8 @@
  $(document).ready(function() {
         $("div#profile-content").html("<div class='avatar-display'></div>");
         $("div.avatar-display").load("modules/avatar.html");
-        $("div.message").html("");
         $(".menu-major button").click(function() {
+                $("div.message").html("");
                 $(".menu-major button.selected").removeClass("selected");
                 $(this).addClass("selected");
                 var navValue = $(this).html();
