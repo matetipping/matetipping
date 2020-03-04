@@ -16,6 +16,7 @@
 <script>
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
     if (doc.exists) {
+        setInitialGlobalVariables(doc.data().avatar);
         $("img#hairback").last().attr("src", "/images/profile/hairback-" + doc.data().avatar.hairstyle + ".svg");
         $("img#body").last().attr("src", "/images/profile/body-" + doc.data().avatar.body + ".svg");
         $("img#club").last().attr("src", "/images/profile/jumper-" + doc.data().avatar.club + ".svg");
