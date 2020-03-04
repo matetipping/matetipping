@@ -45,7 +45,9 @@ $(document).ready(function() {
                         }
                         $("div.avatar-display img#body").attr("src", "/images/profile/body-" + index + ".svg");
                 } else if ($(this).hasClass("head")) {
+                        console.log(head);
                         head = head + iteration;
+                        console.log(head);
                         if (head > 6) {
                                 head = 1;
                         } else if (head == 0) {
