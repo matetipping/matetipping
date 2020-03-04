@@ -1,6 +1,9 @@
 $(document).ready(function() {
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
       if (doc.exists) {
+          console.log(head);
+          console.log(facialhair);
+          console.log(hairstyle);
           setInitialGlobalVariables(doc.data().avatar);
           console.log(head);
           console.log(facialhair);
