@@ -288,11 +288,11 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 		"<td colspan = '2'></td></tr></tbody></table>";
 	
 	htmlContent = "<table><thead><tr><th colspan='2'>" +
-		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
-		me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
+		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div><div id='username'>" +
+		me + "</div></th><th><span class='highlight'>" + myTotal + "</span></th>" +
 		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
-		+ "<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div>" +
-		opp + "</th></tr>" + htmlContent;
+		+ "<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div><div id='username'>" +
+		opp + "</div></th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
 	
