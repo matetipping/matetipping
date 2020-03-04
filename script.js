@@ -108,7 +108,7 @@ function displayLogIn(username) {
 	}
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
-	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "");
+	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile");
 	$(".offline input:not([type='submit'])").each(function() {
