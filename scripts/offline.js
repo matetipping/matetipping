@@ -48,12 +48,12 @@
         });
         if (!isRegistrationError) {
           firebase.auth().onAuthStateChanged(function(user) {
-            displaySuccess("Registration successful.");
             username = formData.username;
             if (user) {
               user.updateProfile({
                 displayName: username
               }).then(function() {
+		displaySuccess("Registration successful.");
                 localStorage.setItem('username', username);
                 //displayLogIn(user.displayName);
               }, function(error) {
