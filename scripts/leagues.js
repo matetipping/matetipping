@@ -5,11 +5,20 @@ var roundIndex = 0;
 var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
-var user = firebase.auth().currentUser;
 
 $(document).ready(function() {
-	loadPageData();
-	user = firebase.auth().currentUser;
+	// calculate the current round
+	var timestamp = firebase.firestore.Timestamp.now();
+	var roundRef = db.collection("rounds").where('date', '<', timestamp).orderBy('date',  'desc').limit(1);
+	roundRef.get().then(function(querySnapshot) {
+		querySnapshot.forEach(function(doc) {
+			roundName = doc.data().name;
+			roundIndex = Number(roundName.split(" ")[1]) - 1;
+			roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
+		}).then(function() {
+			loadPageData();
+		});
+	});
 	var leagueCode = getURLParameter("join");
 	if (user) {
 		if (leagueCode != "") {
@@ -49,17 +58,6 @@ $(document).ready(function() {
 		}
 	});
 	
-	// calculate the current round
-	var timestamp = firebase.firestore.Timestamp.now();
-	var roundRef = db.collection("rounds").where('date', '<', timestamp).orderBy('date',  'desc').limit(1);
-	roundRef.get().then(function(querySnapshot) {
-		querySnapshot.forEach(function(doc) {
-			roundName = doc.data().name;
-			roundIndex = Number(roundName.split(" ")[1]) - 1;
-			roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
-		});
-	});
-	
 	// create league on form submission
 	$("form#league-create").submit(function(e) {
 		e.preventDefault();
@@ -81,7 +79,6 @@ $(document).ready(function() {
 });
 
 function loadPageData() {
-	var user = firebase.auth().currentUser; 
 	console.log(user.uid);
 	db.collection("leagues").where("participants", "array-contains", user.uid).get().then(function(querySnapshot) {
     		querySnapshot.forEach(function(doc) {
