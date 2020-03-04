@@ -179,8 +179,8 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
-	var htmlContent = "<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div>" +
-	    	"<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
+	var htmlContent = //"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div>" +
+	    	//"<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
 		"<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
 	var i;
 	var length = myClubs.length;
@@ -289,8 +289,12 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
 		"<td colspan = '2'></td></tr></tbody></table>";
 	
-	htmlContent = "<table><thead><tr><th colspan='2'>" + me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
-		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" + opp + "</th></tr>" + htmlContent;
+	htmlContent = "<table><thead><tr><th colspan='2'>" +
+		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
+		me + "</th><th><span class='highlight'>" + myTotal + "</span></th>" +
+		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
+		+ "<div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div>" +
+		opp + "</th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
 	
