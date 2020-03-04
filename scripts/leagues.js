@@ -119,6 +119,7 @@ function loadPageData() {
 }
 
 function updateResults(doc) {
+	var user = firebase.auth().currentUser;
 	if (doc.exists) {
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(user.uid);
