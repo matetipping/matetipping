@@ -37,19 +37,17 @@ div.avatar-display {
 div.avatar-display img {
   width: inherit;
   position: absolute;
+  left: 0;
+}
+.avatar-pair {
+  margin: auto;
+  width: 120px;
 }
 .avatar-pair div.avatar-display {
-  width: 150px;
-  height: 150px;
-  max-width: 150px;
-  margin: 0 80px;
+  width: 120px;
+  height: 120px;
   position: relative;
-}
-div#avatar-user {
-  float: left;
-}
-div#avatar-opponent {
-  float: right;
+  display: block;
 }
 div.avatar-controls button.back, div.avatar-controls button.forward {
   height: 24px;
