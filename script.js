@@ -96,15 +96,18 @@ function fullLogOff() {
 // sets the username, hamburger menu and main content blocks with 
 function displayLogIn(username) {
 	if (window.location.pathname == "/") {
-		$("main").load("modules/tipping.html");
-		$.getScript("scripts/index.js");
+		$("main").load("modules/tipping.html", function() {
+		        $.getScript("scripts/index.js");
+		});
 	} else if (window.location.pathname == "/leagues") {
-		$("main").load("modules/leagues.html");
-		$.getScript("scripts/leagues.js");
+		$("main").load("modules/leagues.html", function() {
+		        $.getScript("scripts/leagues.js");
+		});
 	} else if (window.location.pathname == "/profile") {
 		console.log(window.location.pathname);
-		$("main").load("modules/profile.html");
-		$.getScript("scripts/profile.js");
+		$("main").load("modules/profile.html", function() {
+			$.getScript("scripts/profile.js");
+		});
 	}
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
 	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
@@ -117,8 +120,9 @@ function displayLogIn(username) {
 }
 
 function displayLogOff() {
-	$("main").load("modules/offline.html");
-	$.getScript("scripts/offline.js");
+	$("main").load("modules/offline.html", function() {
+		$.getScript("scripts/offline.js");
+	});
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
 	$(".username-container span span:nth-child(2)").html("<a href='javascript:attemptLogIn(username);'>[Sign In]</a>");
 	$("nav ul li a").each(function() {
