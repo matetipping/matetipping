@@ -293,10 +293,10 @@ function saveAvatar() {
         firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
                 avatar: profileAvatar
         }).then(function() {
-                endLoad(htmlBefore, saveAvatar);
+                endLoad(htmlBefore, $("div#profileSave button.submit"), saveAvatar);
                 displaySuccess("Avatar saved successfully.");
         }).catch(function(e) {
-                endLoad(htmlBefore, saveAvatar);
+                endLoad(htmlBefore, $("div#profileSave button.submit"), saveAvatar);
                 displayError("Avatar could not be saved.");
         });
         console.log(profileAvatar);
