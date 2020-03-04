@@ -152,10 +152,10 @@ function startLoad(elem) {
 	}
 }
 
-function endLoad(prevHTML, clickFunction) {
-	var thisElem = $(prevHTML).replaceAll("div.loader");
-	if (clickFunction !== undefined) {
-		thisElem.click(function() {
+function endLoad(prevHTML, prevElement, clickFunction) {
+	$(prevHTML).replaceAll("div.loader");
+	if (prevElement !== undefined && clickFunction !== undefined) {
+		prevElement.click(function() {
 			clickFunction;
 		});
 	}
