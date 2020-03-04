@@ -302,5 +302,15 @@ function saveAvatar() {
         console.log(profileAvatar);
 }
 
+function setInitialGlobalVariables(docData) {
+        head = docData.head;
+        hairstyle = docData.hairstyle;
+        facialhair = docData.facialHair;
+        clubOptionSelected = docData.club;
+        skinOptionSelected = docData.skinColour;
+        hairOptionSelected = docData.hairColour;
+        facialOptionSelected = docData.facialHairColour;
+}
+
 function loadPageData() {
 }
