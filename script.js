@@ -164,8 +164,7 @@ function endLoad(prevHTML, prevElement, clickFunction) {
 	var parentElem = $("div.loader").parent();
 	$("div.loader").replaceWith(prevHTML);
 	if (prevElement !== undefined && clickFunction !== undefined) {
-		console.log(prevElement);
-		parentElem.on('click', 'prevElement', function() {
+		parentElem.on('click', prevElement, function() {
 			$(this).css("color", "red");
 			clickFunction;
 		});
