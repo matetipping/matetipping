@@ -143,6 +143,8 @@ function registerUser(formData) {
 	dbUserInfo.ownedLeague = null;
 	var dbUserPrefs = {};
 	dbUserPrefs.displayName = formData.username;
+	dbUserPrefs.avatar = formData.avatar;
+	dbUserPrefs.ladderPrediction = formData.ladderPrediction;
 	commitLogOff();
 	firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 		displayError("Registration failed unexpectedly.");
