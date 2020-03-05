@@ -3,6 +3,7 @@ var usedDisposalsList;	// a list of disposals bonuses already used in other roun
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
 var user = firebase.auth().currentUser; // loads the username of the current user
 var username = "";		// the displayed username of the logged in user
+var joinCode = "";
 
 $(document).ready(function(){
 	
@@ -130,12 +131,12 @@ function processURL() {
 	if (successMessage !== "") {
 		displaySuccess(successMessage);
 	}
-	var joinCode = getURLParameter('join');
-	if (joinCode !== "" && window.location.pathname == "leagues") {
+	var join = getURLParameter('join');
+	if (join !== "" && window.location.pathname == "leagues") {
 		if (user) {
 			joinExistingLeague(leagueCode);
 		} else {
-			formData.joinCode = joinCode;
+			joinCode = join;
 		}
 	}
 }
