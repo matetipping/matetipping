@@ -1,3 +1,5 @@
+var formData = {};
+
 $(document).ready(function() {
 	// Registration form
 	$("#form-register").submit(function(e) {
@@ -6,7 +8,7 @@ $(document).ready(function() {
 
 		var isRegistrationError = false;
 		var registrationErrorMessage;
-		var formData = {
+		formData = {
 			"username": $("#input-register-username").val(),
 			"email": $("#input-register-email").val(),
 			"password": $("#input-register-password").val(),
@@ -40,10 +42,6 @@ $(document).ready(function() {
 					endLoad(prevHTML);
 				} else {
 					registerTransitionOne();
-					formData.avatar = profileAvatar;
-					formData.ladder = ladder;
-					console.log(formData);
-					//registerUser(formData);
 				}
 			} else {
 				displayError("Email address already in use.");
@@ -127,6 +125,12 @@ function registerTransitionTwo() {
 			" still lose by default.</div></div>");
 		$.getScript("scripts/ladder.js");
 	});
+}
+
+function registerTransitionThree() {
+	formData.avatar = profileAvatar;
+	formData.ladder = ladder;
+	registerUser(formData);
 }
 
 function registerUser(formData) {
