@@ -124,6 +124,7 @@ function displayLogIn(username) {
 
 function processURL() {
 	var successMessage = getURLParameter('displaySuccess');
+	console.log(successMessage);
 	if (successMessage !== null) {
 		displaySuccess(successMessage);
 	}
