@@ -163,8 +163,7 @@ function registerUser(formData) {
 			batch.set(userRef, dbUserInfo);
 			batch.set(profileRef, dbUserPrefs);
 			batch.commit().then(function() {
-				displayLogIn(username);
-				displaySuccess("Registration successful!");
+				window.location.href = "https://www.matetipping.com/?displaySuccess=Registration%20successful";
 			}).catch(function(e) {
 				displayError("Failed to save important data.");
 			});
