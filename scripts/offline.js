@@ -39,14 +39,7 @@ $(document).ready(function() {
 					displayError(registrationErrorMessage);
 					endLoad(prevHTML);
 				} else {
-					$("main").load("modules/avatar-editor.html", function() {
-						$("main").prepend("<div class='message'><div class='info'>Step 2 of 3</br></br>" +
-								  "To complete registration, you are required to design an avatar" +
-								  " and make a ladder prediction. Hit save when you are happy with" +
-								  " your avatar design. You can always change it later.</div></div>");
-						$.getScript("scripts/avatar-editor.js");
-					});
-					// registerUser(formData);
+					registerTransitionOne();
 				}
 			} else {
 				displayError("Email address already in use.");
@@ -109,6 +102,29 @@ $(document).ready(function() {
       });
     });
   });
+
+function registerTransitionOne() {
+	$("main").load("modules/avatar-editor.html", function() {
+		$("main").prepend("<div class='message'><div class='info'>Step 2 of 3</br></br>" +
+			"To complete registration, you are required to design an avatar" +
+			" and make a ladder prediction. Hit save when you are happy with" +
+			" your avatar design. You can always change it later.</div></div>");
+		$.getScript("scripts/avatar-editor.js");	
+	});
+	// registerUser(formData);
+}
+
+function registerTransitionTwo() {
+	$("main").load("modules/ladder.html", function() {
+		$("main").prepend("<div class='message'><div class='info'>Step 3 of 3</br></br>" +
+			"To complete registration, you must also tip your prediction of the final" +
+			" ladder for this season. This ladder cannot be edited after the season" +
+			" begins. It is used for finals tie-breakers, and to produce default tips" +
+			" if you forget to tip for a round (this affects percentage, but you will" +
+			" still lose by default.</div></div>");
+		$.getScript("scripts/ladder.js");
+	});
+}
 
 function registerUser(formData) {
 	username = formData.username;
