@@ -161,14 +161,13 @@ function startLoad(elem) {
 }
 
 function endLoad(prevHTML, prevElement, clickFunction) {
+	var parentElem = $("div.loader").parent();
 	$("div.loader").replaceWith(prevHTML);
-	console.log(prevElement);
 	if (prevElement !== undefined && clickFunction !== undefined) {
-		$(prevElement).load(function() {
-			$(prevElement).click(function() {
-				$(this).css("color", "red");
-				clickFunction;
-			});
+		console.log(prevElement);
+		parentElem.on('click', 'prevElement', function() {
+			$(this).css("color", "red");
+			clickFunction;
 		});
 	}
 }
