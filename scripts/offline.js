@@ -40,6 +40,10 @@ $(document).ready(function() {
 					endLoad(prevHTML);
 				} else {
 					registerTransitionOne();
+					formData.avatar = profileAvatar;
+					formData.ladder = ladder;
+					console.log(formData);
+					//registerUser(formData);
 				}
 			} else {
 				displayError("Email address already in use.");
@@ -111,7 +115,6 @@ function registerTransitionOne() {
 			" your avatar design. You can always change it later.</div></div>");
 		$.getScript("scripts/avatar-editor.js");	
 	});
-	// registerUser(formData);
 }
 
 function registerTransitionTwo() {
