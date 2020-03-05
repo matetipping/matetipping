@@ -130,7 +130,7 @@ function registerTransitionTwo() {
 function registerTransitionThree() {
 	formData.avatar = profileAvatar;
 	formData.ladderPrediction = ladder;
-	$("main").html("<div class='message'></div>");
+	$("main").html("<div class='message'></div><div class='loader'></div>");
 	registerUser(formData);
 }
 
@@ -162,6 +162,7 @@ function registerUser(formData) {
 			batch.set(userRef, dbUserInfo);
 			batch.set(profileRef, dbUserPrefs);
 			batch.commit().then(function() {
+				displayLogIn(username);
 				displaySuccess("Registration successful!");
 			}).catch(function(e) {
 				displayError("Failed to save important data.");
