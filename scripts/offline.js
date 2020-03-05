@@ -12,23 +12,26 @@ $(document).ready(function() {
 			"password": $("#input-register-password").val(),
 			"passwordConfirm": $("#input-register-password-confirm").val()
 		}
-		if (formData.username.length < 3 || formData.username.length > 20) {
+		if (formData.password != formData.passwordConfirm) {
 			isRegistrationError = true;
-			registrationErrorMessage = "Username must be between 3 and 20 characters.";
-			fixFields($("#input-register-username"));
-		} else if (!formData.email.includes("@")) {
-			isRegistrationError = true;
-			registrationErrorMessage = "Email address is invalid.";
-			fixFields($("#input-register-email"));			
-		} else if (formData.password.length < 6) {			
+			registrationErrorMessage = "Passwords do not match.";
+			fixFields($("#input-register-password-confirm"));
+		}
+		if (formData.password.length < 6) {			
 			isRegistrationError = true;
 			registrationErrorMessage = "Password is too short.";
 			fixFields($("#input-register-password"));
 			fixFields($("#input-register-password-confirm"));
-		} else if (formData.password != formData.passwordConfirm) {
+		}
+		if (formData.username.length < 3 || formData.username.length > 20) {
 			isRegistrationError = true;
-			registrationErrorMessage = "Passwords do not match.";
-			fixFields($("#input-register-password-confirm"));
+			registrationErrorMessage = "Username must be between 3 and 20 characters.";
+			fixFields($("#input-register-username"));
+		}
+		if (!formData.email.includes("@")) {
+			isRegistrationError = true;
+			registrationErrorMessage = "Email address is invalid.";
+			fixFields($("#input-register-email"));			
 		}
 		firebase.auth().fetchSignInMethodsForEmail(formData.email).catch(function(error) {
 			isRegistrationError = true;
@@ -40,16 +43,7 @@ $(document).ready(function() {
 			displayError(registrationErrorMessage);
 			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 		} else {
-			username = formData.username;
-			var userProfile = {};
-			userProfile.displayName = formData.username;
-			var dbUserInfo = {};
-			dbUserInfo.admin = false;
-			dbUserInfo.ownedLeague = null;
-			var dbUserPrefs = {};
-			dbUserPrefs.displayName = formData.username;
-			commitLogOff();
-			registerUser(formData.email, formData.password, username, userProfile, dbUserInfo, dbUserPrefs);
+			registerUser(formData);
 		}
     });
     
@@ -103,9 +97,17 @@ $(document).ready(function() {
     });
   });
 
-function registerUser(email, password, username, userProfile, dbUserInfo, dbUserPrefs) {
+function registerUser(formData) {
+	username = formData.username;
+	var userProfile = {};
+	userProfile.displayName = formData.username;
+	var dbUserInfo = {};
+	dbUserInfo.admin = false;
+	dbUserInfo.ownedLeague = null;
+	var dbUserPrefs = {};
+	dbUserPrefs.displayName = formData.username;
 	commitLogOff();
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+	firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).catch(function(error) {
 		displayError("Registration failed unexpectedly.");
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
