@@ -6,11 +6,6 @@ var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
 	
-	var successMessage = getURLParameter('displaySuccess');
-	if (successMessage !== null) {
-		displaySuccess(successMessage);
-	}
-	
 	$("span.logo-container, span.title-container span").click(function() {
 		window.location.pathname = "/";
 	});
@@ -103,6 +98,7 @@ function displayLogIn(username) {
 	if (window.location.pathname == "/") {
 		$("main").load("modules/tipping.html", function() {
 		        $.getScript("scripts/index.js");
+			processURL();
 		});
 	} else if (window.location.pathname == "/leagues") {
 		$("main").load("modules/leagues.html", function() {
@@ -124,6 +120,13 @@ function displayLogIn(username) {
 	$(".offline input:not([type='submit'])").each(function() {
 		$(this).val("");
 	});
+}
+
+function processURL() {
+	var successMessage = getURLParameter('displaySuccess');
+	if (successMessage !== null) {
+		displaySuccess(successMessage);
+	}
 }
 
 function displayLogOff() {
