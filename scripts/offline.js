@@ -130,7 +130,8 @@ function registerTransitionTwo() {
 function registerTransitionThree() {
 	formData.avatar = profileAvatar;
 	formData.ladder = ladder;
-	registerUser(formData);
+	console.log(formData);
+	//registerUser(formData);
 }
 
 function registerUser(formData) {
