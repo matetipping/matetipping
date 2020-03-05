@@ -129,9 +129,9 @@ function registerTransitionTwo() {
 
 function registerTransitionThree() {
 	formData.avatar = profileAvatar;
-	formData.ladder = ladder;
-	console.log(formData);
-	//registerUser(formData);
+	formData.ladderPrediction = ladder;
+	$("main").html("<div class='message'></div>");
+	registerUser(formData);
 }
 
 function registerUser(formData) {
@@ -150,7 +150,7 @@ function registerUser(formData) {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			user.updateProfile(userProfile).then(function() {
-				displaySuccess("Registration successful.");
+				displaySuccess("Registering...");
 				localStorage.setItem('username', username);
 			}, function(error) {
 				displayError("Failed to save username.");
@@ -162,7 +162,7 @@ function registerUser(formData) {
 			batch.set(userRef, dbUserInfo);
 			batch.set(profileRef, dbUserPrefs);
 			batch.commit().then(function() {
-				console.log("User data set!");
+				displaySuccess("Registration successful!");
 			}).catch(function(e) {
 				displayError("Failed to save important data.");
 			});
