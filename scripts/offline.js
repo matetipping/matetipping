@@ -2,7 +2,7 @@ $(document).ready(function() {
 	// Registration form
 	$("#form-register").submit(function(e) {
 		e.preventDefault();
-		$("#form-register input[type='submit']").replaceWith("<div class='loader reg-load'></div>");
+		var prevHTML = startLoad($("#form-register input[type='submit']"));
 
 		var isRegistrationError = false;
 		var registrationErrorMessage;
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			if (methods.length == 0) {
 				if (isRegistrationError) {
 					displayError(registrationErrorMessage);
-					$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+					endLoad(prevHTML);
 				} else {
 					$("main").load("modules/avatar-editor.html", function() {
 						$.getScript("scripts/avatar-editor.js");
@@ -46,13 +46,13 @@ $(document).ready(function() {
 				registerUser(formData);
 			} else {
 				displayError("Email address already in use.");
-				fixFields($("#input-register-password"));
-				fixFields($("#input-register-password-confirm"));
-				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+				fixFields($("#input-register-email"));
+				endLoad(prevHTML);
 			}
 		}).catch(function(error) {
 			displayError("Email address is invalid.");
-			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+			fixFields($("#input-register-email"));
+			endLoad(prevHTML);
 		});
     });
     
