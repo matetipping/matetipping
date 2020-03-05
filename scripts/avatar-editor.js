@@ -49,6 +49,8 @@ $(document).ready(function() {
                                 endLoad(htmlBefore);
                                 displayError("Avatar could not be saved.");
                         });
+                } else {
+                        registerTransitionTwo();
                 }
         });
         
