@@ -43,6 +43,9 @@ $(document).ready(function() {
 			displayError(registrationErrorMessage);
 			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 		} else {
+			$("main").load("modules/avatar-editor.html", function() {
+				$.getScript("scripts/avatar-editor.js");
+			});
 			registerUser(formData);
 		}
     });
