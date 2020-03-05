@@ -87,8 +87,8 @@
     });
 
     function sendResetEmail() {
-	var elem = $("#input-login-email");
-	var email = elem.val();
+	var elem = $("#span#resendEmail");
+	var email = $("#input-login-email");.val();
     	var prevHTML = startLoad(elem);
     	firebase.auth().sendPasswordResetEmail(email).then(function() {
 	    endLoad(prevHTML, elem, sendResetEmail);
