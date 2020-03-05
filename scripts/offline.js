@@ -92,7 +92,7 @@ $(document).ready(function() {
           displayError("Email address does not match any user.");
 	  fixFields($("#input-login-email"));
         } else {
-          displayError("Log-in failed unexpectedly.");
+          displayError(error.code);
         }
         $("#form-login div.loader.log-load").replaceWith("<input type='submit' value='Login'>");
       });
