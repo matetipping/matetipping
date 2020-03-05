@@ -42,8 +42,8 @@ $(document).ready(function() {
 					$("main").load("modules/avatar-editor.html", function() {
 						$.getScript("scripts/avatar-editor.js");
 					});
+					// registerUser(formData);
 				}
-				registerUser(formData);
 			} else {
 				displayError("Email address already in use.");
 				fixFields($("#input-register-email"));
