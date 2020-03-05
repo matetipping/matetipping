@@ -134,7 +134,7 @@ function processURL() {
 	var join = getURLParameter('join');
 	if (join !== "" && window.location.pathname == "leagues") {
 		if (user) {
-			joinExistingLeague(leagueCode);
+			joinExistingLeague(join);
 		} else {
 			joinCode = join;
 		}
