@@ -132,6 +132,7 @@ function processURL() {
 		displaySuccess(successMessage);
 	}
 	joinCode = getURLParameter('join');
+	console.log(joinCode);
 	if (joinCode !== "" && window.location.pathname == "leagues") {
 		if (user) {
 			joinExistingLeague(joinCode);
