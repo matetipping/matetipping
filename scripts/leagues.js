@@ -18,22 +18,6 @@ $(document).ready(function() {
 			loadPageData();
 		});
 	});
-	var leagueCode = getURLParameter("join");
-	if (user) {
-		if (leagueCode != "") {
-			joinExistingLeague(leagueCode);
-		}
-	} else {
-		if (leagueCode != "") {
-			firebase.auth().onAuthStateChanged(function(user) {
-				if (user && leagueCode != null) {
-					joinExistingLeague(leagueCode);
-					leagueCode = "";
-				}
-			});
-		}
-	}
-	window.history.replaceState({}, document.title, "/leagues");
 	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
