@@ -27,24 +27,30 @@ $(document).ready(function() {
             $("img.skin").css("filter", doc.data().avatar.skinColour);
             $("img.facialhair").css("filter", doc.data().avatar.facialHairColour);
         } else {
-            $("img#hairback").attr("src", "/images/profile/hairback-1.svg");
-            $("img#body").attr("src", "/images/profile/body-1.svg");
-            $("img#club").attr("src", "/images/profile/jumper-ade.svg");
-            $("img#head").attr("src", "/images/profile/head-1.svg");
-            $("img#freckles").attr("src", "/images/profile/freckles-1.svg");
-            $("img#wrinkles").attr("src", "/images/profile/wrinkles-1.svg");
-            $("img#facialhair").attr("src", "/images/profile/facialhair-1-1.svg");
-            $("img#mouth").attr("src", "/images/profile/mouth-1.svg");
-            $("img#eyebrows").attr("src", "/images/profile/eyebrows-1.svg");
-            $("img#eyelashes").attr("src", "/images/profile/eyelashes-1.svg");
-            $("img#nose").attr("src", "/images/profile/nose-1.svg");
-            $("img#glasses").attr("src", "/images/profile/glasses-1.svg");
-            $("img#hairstyle").attr("src", "/images/profile/hair-1-1.svg");
-            $("img#bandages").attr("src", "/images/profile/bandages-1.svg");
+            setDefaultAvatar();
         }
         if ($(".avatar-display").html() !== undefined) {
           localStorage.setItem("avatar", $(".avatar-display").html());
         }
       });
+   } else {
+     setDefaultAvatar();
    }
 });
+
+function setDefaultAvatar() {
+  $("img#hairback").attr("src", "/images/profile/hairback-1.svg");
+  $("img#body").attr("src", "/images/profile/body-1.svg");
+  $("img#club").attr("src", "/images/profile/jumper-ade.svg");
+  $("img#head").attr("src", "/images/profile/head-1.svg");
+  $("img#freckles").attr("src", "/images/profile/freckles-1.svg");
+  $("img#wrinkles").attr("src", "/images/profile/wrinkles-1.svg");
+  $("img#facialhair").attr("src", "/images/profile/facialhair-1-1.svg");
+  $("img#mouth").attr("src", "/images/profile/mouth-1.svg");
+  $("img#eyebrows").attr("src", "/images/profile/eyebrows-1.svg");
+  $("img#eyelashes").attr("src", "/images/profile/eyelashes-1.svg");
+  $("img#nose").attr("src", "/images/profile/nose-1.svg");
+  $("img#glasses").attr("src", "/images/profile/glasses-1.svg");
+  $("img#hairstyle").attr("src", "/images/profile/hair-1-1.svg");
+  $("img#bandages").attr("src", "/images/profile/bandages-1.svg");
+}
