@@ -1,4 +1,4 @@
-	$(document).ready(function() {
+$(document).ready(function() {
     // Registration form
     $("#form-register").submit(function(e) {
       e.preventDefault();
@@ -88,7 +88,7 @@
 
     function sendResetEmail() {
 	var elem = $("#span#resendEmail");
-	var email = $("#input-login-email");.val();
+	var email = $("#input-login-email").val();
     	var prevHTML = startLoad(elem);
     	firebase.auth().sendPasswordResetEmail(email).then(function() {
 	    endLoad(prevHTML, elem, sendResetEmail);
