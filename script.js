@@ -98,6 +98,7 @@ function displayLogIn(username) {
 	if (window.location.pathname == "/") {
 		$("main").load("modules/tipping.html", function() {
 		        $.getScript("scripts/index.js");
+			console.log("process");
 			processURL();
 		});
 	} else if (window.location.pathname == "/leagues") {
