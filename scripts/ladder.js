@@ -7,6 +7,7 @@ $(document).ready(function(){
                 for (i = 0; i < length; i++) {
                         $("div#ladderPrediction #" + (i+1) + " div.flag").attr("id", ladderPrediction[i]);
                         $("div#ladderPrediction #" + (i+1) + " div.name").html(getLongName(ladderPrediction[i]));
+                        console.log("test");
                 }
         });
         
