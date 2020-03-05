@@ -130,6 +130,14 @@ function processURL() {
 	if (successMessage !== "") {
 		displaySuccess(successMessage);
 	}
+	var joinCode = getURLParameter('join');
+	if (joinCode !== "" && window.location.pathname == "leagues") {
+		if (user) {
+			joinExistingLeague(leagueCode);
+		} else {
+			formData.joinCode = joinCode;
+		}
+	}
 }
 
 function displayLogOff() {
