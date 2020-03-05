@@ -163,8 +163,10 @@ function startLoad(elem) {
 function endLoad(prevHTML, prevElement, clickFunction) {
 	$("div.loader").replaceWith(prevHTML);
 	if (prevElement !== undefined && clickFunction !== undefined) {
-		$(prevElement).click(function() {
-			clickFunction;
+		$(document).ready(function() {
+			$(prevElement).click(function() {
+				clickFunction;
+			});
 		});
 	}
 }
