@@ -18,7 +18,7 @@ $(document).ready(function() {
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
         
-        $("div#profileSave").parent().on("click", "button.submit", function() {
+        $("div#profileSave").on("click", "button.submit", function() {
                 var htmlBefore = startLoad($("button.submit"));
                 var profileAvatar = {
                         club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
