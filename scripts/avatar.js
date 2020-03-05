@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log("loaded");
   var avatarHTML = localStorage.getItem("avatar");
   if (avatarHTML !== null) {
     $(".avatar-display").html(avatarHTML);
