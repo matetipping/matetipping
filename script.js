@@ -153,7 +153,7 @@ function displayInfo(message) {
 function startLoad(elem) {
 	var prevHTML = elem.parent().html();
 	if ($("div.loader").length == 0) {
-		elem.replaceWith("<div class='loader'></div>");
+		elem.parent().html("<div class='loader'></div>");
 		return prevHTML;
 	} else {
 		return null;
