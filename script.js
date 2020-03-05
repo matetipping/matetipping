@@ -6,6 +6,11 @@ var username = "";		// the displayed username of the logged in user
 
 $(document).ready(function(){
 	
+	var successMessage = getURLParameter('displaySuccess');
+	if (successMessage !== null) {
+		displaySuccess(successMessage);
+	}
+	
 	$("span.logo-container, span.title-container span").click(function() {
 		window.location.pathname = "/";
 	});
