@@ -1,9 +1,7 @@
 $(document).ready(function() {
-  console.log("loaded");
   var avatarHTML = localStorage.getItem("avatar");
-  if (avatarHTML !== null) {
+  if (avatarHTML !== null && avatarHTML !== undefined) {
     $(".avatar-display").html(avatarHTML);
-    console.log(avatarHTML);
   }
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
       if (doc.exists) {
