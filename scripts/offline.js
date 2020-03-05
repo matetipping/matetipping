@@ -87,7 +87,7 @@ $(document).ready(function() {
     });
 
     function sendResetEmail() {
-	var elem = $("#span#resendEmail");
+	var elem = $("span#resendEmail");
 	var email = $("#input-login-email").val();
     	var prevHTML = startLoad(elem);
     	firebase.auth().sendPasswordResetEmail(email).then(function() {
