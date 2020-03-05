@@ -34,6 +34,11 @@ $(document).ready(function() {
 			fixFields($("#input-register-email"));			
 		}
 		firebase.auth().fetchSignInMethodsForEmail(formData.email).then(function() {
+			displayError("Email address already in use.");
+			fixFields($("#input-register-password"));
+			fixFields($("#input-register-password-confirm"));
+			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+		}).catch(function(error) {
 			if (isRegistrationError) {
 				displayError(registrationErrorMessage);
 				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
@@ -43,11 +48,6 @@ $(document).ready(function() {
 				});
 				registerUser(formData);
 			}
-		}).catch(function(error) {
-			displayError("Email address already in use.");
-			fixFields($("#input-register-password"));
-			fixFields($("#input-register-password-confirm"));
-			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 		});
     });
     
