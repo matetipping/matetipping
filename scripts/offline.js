@@ -33,7 +33,7 @@ $(document).ready(function() {
 			registrationErrorMessage = "Email address is invalid.";
 			fixFields($("#input-register-email"));			
 		}
-		firebase.auth().fetchSignInMethodsForEmail(formData.email).catch(function(error) {
+		firebase.auth().fetchSignInMethodsForEmail(formData.email).then().catch(function(error) {
 			isRegistrationError = true;
 			registrationErrorMessage = "Email address already in use.";
 			fixFields($("#input-register-password"));
