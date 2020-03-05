@@ -131,12 +131,10 @@ function processURL() {
 	if (successMessage !== "") {
 		displaySuccess(successMessage);
 	}
-	var join = getURLParameter('join');
-	if (join !== "" && window.location.pathname == "leagues") {
+	joinCode = getURLParameter('join');
+	if (joinCode !== "" && window.location.pathname == "leagues") {
 		if (user) {
-			joinExistingLeague(join);
-		} else {
-			joinCode = join;
+			joinExistingLeague(joinCode);
 		}
 	}
 }
