@@ -6,6 +6,7 @@ var skinOptionSelected = 1;
 var hairOptionSelected = 1;
 var facialOptionSelected = 1;
 var currentColour = "club";
+var profileAvatar = {};
 var user = firebase.auth().currentUser;
 
 $(document).ready(function() {
@@ -20,7 +21,7 @@ $(document).ready(function() {
         
         $("div#profileSave").on("click", "button.submit", function() {
                 var htmlBefore = startLoad($("button.submit"));
-                var profileAvatar = {
+                profileAvatar = {
                         club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
                         body: $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0],
                         head: $("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0],
@@ -38,15 +39,17 @@ $(document).ready(function() {
                         hairColour: $("div.avatar-display img.hair").css("filter"),
                         facialHairColour: $("div.avatar-display img.facialHair").css("filter")
                 };
-                firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
-                        avatar: profileAvatar
-                }).then(function() {
-                        endLoad(htmlBefore);
-                        displaySuccess("Avatar saved successfully.");
-                }).catch(function(e) {
-                        endLoad(htmlBefore);
-                        displayError("Avatar could not be saved.");
-                });
+                if (user) {
+                        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                                avatar: profileAvatar
+                        }).then(function() {
+                                endLoad(htmlBefore);
+                                displaySuccess("Avatar saved successfully.");
+                        }).catch(function(e) {
+                                endLoad(htmlBefore);
+                                displayError("Avatar could not be saved.");
+                        });
+                }
         });
         
         $("div.avatar-controls button").click(function() {
