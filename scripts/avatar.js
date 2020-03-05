@@ -43,6 +43,8 @@ $(document).ready(function() {
           $("img#hairstyle").attr("src", "/images/profile/hair-1-1.svg");
           $("img#bandages").attr("src", "/images/profile/bandages-1.svg");
       }
-      localStorage.setItem("avatar", $(".avatar-display").html());
+      if ($(".avatar-display").html() !== undefined)) {
+        localStorage.setItem("avatar", $(".avatar-display").html());
+      }
     });
 });
