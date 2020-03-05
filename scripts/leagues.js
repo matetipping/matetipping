@@ -19,6 +19,14 @@ $(document).ready(function() {
 		});
 	});
 	
+	if (joinCode !== "" && window.location.pathname == "leagues") {
+		firebase.auth().onAuthStateChanged(function(u) {
+			if (u) {
+				joinExistingLeague(joinCode);
+			}
+		});
+	}
+	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
 		$(this).addClass("selected");
