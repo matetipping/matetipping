@@ -98,8 +98,6 @@ function displayLogIn(username) {
 	if (window.location.pathname == "/") {
 		$("main").load("modules/tipping.html", function() {
 		        $.getScript("scripts/index.js");
-			console.log("process");
-			processURL();
 		});
 	} else if (window.location.pathname == "/leagues") {
 		$("main").load("modules/leagues.html", function() {
@@ -135,6 +133,7 @@ function displayLogOff() {
 	if (window.location.pathname != "/password-reset") {
 		$("main").load("modules/offline.html", function() {
 			$.getScript("scripts/offline.js");
+			processURL();
 		});
 	}
 	$(".username-container span span:nth-child(1)").text("You are logged off.");
