@@ -165,7 +165,7 @@ function endLoad(prevHTML, prevElement, clickFunction) {
 	if (prevElement !== undefined && clickFunction !== undefined) {
 		$(document).ready(function() {
 			$(prevElement).click(function() {
-				$("this).css("color", "red");
+				$(this).css("color", "red");
 				clickFunction;
 			});
 		});
