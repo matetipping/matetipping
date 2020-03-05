@@ -83,10 +83,6 @@ $(document).ready(function() {
     });
     
     $("span#resendEmail").parent().on("click", "span#resendEmail", function() {
-	sendResetEmail();
-    });
-
-    function sendResetEmail() {
 	var email = $("#input-login-email").val();
     	var prevHTML = startLoad($("span#resendEmail"));
     	firebase.auth().sendPasswordResetEmail(email).then(function() {
@@ -101,7 +97,7 @@ $(document).ready(function() {
   	    	displayError("Could not send reset email.");
 	    }
 	});
-    }
+    });
 
     // Login form
     $("#form-login").submit(function(e) {
