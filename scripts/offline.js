@@ -41,7 +41,7 @@ $(document).ready(function() {
 				} else {
 					$("main").load("modules/avatar-editor.html", function() {
 					$.getScript("scripts/avatar-editor.js");
-				});
+				}
 				registerUser(formData);
 			} else {
 				displayError("Email address already in use.");
