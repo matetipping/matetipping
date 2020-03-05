@@ -40,6 +40,10 @@ $(document).ready(function() {
 					endLoad(prevHTML);
 				} else {
 					$("main").load("modules/avatar-editor.html", function() {
+						$("main").prepend("<div class='message'><div class='info'>To complete registration, " +
+								  "you are required to design an avatar and make a ladder prediction." +
+								  " Hit save when you are happy with your avatar design." +
+								  "You can always change it later.</div></div>");
 						$.getScript("scripts/avatar-editor.js");
 					});
 					// registerUser(formData);
