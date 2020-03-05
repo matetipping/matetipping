@@ -162,6 +162,7 @@ function startLoad(elem) {
 
 function endLoad(prevHTML, prevElement, clickFunction) {
 	$("div.loader").replaceWith(prevHTML);
+	console.log(prevElement);
 	if (prevElement !== undefined && clickFunction !== undefined) {
 		$(prevElement).load(function() {
 			$(prevElement).click(function() {
