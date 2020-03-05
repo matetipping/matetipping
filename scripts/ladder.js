@@ -1,13 +1,15 @@
 $(document).ready(function(){
         
         firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
-                var ladderPrediction = doc.data().ladderPrediction;
-                var i;
-                var length = ladderPrediction.length;
-                for (i = 0; i < length; i++) {
-                        $("div#ladderPrediction #" + (i+1) + " div.flag").attr("id", ladderPrediction[i]);
-                        $("div#ladderPrediction #" + (i+1) + " td.name").html(getLongName(ladderPrediction[i]));
-                        $("div#remainingTeams div.flag").remove();
+                if (doc.exists) {
+                        var ladderPrediction = doc.data().ladderPrediction;
+                        var i;
+                        var length = ladderPrediction.length;
+                        for (i = 0; i < length; i++) {
+                                $("div#ladderPrediction #" + (i+1) + " div.flag").attr("id", ladderPrediction[i]);
+                                $("div#ladderPrediction #" + (i+1) + " td.name").html(getLongName(ladderPrediction[i]));
+                                $("div#remainingTeams div.flag").remove();
+                        }
                 }
         });
         
