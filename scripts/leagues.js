@@ -86,11 +86,7 @@ function loadPageData() {
 		}
 		
 		if (joinCode !== "") {
-			firebase.auth().onAuthStateChanged(function(u) {
-				if (u) {
-					joinExistingLeague(joinCode);
-				}
-			});
+			joinExistingLeague(joinCode);
 		}
 		
   	}).catch(function(error) {
