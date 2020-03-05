@@ -150,7 +150,6 @@ function registerUser(formData) {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			user.updateProfile(userProfile).then(function() {
-				displaySuccess("Registering...");
 				localStorage.setItem('username', username);
 			}, function(error) {
 				displayError("Failed to save username.");
