@@ -98,15 +98,18 @@ function displayLogIn(username) {
 	if (window.location.pathname == "/") {
 		$("main").load("modules/tipping.html", function() {
 		        $.getScript("scripts/index.js");
+			processURL();
 		});
 	} else if (window.location.pathname == "/leagues") {
 		$("main").load("modules/leagues.html", function() {
 		        $.getScript("scripts/leagues.js");
+			processURL();
 		});
 	} else if (window.location.pathname == "/profile") {
 		console.log(window.location.pathname);
 		$("main").load("modules/profile.html", function() {
 			$.getScript("scripts/profile.js");
+			processURL();
 		});
 	} else if (window.location.pathname =="/password-reset") {
 		commitLogOff();
