@@ -160,14 +160,9 @@ function startLoad(elem) {
 	}
 }
 
-function endLoad(prevHTML, prevElement, clickFunction) {
-	var parentElem = $("div.loader").parent();
-	$("div.loader").replaceWith(prevHTML);
-	if (prevElement !== undefined && clickFunction !== undefined) {
-		parentElem.on('click', prevElement, function() {
-			$(this).css("color", "red");
-			clickFunction;
-		});
+function endLoad(prevHTML) {
+	if (prevHTML != null) {
+		$("div.loader").replaceWith(prevHTML);
 	}
 }
 
