@@ -19,7 +19,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	if (joinCode !== "" && window.location.pathname == "leagues") {
+	if (joinCode !== "") {
 		firebase.auth().onAuthStateChanged(function(u) {
 			if (u) {
 				joinExistingLeague(joinCode);
