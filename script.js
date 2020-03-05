@@ -132,14 +132,6 @@ function processURL() {
 		displaySuccess(successMessage);
 	}
 	joinCode = getURLParameter('join');
-	console.log(joinCode);
-	if (joinCode !== "" && window.location.pathname == "leagues") {
-		firebase.auth().onAuthStateChanged(function(u) {
-			if (u) {
-				joinExistingLeague(joinCode);
-			}
-		});
-	}
 }
 
 function displayLogOff() {
