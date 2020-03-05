@@ -33,21 +33,25 @@ $(document).ready(function() {
 			registrationErrorMessage = "Email address is invalid.";
 			fixFields($("#input-register-email"));			
 		}
-		firebase.auth().fetchSignInMethodsForEmail(formData.email).then(function() {
-			displayError("Email address already in use.");
-			fixFields($("#input-register-password"));
-			fixFields($("#input-register-password-confirm"));
-			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
-		}).catch(function(error) {
-			if (isRegistrationError) {
-				displayError(registrationErrorMessage);
-				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
-			} else {
-				$("main").load("modules/avatar-editor.html", function() {
+		firebase.auth().fetchSignInMethodsForEmail(formData.email).then(function(methods) {
+			if (methods.length == 0) {
+				if (isRegistrationError) {
+					displayError(registrationErrorMessage);
+					$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+				} else {
+					$("main").load("modules/avatar-editor.html", function() {
 					$.getScript("scripts/avatar-editor.js");
 				});
 				registerUser(formData);
+			} else {
+				displayError("Email address already in use.");
+				fixFields($("#input-register-password"));
+				fixFields($("#input-register-password-confirm"));
+				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 			}
+		}).catch(function(error) {
+			displayError("Email address is invalid.");
+			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
 		});
     });
     
