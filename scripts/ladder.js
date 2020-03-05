@@ -1,17 +1,21 @@
+var ladder = [];
+
 $(document).ready(function(){
         
-        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
-                if (doc.exists) {
-                        var ladderPrediction = doc.data().ladderPrediction;
-                        var i;
-                        var length = ladderPrediction.length;
-                        for (i = 0; i < length; i++) {
-                                $("div#ladderPrediction #" + (i+1) + " div.flag").attr("id", ladderPrediction[i]);
-                                $("div#ladderPrediction #" + (i+1) + " td.name").html(getLongName(ladderPrediction[i]));
-                                $("div#remainingTeams div.flag").remove();
+        if (user) {
+                firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
+                        if (doc.exists) {
+                                var ladderPrediction = doc.data().ladderPrediction;
+                                var i;
+                                var length = ladderPrediction.length;
+                                for (i = 0; i < length; i++) {
+                                        $("div#ladderPrediction #" + (i+1) + " div.flag").attr("id", ladderPrediction[i]);
+                                        $("div#ladderPrediction #" + (i+1) + " td.name").html(getLongName(ladderPrediction[i]));
+                                        $("div#remainingTeams div.flag").remove();
+                                }
                         }
-                }
-        });
+                });
+        }
         
         displayInfo("You must enter the AFL ladder you predict for the end of the season. " +
                 "This ladder will be used to generate default tips in matches where you fail to tip " +
@@ -19,7 +23,6 @@ $(document).ready(function(){
                 "It is also used as a finals tie-breaker.");
         
         $("div#profileSave").on("click", "button.submit", function() {
-                var ladder = [];
                 var htmlBefore = startLoad($("button.submit"));
                 $("div#ladderPrediction div.flag").each(function() {
                         var thisID = $(this).attr("id");
@@ -28,16 +31,18 @@ $(document).ready(function(){
                         }
                 });
                 if (ladder.length == 18) {
-                        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
-                                ladderPrediction: ladder
-                        }).then(function() {
-                                displaySuccess("Ladder saved successfully.");
-                                endLoad(htmlBefore);
-                        }).catch(function(e) {
-                                displayError("Could not save ladder.");
-                                endLoad(htmlBefore);
-                        });
-                        console.log(ladder);
+                        if (user) {
+                                firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                                        ladderPrediction: ladder
+                                }).then(function() {
+                                        displaySuccess("Ladder saved successfully.");
+                                        endLoad(htmlBefore);
+                                }).catch(function(e) {
+                                        displayError("Could not save ladder.");
+                                        endLoad(htmlBefore);
+                                });
+                                console.log(ladder);
+                        }
                 } else {
                         displayError("Must include all clubs.");
                         endLoad(htmlBefore);
