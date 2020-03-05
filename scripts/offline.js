@@ -33,21 +33,22 @@ $(document).ready(function() {
 			registrationErrorMessage = "Email address is invalid.";
 			fixFields($("#input-register-email"));			
 		}
-		firebase.auth().fetchSignInMethodsForEmail(formData.email).then().catch(function(error) {
-			isRegistrationError = true;
-			registrationErrorMessage = "Email address already in use.";
+		firebase.auth().fetchSignInMethodsForEmail(formData.email).then(function() {
+			if (isRegistrationError) {
+				displayError(registrationErrorMessage);
+				$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
+			} else {
+				$("main").load("modules/avatar-editor.html", function() {
+					$.getScript("scripts/avatar-editor.js");
+				});
+				registerUser(formData);
+			}
+		}).catch(function(error) {
+			displayError("Email address already in use.");
 			fixFields($("#input-register-password"));
 			fixFields($("#input-register-password-confirm"));
-		});
-		if (isRegistrationError) {
-			displayError(registrationErrorMessage);
 			$("#form-register div.loader.reg-load").replaceWith("<input type='submit' value='Register'>");
-		} else {
-			$("main").load("modules/avatar-editor.html", function() {
-				$.getScript("scripts/avatar-editor.js");
-			});
-			registerUser(formData);
-		}
+		});
     });
     
     $("span#resendEmail").parent().on("click", "span#resendEmail", function() {
