@@ -19,14 +19,6 @@ $(document).ready(function() {
 		});
 	});
 	
-	if (joinCode !== "") {
-		firebase.auth().onAuthStateChanged(function(u) {
-			if (u) {
-				joinExistingLeague(joinCode);
-			}
-		});
-	}
-	
 	$("#results-navigation button").click(function() {
 		$("#results-navigation button.selected").removeClass("selected");
 		$(this).addClass("selected");
@@ -92,6 +84,15 @@ function loadPageData() {
 		} else {
 			setLeagueList(myLeagueNames, myLeagues);
 		}
+		
+		if (joinCode !== "") {
+			firebase.auth().onAuthStateChanged(function(u) {
+				if (u) {
+					joinExistingLeague(joinCode);
+				}
+			});
+		}
+		
   	}).catch(function(error) {
 		 $("div.message").html("<div class='error'>Error retrieving leagues.</div>");
 		 window.scrollTo(0, 0);
