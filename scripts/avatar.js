@@ -2,6 +2,7 @@ $(document).ready(function() {
   var avatarHTML = localStorage.getItem("avatar");
   if (avatarHTML !== null) {
     $(".avatar-display").html(avatarHTML);
+    console.log(avatarHTML);
   }
   firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").get().then(function(doc) {
       if (doc.exists) {
