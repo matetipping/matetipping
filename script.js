@@ -91,7 +91,7 @@ function commitLogOff() {
 
 function fullLogOff() {
 	commitLogOff();
-	window.location.reload();
+	window.location = window.location.href.split("?")[0];
 }
 
 // sets the username, hamburger menu and main content blocks with 
