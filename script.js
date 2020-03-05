@@ -163,7 +163,7 @@ function startLoad(elem) {
 function endLoad(prevHTML, prevElement, clickFunction) {
 	$("div.loader").replaceWith(prevHTML);
 	if (prevElement !== undefined && clickFunction !== undefined) {
-		$(document).ready(function() {
+		$(prevElement).load(function() {
 			$(prevElement).click(function() {
 				$(this).css("color", "red");
 				clickFunction;
