@@ -42,6 +42,8 @@ $(document).ready(function(){
                                         endLoad(htmlBefore);
                                 });
                                 console.log(ladder);
+                        } else {
+                                registerTransitionThree();
                         }
                 } else {
                         displayError("Must include all clubs.");
