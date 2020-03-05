@@ -90,10 +90,10 @@ $(document).ready(function() {
 	var email = $("#input-login-email").val();
     	var prevHTML = startLoad($("span#resendEmail"));
     	firebase.auth().sendPasswordResetEmail(email).then(function() {
-	    endLoad(prevHTML, $("span#resendEmail"), sendResetEmail);
+	    endLoad(prevHTML, "span#resendEmail", sendResetEmail);
   	    displaySuccess("A password reset email has been sent to: " + email);
 	}).catch(function(e) {
-	    endLoad(prevHTML, $("span#resendEmail"), sendResetEmail);
+	    endLoad(prevHTML, "span#resendEmail", sendResetEmail);
 	    if (e.code == "auth/user-not-found" || e.code == "auth/invalid-email") {
 	    	displayError("Enter a valid email address.");
 		fixFields($("#input-login-email"));
