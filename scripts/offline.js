@@ -163,8 +163,8 @@ function registerUser(formData) {
 			batch.set(userRef, dbUserInfo);
 			batch.set(profileRef, dbUserPrefs);
 			batch.commit().then(function() {
-				if ("joinCode" in formData) {
-					window.location.href = "https://www.matetipping.com/?join=" + formData.joinCode;
+				if (joinCode !== "") {
+					window.location.href = "https://www.matetipping.com/?join=" + joinCode;
 				} else {
 					window.location.href = "https://www.matetipping.com/?displaySuccess=Registration%20successful";
 				}
