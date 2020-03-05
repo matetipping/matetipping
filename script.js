@@ -116,7 +116,7 @@ function displayLogIn(username) {
 		commitLogOff();
 	}
 	$(".username-container span span:nth-child(1)").html("<b>" + username + "</b>");
-	$("nav ul li:nth-child(1)").html("<a href='javascript:fullLogOff();'>Log off</a>");
+	$("nav ul li:nth-child(1)").show().html("<a href='javascript:fullLogOff();'>Log off</a>");
 	$("nav ul li:nth-child(2) a:not(.selected)").attr("href", "/");
 	$("nav ul li:nth-child(3) a:not(.selected)").attr("href", "/leagues");
 	$("nav ul li:nth-child(4) a:not(.selected)").attr("href", "/profile");
@@ -146,7 +146,7 @@ function displayLogOff() {
 	$("nav ul li a").each(function() {
 		$(this).attr("href", "");
 	});
-	$("nav ul li:nth-child(1)").html("<a href='javascript:attemptLogIn(username);'>Sign in</a>");
+	$("nav ul li:nth-child(1)").hide();
 }
 
 function displayError(message) {
