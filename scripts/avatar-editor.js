@@ -18,8 +18,35 @@ $(document).ready(function() {
         $("button#colourTypeHair").click(function() {setColourPanels("hair")});
         $("button#colourTypeFacial").click(function() {setColourPanels("facial")});
         
-        $("div#profileSave button.submit").click(function() {
-                saveAvatar();
+        $("div#profileSave").parent().on("click", "button.submit", function() {
+                var htmlBefore = startLoad($("button.submit"));
+                var profileAvatar = {
+                        club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
+                        body: $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0],
+                        head: $("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0],
+                        hairstyle: $("div.avatar-display img#hairstyle").attr("src").split("-")[2].split(".")[0],
+                        facialHair: $("div.avatar-display img#facialHair").attr("src").split("-")[2].split(".")[0],
+                        eyebrows: $("div.avatar-display img#eyebrows").attr("src").split("-")[1].split(".")[0],
+                        nose: $("div.avatar-display img#nose").attr("src").split("-")[1].split(".")[0],
+                        mouth: $("div.avatar-display img#mouth").attr("src").split("-")[1].split(".")[0],
+                        glasses: $("div.avatar-display img#glasses").attr("src").split("-")[1].split(".")[0],
+                        eyelashes: $("div.avatar-display img#eyelashes").attr("src").split("-")[1].split(".")[0],
+                        freckles: $("div.avatar-display img#freckles").attr("src").split("-")[1].split(".")[0],
+                        wrinkles: $("div.avatar-display img#wrinkles").attr("src").split("-")[1].split(".")[0],
+                        bandages: $("div.avatar-display img#bandages").attr("src").split("-")[1].split(".")[0],
+                        skinColour: $("div.avatar-display img.skin").css("filter"),
+                        hairColour: $("div.avatar-display img.hair").css("filter"),
+                        facialHairColour: $("div.avatar-display img.facialHair").css("filter")
+                };
+                firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                        avatar: profileAvatar
+                }).then(function() {
+                        endLoad(htmlBefore);
+                        displaySuccess("Avatar saved successfully.");
+                }).catch(function(e) {
+                        endLoad(htmlBefore);
+                        displayError("Avatar could not be saved.");
+                });
         });
         
         $("div.avatar-controls button").click(function() {
@@ -272,38 +299,6 @@ function setColourPanels(colType) {
                         $("div.avatar-display img.facialhair").css("filter", "hue-rotate(" + colValue[0] + "deg) saturate(" + colValue[1] + ") brightness(" + colValue[2] + ")");
                 }
         });
-}
-
-function saveAvatar() {
-        var htmlBefore = startLoad($("button.submit"));
-        var profileAvatar = {
-                club: $("div.avatar-display img#club").attr("src").split("-")[1].split(".")[0],
-                body: $("div.avatar-display img#body").attr("src").split("-")[1].split(".")[0],
-                head: $("div.avatar-display img#head").attr("src").split("-")[1].split(".")[0],
-                hairstyle: $("div.avatar-display img#hairstyle").attr("src").split("-")[2].split(".")[0],
-                facialHair: $("div.avatar-display img#facialHair").attr("src").split("-")[2].split(".")[0],
-                eyebrows: $("div.avatar-display img#eyebrows").attr("src").split("-")[1].split(".")[0],
-                nose: $("div.avatar-display img#nose").attr("src").split("-")[1].split(".")[0],
-                mouth: $("div.avatar-display img#mouth").attr("src").split("-")[1].split(".")[0],
-                glasses: $("div.avatar-display img#glasses").attr("src").split("-")[1].split(".")[0],
-                eyelashes: $("div.avatar-display img#eyelashes").attr("src").split("-")[1].split(".")[0],
-                freckles: $("div.avatar-display img#freckles").attr("src").split("-")[1].split(".")[0],
-                wrinkles: $("div.avatar-display img#wrinkles").attr("src").split("-")[1].split(".")[0],
-                bandages: $("div.avatar-display img#bandages").attr("src").split("-")[1].split(".")[0],
-                skinColour: $("div.avatar-display img.skin").css("filter"),
-                hairColour: $("div.avatar-display img.hair").css("filter"),
-                facialHairColour: $("div.avatar-display img.facialHair").css("filter")
-        };
-        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
-                avatar: profileAvatar
-        }).then(function() {
-                endLoad(htmlBefore, "div#profileSave button.submit", saveAvatar);
-                displaySuccess("Avatar saved successfully.");
-        }).catch(function(e) {
-                endLoad(htmlBefore, "div#profileSave button.submit", saveAvatar);
-                displayError("Avatar could not be saved.");
-        });
-        console.log(profileAvatar);
 }
 
 function setInitialGlobalVariables(docData) {
