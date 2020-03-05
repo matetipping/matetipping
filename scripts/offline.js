@@ -164,7 +164,7 @@ function registerUser(formData) {
 			batch.set(profileRef, dbUserPrefs);
 			batch.commit().then(function() {
 				if (joinCode !== "") {
-					window.location.href = "https://www.matetipping.com/?join=" + joinCode;
+					window.location.href = "https://www.matetipping.com/leagues?join=" + joinCode;
 				} else {
 					window.location.href = "https://www.matetipping.com/?displaySuccess=Registration%20successful";
 				}
