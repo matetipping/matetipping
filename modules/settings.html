@@ -22,7 +22,7 @@
       }).then(function() {
         firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
           displayName: newUsername
-        }).then() {
+        }).then(function() {
           displaySuccess("Username updated successfully.");
         });
       }).catch(function(e) {
