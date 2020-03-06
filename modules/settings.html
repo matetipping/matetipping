@@ -9,7 +9,7 @@
   </div>
   <div style="display: none">
     <label>Password:</label></br>
-    <input type="text" id="settings-password">
+    <input type="password" id="settings-password">
   </div>
   <hr>
   <button type="submit">Update Settings</button>
@@ -28,6 +28,7 @@ $(document).ready(function() {
                                 }
                         });
                         $("div#settings").on("click", "button[type='submit']", function() {
+                                var prevHTML = startLoad($("div#settings button[type='submit']");
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
                                 var password = $("input#settings-password").val();
@@ -39,20 +40,24 @@ $(document).ready(function() {
                                                         displayName: newUsername
                                                 }).then(function() {
                                                         displaySuccess("Username updated successfully.");
+                                                        endLoad(prevHTML);
                                                         $(".username-container b").html(newUsername);
                                                         localStorage.setItem("username", newUsername);
                                                 });
                                         }).catch(function(e) {
                                                 displayError("Username could not be updated.");
+                                                endLoad(prevHTML);
                                         });
                                 }
                                 if (newEmail !== user.email) {
                                         firebase.auth().signInWithEmailAndPassword(user.email, password).then(function(userCredential) {
                                                 userCredential.user.updateEmail(newEmail).then(function() {
                                                         displaySuccess("Email address updated.");
+                                                        endLoad(prevHTML);
                                                 });
                                         }).catch(function(e) {
                                                 displayError("Enter your current password to update email address.");
+                                                endLoad(prevHTML);
                                         });
                                 }
                         });
