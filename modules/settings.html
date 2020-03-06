@@ -27,7 +27,7 @@ $(document).ready(function() {
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
                                 var password = $("input#settings-password").val();
-                                if (newUsername != user.displayName) {
+                                if (newUsername != user.displayName && newUsername.length >= 3) {
                                         user.updateProfile({
                                                 displayName: newUsername
                                         }).then(function() {
