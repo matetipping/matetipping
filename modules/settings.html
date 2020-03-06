@@ -9,34 +9,34 @@
   <button type="submit">Update Settings</button>
 </div>
 <script>
-  $(document).ready(function() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        $("settings-username").val(user.displayName);
-        $("settings-email").val(user.email);
-        $("div#settings").on("click", "button[type='submit']", function() {
-        var newUsername = $("input#settings-username").val();
-        var newEmail = $("input#settings-email").val();
-        var password = $("input#settings-password").val();
-        user.updateProfile({
-          displayName: newUsername
-        }).then(function() {
-          firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
-            displayName: newUsername
-          }).then(function() {
-            displaySuccess("Username updated successfully.");
-          });
-        }).catch(function(e) {
-          displayError("Username could not be updated.");
+$(document).ready(function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                        $("settings-username").val(user.displayName);
+                        $("settings-email").val(user.email);
+                        $("div#settings").on("click", "button[type='submit']", function() {
+                                var newUsername = $("input#settings-username").val();
+                                var newEmail = $("input#settings-email").val();
+                                var password = $("input#settings-password").val();
+                                user.updateProfile({
+                                        displayName: newUsername
+                                }).then(function() {
+                                        firebase.firestore().collection("users").doc(user.uid).collection("preferences").doc("profile").update({
+                                                displayName: newUsername
+                                }).then(function() {
+                                        displaySuccess("Username updated successfully.");
+                                });
+                        }).catch(function(e) {
+                                displayError("Username could not be updated.");
+                        });
+                        firebase.auth().signInWithEmailAndPassword(user.email, password).then(function(userCredential) {
+                                userCredential.user.updateEmail(newEmail).then(function() {
+                                        displaySuccess("Email address updated.");
+                                });
+                        }).catch(function(e) {
+                                displayError("Enter your current password to update email address.");
+                        });
+                }
         });
-        firebase.auth().signInWithEmailAndPassword(user.email, password).then(function(userCredential) {
-          userCredential.user.updateEmail(newEmail).then(function() {
-            displaySuccess("Email address updated.");
-          });
-        }).catch(function(e) {
-          displayError("Enter your current password to update email address.");
-        });
-      }
-    });
-  });
+});
 </script>
