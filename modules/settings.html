@@ -14,9 +14,9 @@
     $("settings-username").val(user.displayName);
     $("settings-email").val(user.email);
     $("div#settings").on("click", "button[type='submit']", function() {
-      var newUsername = $("input#settings-username");
-      var newEmail = $("input#settings-email");
-      var password = $("input#settings-password");
+      var newUsername = $("input#settings-username").val();
+      var newEmail = $("input#settings-email").val();
+      var password = $("input#settings-password").val();
       user.updateProfile({
         displayName: newUsername
       }).then(function() {
