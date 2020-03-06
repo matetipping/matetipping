@@ -1,6 +1,5 @@
  $(document).ready(function() {
-        $("div#profile-content").html("<div class='avatar-display'></div>");
-        $("div.avatar-display").load("modules/avatar.html");
+        $("div#profile-content").load("modules/profile-display.html");
         $(".menu-major button").click(function() {
                 $("div.message").html("");
                 $(".menu-major button.selected").removeClass("selected");
