@@ -17,6 +17,9 @@ $(document).ready(function() {
 			roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
 			loadPageData();
 		});
+		if (querySnapshot.length == 0) {
+			loadPageData();
+		}
 	});
 	
 	$("#results-navigation button").click(function() {
