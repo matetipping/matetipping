@@ -18,7 +18,7 @@
                         $("div#profile-content").html("<div class='avatar-display'></div>");
                         $("div.avatar-display").load("modules/avatar.html");
                 } else if (navValue == "Settings") {
-                        $("div#profile-content").html("");
+                        $("div#profile-content").load("modules/settings.html");
                 }
         });
 });
