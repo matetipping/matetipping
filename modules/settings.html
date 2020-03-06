@@ -14,6 +14,9 @@ $(document).ready(function() {
                 if (user) {
                         $("input#settings-username").val(user.displayName);
                         $("input#settings-email").val(user.email);
+                        $("input#settings-email").change(function() {
+                                $("input#settings-password").show();
+                        });
                         $("div#settings").on("click", "button[type='submit']", function() {
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
