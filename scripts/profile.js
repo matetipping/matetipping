@@ -15,8 +15,7 @@
                                 $.getScript("scripts/avatar-editor.js");
                         });
                 } else if (navValue == "Profile") {
-                        $("div#profile-content").html("<div class='avatar-display'></div>");
-                        $("div.avatar-display").load("modules/avatar.html");
+                        $("div#profile-content").load("modules/profile-display.html");
                 } else if (navValue == "Settings") {
                         $("div#profile-content").load("modules/settings.html");
                 }
