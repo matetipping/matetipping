@@ -1,18 +1,18 @@
 <div id="settings">
   <label>Username:</label></br>
-  <input type="text" id="settings-username"></input>
+  <input type="text" id="settings-username">
   <label>Email:</label></br>
-  <input type="text" id="settings-email"></input>
+  <input type="text" id="settings-email">
   <hr>
   <label>Password:</label></br>
-  <input type="text" id="settings-password"></input>
+  <input type="text" id="settings-password">
   <button type="submit">Update Settings</button>
 </div>
 <script>
   $(document).ready(function() {
     var user = firebase.auth().currentUser;
-    $("settings-username").html(user.displayName);
-    $("settings-email").html(user.email);
+    $("settings-username").val(user.displayName);
+    $("settings-email").val(user.email);
     $("div#settings").on("click", "button[type='submit']", function() {
       var newUsername = $("input#settings-username");
       var newEmail = $("input#settings-email");
