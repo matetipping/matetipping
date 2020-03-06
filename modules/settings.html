@@ -26,6 +26,8 @@ $(document).ready(function() {
                                                         displayName: newUsername
                                                 }).then(function() {
                                                         displaySuccess("Username updated successfully.");
+                                                        $(".username-container b").html(newUsername);
+                                                        localStorage.setItem("username", newUsername);
                                                 });
                                         }).catch(function(e) {
                                                 displayError("Username could not be updated.");
