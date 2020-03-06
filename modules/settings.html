@@ -28,7 +28,7 @@ $(document).ready(function() {
                                 }
                         });
                         $("div#settings").on("click", "button.submit", function() {
-                                var prevHTML = startLoad($("div#settings buttonsubmit"));
+                                var prevHTML = startLoad($("div#settings button.submit"));
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
                                 var password = $("input#settings-password").val();
