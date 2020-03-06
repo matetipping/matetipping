@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var timestamp = firebase.firestore.Timestamp.now();
 	var roundRef = db.collection("rounds").where('date', '<', timestamp).orderBy('date',  'desc').limit(1);
 	roundRef.get().then(function(querySnapshot) {
-		if (querySnapshot) {
+		if (!querySnapshot.empty) {
 			querySnapshot.forEach(function(doc) {
 				roundName = doc.data().name;
 				roundIndex = Number(roundName.split(" ")[1]) - 1;
