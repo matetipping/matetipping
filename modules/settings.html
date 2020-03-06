@@ -16,7 +16,7 @@ $(document).ready(function() {
                 if (user) {
                         $("input#settings-username").val(user.displayName);
                         $("input#settings-email").val(user.email);
-                        $("input#settings-email").change(function() {
+                        $("input#settings-email").keydown(function() {
                                 if ($(this).val() == user.email) {
                                         $("input#settings-password").parent().hide();
                                 } else {
