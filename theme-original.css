@@ -15,6 +15,12 @@
   width: 20%;
 }
 
+hr {
+  border: 1px solid #F47D33;
+  margin: 48px;
+  background-color: #F47D33;
+}
+
 span#resendEmail {
   color: #F47D33;
   transition: 0.25s;
