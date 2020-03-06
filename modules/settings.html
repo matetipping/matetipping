@@ -5,7 +5,7 @@
   <input type="text" id="settings-email">
   <hr>
   <label>Password:</label></br>
-  <input type="text" id="settings-password">
+  <input type="text" style="display: none" id="settings-password">
   <button type="submit">Update Settings</button>
 </div>
 <script>
@@ -15,7 +15,11 @@ $(document).ready(function() {
                         $("input#settings-username").val(user.displayName);
                         $("input#settings-email").val(user.email);
                         $("input#settings-email").change(function() {
-                                $("input#settings-password").show();
+                                if ($(this).val() == user.email) {
+                                        $("input#settings-password").hide();
+                                } else {
+                                        $("input#settings-password").show();
+                                }
                         });
                         $("div#settings").on("click", "button[type='submit']", function() {
                                 var newUsername = $("input#settings-username").val();
