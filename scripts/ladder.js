@@ -19,6 +19,7 @@ $(document).ready(function(){
         
         $("div#profileSave").on("click", "button.submit", function() {
                 var htmlBefore = startLoad($("button.submit"));
+                ladder = [];
                 $("div#ladderPrediction div.flag").each(function() {
                         var thisID = $(this).attr("id");
                         if (typeof thisID !== typeof undefined && thisID !== false) {
