@@ -54,6 +54,9 @@ $(document).ready(function() {
                                                 userCredential.user.updateEmail(newEmail).then(function() {
                                                         displaySuccess("Email address updated.");
                                                         endLoad(prevHTML);
+                                                }).catch(function(e) {
+                                                        displayError("Invalid email address.");
+                                                        endLoad(prevHTML);
                                                 });
                                         }).catch(function(e) {
                                                 displayError("Enter your current password to update email address.");
