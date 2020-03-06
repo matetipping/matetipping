@@ -12,8 +12,8 @@
 $(document).ready(function() {
         firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                        $("settings-username").val(user.displayName);
-                        $("settings-email").val(user.email);
+                        $("input#settings-username").val(user.displayName);
+                        $("input#settings-email").val(user.email);
                         $("div#settings").on("click", "button[type='submit']", function() {
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
