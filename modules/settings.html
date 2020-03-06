@@ -12,7 +12,7 @@
     <input type="password" id="settings-password">
   </div>
   <hr>
-  <button type="submit">Update Settings</button>
+  <button class="submit">Update Settings</button>
 </div>
 <script>
 $(document).ready(function() {
@@ -27,8 +27,8 @@ $(document).ready(function() {
                                         $("input#settings-password").parent().show();
                                 }
                         });
-                        $("div#settings").on("click", "button[type='submit']", function() {
-                                var prevHTML = startLoad($("div#settings button[type='submit']");
+                        $("div#settings").on("click", "button.submit", function() {
+                                var prevHTML = startLoad($("div#settings buttonsubmit");
                                 var newUsername = $("input#settings-username").val();
                                 var newEmail = $("input#settings-email").val();
                                 var password = $("input#settings-password").val();
