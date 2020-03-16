@@ -1320,9 +1320,9 @@ span.username-container {
     border-bottom-right-radius: 24px;
   }
   .message .successful, .message .error, .message .info, .copy-code {
-    padding: 24px 48px;
-    border-radius: 36px;
-    margin: 40px auto;
-    font-size: 32px;
+    padding: 12px 24px;
+    border-radius: 18px;
+    margin: 20px auto;
+    font-size: 18px;
   }
 }
