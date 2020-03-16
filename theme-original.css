@@ -331,16 +331,16 @@ div.menu-major button {
   margin: 0;
   font-size: 120%;
   border: 2px solid #333F50;
-  height: 40px;
+  height: 72px;
   top: -24px;
   position: relative;
   border-radius: 0;
 }
 div.menu-major button:first-child {
-  border-bottom-left-radius: 24px;
+  border-bottom-left-radius: 36px;
 }
 div.menu-major button:last-child {
-  border-bottom-right-radius: 24px;
+  border-bottom-right-radius: 36px;
 }
 div.menu-major button.selected {
   color: #E6EBF2;
@@ -1308,5 +1308,14 @@ span.username-container {
   div.loader {
     width: 64px;
     height: 64px;
+  }
+  div.menu-major button {
+    height: 40px;
+  }
+  div.menu-major button:first-child {
+    border-bottom-left-radius: 24px;
+  }
+  div.menu-major button:last-child {
+    border-bottom-right-radius: 24px;
   }
 }
