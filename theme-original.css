@@ -1201,4 +1201,8 @@ span.username-container {
   h1 {
     font-size: 32px;
   }
+  
+  span.username-container {
+    font-size: 18px;
+  }
 }
