@@ -382,9 +382,9 @@ select[id*='clubInput'] {
   color: #F47D33;
 }
 span.downArrow {
-  height: 24px;
+  height: 48px;
   position: absolute;
-  font-size: 18px;
+  font-size: 32px;
   padding: 5px 12px;
   pointer-events: none;
   color: #1E252F;
@@ -1225,6 +1225,11 @@ span.username-container {
   span.lock img {
     height: 16px;
     margin: 0 4px;
+  }
+  
+  span.downArrow {
+    height: 24px;
+    font-size: 32px;
   }
   
 }
