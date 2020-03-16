@@ -969,6 +969,24 @@ footer {
 
 
 
+
+
+header span.logo-container .logo-small-desktop {
+  width: 64px;
+}
+header span.logo-container .logo-small {
+  width: 64px;
+}
+span.hamburger-container {
+  width: 64px;
+}
+
+
+
+
+
+
+
 @media only screen and (min-width: 1200px), only screen and (max-width: 750px) {
   /* for desktop */
   main {
