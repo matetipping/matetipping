@@ -209,11 +209,11 @@ body {
 }
 .message .successful, .message .error, .message .info, .copy-code {
   border: 2px solid #3e3;
-  padding: 12px 24px;
+  padding: 24px 48px;
   width: fit-content;
-  border-radius: 18px;
-  margin: 20px auto;
-  font-size: 18px;
+  border-radius: 36px;
+  margin: 40px auto;
+  font-size: 32px;
   transition: 0.2s;
   text-align: center;
 }
@@ -221,7 +221,7 @@ body {
   border: 2px solid #e33;
 }
 .message .info {
-  font-size: 14px;
+  font-size: 24px;
 }
 .message .info, .copy-code {
   border: 2px solid #F47D33;
@@ -1324,5 +1324,8 @@ span.username-container {
     border-radius: 18px;
     margin: 20px auto;
     font-size: 18px;
+  }
+  .message .info {
+    font-size: 14px;
   }
 }
