@@ -904,7 +904,7 @@ select {
   cursor: pointer;
 }
 select.roundSelector {
-  width: 200px;
+  width: 320px;
   padding-left: 36px;
   position: absolute;
 }
@@ -1218,6 +1218,10 @@ span.username-container {
     font-size: 18px;
     border-radius: 16px;
     padding-left: 18px;
+  }
+  
+  select.roundSelector {
+    width: 200px;
   }
   
 }
