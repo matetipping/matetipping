@@ -892,7 +892,7 @@ nav a:hover:not([href=""]) {
 }
 
 main {
-  max-width: 720px;
+  max-width: 100%;
   background-color: #222A35;
   margin: 0;
   margin-top: 160px;
@@ -1193,6 +1193,7 @@ span.username-container {
   }
   main {
     margin-bottom: 64px;
+    max-width: 720px;
   }
   header span span {
     display: inline;
@@ -1209,4 +1210,5 @@ span.username-container {
   div.roundTitle, .inputs, .slider {
     max-width: 496px;
   }
+  
 }
