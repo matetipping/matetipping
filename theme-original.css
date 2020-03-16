@@ -980,6 +980,9 @@ header span.logo-container .logo-small {
 span.hamburger-container {
   width: 64px;
 }
+span.username-container {
+  font-size: 32px;
+}
 
 
 
@@ -1197,19 +1200,11 @@ span.hamburger-container {
   header span span {
     display: inline;
   }
-}
 
-@media only screen and (max-width: 750px) {
   h1 {
     font-size: 18px;
   }
   span.username-container {
     font-size: 20px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  header span span {
-    display: block;
   }
 }
