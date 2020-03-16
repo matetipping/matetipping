@@ -905,7 +905,7 @@ select {
 }
 select.roundSelector {
   width: 320px;
-  padding-left: 36px;
+  padding-left: 64px;
   position: absolute;
 }
 
@@ -1220,6 +1220,7 @@ span.username-container {
   
   select.roundSelector {
     width: 200px;
+    padding-left: 36px;
   }
   
   span.lock img {
