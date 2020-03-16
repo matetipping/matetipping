@@ -930,7 +930,8 @@ div.roundTitle {
   padding-right: 18px;
   padding-left: 0;
   padding-top: 4px;
-  height: 28px;
+  box-sizing: border-box;
+  height: 48px;
 }
 input[type="submit"] {
   margin-top: 18px;
