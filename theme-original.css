@@ -280,10 +280,6 @@ body {
 .game:last-of-type {
   text-align: center;
 }
-.game:last-of-type(2) .inputs {
-  height: 120px;
-  overflow-y: scroll;
-}
 
 .message {
   text-align: center;
@@ -1247,10 +1243,6 @@ span.username-container {
   .details .align-right {
     float: right;
     color: inherit;
-  }
-  .game:last-of-type(2) .inputs {
-    height: inherit;
-    overflow-y: inherit;
   }
   
 }
