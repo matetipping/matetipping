@@ -268,7 +268,7 @@ body {
   padding: 0;
 }
 .game {
-  padding: 24px 0;
+  padding: 48px 0;
 }
 .game:nth-child(even), .message:nth-child(even) {
   margin-right: -24px;
@@ -1302,5 +1302,7 @@ span.username-container {
     cursor: grabbing;
     background: #F2975E;
   }
-  
+  .game {
+    padding: 24px 0;
+  }
 }
