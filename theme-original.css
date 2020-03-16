@@ -629,7 +629,7 @@ header span {
   display: table-cell;
 }
 header span span {
-  display: block;
+  display: inline;
 }
 header span.logo-container {
   margin-left: 24px;
