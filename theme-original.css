@@ -350,8 +350,8 @@ div.menu-major button.selected, div.menu-major button:hover {
 }
 
 span.lock img {
-  height: 16px;
-  margin: 0 4px;
+  height: 32px;
+  margin: 0 8px;
 }
 
 input[id*='marginInput'] {
@@ -1222,6 +1222,11 @@ span.username-container {
   
   select.roundSelector {
     width: 200px;
+  }
+  
+  span.lock img {
+    height: 16px;
+    margin: 0 4px;
   }
   
 }
