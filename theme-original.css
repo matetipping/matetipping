@@ -829,8 +829,8 @@ span.hamburger-container {
 div.loader {
   background-image: url(/images/loader.svg);
   background-size: cover;
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
   margin: auto;
   animation: loadingSpinner 0.5s linear 0s infinite normal forwards;
 }
@@ -1304,5 +1304,9 @@ span.username-container {
   }
   .game {
     padding: 24px 0;
+  }
+  div.loader {
+    width: 64px;
+    height: 64px;
   }
 }
