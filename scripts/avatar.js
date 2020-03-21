@@ -36,6 +36,7 @@ $(document).ready(function() {
    } else {
      setDefaultAvatar();
    }
+   setOpponentAvatar(opponentAvatarData);
 });
 
 function setDefaultAvatar() {
