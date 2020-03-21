@@ -144,6 +144,18 @@ $(document).ready(function(){
 			}
 		}
 		
+		for (i = 0; i < fullFixtures.length; i++) {
+			line = "";
+			for (j = 0; j < fullFixtures[i].length; j++) {
+				if (j = fullFixtures[i].length - 1) {
+					line = line + fullFixtures[i][j];
+				} else {
+					line = line + fullFixtures[i][j] + ", ";
+				}
+			}
+			fullFixtures[i] = line;
+		}
+		
 		console.log(fullFixtures);
 		firebase.firestore().collection("leagues").doc(leagueID).update({
 			fixtures: fullFixtures
