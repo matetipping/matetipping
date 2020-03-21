@@ -145,7 +145,7 @@ $(document).ready(function(){
 		}
 		
 		for (i = 0; i < fullFixtures.length; i++) {
-			line = "";
+			var line = "";
 			for (j = 0; j < fullFixtures[i].length; j++) {
 				if (j = fullFixtures[i].length - 1) {
 					line = line + fullFixtures[i][j];
