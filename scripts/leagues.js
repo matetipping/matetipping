@@ -325,6 +325,9 @@ function setLeagueList(leagues, leagueIDs) {
 	for (i = 0; i < length; i++) {
 		$("div#leaguesList").append("<div id='" + leagueIDs[i] + "'>" + leagues[i] + "</div>");
 	}
+	if (currentLeague == null) {
+		currentLeague = leagues[0];
+	}
 	$("div#leaguesList div#" + currentLeague).addClass("selected");
 	$("div#leaguesList div").click(function() {
 		$("div#leaguesList div.selected").removeClass("selected");
