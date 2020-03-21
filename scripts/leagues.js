@@ -152,7 +152,6 @@ function updateResults(doc) {
 }
 
 function setOpponentAvatar(data) {
-	console.log("setting opponent avatar");
 	$("div#avatar-opponent img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
         $("div#avatar-opponent img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
         $("div#avatar-opponent img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
