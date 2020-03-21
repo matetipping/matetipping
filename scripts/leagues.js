@@ -227,7 +227,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 			var myDB = 0;
 		}
 	} else {
-		myDN = "";
+		myDN = "no disposal bonus";
 		var myDB = 0;
 	}
 	
@@ -239,7 +239,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 			var mySB = 0;
 		}
 	} else {
-		mySN = "";
+		mySN = "no scorer bonus";
 		var mySB = 0;
 	}
 	
@@ -251,7 +251,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 			var oppDB = 0;
 		}
 	} else {
-		oppDN = "";
+		oppDN = "no disposal bonus";
 		var oppDB = 0;
 	}
 	
@@ -263,7 +263,7 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 			var oppSB = 0;
 		}
 	} else {
-		oppSN = "";
+		oppSN = "no scorer bonus";
 		var oppSB = 0;
 	}
 	
