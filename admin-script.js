@@ -65,8 +65,10 @@ $(document).ready(function(){
 	});
 	
 	$("button.generateFixtures").click(function() {
-		var noRounds = 19;
-		var noTeams = Number($("textarea").val());
+		var noRounds = 13;
+		var text = $("textarea").val().split("\n");
+		var noTeams = text[0];
+		var leagueID = text[1];
 		if (noTeams % 2 != 0) {
 			noTeams ++;
 		}
@@ -143,6 +145,9 @@ $(document).ready(function(){
 		}
 		
 		console.log(fullFixtures);
+		firebase.firestore().collection("leagues").doc(leagueID).update({
+			fixtures: fullFixtures
+		});
 	});
 
 });
