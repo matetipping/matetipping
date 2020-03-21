@@ -135,6 +135,7 @@ function updateResults(doc) {
 		});
 		opponentRef.get().then(function(doc) {
 			opponentName = doc.data().displayName;
+			setOpponentAvatar(doc.data().avatar);
 		});
 		playersRef.get().then(function(doc) {
 			footballersData = doc.data();
@@ -146,6 +147,26 @@ function updateResults(doc) {
 	} else {
 		$("div#results").html("Select a league to see live results.");
 	}
+}
+
+function setOpponentAvatar(data) {
+	$("div#avatar-opponent img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
+        $("div#avatar-opponent img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
+        $("div#avatar-opponent img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
+        $("div#avatar-opponent img#head").attr("src", "/images/profile/head-" + data.head + ".svg");
+        $("div#avatar-opponent img#freckles").attr("src", "/images/profile/freckles-" + data.freckles + ".svg");
+        $("div#avatar-opponent img#wrinkles").attr("src", "/images/profile/wrinkles-" + data.wrinkles + ".svg");
+        $("div#avatar-opponent img#facialhair").attr("src", "/images/profile/facialhair-" + data.head + "-" + data.facialHair + ".svg");
+        $("div#avatar-opponent img#mouth").attr("src", "/images/profile/mouth-" + data.mouth + ".svg");
+        $("div#avatar-opponent img#eyebrows").attr("src", "/images/profile/eyebrows-" + data.eyebrows + ".svg");
+        $("div#avatar-opponent img#eyelashes").attr("src", "/images/profile/eyelashes-" + data.eyelashes + ".svg");
+        $("div#avatar-opponent img#nose").attr("src", "/images/profile/nose-" + data.nose + ".svg");
+        $("div#avatar-opponent img#glasses").attr("src", "/images/profile/glasses-" + data.glasses + ".svg");
+        $("div#avatar-opponent img#hairstyle").attr("src", "/images/profile/hair-" + data.head + "-" + data.hairstyle + ".svg");
+        $("div#avatar-opponent img#bandages").attr("src", "/images/profile/bandages-" + data.bandages + ".svg");
+        $("div#avatar-opponent img.hair").css("filter", data.hairColour);
+        $("div#avatar-opponent img.skin").css("filter", data.skinColour);
+        $("div#avatar-opponent img.facialhair").css("filter", data.facialHairColour);
 }
 			
 function updateLadder(doc) {
