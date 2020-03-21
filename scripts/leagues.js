@@ -5,6 +5,7 @@ var roundIndex = 0;
 var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
+var opponentAvatarData = null;
 
 $(document).ready(function() {
 	// calculate the current round
@@ -135,7 +136,8 @@ function updateResults(doc) {
 		});
 		opponentRef.get().then(function(doc) {
 			opponentName = doc.data().displayName;
-			setOpponentAvatar(doc.data().avatar);
+			opponentAvatarData = doc.data().avatar;
+			setOpponentAvatar(opponentAvatarData);
 		});
 		playersRef.get().then(function(doc) {
 			footballersData = doc.data();
