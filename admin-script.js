@@ -145,15 +145,7 @@ $(document).ready(function(){
 		}
 		
 		for (i = 0; i < fullFixtures.length; i++) {
-			var line = "";
-			for (j = 0; j < fullFixtures[i].length; j++) {
-				if (j = fullFixtures[i].length - 1) {
-					line = line + fullFixtures[i][j];
-				} else {
-					line = line + fullFixtures[i][j] + ", ";
-				}
-			}
-			fullFixtures[i] = line;
+			fullFixtures[i] = fullFixtures[i].join(", ");
 		}
 		
 		console.log(fullFixtures);
