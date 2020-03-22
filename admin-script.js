@@ -161,7 +161,7 @@ $(document).ready(function(){
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		var roundCode = "R" + text[0];
-		firebase.firestore().collection("footballers").doc(toString(new Date().getFullYear())).get().then(function(doc) {
+		firebase.firestore().collection("footballers").doc("2020").get().then(function(doc) {
 			var players = doc.data().players;
 			var i;
 			var bonusDisposals = [];
