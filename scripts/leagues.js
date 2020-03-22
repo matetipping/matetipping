@@ -108,6 +108,7 @@ function loadPageData() {
 				var i;
 				var leng = doc.data().participants.length;
 				for (i = 0; i < leng; i++) {
+					console.log(leagueIDsChecked);
 					if  (i in leagueIDsChecked) {
 						updateResults(doc, doc.data().participants[i]);
 					}
