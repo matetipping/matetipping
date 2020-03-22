@@ -126,11 +126,13 @@ function updateResults(doc, uid) {
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(uid);
 		leagueIDsChecked.push(playerIndex);
+		console.log("player index: " + playerIndex);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
+		console.log("opp index: " + opponentIndex);
 		leagueIDsChecked.push(opponentIndex);
-		if (leagueIDsChecked == doc.data().participants.length) {
+		if (leagueIDsChecked >= doc.data().participants.length) {
 			leagueIDsChecked = [];
 		}
 		var myTipsRef = db.collection("users").doc(uid).collection("tips").doc(roundCode);
