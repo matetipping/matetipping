@@ -123,7 +123,7 @@ function loadPageData() {
 function updateResults(doc, uid) {
 	if (doc.exists) {
 		var participants = doc.data().participants;
-		var playerIndex = participants.indexOf(user.uid);
+		var playerIndex = participants.indexOf(uid);
 		leagueIDsChecked.push(playerIndex);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
