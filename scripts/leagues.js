@@ -143,6 +143,7 @@ function updateResults(doc, uid) {
 		var resultsRef = db.collection("rounds").doc(roundCode);
 		var myTipData = null;
 		var opponentTipData = null;
+		var playerName = "";
 		var opponentName = "";
 		var footballersData = null;
 		var resultsData = null;
@@ -158,11 +159,12 @@ function updateResults(doc, uid) {
 			setOpponentAvatar(opponentAvatarData);
 		});
 		playersRef.get().then(function(doc) {
+			playerName = doc.data().displayName;
 			footballersData = doc.data();
 		});
 		resultsRef.get().then(function(doc) {
 			resultsData = doc.data();
-			calculateScores(opponentName, myTipData, opponentTipData, resultsData, footballersData);
+			calculateScores(playerName, opponentName, myTipData, opponentTipData, resultsData, footballersData);
 		});
 	} else {
 		$("div#results").html("Select a league to see live results.");
@@ -196,7 +198,7 @@ function updateLadder(doc) {
 	}
 }
 
-function calculateScores(opp, myTips, oppTips, results, footballersData) {
+function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
@@ -211,7 +213,6 @@ function calculateScores(opp, myTips, oppTips, results, footballersData) {
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
 	var players = footballersData.players;
-	var me = user.displayName;
 	var myTotal = 0;
 	var oppTotal = 0;
 	var correctTipBonus = 5;
