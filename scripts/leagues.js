@@ -111,6 +111,7 @@ function loadPageData() {
 					console.log(leagueIDsChecked);
 					if  (!(i in leagueIDsChecked)) {
 						updateResults(doc, doc.data().participants[i]);
+						i = leng;
 					}
 				}
 			});
