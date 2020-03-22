@@ -8,6 +8,8 @@ var currentLeague = localStorage.getItem("league");
 var opponentAvatarData = null;
 var playerAvatarData = null;
 var leagueIDsChecked = [];
+var homeTeams = [];
+var awayTeams = [];
 
 $(document).ready(function() {
 	// calculate the current round
@@ -19,6 +21,8 @@ $(document).ready(function() {
 				roundName = doc.data().name;
 				roundIndex = Number(roundName.split(" ")[1]) - 1;
 				roundCode = timestamp.toDate().getFullYear().toString() + "-" + doc.data().codename;
+				homeTeams = doc.data().fixturesHome;
+				awayTeams = doc.data().fixturesAway;
 				loadPageData();
 			});
 		} else {
@@ -150,7 +154,11 @@ function updateResults(doc, uid) {
 		var footballersData = null;
 		var resultsData = null;
 		myTipsRef.get().then(function(doc) {
-			myTipData = doc.data();
+			if (doc.exists) {
+				myTipData = doc.data();
+			} else {
+				myTipData = getTipDataFromLadder(myRef);
+			}
 		});
 		myRef.get().then(function(doc) {
 			playerName = doc.data().displayName;
@@ -158,7 +166,11 @@ function updateResults(doc, uid) {
 			setAvatar(playerAvatarData, "player");
 		});
 		opponentTipsRef.get().then(function(doc) {
-			opponentTipData = doc.data();
+			if (doc.exists) {
+				opponentTipData = doc.data();
+			} else {
+				opponentTipData = getTipDataFromLadder(opponentRef);
+			}
 		});
 		opponentRef.get().then(function(doc) {
 			opponentName = doc.data().displayName;
@@ -202,6 +214,33 @@ function updateLadder(doc) {
 	} else {
 		$("div#results").html("Select a league to see live results.");
 	}
+}
+
+function getTipDataFromLadder(profileRef) {
+	var clubTips = [];
+	var marginTips = [];
+	profileRef.get().then(function(doc) {
+		var ladder = doc.data().ladderPrediction;
+		var i;
+		var leng = homeTeams.length;
+		for (i = 0; i < leng; i++) {
+			var homeRank = ladder.indexOf(homeTeams[i]);
+			var awayRank = ladder.indexOf(awayTeams[i]);
+			if (homeRank > awayRank) {
+				clubTips.push(awayRank);
+			} else {
+				clubTips.push(homeRank);
+			}
+			marginTips.push(Math.abs(homeRank - awayRank) * 3);
+		}
+		var tipData = {
+			clubs: clubTips,
+			margins: marginTips,
+			disposal: null,
+			scorer: null
+		};
+		return tipData;
+	});
 }
 
 function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
