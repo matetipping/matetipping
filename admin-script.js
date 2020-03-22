@@ -161,12 +161,48 @@ $(document).ready(function(){
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		var roundCode = "R" + text[0];
-		for (i = 1; i < text.length; i+=4) {
-			var playerName = text[i+1] + " " + text[i+2];
-			var playerDisposals = Number(text[i+3].split("\t")[0]);
-			var playerScore = text[i+3].split("\t")[6].split(".");
-			var playerScore = Number(playerScore[0]) * 6 + Number(playerScore[1]);
-			console.log(playerName + " disposals: " + playerDisposals + ", score: " + playerScore);
-		}
+		firebase.firestore().collection("footballers").doc(toString(new Date().getFullYear())).get().then(function(doc) {
+			var players = doc.data().players;
+			var i;
+			var bonusDisposals = [];
+			var bonusScorers = [];
+			for (i = 1; i < players.length; i++) {
+				bonusDisposals.push(0);
+				bonusScorers.push(0);
+			}
+			for (i = 1; i < text.length; i+=4) {
+				var playerNameCount = 0;
+				var playerIndex = -1;
+				var playerClub = text[i];
+				var playerName = text[i+1] + " " + text[i+2];
+				var clubConfirmedIndex = null;
+				var playerDisposals = Number(text[i+3].split("\t")[0]);
+				var playerScore = text[i+3].split("\t")[6].split(".");
+				var playerScore = Number(playerScore[0]) * 6 + Number(playerScore[1]);
+				var j;
+				for (j = 0; j < players.length; j++) {
+					if (players[j].name == playerName) {
+						if (players[j].club == playerClub) {
+							clubConfirmedIndex = j;
+						}
+						playerNameCount ++;
+						playerIndex = j;
+					}
+				}
+				if (playerNameCount == 1) {
+					bonusDisposals[playerIndex] = playerDisposals;
+					bonusScorers[playerIndex] = playerScore;
+				} else if (clubConfirmedIndex != null) {
+					bonusDisposals[clubConfirmedIndex] = playerDisposals;
+					bonusScorers[clubConfirmedIndex] = playerScore;
+				} else {
+					console.log("Could not identify: " + playerName);
+				}
+			}
+			firebase.firestore().collection("rounds").doc(roundYear).update({
+				resultsDisposals: bonusDisposals,
+				resultsScorers: bonusScorers
+			});
+		});
 	});
 });
