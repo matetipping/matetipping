@@ -6,6 +6,7 @@ var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
 var opponentAvatarData = null;
+var leagueIDsChecked = [];
 
 $(document).ready(function() {
 	// calculate the current round
@@ -102,7 +103,16 @@ function loadPageData() {
 	});
 	if (currentLeague != null) {
 		db.collection("leagues").doc(currentLeague).get().then(function(doc) {
-			updateResults(doc);
+			updateResults(doc, firebase.auth().currentUser.uid);
+			$("div#results").click(function() {
+				var i;
+				var leng = doc.data().participants.length;
+				for (i = 0; i < leng; i++) {
+					if  (i in leagueIDsChecked) {
+						updateResults(doc, doc.data().participants[i]);
+					}
+				}
+			});
 			updateLadder(doc);
 		}).then(function() {
 		});
@@ -110,15 +120,19 @@ function loadPageData() {
 	}
 }
 
-function updateResults(doc) {
-	var user = firebase.auth().currentUser;
+function updateResults(doc, uid) {
 	if (doc.exists) {
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(user.uid);
+		leagueIDsChecked.push(playerIndex);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
 		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
-		var myTipsRef = db.collection("users").doc(user.uid).collection("tips").doc(roundCode);
+		leagueIDsChecked.push(opponentIndex);
+		if (leagueIDsChecked == doc.data().participants.length) {
+			leagueIDsChecked = [];
+		}
+		var myTipsRef = db.collection("users").doc(uid).collection("tips").doc(roundCode);
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var opponentRef = db.collection("users").doc(participants[opponentIndex]).collection("preferences").doc("profile");
 		var playersRef = db.collection("footballers").doc(new Date().getFullYear().toString());
@@ -337,7 +351,7 @@ function setLeagueList(leagues, leagueIDs) {
 		currentLeague = newLeague;
 		if (currentLeague != null) {
 			db.collection("leagues").doc(currentLeague).get().then(function(doc) {
-				updateResults(doc);
+				updateResults(doc, firebase.auth().currentUser.uid);
 				updateLadder(doc);
 			}).then(function() {
 			});
