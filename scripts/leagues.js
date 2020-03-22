@@ -153,29 +153,27 @@ function updateResults(doc, uid) {
 		var opponentName = "";
 		var footballersData = null;
 		var resultsData = null;
-		myTipsRef.get().then(function(doc) {
-			if (doc.exists) {
-				myTipData = doc.data();
-			} else {
-				myTipData = getTipDataFromLadder(myRef);
-			}
-		});
 		myRef.get().then(function(doc) {
+			myTipData = getTipDataFromLadder(doc.data().ladderPrediction);
 			playerName = doc.data().displayName;
 			playerAvatarData = doc.data().avatar;
 			setAvatar(playerAvatarData, "player");
 		});
-		opponentTipsRef.get().then(function(doc) {
+		myTipsRef.get().then(function(doc) {
 			if (doc.exists) {
-				opponentTipData = doc.data();
-			} else {
-				opponentTipData = getTipDataFromLadder(opponentRef);
+				myTipData = doc.data();
 			}
 		});
 		opponentRef.get().then(function(doc) {
+			opponentTipData = getTipDataFromLadder(doc.data().ladderPrediction);
 			opponentName = doc.data().displayName;
 			opponentAvatarData = doc.data().avatar;
 			setAvatar(opponentAvatarData, "opponent");
+		});
+		opponentTipsRef.get().then(function(doc) {
+			if (doc.exists) {
+				opponentTipData = doc.data();
+			}
 		});
 		playersRef.get().then(function(doc) {
 			footballersData = doc.data();
@@ -216,31 +214,28 @@ function updateLadder(doc) {
 	}
 }
 
-function getTipDataFromLadder(profileRef) {
+function getTipDataFromLadder(ladder) {
 	var clubTips = [];
 	var marginTips = [];
-	profileRef.get().then(function(doc) {
-		var ladder = doc.data().ladderPrediction;
-		var i;
-		var leng = homeTeams.length;
-		for (i = 0; i < leng; i++) {
-			var homeRank = ladder.indexOf(homeTeams[i]);
-			var awayRank = ladder.indexOf(awayTeams[i]);
-			if (homeRank > awayRank) {
-				clubTips.push(awayRank);
-			} else {
-				clubTips.push(homeRank);
-			}
-			marginTips.push(Math.abs(homeRank - awayRank) * 3);
+	var i;
+	var leng = homeTeams.length;
+	for (i = 0; i < leng; i++) {
+		var homeRank = ladder.indexOf(homeTeams[i]);
+		var awayRank = ladder.indexOf(awayTeams[i]);
+		if (homeRank > awayRank) {
+			clubTips.push(awayRank);
+		} else {
+			clubTips.push(homeRank);
 		}
-		var tipData = {
-			clubs: clubTips,
-			margins: marginTips,
-			disposal: null,
-			scorer: null
-		};
-		return tipData;
-	});
+		marginTips.push(Math.abs(homeRank - awayRank) * 3);
+	}
+	var tipData = {
+		clubs: clubTips,
+		margins: marginTips,
+		disposal: null,
+		scorer: null
+	};
+	return tipData;
 }
 
 function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
