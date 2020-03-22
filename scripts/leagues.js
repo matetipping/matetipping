@@ -6,6 +6,7 @@ var roundName = "";
 var roundCode = "";
 var currentLeague = localStorage.getItem("league");
 var opponentAvatarData = null;
+var playerAvatarData = null;
 var leagueIDsChecked = [];
 
 $(document).ready(function() {
@@ -137,6 +138,7 @@ function updateResults(doc, uid) {
 			leagueIDsChecked = [];
 		}
 		var myTipsRef = db.collection("users").doc(uid).collection("tips").doc(roundCode);
+		var myRef = db.collection("users").doc(uid).collection("preferences").doc("profile");
 		var opponentTipsRef = db.collection("users").doc(participants[opponentIndex]).collection("tips").doc(roundCode);
 		var opponentRef = db.collection("users").doc(participants[opponentIndex]).collection("preferences").doc("profile");
 		var playersRef = db.collection("footballers").doc(new Date().getFullYear().toString());
@@ -150,16 +152,20 @@ function updateResults(doc, uid) {
 		myTipsRef.get().then(function(doc) {
 			myTipData = doc.data();
 		});
+		myRef.get().then(function(doc) {
+			playerName = doc.data().displayName;
+			playerAvatarData = doc.data().avatar;
+			setAvatar(playerAvatarData, "player");
+		});
 		opponentTipsRef.get().then(function(doc) {
 			opponentTipData = doc.data();
 		});
 		opponentRef.get().then(function(doc) {
 			opponentName = doc.data().displayName;
 			opponentAvatarData = doc.data().avatar;
-			setOpponentAvatar(opponentAvatarData);
+			setAvatar(opponentAvatarData, "opponent");
 		});
 		playersRef.get().then(function(doc) {
-			playerName = doc.data().displayName;
 			footballersData = doc.data();
 		});
 		resultsRef.get().then(function(doc) {
@@ -171,24 +177,24 @@ function updateResults(doc, uid) {
 	}
 }
 
-function setOpponentAvatar(data) {
-	$("div#avatar-opponent img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
-        $("div#avatar-opponent img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
-        $("div#avatar-opponent img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
-        $("div#avatar-opponent img#head").attr("src", "/images/profile/head-" + data.head + ".svg");
-        $("div#avatar-opponent img#freckles").attr("src", "/images/profile/freckles-" + data.freckles + ".svg");
-        $("div#avatar-opponent img#wrinkles").attr("src", "/images/profile/wrinkles-" + data.wrinkles + ".svg");
-        $("div#avatar-opponent img#facialhair").attr("src", "/images/profile/facialhair-" + data.head + "-" + data.facialHair + ".svg");
-        $("div#avatar-opponent img#mouth").attr("src", "/images/profile/mouth-" + data.mouth + ".svg");
-        $("div#avatar-opponent img#eyebrows").attr("src", "/images/profile/eyebrows-" + data.eyebrows + ".svg");
-        $("div#avatar-opponent img#eyelashes").attr("src", "/images/profile/eyelashes-" + data.eyelashes + ".svg");
-        $("div#avatar-opponent img#nose").attr("src", "/images/profile/nose-" + data.nose + ".svg");
-        $("div#avatar-opponent img#glasses").attr("src", "/images/profile/glasses-" + data.glasses + ".svg");
-        $("div#avatar-opponent img#hairstyle").attr("src", "/images/profile/hair-" + data.head + "-" + data.hairstyle + ".svg");
-        $("div#avatar-opponent img#bandages").attr("src", "/images/profile/bandages-" + data.bandages + ".svg");
-        $("div#avatar-opponent img.hair").css("filter", data.hairColour);
-        $("div#avatar-opponent img.skin").css("filter", data.skinColour);
-        $("div#avatar-opponent img.facialhair").css("filter", data.facialHairColour);
+function setAvatar(data, avatarType) {
+	$("div#avatar-" + avatarType + " img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
+        $("div#avatar-" + avatarType + " img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
+        $("div#avatar-" + avatarType + " img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
+        $("div#avatar-" + avatarType + " img#head").attr("src", "/images/profile/head-" + data.head + ".svg");
+        $("div#avatar-" + avatarType + " img#freckles").attr("src", "/images/profile/freckles-" + data.freckles + ".svg");
+        $("div#avatar-" + avatarType + " img#wrinkles").attr("src", "/images/profile/wrinkles-" + data.wrinkles + ".svg");
+        $("div#avatar-" + avatarType + " img#facialhair").attr("src", "/images/profile/facialhair-" + data.head + "-" + data.facialHair + ".svg");
+        $("div#avatar-" + avatarType + " img#mouth").attr("src", "/images/profile/mouth-" + data.mouth + ".svg");
+        $("div#avatar-" + avatarType + " img#eyebrows").attr("src", "/images/profile/eyebrows-" + data.eyebrows + ".svg");
+        $("div#avatar-" + avatarType + " img#eyelashes").attr("src", "/images/profile/eyelashes-" + data.eyelashes + ".svg");
+        $("div#avatar-" + avatarType + " img#nose").attr("src", "/images/profile/nose-" + data.nose + ".svg");
+        $("div#avatar-" + avatarType + " img#glasses").attr("src", "/images/profile/glasses-" + data.glasses + ".svg");
+        $("div#avatar-" + avatarType + " img#hairstyle").attr("src", "/images/profile/hair-" + data.head + "-" + data.hairstyle + ".svg");
+        $("div#avatar-" + avatarType + " img#bandages").attr("src", "/images/profile/bandages-" + data.bandages + ".svg");
+        $("div#avatar-" + avatarType + " img.hair").css("filter", data.hairColour);
+        $("div#avatar-" + avatarType + " img.skin").css("filter", data.skinColour);
+        $("div#avatar-" + avatarType + " img.facialhair").css("filter", data.facialHairColour);
 }
 			
 function updateLadder(doc) {
@@ -325,7 +331,7 @@ function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 		"<td colspan = '2'></td></tr></tbody></table>";
 	
 	htmlContent = "<table><thead><tr><th colspan='2'>" +
-		"<div class='avatar-pair'><div class='avatar-display' id='avatar-user'><script>$('div#avatar-user').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div><div id='username'>" +
+		"<div class='avatar-pair'><div class='avatar-display' id='avatar-player'><script>$('div#avatar-player').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div><div id='username'>" +
 		me + "</div></th><th><span class='highlight'>" + myTotal + "</span></th>" +
 		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
 		"<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div><div id='username'>" +
