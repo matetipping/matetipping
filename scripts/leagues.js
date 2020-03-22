@@ -223,9 +223,9 @@ function getTipDataFromLadder(ladder) {
 		var homeRank = ladder.indexOf(homeTeams[i]);
 		var awayRank = ladder.indexOf(awayTeams[i]);
 		if (homeRank > awayRank) {
-			clubTips.push(awayRank);
+			clubTips.push(awayTeams[i]);
 		} else {
-			clubTips.push(homeRank);
+			clubTips.push(homeTeams[i]);
 		}
 		marginTips.push(Math.abs(homeRank - awayRank) * 3);
 	}
