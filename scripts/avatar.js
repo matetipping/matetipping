@@ -36,7 +36,8 @@ $(document).ready(function() {
    } else {
      setDefaultAvatar();
    }
-   setOpponentAvatar(opponentAvatarData);
+   setAvatar(playerAvatarData, "player");
+   setAvatar(opponentAvatarData, "opponent");
 });
 
 function setDefaultAvatar() {
