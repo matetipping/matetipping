@@ -109,7 +109,7 @@ function loadPageData() {
 				var leng = doc.data().participants.length;
 				for (i = 0; i < leng; i++) {
 					console.log(leagueIDsChecked);
-					if  (!(i in leagueIDsChecked)) {
+					if  (leagueIDsChecked.indexOf(i) == -1) {
 						updateResults(doc, doc.data().participants[i]);
 						i = leng;
 					}
