@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("button.addRoundFixtures").click(function() {
 		var text = $("textarea").val().split("\n");
 		var roundName = "Round " + text[0];
-		if (text[0] < 10) {
+		if (Number(text[0]) < 10) {
 			text[0] = "0" + text[0];
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
@@ -153,5 +153,20 @@ $(document).ready(function(){
 			fixtures: fullFixtures
 		});
 	});
-
+	
+	$("button.updateBonusScores").click(function() {
+		var text = $("textarea").val().split("\n");
+		if (Number(text[0]) < 10) {
+			text[0] = "0" + text[0];
+		}
+		var roundYear = new Date().getFullYear() + "-R" + text[0];
+		var roundCode = "R" + text[0];
+		for (i = 1; i < text.length; i+=4) {
+			var playerName = text[i+1] + " " + text[i+2];
+			var playerDisposals = Number(text[i+3].split("\t")[0]);
+			var playerScore = text[i+3].split("\t")[6].split(".");
+			var playerScore = Number(playerScore[0]) * 6 + Number(playerScore[1]);
+			console.log(playerName + " disposals: " + playerDisposals + ", score: " + playerScore);
+		}
+	});
 });
