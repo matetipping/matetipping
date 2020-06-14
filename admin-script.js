@@ -197,9 +197,8 @@ $(document).ready(function(){
 				var playerClub = text[i];
 				var playerName = text[i+1] + " " + text[i+2];
 				var clubConfirmedIndex = null;
-				var playerDisposals = Number(text[i+3].split("\t")[0]);
-				var playerScore = text[i+3].split("\t")[6].split(".");
-				var playerScore = Number(playerScore[0]) * 6 + Number(playerScore[1]);
+				var playerDisposals = Number(text[i+3].split("\t")[3]);
+				var playerScore = Number(text[i+3].split("\t")[1])*6 + Number(text[i+3].split("\t")[2]);
 				var j;
 				for (j = 0; j < players.length; j++) {
 					if (players[j].name == playerName) {
