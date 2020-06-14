@@ -46,6 +46,9 @@ $(document).ready(function(){
 	
 	$("button.addRoundResults").click(function() {
 		var text = $("textarea").val().split("\n");
+		if (Number(text[0]) < 10) {
+			text[0] = "0" + text[0];
+		}
 		var i;
 		var length = text.length - 1;
 		var resultsMargins = [];
@@ -54,7 +57,7 @@ $(document).ready(function(){
 		for (i = 1; i < length; i++) {
 			var thisText = text[i].split(", ");
 			resultsClubs.push(thisText[0]);
-			resultsMargins.push(thisText[1]);
+			resultsMargins.push(Number(thisText[1]));
 		}
 		firebase.firestore().collection("rounds").doc(roundYear).update({
 			resultsClubs: resultsClubs,
