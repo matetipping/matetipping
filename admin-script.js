@@ -44,6 +44,24 @@ $(document).ready(function(){
 		//	});
 	});
 	
+	$("button.addRoundResults").click(function() {
+		var text = $("textarea").val().split("\n");
+		var i;
+		var length = text.length - 1;
+		var resultsMargins = [];
+		var resultsClubs = [];
+		var roundYear = new Date().getFullYear() + "-R" + text[0];
+		for (i = 1; i < length; i++) {
+			var thisText = text[i].split(", ");
+			resultsClubs.push(thisText[0]);
+			resultsMargins.push(thisText[1]);
+		}
+		firebase.firestore().collection("rounds").doc(roundYear).update({
+			resultsClubs: resultsClubs,
+			resultsMargins: resultsMargins
+		});
+	});
+	
 	$("button.addFootballerList").click(function() {
 		var text = $("textarea").val().split("\n");
 		var i;
