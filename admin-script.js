@@ -50,7 +50,7 @@ $(document).ready(function(){
 			text[0] = "0" + text[0];
 		}
 		var i;
-		var length = text.length - 1;
+		var length = text.length;
 		var resultsMargins = [];
 		var resultsClubs = [];
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
