@@ -364,9 +364,9 @@ function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 	myTotal = myTotal + myDB + mySB;
 	oppTotal = oppTotal + oppDB + oppSB;
 	
-	htmlContent = htmlContent + "<tr><td colspan = '2'>Error:" + myTotalError + "</td>" +
+	htmlContent = htmlContent + "<tr><td colspan = '2' style='color: red'>Error: " + myTotalError + "</td>" +
 		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
-		"<td colspan = '2'>" + oppTotalError + "</td></tr></tbody></table>";
+		"<td colspan = '2' style='color: red'>Error: " + oppTotalError + "</td></tr></tbody></table>";
 	
 	htmlContent = "<table><thead><tr><th colspan='2'>" +
 		"<div class='avatar-pair'><div class='avatar-display' id='avatar-player'><script>$('div#avatar-player').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div><div id='username'>" +
