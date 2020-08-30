@@ -139,7 +139,7 @@ function updateResults(doc, uid) {
 		console.log("player index: " + playerIndex);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
-		if (roundIndex < 13) {
+		if (roundIndex < 14) {
 		    var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
 		} else {
 		    isFinals = true;
