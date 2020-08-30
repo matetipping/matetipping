@@ -66,7 +66,7 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		var roundNumber = $("select.roundSelector").val();
-		var isFinals = ["R20", "R21", "R22", "R23"].includes(roundNumber);
+		var isFinals = ["R15", "R16", "R17", "R18"].includes(roundNumber);
 		var errorMessage = "You must tip all matches.";
 		if (usedScorersList.includes(bonusScorer) && !isFinals) {
 			errorMessage = "Scorers bonus already used.";
@@ -184,7 +184,7 @@ function loadTippingForm(doc) {
 		currentRound = roundName + ", " + currentYear;
 		htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
 		var i;
-		var roundCount = 23;
+		var roundCount = 18;
 		for (i = 1; i <= roundCount; i++) {
 			if(i < 10) {
 				var iString = "0" + i;
@@ -250,12 +250,12 @@ function loadTippingForm(doc) {
 		}
 		var disposalBonusMarkerHTML = "<span id='disposalBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
 		var scorerBonusMarkerHTML = "<span id='scorerBonusMarkers' class='bonusMarkers'><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div><div><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span><span class='bonusMarker unused'></span></div></span>";
-		if (["R20", "R21", "R22", "R23"].includes(roundCodeName)) {
-			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button><div class='inputs' style='padding-left: 148px; max-width: 572px;'><span>For the finals (Round 20 to Round 23), you must tip both a disposal and scorer bonus. These players can be re-used. The higher ranked tipper in your leagues' finals will score for both bonus players, while the lower ranked tipper will score half points for each player.</span>";
+		if (["R15", "R16", "R17", "R18"].includes(roundCodeName)) {
+			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button><div class='inputs' style='padding-left: 148px; max-width: 572px;'><span>For the finals (Round 15 to Round 18), you must tip both a disposal and scorer bonus. These players can be re-used. The higher ranked tipper in your leagues' finals will score for both bonus players, while the lower ranked tipper will score half points for each player.</span>";
 			htmlFields = htmlFields + "<input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer off' type='button'>Scorer</button><div class='inputs' style='padding-left: 148px; max-width: 572px;'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
 		} else {
 			htmlFields = htmlFields + "<div class='game'><div class='bonusRow'><button class='buttonBonusDisposal off' type='button'>Disposal</button>" + disposalBonusMarkerHTML + "<div class='inputs'>";
-			htmlFields = htmlFields + "<span>Between Rounds 1 and 19, you can pick AFL players to be your 8 disposal and 8 scorer bonuses. You cannot reuse any player you have previously selected for the same bonus type. Disposal bonuses score points per disposal, while scorer bonuses score points per goal and behind scored.</span>";
+			htmlFields = htmlFields + "<span>Between Rounds 1 and 14, you can pick AFL players to be your 8 disposal and 8 scorer bonuses. You cannot reuse any player you have previously selected for the same bonus type. Disposal bonuses score points per disposal, while scorer bonuses score points per goal and behind scored.</span>";
 			htmlFields = htmlFields + "<input class='formInput' id='bonusInput-1' list='players' style='display: none'></input></div></div><div class='bonusRow'><button class='buttonBonusScorer off' type='button'>Scorer</button>" + scorerBonusMarkerHTML + "<div class='inputs'><input class='formInput' id='bonusInput-2' list='players' style='display: none'></input></div></div></div>";
 		}
 		htmlFields = htmlFields + "<div class='game'><button class='submit' type='submit'>Submit Tips</button></div>";
