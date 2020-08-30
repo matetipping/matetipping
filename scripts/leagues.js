@@ -129,13 +129,26 @@ function loadPageData() {
 
 function updateResults(doc, uid) {
 	if (doc.exists) {
+		var isFinals = false;
+		var isAwayTeam = false;
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(uid);
 		leagueIDsChecked.push(playerIndex);
 		console.log("player index: " + playerIndex);
 		var fixtures = doc.data().fixtures;
 		var name = doc.data().name;
-		var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
+		if (roundIndex < 14) {
+		    var opponentIndex = Number(fixtures[playerIndex].split(", ")[roundIndex]);
+		} else {
+		    isFinals = true;
+		    var opponentIndex = fixtures[playerIndex].split(", ")[roundIndex];
+		    if (opponentIndex.split("A").length == 1) {
+		    	opponentIndex = Number(opponentIndex);
+			isAwayTeam = true;
+		    } else {
+		    	opponentIndex = Number(opponentIndex.split("A")[0]);
+		    }
+		}
 		console.log("opp index: " + opponentIndex);
 		leagueIDsChecked.push(opponentIndex);
 		if (leagueIDsChecked >= doc.data().participants.length) {
@@ -353,6 +366,16 @@ function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 		var oppSB = 0;
 	}
 	
+	if (isFinals) {
+		if (isAwayTeam) {
+			mySB = mySB/2;
+			myDB = myDB/2;
+		} else {
+			oppSB = oppSB/2;
+			oppDB = oppDB/2;
+		}
+	}
+	
 	
 	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDN + "</td>" +
 		"<td><span class='highlight'>" + myDB + "</span></td><td><span class='highlight'>" + oppDB + "</span></td>" +
@@ -361,8 +384,8 @@ function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 		"<td><span class='highlight'>" + mySB + "</span></td><td><span class='highlight'>" + oppSB + "</span></td>" +
 		"<td colspan = '2'>" + oppSN + "</td></tr>";
 	
-	myTotal = myTotal + myDB + mySB;
-	oppTotal = oppTotal + oppDB + oppSB;
+	myTotal = Math.round(myTotal + myDB + mySB);
+	oppTotal = Math.round(oppTotal + oppDB + oppSB);
 	
 	htmlContent = htmlContent + "<tr><td colspan = '2' style='color: red'>Error: " + myTotalError + "</td>" +
 		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
