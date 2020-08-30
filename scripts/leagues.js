@@ -10,6 +10,8 @@ var playerAvatarData = null;
 var leagueIDsChecked = [];
 var homeTeams = [];
 var awayTeams = [];
+var isFinals = false;
+var isAwayTeam = false;
 
 $(document).ready(function() {
 	// calculate the current round
@@ -129,8 +131,8 @@ function loadPageData() {
 
 function updateResults(doc, uid) {
 	if (doc.exists) {
-		var isFinals = false;
-		var isAwayTeam = false;
+		isFinals = false;
+		isAwayTeam = false;
 		var participants = doc.data().participants;
 		var playerIndex = participants.indexOf(uid);
 		leagueIDsChecked.push(playerIndex);
