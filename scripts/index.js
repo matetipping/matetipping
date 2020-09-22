@@ -96,6 +96,16 @@ $(document).ready(function(){
 		}
 		**/
 		
+		if (isFinals && bonusScorer == null && bonusScorer == null) {
+			errorMessage = "Must select one bonus of either type.";
+			valid = false;
+		}
+		
+		if (isFinals && bonusDisposal !== null && bonusScorer !== null) {
+			errorMessage = "Only one bonus tip may be selected for the knockout.";
+			valid = false;
+		}
+		
 		if (tipsSaved) {
 			errorMessage = "Tips unchanged since last submission.";
 			valid = false;
