@@ -96,7 +96,7 @@ $(document).ready(function(){
 		}
 		**/
 		
-		if (isFinals && bonusScorer == null && bonusScorer == null) {
+		if (isFinals && bonusDisposal == null && bonusScorer == null) {
 			errorMessage = "Must select one bonus of either type.";
 			valid = false;
 		}
