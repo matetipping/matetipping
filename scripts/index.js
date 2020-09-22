@@ -66,22 +66,21 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		var roundNumber = $("select.roundSelector").val();
-		var isFinals = ["R15", "R16", "R17", "R18"].includes(roundNumber);
-		var isAFLFinals = ["R19", "R20", "R21", "R22"].includes(roundNumber);
+		var isFinals = ["R19", "R20", "R21", "R22"].includes(roundNumber);
 		var errorMessage = "You must tip all matches.";
-		if (usedScorersList.includes(bonusScorer) && !isFinals && !isAFLFinals) {
+		if (usedScorersList.includes(bonusScorer) && !isFinals) {
 			errorMessage = "Scorers bonus already used.";
 			valid = false;
 		}
-		if (usedDisposalsList.includes(bonusDisposal) && !isFinals && !isAFLFinals) {
+		if (usedDisposalsList.includes(bonusDisposal) && !isFinals) {
 			errorMessage = "Disposal bonus already used.";
 			valid = false;
 		}
-		if (newUsedDisposalsList.length > 8 && !isFinals && !isAFLFinals) {
+		if (newUsedDisposalsList.length > 8 && !isFinals) {
 			errorMessage = "No disposal bonuses remaining.";
 			valid = false;
 		}
-		if (newUsedScorersList.length > 8 && !isFinals && !isAFLFinals) {
+		if (newUsedScorersList.length > 8 && !isFinals) {
 			errorMessage = "No scorer bonuses remaining.";
 			valid = false;
 		}
@@ -91,14 +90,6 @@ $(document).ready(function(){
 		}
 		if (isFinals && bonusScorer == null) {
 			errorMessage = "Must select a scorer bonus.";
-			valid = false;
-		}
-		if (isAFLFinals && bonusDisposal == null && bonusScorer == null) {
-			errorMessage = "Must select one bonus of either type.";
-			valid = false;
-		}
-		if (isAFLFinals && bonusDisposal !== null || bonusScorer !== null) {
-			errorMessage = "You can only use one bonus tip.";
 			valid = false;
 		}
 		if (tipsSaved) {
