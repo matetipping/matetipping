@@ -86,7 +86,7 @@ $(document).ready(function(){
 	});
 	
 	$("button.generateFixtures").click(function() {
-		var noRounds = 13;
+		var noRounds = 19;
 		var text = $("textarea").val().split("\n");
 		var noTeams = text[0];
 		var leagueID = text[1];
