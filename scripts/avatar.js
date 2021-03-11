@@ -40,6 +40,26 @@ $(document).ready(function() {
    setAvatar(opponentAvatarData, "opponent");
 });
 
+function setAvatar(data, avatarType) {
+	$("div#avatar-" + avatarType + " img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
+  $("div#avatar-" + avatarType + " img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
+  $("div#avatar-" + avatarType + " img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
+  $("div#avatar-" + avatarType + " img#head").attr("src", "/images/profile/head-" + data.head + ".svg");
+  $("div#avatar-" + avatarType + " img#freckles").attr("src", "/images/profile/freckles-" + data.freckles + ".svg");
+  $("div#avatar-" + avatarType + " img#wrinkles").attr("src", "/images/profile/wrinkles-" + data.wrinkles + ".svg");
+  $("div#avatar-" + avatarType + " img#facialhair").attr("src", "/images/profile/facialhair-" + data.head + "-" + data.facialHair + ".svg");
+  $("div#avatar-" + avatarType + " img#mouth").attr("src", "/images/profile/mouth-" + data.mouth + ".svg");
+  $("div#avatar-" + avatarType + " img#eyebrows").attr("src", "/images/profile/eyebrows-" + data.eyebrows + ".svg");
+  $("div#avatar-" + avatarType + " img#eyelashes").attr("src", "/images/profile/eyelashes-" + data.eyelashes + ".svg");
+  $("div#avatar-" + avatarType + " img#nose").attr("src", "/images/profile/nose-" + data.nose + ".svg");
+  $("div#avatar-" + avatarType + " img#glasses").attr("src", "/images/profile/glasses-" + data.glasses + ".svg");
+  $("div#avatar-" + avatarType + " img#hairstyle").attr("src", "/images/profile/hair-" + data.head + "-" + data.hairstyle + ".svg");
+  $("div#avatar-" + avatarType + " img#bandages").attr("src", "/images/profile/bandages-" + data.bandages + ".svg");
+  $("div#avatar-" + avatarType + " img.hair").css("filter", data.hairColour);
+  $("div#avatar-" + avatarType + " img.skin").css("filter", data.skinColour);
+  $("div#avatar-" + avatarType + " img.facialhair").css("filter", data.facialHairColour);
+}
+
 function setDefaultAvatar() {
   $("img#hairback").attr("src", "/images/profile/hairback-1.svg");
   $("img#body").attr("src", "/images/profile/body-1.svg");
