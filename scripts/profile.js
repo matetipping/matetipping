@@ -4,8 +4,8 @@ var playerAvatarData = null;
 $(document).ready(function() {
         var myRef = db.collection("users").doc(uid).collection("preferences").doc("profile");
         myRef.get().then(function(doc) {
-			         playerAvatarData = doc.data().avatar;
-		      });
+            playerAvatarData = doc.data().avatar;
+	});
         $("div#profile-content").load("modules/profile-display.html");
         $(".menu-major button").click(function() {
                 $("div.message").html("");
