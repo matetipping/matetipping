@@ -2,7 +2,7 @@ var db = firebase.firestore();
 var playerAvatarData = null;
 
 $(document).ready(function() {
-        var myRef = db.collection("users").doc(uid).collection("preferences").doc("profile");
+        var myRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("preferences").doc("profile");
         myRef.get().then(function(doc) {
             playerAvatarData = doc.data().avatar;
 	});
