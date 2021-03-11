@@ -41,7 +41,7 @@ $(document).ready(function() {
 });
 
 function setAvatar(data, avatarType) {
-	$("div#avatar-" + avatarType + " img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
+  $("div#avatar-" + avatarType + " img#hairback").attr("src", "/images/profile/hairback-" + data.hairstyle + ".svg");
   $("div#avatar-" + avatarType + " img#body").attr("src", "/images/profile/body-" + data.body + ".svg");
   $("div#avatar-" + avatarType + " img#club").attr("src", "/images/profile/jumper-" + data.club + ".svg");
   $("div#avatar-" + avatarType + " img#head").attr("src", "/images/profile/head-" + data.head + ".svg");
