@@ -1,4 +1,11 @@
+var db = firebase.firestore();
+var playerAvatarData = null;
+
 $(document).ready(function() {
+  var myRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("preferences").doc("profile");
+  myRef.get().then(function(doc) {
+    playerAvatarData = doc.data().avatar;
+  });
   if (firebase.auth().currentUser) {
     var avatarHTML = localStorage.getItem("avatar");
     if (avatarHTML !== null && avatarHTML !== "undefined") {
