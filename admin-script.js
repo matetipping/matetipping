@@ -252,6 +252,7 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
+				console.log(participants[i]);
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
 						tipData.push(doc.data());
