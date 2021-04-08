@@ -259,6 +259,7 @@ $(document).ready(function(){
 					if (i = participants.length - 1) {
 						var j;
 						for (j = 0; j < participants.length; j++) {
+							console.log(j);
 							console.log(fixtures[j]);
 							var oppIndex = fixtures[j].split(", ")[roundNo-1];
 							console.log(oppIndex);
