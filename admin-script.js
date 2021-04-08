@@ -367,6 +367,8 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 			myScore = 0;
 			oppScore = 0;
 		}
+		myTotal = myTotal + myScore;
+		oppTotal = oppTotal + oppScore;
 	}
 	
 	if (myDisposal != null) {
