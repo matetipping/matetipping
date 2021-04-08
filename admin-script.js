@@ -256,7 +256,7 @@ $(document).ready(function(){
 						});
 					}
 					
-					if (i = participants.length - 1) {
+					if (i == (participants.length - 1)) {
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							console.log(counter);
