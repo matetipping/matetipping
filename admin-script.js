@@ -230,9 +230,14 @@ $(document).ready(function(){
 		var text = $("textarea").val().split("\n");
 		var text = $("textarea").val().split("\n");
 		var roundNo = Number(text[0]);
+		var isFinals = false;
+		if (roundNo >= 19) {
+			isFinals = true;
+		}
 		if (Number(text[0]) < 10) {
 			text[0] = "0" + text[0];
 		}
+		console.log(text[1]);
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
@@ -259,11 +264,8 @@ $(document).ready(function(){
 					if (i == (participants.length - 1)) {
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
-							console.log(counter);
-							console.log(fixtures[counter]);
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							console.log(oppIndex);
-							//console.log(calculateScores(tipData[j], tipData[oppIndex], resultsData, footballersData));
+							console.log(calculateScores(isFinals, tipData[j], tipData[oppIndex], resultsData, footballersData));
 						}
 					}
 				});
@@ -297,7 +299,7 @@ function getTipDataFromLadder(ladder) {
 	return tipData;
 }
 
-function calculateScores(myTips, oppTips, results, footballersData) {
+function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
