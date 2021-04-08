@@ -345,11 +345,18 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
 	var players = footballersData.players;
+	var bonusesUsed = 0;
+	var bonusesUsedAgainst = 0;
 	var myTotal = 0;
 	var oppTotal = 0;
 	var myTotalError = 0;
 	var oppTotalError = 0;
 	var correctTipBonus = 5;
+	var perfectTipsFor = 0;
+	var perfectTipsAgainst = 0;
+	var wins = 0;
+	var draws = 0;
+	var losses = 0;
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
@@ -376,6 +383,12 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 			diff = oppDiff - myDiff;
 			if (myDiff == 0 || oppDiff == 0) {
 				diff = diff*2;
+				if (myDiff == 0) {
+					perfectTipsFor ++;
+				}
+				if (oppDiff == 0) {
+					perfectTipsAgainst ++;
+				}
 			}
 			if (diff > 0) {
 				myScore = myScore + diff;
@@ -394,6 +407,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	}
 	
 	if (myDisposal != null) {
+		bonusesUsed ++;
 		if (typeof resDisposal !== 'undefined') {
 			var myDB = resDisposal[myDisposal];
 		} else {
@@ -404,6 +418,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	}
 	
 	if (myScorer != null) {
+		bonusesUsed ++;
 		if (typeof resScorer !== 'undefined') {
 			var mySB = resScorer[myScorer];
 		} else {
@@ -414,6 +429,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	}
 	
 	if (oppDisposal != null) {
+		bonusesUsedAgainst ++;
 		if (typeof resDisposal !== 'undefined') {
 			var oppDB = resDisposal[oppDisposal];
 		} else {
@@ -424,6 +440,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	}
 	
 	if (oppScorer != null) {
+		bonusesUsedAgainst ++;
 		if (typeof resScorer !== 'undefined') {
 			var oppSB = resScorer[oppScorer];
 		} else {
@@ -445,6 +462,27 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	
 	myTotal = Math.round(myTotal + myDB + mySB);
 	oppTotal = Math.round(oppTotal + oppDB + oppSB);
-	console.log(myTotal + ", " + oppTotal);
-	return [myTotal, oppTotal, myTotalError, oppTotalError];
+	
+	if (myTotal > oppTotal) {
+		wins ++;
+	} else if (myTotal == oppTotal) {
+		draws ++;
+	} else {
+		losses ++;
+	}
+	return {
+		wins: wins,
+		draws: draws,
+		losses: losses,
+		for: myTotal,
+		against: oppTotal,
+		error: myTotalError,
+		errorAgainst: oppTotalError,
+		perfectTips: perfectTipsFor,
+		perfectTipsAgainst: perfectTipsAgainst,
+		bonusScoreFor: myDB + mySB,
+		bonusScoreAgainst: oppDB + oppSB,
+		bonusesUsed: bonusesUsed,
+		bonusesUsedAgainst: bonusesUsedAgainst
+	};
 }
