@@ -277,7 +277,7 @@ $(document).ready(function(){
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							console.log(calculateScores(isFinals, tipData[j], tipData[oppIndex], resultsData, footballersData));
+							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData));
 						}
 					}
 				});
