@@ -261,6 +261,7 @@ $(document).ready(function(){
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					tipData.push(replacementTip);
 					if (doc.exists) {
+						console.log("exists");
 						tipData.push(doc.data());
 					}
 					j++;
