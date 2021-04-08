@@ -362,6 +362,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 			}
 			myTotalError = myTotalError + myDiff;
 			oppTotalError = oppTotalError + oppDiff;
+			console.log(myDiff + ", " + oppDiff);
 		} else {
 			myScore = 0;
 			oppScore = 0;
