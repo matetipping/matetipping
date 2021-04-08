@@ -262,7 +262,7 @@ $(document).ready(function(){
 					tipData.push(replacementTip);
 					if (doc.exists) {
 						console.log("exists");
-						tipData.push(doc.data());
+						tipData[tipData.length-1] = doc.data();
 					}
 					j++;
 					
