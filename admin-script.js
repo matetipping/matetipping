@@ -237,11 +237,11 @@ $(document).ready(function(){
 		if (Number(text[0]) < 10) {
 			text[0] = "0" + text[0];
 		}
-		console.log(text[1]);
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
+			var i;
 			var tipData = [];
 			var footballersData = null;
 			var resultsData = null;
