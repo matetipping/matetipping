@@ -267,10 +267,6 @@ $(document).ready(function(){
 					
 					if (j == participants.length) {
 						var counter = 0;
-						for (counter = 0; counter < participants.length; counter++) {
-							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData));
-						}
 						var homeTeams = resultsData.fixturesHome;
 						var awayTeams = resultsData.fixturesAway;
 						var tipsForHome = [];
@@ -297,6 +293,10 @@ $(document).ready(function(){
 							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
 						}
 						console.log(clubStats);
+						for (counter = 0; counter < participants.length; counter++) {
+							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
+							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats));
+						}
 					}
 				});
 			}
@@ -331,7 +331,7 @@ function getTipDataFromLadder(ladder, roundData) {
 	return tipData;
 }
 
-function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
+function calculateScores(isFinals, myTips, oppTips, results, footballersData, clubStats) {
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
 	var myDisposal = myTips.disposal;
@@ -351,6 +351,8 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	var oppTotal = 0;
 	var myTotalError = 0;
 	var oppTotalError = 0;
+	var myTotalRisk = 0;
+	var oppTotalRisk = 0;
 	var correctTipBonus = 5;
 	var perfectTipsFor = 0;
 	var perfectTipsAgainst = 0;
@@ -360,6 +362,15 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	var i;
 	var length = myClubs.length;
 	for (i = 0; i < length; i++) {
+		var myRisk = 0;
+		var oppRisk = 0;
+		var noTippers = clubStats[myClubs[i]][0] + clubStats[myClubs[i]][1]];
+		var averageTip = (clubStats[myClubs[i]][2] - clubStats[myClubs[i]][3])/noTippers;
+		myRisk = Math.abs(myMargins[i] - averageTip);
+		oppRisk = Math.abs(oppMargins[i] - averageTip);
+		myTotalRisk = myTotalRisk + myRisk;
+		oppTotalRisk = oppTotalRisk + oppRisk;
+		
 		var myScore = 0;
 		var oppScore = 0;
 		if (resClubs.length > i) {
@@ -483,6 +494,8 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 		bonusScoreFor: myDB + mySB,
 		bonusScoreAgainst: oppDB + oppSB,
 		bonusesUsed: bonusesUsed,
-		bonusesUsedAgainst: bonusesUsedAgainst
+		bonusesUsedAgainst: bonusesUsedAgainst,
+		risk: myTotalRisk,
+		riskAgainst: oppTotalRisk
 	};
 }
