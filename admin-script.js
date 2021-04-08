@@ -229,6 +229,7 @@ $(document).ready(function(){
 	$("button.updateLadders").click(function() {
 		var text = $("textarea").val().split("\n");
 		var text = $("textarea").val().split("\n");
+		var roundNo = Number(text[0]);
 		if (Number(text[0]) < 10) {
 			text[0] = "0" + text[0];
 		}
@@ -256,8 +257,11 @@ $(document).ready(function(){
 					}
 				});
 			}
-			for (i = 0; i < fixtures.length; i++) {
-				var oppIndex = participants[i];
+			for (i = 0; i < participants.length; i++) {
+				var oppIndex = fixtures[i].split(", ")[roundNo-1];
+				console.log(tipData[i]);
+				console.log(tipData[oppIndex]);
+				console.log(tipData);
 				console.log(calculateScores(tipData[i], tipData[oppIndex], resultsData, footballersData));
 			}
 		});
