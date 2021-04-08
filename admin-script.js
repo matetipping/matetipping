@@ -252,7 +252,11 @@ $(document).ready(function(){
 			firebase.firestore().collection("rounds").doc(roundYear).get().then(function(doc) {
 				resultsData = doc.data();
 			});
+			var finalRun = false;
 			for (i = 0; i < participants.length; i++) {
+				if (i == (participants.length - 1)) {
+					finalRun = false;
+				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
 				});
@@ -265,7 +269,7 @@ $(document).ready(function(){
 					}
 					tipData.push(replacementTip);
 					
-					if (i == (participants.length - 1)) {
+					if (finalRun) {
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
