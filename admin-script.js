@@ -274,32 +274,30 @@ $(document).ready(function(){
 						}
 						var homeTeams = resultsData.fixturesHome;
 						var awayTeams = resultsData.fixturesAway;
-						var forAgainstMargins = [];
-						var averageClubs = [];
-						var averageLosers = [];
-						var averageMargins = [];
+						var tipsForHome = [];
+						var tipsForAway = [];
+						var marginsForHome = [];
+						var marginsForAway = [];
+						var clubStats = {};
 						for (counter = 0; counter < homeTeams.length; counter++) {
+							tipsForHome.push(0);
+							tipsForAway.push(0);
+							marginsForHome.push(0);
+							marginsForAway.push(0);
 							var k;
-							forAgainstMargins.push(0);
 							for (k = 0; k < tipData.length; k++) {
 								if (tipData[k].clubs[counter] == homeTeams[counter]) {
-									forAgainstMargins[counter] += tipData[k].margins[counter];
+									tipsForHome[counter] = tipsForHome[counter] + 1;
+									marginsForHome[counter] = marginsForHome[counter] + tipData[k].margins[counter];
 								} else {
-									forAgainstMargins[counter] -= tipData[k].margins[counter];
+									tipsForAway[counter] = tipsForAway[counter] + 1;
+									marginsForAway[counter] = marginsForAway[counter] + tipData[k].margins[counter];
 								}
 							}
-							if (forAgainstMargins[counter] >= 0) {
-								averageMargins.push(forAgainstMargins[counter]);
-								averageClubs.push(homeTeams[counter]);
-								averageLosers.push(awayTeams[counter]);
-							} else {
-								averageMargins.push(forAgainstMargins[counter]*-1);
-								averageClubs.push(awayTeams[counter]);
-								averageLosers.push(homeTeams[counter]);
-							}
+							clubStats[homeTeams[0]] = [tipsForHome, tipsForAway, marginsForHome, marginsForAway];
+							clubStats[awayTeams[0]] = [tipsForAway, tipsForHome, marginsForAway, marginsForHome];
 						}
-						console.log(averageClubs);
-						console.log(averageMargins);
+						console.log(clubStats);
 					}
 				});
 			}
