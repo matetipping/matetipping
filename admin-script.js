@@ -238,7 +238,6 @@ $(document).ready(function(){
 			text[0] = "0" + text[0];
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
-		console.log(roundYear);
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
@@ -259,7 +258,7 @@ $(document).ready(function(){
 						tipData.push(doc.data());
 					} else {
 						firebase.firestore().collection("users").doc(tipperID).collection("preferences").doc("profile").get().then(function(doc) {
-							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction));
+							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction, resultsData));
 						});
 					}
 					
@@ -277,10 +276,12 @@ $(document).ready(function(){
 	
 });
 
-function getTipDataFromLadder(ladder) {
+function getTipDataFromLadder(ladder, roundData) {
 	var clubTips = [];
 	var marginTips = [];
 	var i;
+	var homeTeams = roundData.homeTeams;
+	var awayTeams = roundData.awayTeams;
 	var leng = homeTeams.length;
 	for (i = 0; i < leng; i++) {
 		var homeRank = ladder.indexOf(homeTeams[i]);
