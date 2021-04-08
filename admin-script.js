@@ -243,6 +243,7 @@ $(document).ready(function(){
 			var participants = doc.data().participants;
 			var i;
 			var tipData = [];
+			var replacementTip = null;
 			var footballersData = null;
 			var resultsData = null;
 			firebase.firestore().collection("footballers").doc(new Date().getFullYear().toString()).get().then(function(doc) {
@@ -252,17 +253,17 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
-				var tipperID = participants[i];
-				firebase.firestore().collection("users").doc(tipperID).collection("tips").doc(roundYear).get().then(function(doc) {
+				firebase.firestore().collection("users").doc(participants[i];).collection("preferences").doc("profile").get().then(function(doc) {
+					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
+				});
+				firebase.firestore().collection("users").doc(participants[i];).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
-						console.log(tipperID + " exists");
+						while (replacementTip == null) {
+							
+						}
 						tipData.push(doc.data());
-					} else {
-						console.log(tipperID + " does not exist");
-						firebase.firestore().collection("users").doc(tipperID).collection("preferences").doc("profile").get().then(function(doc) {
-							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction, resultsData));
-						});
 					}
+					tipData.push(replacementTip);
 					
 					if (i == (participants.length - 1)) {
 						var counter = 0;
