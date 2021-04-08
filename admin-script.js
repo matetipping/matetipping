@@ -274,9 +274,12 @@ $(document).ready(function(){
 					tipData.push(replacementTip);
 					
 					if (finalRun) {
+						finalRun = false;
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
+							console.log(tipData[counter]);
+							console.log(tipData[oppIndex]);
 							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData));
 						}
 					}
