@@ -231,7 +231,6 @@ $(document).ready(function(){
 		var text = $("textarea").val().split("\n");
 		var roundNo = Number(text[0]);
 		var isFinals = false;
-		var finalRun = false;
 		if (roundNo >= 19) {
 			isFinals = true;
 		}
@@ -244,6 +243,7 @@ $(document).ready(function(){
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
 			var i;
+			var j = 0;
 			var tipData = [];
 			var replacementTip = null;
 			var footballersData = null;
@@ -255,12 +255,6 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
-				if (i == (participants.length - 1)) {
-					finalRun = true;
-					console.log(i + " is final");
-				} else {
-					console.log(i + " is not final");
-				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
 				});
@@ -272,9 +266,9 @@ $(document).ready(function(){
 						tipData.push(doc.data());
 					}
 					tipData.push(replacementTip);
+					var j++;
 					
-					if (finalRun) {
-						finalRun = false;
+					if (j == participants.length) {
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
