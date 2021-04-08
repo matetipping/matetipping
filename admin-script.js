@@ -231,6 +231,7 @@ $(document).ready(function(){
 		var text = $("textarea").val().split("\n");
 		var roundNo = Number(text[0]);
 		var isFinals = false;
+		var finalRun = false;
 		if (roundNo >= 19) {
 			isFinals = true;
 		}
@@ -253,13 +254,14 @@ $(document).ready(function(){
 			firebase.firestore().collection("rounds").doc(roundYear).get().then(function(doc) {
 				resultsData = doc.data();
 			});
-			var finalRun = false;
 			for (i = 0; i < participants.length; i++) {
+				console.log(participants[i]);
 				if (i == (participants.length - 1)) {
 					finalRun = true;
 				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
+					console.log(replacementTip);
 				});
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
@@ -268,6 +270,7 @@ $(document).ready(function(){
 						}
 						tipData.push(doc.data());
 					}
+					console.log(replacementTip);
 					tipData.push(replacementTip);
 					
 					if (finalRun) {
