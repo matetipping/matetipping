@@ -252,12 +252,12 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
-				console.log(participants[i]);
-				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
+				var tipperID = participants[i];
+				firebase.firestore().collection("users").doc(tipperID).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
 						tipData.push(doc.data());
 					} else {
-						firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
+						firebase.firestore().collection("users").doc(tipperID).collection("preferences").doc("profile").get().then(function(doc) {
 							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction));
 						});
 					}
