@@ -259,13 +259,13 @@ $(document).ready(function(){
 					replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
 				});
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
+					tipData.push(replacementTip);
 					if (doc.exists) {
 						while (replacementTip == null) {
 							
 						}
 						tipData.push(doc.data());
 					}
-					tipData.push(replacementTip);
 					j++;
 					
 					if (j == participants.length) {
