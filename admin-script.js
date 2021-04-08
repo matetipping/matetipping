@@ -293,8 +293,8 @@ $(document).ready(function(){
 									marginsForAway[counter] = marginsForAway[counter] + tipData[k].margins[counter];
 								}
 							}
-							clubStats[homeTeams[counter]] = [tipsForHome, tipsForAway, marginsForHome, marginsForAway];
-							clubStats[awayTeams[counter]] = [tipsForAway, tipsForHome, marginsForAway, marginsForHome];
+							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
+							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
 						}
 						console.log(clubStats);
 					}
