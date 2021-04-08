@@ -272,6 +272,34 @@ $(document).ready(function(){
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData));
 						}
+						var homeTeams = resultsData.fixturesHome;
+						var awayTeams = resultsData.fixturesAway;
+						var forAgainstMargins = [];
+						var averageClubs = [];
+						var averageLosers = [];
+						var averageMargins = [];
+						for (counter = 0; counter < homeTeams.length; counter++) {
+							var k;
+							forAgainstMargins.push(0);
+							for (k = 0; k < tipData.length; k++) {
+								if (tipData[k].clubs[counter] == homeTeams[counter]) {
+									forAgainstMargins[counter] += tipData[k].margins[counter];
+								} else {
+									forAgainstMargins[counter] -= tipData[k].margins[counter];
+								}
+							}
+							if (forAgainstMargins[counter] >= 0) {
+								averageMargins.push(forAgainstMargins[counter]);
+								averageClubs.push(homeTeams[counter]);
+								averageLosers.push(awayTeams[counter]);
+							} else {
+								averageMargins.push(forAgainstMargins[counter]*-1);
+								averageClubs.push(awayTeams[counter]);
+								averageLosers.push(homeTeams[counter]);
+							}
+						}
+						console.log(averageClubs);
+						console.log(averageMargins);
 					}
 				});
 			}
@@ -424,5 +452,5 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	myTotal = Math.round(myTotal + myDB + mySB);
 	oppTotal = Math.round(oppTotal + oppDB + oppSB);
 	console.log(myTotal + ", " + oppTotal);
-	return [myTotal, oppTotal];
+	return [myTotal, oppTotal, myTotalError, oppTotalError];
 }
