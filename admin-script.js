@@ -266,7 +266,7 @@ $(document).ready(function(){
 						tipData.push(doc.data());
 					}
 					tipData.push(replacementTip);
-					var j++;
+					j++;
 					
 					if (j == participants.length) {
 						var counter = 0;
