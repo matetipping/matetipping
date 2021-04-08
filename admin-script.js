@@ -261,7 +261,6 @@ $(document).ready(function(){
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					tipData.push(replacementTip);
 					if (doc.exists) {
-						console.log("exists");
 						tipData[tipData.length-1] = doc.data();
 					}
 					j++;
@@ -294,8 +293,8 @@ $(document).ready(function(){
 									marginsForAway[counter] = marginsForAway[counter] + tipData[k].margins[counter];
 								}
 							}
-							clubStats[homeTeams[0]] = [tipsForHome, tipsForAway, marginsForHome, marginsForAway];
-							clubStats[awayTeams[0]] = [tipsForAway, tipsForHome, marginsForAway, marginsForHome];
+							clubStats[homeTeams[counter]] = [tipsForHome, tipsForAway, marginsForHome, marginsForAway];
+							clubStats[awayTeams[counter]] = [tipsForAway, tipsForHome, marginsForAway, marginsForHome];
 						}
 						console.log(clubStats);
 					}
@@ -335,17 +334,14 @@ function getTipDataFromLadder(ladder, roundData) {
 function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
-	console.log(myMargins);
 	var myDisposal = myTips.disposal;
 	var myScorer = myTips.scorer;
 	var oppClubs = oppTips.clubs;
 	var oppMargins = oppTips.margins;
-	console.log(oppMargins);
 	var oppDisposal = oppTips.disposal;
 	var oppScorer = oppTips.scorer;
 	var resClubs = results.resultsClubs;
 	var resMargins = results.resultsMargins;
-	console.log(resMargins);
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
 	var players = footballersData.players;
