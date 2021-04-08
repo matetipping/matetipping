@@ -294,15 +294,15 @@ $(document).ready(function(){
 							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
 							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
 						}
-						var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
+						var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Tips,Tips Against,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats);
 							ladder = ladder + "\n" + counter + "," + displayNames[counter] + "," + playerScores.wins + "," + playerScores.draws + "," + playerScores.losses + "," +
 								(playerScores.wins*4 + playerScores.draws*2) + "," + playerScores.for + "," + playerScores.against + "," + (playerScores.for*100/playerScores.against) + "," +
-								playerScores.error + "," + playerScores.errorAgainst + "," + playerScores.risk + "," + playerScores.riskAgainst + "," +
-								playerScores.bonusesUsed + "," + playerScores.bonusesUsedAgainst + "," + playerScores.bonusScoreFor + "," + playerScores.bonusScoreAgainst + "," +
-								playerScores.perfectTips + "," + playerScores.perfectTipsAgainst;
+								playerScores.tips + "," + playerScores.tipsAgainst + "," + playerScores.error + "," + playerScores.errorAgainst + "," + 
+								playerScores.risk + "," + playerScores.riskAgainst + "," + playerScores.bonusesUsed + "," + playerScores.bonusesUsedAgainst + "," + 
+								playerScores.bonusScoreFor + "," + playerScores.bonusScoreAgainst + "," + playerScores.perfectTips + "," + playerScores.perfectTipsAgainst;
 						}
 						console.log(ladder);
 					}
@@ -364,6 +364,8 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 	var correctTipBonus = 5;
 	var perfectTipsFor = 0;
 	var perfectTipsAgainst = 0;
+	var tipsFor = 0;
+	var tipsAgainst = 0;
 	var wins = 0;
 	var draws = 0;
 	var losses = 0;
@@ -386,6 +388,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 			var oppDiff;
 			var diff;
 			if (myClubs[i] == resClubs[i]) {
+				tipsFor ++;
 				myScore = myScore + correctTipBonus;
 				myDiff = Math.abs(myMargins[i] - resMargins[i]);
 			} else {
@@ -393,6 +396,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 				myDiff = myMargins[i] + resMargins[i];
 			}
 			if (oppClubs[i] == resClubs[i]) {
+				tipsAgainst ++;
 				oppScore = oppScore + correctTipBonus;
 				oppDiff = Math.abs(oppMargins[i] - resMargins[i]);
 			} else {
@@ -495,6 +499,8 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 		losses: losses,
 		for: myTotal,
 		against: oppTotal,
+		tips: tipsFor,
+		tipsAgainst: tipsAgainst,
 		error: myTotalError,
 		errorAgainst: oppTotalError,
 		perfectTips: perfectTipsFor,
