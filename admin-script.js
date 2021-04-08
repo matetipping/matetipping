@@ -422,5 +422,6 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
 	
 	myTotal = Math.round(myTotal + myDB + mySB);
 	oppTotal = Math.round(oppTotal + oppDB + oppSB);
+	console.log(myTotal + ", " + oppTotal);
 	return [myTotal, oppTotal];
 }
