@@ -255,13 +255,14 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
-				console.log(participants[i]);
 				if (i == (participants.length - 1)) {
 					finalRun = true;
+					console.log(i + " is final");
+				} else {
+					console.log(i + " is not final");
 				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
-					console.log(replacementTip);
 				});
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
@@ -270,7 +271,6 @@ $(document).ready(function(){
 						}
 						tipData.push(doc.data());
 					}
-					console.log(replacementTip);
 					tipData.push(replacementTip);
 					
 					if (finalRun) {
