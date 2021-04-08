@@ -242,6 +242,7 @@ $(document).ready(function(){
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
+			var displayNames = [];
 			var i;
 			var j = 0;
 			var tipData = [];
@@ -257,6 +258,7 @@ $(document).ready(function(){
 			for (i = 0; i < participants.length; i++) {
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
+					displayNames.push(doc.data().displayName);
 				});
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					tipData.push(replacementTip);
@@ -292,11 +294,17 @@ $(document).ready(function(){
 							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
 							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
 						}
-						console.log(clubStats);
+						var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats));
+							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats));
+							ladder = ladder + "\n" + counter + "," + displayNames[counter] + "," + playerScores.wins + "," + playerScores.draws + "," + playerScores.losses + "," +
+								(playerScores.wins*4 + playerScores.draws*2) + "," + playerScores.for + "," + playerScores.against + "," + (playerScores.for*100/playerScores.against) + "," +
+								playerScores.error + "," + playerScores.errorAgainst + "," + playerScores.risk + "," + playerScores.riskAgainst + "," +
+								playerScores.bonusesUsed + "," + playerScores.bonusesUsedAgainst + "," + playerScores.bonusScoreFor + "," + playerScores.bonusScoreAgainst + "," +
+								playerScores.perfectTips + "," + playerScores.perfectTipsAgainst;
 						}
+						console.log(ladder);
 					}
 				});
 			}
