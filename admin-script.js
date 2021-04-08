@@ -280,8 +280,8 @@ function getTipDataFromLadder(ladder, roundData) {
 	var clubTips = [];
 	var marginTips = [];
 	var i;
-	var homeTeams = roundData.homeTeams;
-	var awayTeams = roundData.awayTeams;
+	var homeTeams = roundData.fixturesHome;
+	var awayTeams = roundData.fixturesAway;
 	var leng = homeTeams.length;
 	for (i = 0; i < leng; i++) {
 		var homeRank = ladder.indexOf(homeTeams[i]);
