@@ -257,13 +257,13 @@ $(document).ready(function(){
 					}
 					
 					if (i = participants.length - 1) {
-						var j;
-						for (j = 0; j < participants.length; j++) {
-							console.log(j);
-							console.log(fixtures[j]);
-							var oppIndex = fixtures[j].split(", ")[roundNo-1];
+						var counter = 0;
+						for (counter = 0; counter < participants.length; counter++) {
+							console.log(counter);
+							console.log(fixtures[counter]);
+							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							console.log(oppIndex);
-							console.log(calculateScores(tipData[j], tipData[oppIndex], resultsData, footballersData));
+							//console.log(calculateScores(tipData[j], tipData[oppIndex], resultsData, footballersData));
 						}
 					}
 				});
