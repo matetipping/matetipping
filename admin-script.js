@@ -255,8 +255,10 @@ $(document).ready(function(){
 				var tipperID = participants[i];
 				firebase.firestore().collection("users").doc(tipperID).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
+						console.log(tipperID + " exists");
 						tipData.push(doc.data());
 					} else {
+						console.log(tipperID + " does not exist");
 						firebase.firestore().collection("users").doc(tipperID).collection("preferences").doc("profile").get().then(function(doc) {
 							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction, resultsData));
 						});
