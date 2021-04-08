@@ -262,6 +262,8 @@ $(document).ready(function(){
 				console.log(tipData[0]);
 				console.log(tipData[oppIndex]);
 				console.log(tipData);
+				console.log(tipData.length);
+				console.log(tipData[0].length);
 				console.log(calculateScores(tipData[i], tipData[oppIndex], resultsData, footballersData));
 			}
 		});
