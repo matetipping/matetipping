@@ -255,10 +255,11 @@ $(document).ready(function(){
 							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction));
 						});
 					}
-				}).then(function(doc) {
+					
 					if (i = participants.length - 1) {
 						var j;
 						for (j = 0; j < participants.length; j++) {
+							console.log(fixtures[j]);
 							var oppIndex = fixtures[j].split(", ")[roundNo-1];
 							console.log(oppIndex);
 							console.log(calculateScores(tipData[j], tipData[oppIndex], resultsData, footballersData));
