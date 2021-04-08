@@ -253,10 +253,10 @@ $(document).ready(function(){
 				resultsData = doc.data();
 			});
 			for (i = 0; i < participants.length; i++) {
-				firebase.firestore().collection("users").doc(participants[i];).collection("preferences").doc("profile").get().then(function(doc) {
+				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
 				});
-				firebase.firestore().collection("users").doc(participants[i];).collection("tips").doc(roundYear).get().then(function(doc) {
+				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
 					if (doc.exists) {
 						while (replacementTip == null) {
 							
