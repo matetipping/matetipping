@@ -297,7 +297,7 @@ $(document).ready(function(){
 						var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats));
+							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats);
 							ladder = ladder + "\n" + counter + "," + displayNames[counter] + "," + playerScores.wins + "," + playerScores.draws + "," + playerScores.losses + "," +
 								(playerScores.wins*4 + playerScores.draws*2) + "," + playerScores.for + "," + playerScores.against + "," + (playerScores.for*100/playerScores.against) + "," +
 								playerScores.error + "," + playerScores.errorAgainst + "," + playerScores.risk + "," + playerScores.riskAgainst + "," +
