@@ -255,15 +255,18 @@ $(document).ready(function(){
 							tipData.push(getTipDataFromLadder(doc.data().ladderPrediction));
 						});
 					}
+				}).then(function(doc) {
+					if (i = participants.length - 1) {
+						for (i = 0; i < participants.length; i++) {
+							var oppIndex = fixtures[i].split(", ")[roundNo-1];
+							console.log(oppIndex);
+							alert(tipData);
+							console.log(tipData);
+							console.log(tipData.length);
+							console.log(calculateScores(tipData[i], tipData[oppIndex], resultsData, footballersData));
+						}
+					}
 				});
-			}
-			for (i = 0; i < participants.length; i++) {
-				var oppIndex = fixtures[i].split(", ")[roundNo-1];
-				console.log(oppIndex);
-				alert(tipData);
-				console.log(tipData);
-				console.log(tipData.length);
-				console.log(calculateScores(tipData[i], tipData[oppIndex], resultsData, footballersData));
 			}
 		});
 	});
