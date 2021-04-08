@@ -272,8 +272,6 @@ $(document).ready(function(){
 						var counter = 0;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
-							console.log(isFinals);
-							console.log(resultsData);
 							console.log(calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData));
 						}
 					}
@@ -311,17 +309,19 @@ function getTipDataFromLadder(ladder, roundData) {
 }
 
 function calculateScores(isFinals, myTips, oppTips, results, footballersData) {
-	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
+	console.log(myMargins);
 	var myDisposal = myTips.disposal;
 	var myScorer = myTips.scorer;
 	var oppClubs = oppTips.clubs;
 	var oppMargins = oppTips.margins;
+	console.log(oppMargins);
 	var oppDisposal = oppTips.disposal;
 	var oppScorer = oppTips.scorer;
 	var resClubs = results.resultsClubs;
 	var resMargins = results.resultsMargins;
+	console.log(resMargins);
 	var resDisposal = results.resultsDisposals;
 	var resScorer = results.resultsScorers;
 	var players = footballersData.players;
