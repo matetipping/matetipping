@@ -259,7 +259,7 @@ $(document).ready(function(){
 			}
 			for (i = 0; i < participants.length; i++) {
 				var oppIndex = fixtures[i].split(", ")[roundNo-1];
-				console.log(tipData[i]);
+				console.log(tipData[0]);
 				console.log(tipData[oppIndex]);
 				console.log(tipData);
 				console.log(calculateScores(tipData[i], tipData[oppIndex], resultsData, footballersData));
