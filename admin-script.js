@@ -364,7 +364,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 	for (i = 0; i < length; i++) {
 		var myRisk = 0;
 		var oppRisk = 0;
-		var noTippers = clubStats[myClubs[i]][0] + clubStats[myClubs[i]][1]];
+		var noTippers = clubStats[myClubs[i]][0] + clubStats[myClubs[i]][1];
 		var averageTip = (clubStats[myClubs[i]][2] - clubStats[myClubs[i]][3])/noTippers;
 		myRisk = Math.abs(myMargins[i] - averageTip);
 		oppRisk = Math.abs(oppMargins[i] - averageTip);
