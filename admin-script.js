@@ -238,6 +238,7 @@ $(document).ready(function(){
 			text[0] = "0" + text[0];
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
+		
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
@@ -255,7 +256,7 @@ $(document).ready(function(){
 			var finalRun = false;
 			for (i = 0; i < participants.length; i++) {
 				if (i == (participants.length - 1)) {
-					finalRun = false;
+					finalRun = true;
 				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
 					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
