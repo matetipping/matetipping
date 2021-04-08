@@ -238,6 +238,7 @@ $(document).ready(function(){
 			text[0] = "0" + text[0];
 		}
 		var roundYear = new Date().getFullYear() + "-R" + text[0];
+		console.log(roundYear);
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
 			var participants = doc.data().participants;
