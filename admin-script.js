@@ -260,7 +260,7 @@ $(document).ready(function(){
 					finalRun = true;
 				}
 				firebase.firestore().collection("users").doc(participants[i]).collection("preferences").doc("profile").get().then(function(doc) {
-					var replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
+					replacementTip = getTipDataFromLadder(doc.data().ladderPrediction, resultsData);
 					console.log(replacementTip);
 				});
 				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
