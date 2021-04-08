@@ -225,4 +225,178 @@ $(document).ready(function(){
 			});
 		});
 	});
+	
+	$("button.updateLadders").click(function() {
+		var text = $("textarea").val().split("\n");
+		var text = $("textarea").val().split("\n");
+		if (Number(text[0]) < 10) {
+			text[0] = "0" + text[0];
+		}
+		var roundYear = new Date().getFullYear() + "-R" + text[0];
+		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
+			var fixtures = doc.data().fixtures;
+			var participants = doc.data().participants;
+			var tipData = [];
+			for (i = 1; i < participants.length; i++) {
+				firebase.firestore().collection("users").doc(participants[i]).collection("tips").doc(roundYear).get().then(function(doc) {
+					tipData.push(doc.data());
+				});
+			}
+			console.log(tipData);
+		});
+	});
+	
 });
+
+function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
+	console.log("Calculate results here");
+	var myClubs = myTips.clubs;
+	var myMargins = myTips.margins;
+	var myDisposal = myTips.disposal;
+	var myScorer = myTips.scorer;
+	var oppClubs = oppTips.clubs;
+	var oppMargins = oppTips.margins;
+	var oppDisposal = oppTips.disposal;
+	var oppScorer = oppTips.scorer;
+	var resClubs = results.resultsClubs;
+	var resMargins = results.resultsMargins;
+	var resDisposal = results.resultsDisposals;
+	var resScorer = results.resultsScorers;
+	var players = footballersData.players;
+	var myTotal = 0;
+	var oppTotal = 0;
+	var myTotalError = 0;
+	var oppTotalError = 0;
+	var correctTipBonus = 5;
+	var htmlContent = "<tr><th>Club</th><th>Margin</th><th>Score</th><th>Score</th><th>Margin</th><th>Club</th></tr></thead><tbody>";
+	var i;
+	var length = myClubs.length;
+	for (i = 0; i < length; i++) {
+		var myScore = 0;
+		var oppScore = 0;
+		if (resClubs.length > i) {
+			var myDiff;
+			var oppDiff;
+			var diff;
+			if (myClubs[i] == resClubs[i]) {
+				myScore = myScore + correctTipBonus;
+				myDiff = Math.abs(myMargins[i] - resMargins[i]);
+			} else {
+				myScore = myScore - correctTipBonus;
+				myDiff = myMargins[i] + resMargins[i];
+			}
+			if (oppClubs[i] == resClubs[i]) {
+				oppScore = oppScore + correctTipBonus;
+				oppDiff = Math.abs(oppMargins[i] - resMargins[i]);
+			} else {
+				oppScore = oppScore - correctTipBonus;
+				oppDiff = oppMargins[i] + resMargins[i];
+			}
+			diff = oppDiff - myDiff;
+			if (myDiff == 0 || oppDiff == 0) {
+				diff = diff*2;
+			}
+			if (diff > 0) {
+				myScore = myScore + diff;
+			} else if (diff < 0) {
+				oppScore = oppScore - diff;
+			}
+			myTotalError = myTotalError + myDiff;
+			oppTotalError = oppTotalError + oppDiff;
+		} else {
+			myScore = 0;
+			oppScore = 0;
+		}
+		myTotal = myTotal + myScore;
+		oppTotal = oppTotal + oppScore;
+		htmlContent = htmlContent + "<tr><td><div class='flag' style='width:100px; height:50px;' id='" + myClubs[i] + "'></div></td>" +
+			"<td>" + myMargins[i] + "</td><td><span class='highlight'>" + myScore + "</span></td>" +
+			"<td><span class='highlight'>" + oppScore + "</span></td><td>" + oppMargins[i] + "</td>" +
+			"<td><div class='flag' style='width:100px; height:50px;' id='" + oppClubs[i] + "'></div></td></tr>";
+	}
+	
+	if (myDisposal != null) {
+		var myDN = players[myDisposal].name;
+		if (typeof resDisposal !== 'undefined') {
+			var myDB = resDisposal[myDisposal];
+		} else {
+			var myDB = 0;
+		}
+	} else {
+		myDN = "no disposal bonus";
+		var myDB = 0;
+	}
+	
+	if (myScorer != null) {
+		var mySN = players[myScorer].name;
+		if (typeof resScorer !== 'undefined') {
+			var mySB = resScorer[myScorer];
+		} else {
+			var mySB = 0;
+		}
+	} else {
+		mySN = "no scorer bonus";
+		var mySB = 0;
+	}
+	
+	if (oppDisposal != null) {
+		var oppDN = players[oppDisposal].name;
+		if (typeof resDisposal !== 'undefined') {
+			var oppDB = resDisposal[oppDisposal];
+		} else {
+			var oppDB = 0;
+		}
+	} else {
+		oppDN = "no disposal bonus";
+		var oppDB = 0;
+	}
+	
+	if (oppScorer != null) {
+		var oppSN = players[oppScorer].name;
+		if (typeof resScorer !== 'undefined') {
+			var oppSB = resScorer[oppScorer];
+		} else {
+			var oppSB = 0;
+		}
+	} else {
+		oppSN = "no scorer bonus";
+		var oppSB = 0;
+	}
+	
+	if (isFinals) {
+		if (isAwayTeam) {
+			mySB = mySB/2;
+			myDB = myDB/2;
+		} else {
+			oppSB = oppSB/2;
+			oppDB = oppDB/2;
+		}
+	}
+	
+	
+	htmlContent = htmlContent + "<tr><td colspan = '2'>" + myDN + "</td>" +
+		"<td><span class='highlight'>" + myDB + "</span></td><td><span class='highlight'>" + oppDB + "</span></td>" +
+		"<td colspan = '2'>" + oppDN + "</td></tr>" +
+		"<tr><td colspan = '2'>" + mySN + "</td>" +
+		"<td><span class='highlight'>" + mySB + "</span></td><td><span class='highlight'>" + oppSB + "</span></td>" +
+		"<td colspan = '2'>" + oppSN + "</td></tr>";
+	
+	myTotal = Math.round(myTotal + myDB + mySB);
+	oppTotal = Math.round(oppTotal + oppDB + oppSB);
+	
+	htmlContent = htmlContent + "<tr><td colspan = '2' style='color: red'>Error: " + myTotalError + "</td>" +
+		"<td colspan><span class='highlight'>" + myTotal + "</span></td><td><span class='highlight'>" + oppTotal + "</span></td>" +
+		"<td colspan = '2' style='color: red'>Error: " + oppTotalError + "</td></tr></tbody></table>";
+	
+	htmlContent = "<table><thead><tr><th colspan='2'>" +
+		"<div class='avatar-pair'><div class='avatar-display' id='avatar-player'><script>$('div#avatar-player').load('modules/avatar.html', function() {$.getScript('scripts/avatar.js')});</script></div></div><div id='username'>" +
+		me + "</div></th><th><span class='highlight'>" + myTotal + "</span></th>" +
+		"<th><span class='highlight'>" + oppTotal + "</span><th colspan='2'>" +
+		"<div class='avatar-pair'><div class='avatar-display' id='avatar-opponent'><script>$('div#avatar-opponent').load('modules/avatar.html');</script></div></div><div id='username'>" +
+		opp + "</div></th></tr>" + htmlContent;
+	
+	$("div#results").html(htmlContent);
+	
+	console.log(myTotal);
+	console.log(oppTotal);
+}
