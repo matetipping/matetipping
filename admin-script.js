@@ -306,23 +306,25 @@ $(document).ready(function(){
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats);
-							ladder[2] = playerScores.wins + ladder[2];
-							ladder[3] = playerScores.draws + ladder[3];
-							ladder[4] = playerScores.losses + ladder[4];
-							ladder[6] = playerScores.for + ladder[6];
-							ladder[7] = playerScores.against + ladder[7];
-							ladder[9] = playerScores.tips + ladder[9];
-							ladder[10] = playerScores.tipsAgainst + ladder[10];
-							ladder[11] = playerScores.error + ladder[11];
-							ladder[12] = playerScores.errorAgainst + ladder[12];
-							ladder[13] = playerScores.risk + ladder[13];
-							ladder[14] = playerScores.riskAgainst + ladder[14];
-							ladder[15] = playerScores.bonusesUsed + ladder[15];
-							ladder[16] = playerScores.bonusesUsedAgainst + ladder[16];
-							ladder[17] = playerScores.bonusScoreFor + ladder[17];
-							ladder[18] = playerScores.bonusScoreAgainst + ladder[18];
-							ladder[19] = playerScores.perfectTips + ladder[19];
-							ladder[20] = playerScores.perfectTipsAgainst + ladder[20];
+							var ladderVals = ladder[counter].split(",");
+							ladderVals[2] = playerScores.wins + ladderVals[2];
+							ladderVals[3] = playerScores.draws + ladderVals[3];
+							ladderVals[4] = playerScores.losses + ladderVals[4];
+							ladderVals[6] = playerScores.for + ladderVals[6];
+							ladderVals[7] = playerScores.against + ladderVals[7];
+							ladderVals[9] = playerScores.tips + ladderVals[9];
+							ladderVals[10] = playerScores.tipsAgainst + ladderVals[10];
+							ladderVals[11] = playerScores.error + ladderVals[11];
+							ladderVals[12] = playerScores.errorAgainst + ladderVals[12];
+							ladderVals[13] = playerScores.risk + ladderVals[13];
+							ladderVals[14] = playerScores.riskAgainst + ladderVals[14];
+							ladderVals[15] = playerScores.bonusesUsed + ladderVals[15];
+							ladderVals[16] = playerScores.bonusesUsedAgainst + ladderVals[16];
+							ladderVals[17] = playerScores.bonusScoreFor + ladderVals[17];
+							ladderVals[18] = playerScores.bonusScoreAgainst + ladderVals[18];
+							ladderVals[19] = playerScores.perfectTips + ladderVals[19];
+							ladderVals[20] = playerScores.perfectTipsAgainst + ladderVals[20];
+							ladder[counter] = ladderVals.join(",");
 						}
 						console.log(ladder);
 						firebase.firestore().collection("leagues").doc(text[1]).update({
