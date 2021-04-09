@@ -241,6 +241,7 @@ $(document).ready(function(){
 		
 		firebase.firestore().collection("leagues").doc(text[1]).get().then(function(doc) {
 			var fixtures = doc.data().fixtures;
+			var ladder = doc.data().ladder;
 			var participants = doc.data().participants;
 			var displayNames = [];
 			var i;
@@ -294,17 +295,47 @@ $(document).ready(function(){
 							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
 							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
 						}
-						var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Tips,Tips Against,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
+						var newLadder = true;
+						if (typeof ladder == 'undefined') {
+							var ladder = "Position,Tipper,W,D,L,Points,For,Against,%,Tips,Tips Against,Error,Error Against,Risk,Risk Against,Bonuses Used, Bonuses Used Against, Bonus Score, Bonus Score Against,Perfect Tips,Perfect Tips Against";
+						} else {
+							newLadder = false;
+							var ladderRows = ladder.split("\n");
+						}
+						var counter;
 						for (counter = 0; counter < participants.length; counter++) {
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats);
-							ladder = ladder + "\n" + counter + "," + displayNames[counter] + "," + playerScores.wins + "," + playerScores.draws + "," + playerScores.losses + "," +
+							if (!newLadder) {
+								var ladderVals = ladderRows[counter+1].split(",");
+								playerScores.wins = playerScores.wins + ladderVals[2];
+								playerScores.draws = playerScores.draws + ladderVals[3];
+								playerScores.losses = playerScores.losses + ladderVals[4];
+								playerScores.for = playerScores.for + ladderVals[6];
+								playerScores.against = playerScores.against + ladderVals[7];
+								playerScores.tips = playerScores.tips + ladderVals[9];
+								playerScores.tipsAgainst = playerScores.tipsAgainst + ladderVals[10];
+								playerScores.error = playerScores.error + ladderVals[11];
+								playerScores.errorAgainst = playerScores.errorAgainst + ladderVals[12];
+								playerScores.risk = playerScores.risk + ladderVals[13];
+								playerScores.riskAgainst = playerScores.riskAgainst + ladderVals[14];
+								playerScores.bonusesUsed = playerScores.bonusesUsed + ladderVals[15];
+								playerScores.bonusesUsedAgainst = playerScores.bonusesUsedAgainst + ladderVals[16];
+								playerScores.bonusScoreFor = playerScores.bonusScoreFor + ladderVals[17];
+								playerScores.bonusScoreAgainst = playerScores.bonusScoreAgainst + ladderVals[18];
+								playerScores.perfectTips = playerScores.perfectTips + ladderVals[19];
+								playerScores.perfectTipsAgainst = playerScores.perfectTipsAgainst + ladderVals[20];
+							}
+							ladder = ladder + "\n" + (counter+1) + "," + displayNames[counter] + "," + playerScores.wins + "," + playerScores.draws + "," + playerScores.losses + "," +
 								(playerScores.wins*4 + playerScores.draws*2) + "," + playerScores.for + "," + playerScores.against + "," + (playerScores.for*100/playerScores.against) + "," +
 								playerScores.tips + "," + playerScores.tipsAgainst + "," + playerScores.error + "," + playerScores.errorAgainst + "," + 
 								playerScores.risk + "," + playerScores.riskAgainst + "," + playerScores.bonusesUsed + "," + playerScores.bonusesUsedAgainst + "," + 
 								playerScores.bonusScoreFor + "," + playerScores.bonusScoreAgainst + "," + playerScores.perfectTips + "," + playerScores.perfectTipsAgainst;
 						}
 						console.log(ladder);
+						firebase.firestore().collection("leagues").doc(text[1]).update({
+							ladder: ladder
+						});
 					}
 				});
 			}
