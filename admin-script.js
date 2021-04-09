@@ -299,7 +299,7 @@ $(document).ready(function(){
 							ladder = [];
 							var counter;
 							for (counter = 0; counter < participants.length; counter ++) {
-								ladder.push([(counter+1),displayNames[counter],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+								ladder.push(String((counter+1) + "," + displayNames[counter] + ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"));
 							}
 						}
 						var counter;
