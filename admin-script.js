@@ -307,6 +307,7 @@ $(document).ready(function(){
 							var oppIndex = fixtures[counter].split(", ")[roundNo-1];
 							var playerScores = calculateScores(isFinals, tipData[counter], tipData[oppIndex], resultsData, footballersData, clubStats);
 							var ladderVals = ladder[counter].split(",");
+							ladderVals[0] = counter+1;
 							ladderVals[2] = playerScores.wins + Number(ladderVals[2]);
 							ladderVals[3] = playerScores.draws + Number(ladderVals[3]);
 							ladderVals[4] = playerScores.losses + Number(ladderVals[4]);
