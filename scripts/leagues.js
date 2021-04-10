@@ -224,6 +224,17 @@ function setAvatar(data, avatarType) {
 			
 function updateLadder(doc) {
 	if (doc.exists) {
+		var ladderHTML ="<table><thead><tr><th></th><th>Tipper</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>For</th><th>Against</th><th>%</th><th>Tips</th><th>Error</th><th>Risk</th><th>Bonuses Used</th><th>Bonus Score</th><th>Perfect Tips</th></thead><tbody>";
+		var ladder = doc.data().ladder;
+		var i;
+		for (i = 0; i < ladder.length; i++) {
+			var lVals = ladder[i].split(",");
+			ladderHTML = ladderHTML + "<tr><td>" + lVals[0] + "</td><td>" + lVals[1] + "</td><td>" + lVals[2] + "</td><td>" + lVals[3] + "</td><td>" + lVals[4] +
+				 "</td><td>" + lVals[5] +  "</td><td>" + lVals[6] + "</td><td>" + lVals[7] + "</td><td>" + lVals[8] + "</td><td>" + lVals[9] +
+				 "</td><td>" + lVals[11] + "</td><td>" + lVals[13] + "</td><td>" + lVals[15] + "</td><td>" + lVals[17] + "</td><td>" + lVals[19] + "</td></tr>";
+		}
+		ladderHTML = ladderHTML + "</tbody></table>";
+		$("div.ladder").html(ladderHTML);
 	} else {
 		$("div#results").html("Select a league to see live results.");
 	}
