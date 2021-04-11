@@ -241,6 +241,10 @@ function updateLadder(doc) {
 		}
 		ladderHTML = ladderHTML + "</tbody></table>";
 		$("div#ladder").html(ladderHTML);
+		$("div#ladder th").click(function() {
+			var column = $("div#ladder th").index(this);
+			console.log(column);
+		});
 	} else {
 		$("div#ladder").html("Select a league to see live results.");
 	}
