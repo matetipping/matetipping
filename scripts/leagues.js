@@ -248,10 +248,10 @@ function updateLadder(doc) {
 			var i;
 			for (i = 0; i < colVals.length; i++) {
 				var position = i;
-				var thisVal = Number(colVals.index(i).text());
+				var thisVal = Number(colVals[i].text());
 				var j;
 				for (j = i; j < colVals.length; j++) {
-					var compVal = Number(colVals.index(j).text());
+					var compVal = Number(colVals[j].text());
 					if (compVal > thisVal) {
 						position ++;
 					}
@@ -259,14 +259,14 @@ function updateLadder(doc) {
 				newOrder[i] = position;
 			}
 			var rowVals = $("div#ladder tr");
-			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals.index(0).html() + "</thead><tbody>";
+			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals[0].html() + "</thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
 				var j;
 				for (j = 0; j < newOrder.length; j++) {
 					if (newOrder[j] == i) {
 						var newPos = i+1;
 						$("div#ladder tr:nth-child(" + j + ") td:nth-child(0)").html(newPos);
-						tableHTML = tableHTML + rowVals.index(j).html();
+						tableHTML = tableHTML + rowVals[j].html();
 					}
 				}
 			}
