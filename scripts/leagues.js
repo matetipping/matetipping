@@ -230,8 +230,8 @@ function updateLadder(doc) {
 		for (i = 0; i < ladder.length; i++) {
 			var lVals = ladder[i].split(",");
 			ladderHTML = ladderHTML + "<tr><td>" + lVals[0] + "</td><td>" + lVals[1] + "</td><td>" + lVals[2] + "</td><td>" + lVals[3] + "</td><td>" + lVals[4] +
-				 "</td><td>" + lVals[5] +  "</td><td>" + lVals[6] + "</td><td>" + lVals[7] + "</td><td>" + lVals[8] + "</td><td>" + lVals[9] +
-				 "</td><td>" + lVals[11] + "</td><td>" + lVals[13] + "</td><td>" + lVals[15] + "</td><td>" + lVals[17] + "</td><td>" + lVals[19] + "</td></tr>";
+				 "</td><td>" + lVals[5] +  "</td><td>" + lVals[6] + "</td><td>" + lVals[7] + "</td><td>" + (Math.round(lVals[8]*10)/10) + "</td><td>" + lVals[9] +
+				 "</td><td>" + (Math.round(lVals[11])) + "</td><td>" + lVals[13] + "</td><td>" + lVals[15] + "</td><td>" + lVals[17] + "</td><td>" + lVals[19] + "</td></tr>";
 		}
 		ladderHTML = ladderHTML + "</tbody></table>";
 		$("div#ladder").html(ladderHTML);
