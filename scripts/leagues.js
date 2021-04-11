@@ -255,27 +255,24 @@ function updateLadder(doc) {
 				for (j = i+1; j < colVals.length; j++) {
 					var compVal = Number(colVals.eq(j).html());
 					if (compVal > thisVal) {
-						console.log(compVal + " > " + thisVal);
 						newOrder[i] = newOrder[i] + 1;
-						console.log(newOrder[i]);
 						newOrder[j] = newOrder[j] - 1;
 					}
 				}
 			}
-			console.log(newOrder);
 			var rowVals = $("div#ladder tr");
-			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals.eq(0).html() + "</thead><tbody>";
+			var ladderHTML = "<table style='width: 100%'><thead style='text-align: left'><tr>" + rowVals.eq(0).html() + "</tr></thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
 				var j;
 				for (j = 0; j < newOrder.length; j++) {
 					if (newOrder[j] == i) {
 						var newPos = i+1;
 						$("div#ladder tr:nth-child(" + j + ") td:nth-child(0)").html(newPos);
-						tableHTML = tableHTML + "<tr>" + rowVals.eq(j).html() + "</tr>";
+						ladderHTML = ladderHTML + "<tr>" + rowVals.eq(j).html() + "</tr>";
 					}
 				}
 			}
-			tableHTML = tableHTML + "</tbody></table>";
+			ladderHTML = ladderHTML + "</tbody></table>";
 			$("div#ladder").html(ladderHTML);
 		});
 	} else {
