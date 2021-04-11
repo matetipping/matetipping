@@ -260,7 +260,7 @@ function updateLadder(doc) {
 				newOrder[i] = position;
 			}
 			var rowVals = $("div#ladder tr");
-			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals[0].html() + "</thead><tbody>";
+			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals.eq(0).html() + "</thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
 				var j;
 				for (j = 0; j < newOrder.length; j++) {
