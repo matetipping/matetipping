@@ -234,9 +234,9 @@ function updateLadder(doc) {
 				 "</td><td>" + lVals[11] + "</td><td>" + lVals[13] + "</td><td>" + lVals[15] + "</td><td>" + lVals[17] + "</td><td>" + lVals[19] + "</td></tr>";
 		}
 		ladderHTML = ladderHTML + "</tbody></table>";
-		$("div.ladder").html(ladderHTML);
+		$("div#ladder").html(ladderHTML);
 	} else {
-		$("div#results").html("Select a league to see live results.");
+		$("div#ladder").html("Select a league to see live results.");
 	}
 }
 
