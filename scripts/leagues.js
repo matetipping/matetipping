@@ -247,6 +247,16 @@ function updateLadder(doc) {
 		
 		function orderOnClick(elem) {
 			var column = $("div#ladder th").index(elem) + 1;
+			if (column == orderIndex) {
+				if (orderAscending) {
+					orderAscending = false;
+				} else {
+					orderAscending = true;
+				}
+			} else {
+				orderIndex = column;
+				orderAscending = false;
+			}
 			var colVals = $("div#ladder td:nth-child(" + column + ")");
 			var newOrder = [];
 			var i;
@@ -262,10 +272,10 @@ function updateLadder(doc) {
 				var j;
 				for (j = i+1; j < colVals.length; j++) {
 					var compVal = Number(colVals.eq(j).html());
-					if (compVal > thisVal && orderAscending) {
+					if (compVal > thisVal && !(orderAscending)) {
 						newOrder[i] = newOrder[i] + 1;
 						newOrder[j] = newOrder[j] - 1;
-					} else if (thisVal > compVal && !(orderAscending)) {
+					} else if (thisVal > compVal && orderAscending) {
 						newOrder[i] = newOrder[i] - 1;
 						newOrder[j] = newOrder[j] + 1;
 					}
@@ -286,17 +296,6 @@ function updateLadder(doc) {
 			$("div#ladder th").click(function() {
 				orderOnClick(this);
 			});
-			
-			if (column == orderIndex) {
-				if (orderAscending) {
-					orderAscending = false;
-				} else {
-					orderAscending = true;
-				}
-			} else {
-				orderIndex = column;
-				orderAscending = false;
-			}
 		}
 		
 		$("div#ladder th").click(function() {
