@@ -241,8 +241,9 @@ function updateLadder(doc) {
 		}
 		ladderHTML = ladderHTML + "</tbody></table>";
 		$("div#ladder").html(ladderHTML);
-		$("div#ladder th").click(function() {
-			var column = $("div#ladder th").index(this) + 1;
+		
+		function orderOnClick(elem) {
+			var column = $("div#ladder th").index(elem) + 1;
 			var colVals = $("div#ladder td:nth-child(" + column + ")");
 			var newOrder = [];
 			var i;
@@ -274,7 +275,15 @@ function updateLadder(doc) {
 			}
 			ladderHTML = ladderHTML + "</tbody></table>";
 			$("div#ladder").html(ladderHTML);
+			$("div#ladder th").click(function() {
+				orderOnClick(this);
+			});
+		}
+		
+		$("div#ladder th").click(function() {
+			orderOnClick(this);
 		});
+		
 	} else {
 		$("div#ladder").html("Select a league to see live results.");
 	}
