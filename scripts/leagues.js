@@ -267,8 +267,6 @@ function updateLadder(doc) {
 				var j;
 				for (j = 0; j < newOrder.length; j++) {
 					if (newOrder[j] == i) {
-						var newPos = i+1;
-						$("div#ladder tr:nth-child(" + (j+1) + ") td:nth-child(1)").html(newPos);
 						ladderHTML = ladderHTML + "<tr>" + rowVals.eq(j+1).html() + "</tr>";
 					}
 				}
