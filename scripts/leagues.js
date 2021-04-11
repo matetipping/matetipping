@@ -242,14 +242,13 @@ function updateLadder(doc) {
 		ladderHTML = ladderHTML + "</tbody></table>";
 		$("div#ladder").html(ladderHTML);
 		$("div#ladder th").click(function() {
-			var column = $("div#ladder th").index(this);
+			var column = $("div#ladder th").index(this) + 1;
 			var colVals = $("div#ladder td:nth-child(" + column + ")");
 			var newOrder = [];
 			var i;
 			for (i = 0; i < colVals.length; i++) {
 				newOrder.push(i);
 			}
-			console.log(newOrder);
 			for (i = 0; i < colVals.length; i++) {
 				var thisVal = Number(colVals.eq(i).html());
 				console.log(thisVal);
