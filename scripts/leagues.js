@@ -251,11 +251,11 @@ function updateLadder(doc) {
 			}
 			for (i = 0; i < colVals.length; i++) {
 				var thisVal = Number(colVals.eq(i).html());
-				console.log(thisVal);
 				var j;
 				for (j = i+1; j < colVals.length; j++) {
 					var compVal = Number(colVals.eq(j).html());
 					if (compVal > thisVal) {
+						console.log(compVal + " > " + thisVal);
 						newOrder[i] = newOrder[i] + 1;
 						newOrder[j] = newOrder[j] - 1;
 					}
