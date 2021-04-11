@@ -227,11 +227,8 @@ function updateLadder(doc) {
 		var ladder = doc.data().ladder;
 		var i;
 		var orderedLadder = [];
-		for (i = 0; i < ladder.length; i++) {
-			console.log(ladder[i].split(","));
-			console.log(ladder[i].split(",")[5]);	 
-			var position = Number(ladder[i].split(",")[5])-1;
-			console.log(position);
+		for (i = 0; i < ladder.length; i++) {	 
+			var position = Number(ladder[i].split(",")[0])-1;
 			orderedLadder[position] = ladder[i];
 		}
 		ladder = orderedLadder;
