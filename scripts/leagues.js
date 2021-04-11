@@ -243,7 +243,35 @@ function updateLadder(doc) {
 		$("div#ladder").html(ladderHTML);
 		$("div#ladder th").click(function() {
 			var column = $("div#ladder th").index(this);
-			console.log(column);
+			var colVals = $("div#ladder tr:nth-child(" + column + ")");
+			var newOrder = [];
+			var i;
+			for (i = 0; i < colVals.length; i++) {
+				var position = i;
+				var thisVal = Number(colVals.index(i).text());
+				var j;
+				for (j = i; j < colVals.length; j++) {
+					var compVal = Number(colVals.index(j).text());
+					if (compVal > thisVal) {
+						position ++;
+					}
+				}
+				newOrder[i] = position;
+			}
+			var rowVals = $("div#ladder tr");
+			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals.index(0).html() + "</thead><tbody>";
+			for (i = 0; i < newOrder.length; i++) {
+				var j;
+				for (j = 0; j < newOrder.length; j++) {
+					if (newOrder[j] == i) {
+						var newPos = i+1;
+						$("div#ladder tr:nth-child(" + j + ") td:nth-child(0)").html(newPos);
+						tableHTML = tableHTML + rowVals.index(j).html();
+					}
+				}
+			}
+			tableHTML = tableHTML + "</tbody></table>";
+			$("div#ladder").html(ladderHTML);
 		});
 	} else {
 		$("div#ladder").html("Select a league to see live results.");
