@@ -248,10 +248,11 @@ function updateLadder(doc) {
 			var i;
 			for (i = 0; i < colVals.length; i++) {
 				var position = i;
-				var thisVal = Number(colVals[i].text());
+				console.log(colVals[i]);
+				var thisVal = Number(colVals[i].html());
 				var j;
 				for (j = i; j < colVals.length; j++) {
-					var compVal = Number(colVals[j].text());
+					var compVal = Number(colVals[j].html());
 					if (compVal > thisVal) {
 						position ++;
 					}
