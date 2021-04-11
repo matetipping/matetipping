@@ -243,7 +243,7 @@ function updateLadder(doc) {
 		$("div#ladder").html(ladderHTML);
 		$("div#ladder th").click(function() {
 			var column = $("div#ladder th").index(this);
-			var colVals = $("div#ladder tr:nth-child(" + column + ")");
+			var colVals = $("div#ladder td:nth-child(" + column + ")");
 			var newOrder = [];
 			var i;
 			for (i = 0; i < colVals.length; i++) {
