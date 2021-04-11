@@ -284,6 +284,8 @@ function updateLadder(doc) {
 					}
 				}
 			}
+			console.log(newOrder);
+			console.log(orderAscending);
 			var rowVals = $("div#ladder tr");
 			var ladderHTML = "<table style='width: 100%'><thead style='text-align: left'><tr>" + rowVals.eq(0).html() + "</tr></thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
