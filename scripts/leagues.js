@@ -248,7 +248,6 @@ function updateLadder(doc) {
 			var i;
 			for (i = 0; i < colVals.length; i++) {
 				var position = i;
-				console.log(colVals.eq(i));
 				var thisVal = Number(colVals.eq(i).html());
 				var j;
 				for (j = i; j < colVals.length; j++) {
@@ -259,6 +258,7 @@ function updateLadder(doc) {
 				}
 				newOrder[i] = position;
 			}
+			console.log(newOrder);
 			var rowVals = $("div#ladder tr");
 			var tableHTML = "<table style='width: 100%'><thead style='text-align: left'>" + rowVals.eq(0).html() + "</thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
