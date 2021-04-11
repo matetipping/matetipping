@@ -257,10 +257,10 @@ function updateLadder(doc) {
 					if (compVal > thisVal) {
 						console.log(compVal + " > " + thisVal);
 						newOrder[i] = newOrder[i] + 1;
+						console.log(newOrder[i]);
 						newOrder[j] = newOrder[j] - 1;
 					}
 				}
-				newOrder[i] = position;
 			}
 			console.log(newOrder);
 			var rowVals = $("div#ladder tr");
