@@ -308,24 +308,24 @@ div #leaguesList div.selected {
 div#leaguesList div:hover {
   cursor: pointer;
 }
-div#results table {
+div#results table, div#ladder table {
   margin: 24px auto;
 }
-div#results table td {
+div#results table td,  div#ladder table td {
   text-align: center;
   width: 100px;
 }
-div#results table tr {
+div#results table tr,  div#ladder table tr {
   height: 50px;
 }
 div#results table tbody tr:last-child .highlight, div#results table thead tr:first-child .highlight {
   font-size: 200%;
   font-family: Lato Black;
 }
-div#results table tr:nth-child(odd) {
+div#results table tr:nth-child(odd), div#ladder table tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.2);
 }
-div#results table tr:nth-child(even) {
+div#results table tr:nth-child(even), div#ladder table tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.4);
 }
 div.menu-major button {
