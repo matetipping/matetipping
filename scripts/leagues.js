@@ -229,6 +229,7 @@ function updateLadder(doc) {
 		var orderedLadder = [];
 		for (i = 0; i < ladder.length; i++) {
 			var position = Number(ladder[i].split(",")[5])-1;
+			console.log(position);
 			orderedLadder[position] = ladder[i];
 		}
 		ladder = orderedLadder;
@@ -271,7 +272,6 @@ function getTipDataFromLadder(ladder) {
 }
 
 function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
-	console.log("Calculate results here");
 	var myClubs = myTips.clubs;
 	var myMargins = myTips.margins;
 	var myDisposal = myTips.disposal;
@@ -418,9 +418,6 @@ function calculateScores(me, opp, myTips, oppTips, results, footballersData) {
 		opp + "</div></th></tr>" + htmlContent;
 	
 	$("div#results").html(htmlContent);
-	
-	console.log(myTotal);
-	console.log(oppTotal);
 }
 
 function setLeagueList(leagues, leagueIDs) {
