@@ -248,11 +248,11 @@ function updateLadder(doc) {
 			var i;
 			for (i = 0; i < colVals.length; i++) {
 				var position = i;
-				console.log(colVals[i]);
-				var thisVal = Number(colVals[i].html());
+				console.log(colVals.eq(i));
+				var thisVal = Number(colVals.eq(i).html());
 				var j;
 				for (j = i; j < colVals.length; j++) {
-					var compVal = Number(colVals[j].html());
+					var compVal = Number(colVals.eq(j).html());
 					if (compVal > thisVal) {
 						position ++;
 					}
@@ -267,7 +267,7 @@ function updateLadder(doc) {
 					if (newOrder[j] == i) {
 						var newPos = i+1;
 						$("div#ladder tr:nth-child(" + j + ") td:nth-child(0)").html(newPos);
-						tableHTML = tableHTML + "<tr>" + rowVals[j].html() + "</tr>";
+						tableHTML = tableHTML + "<tr>" + rowVals.eq(j).html() + "</tr>";
 					}
 				}
 			}
