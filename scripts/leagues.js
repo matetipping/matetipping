@@ -232,7 +232,7 @@ function updateLadder(doc) {
 			orderedLadder[position] = ladder[i];
 		}
 		ladder = orderedLadder;
-		var ladderHTML ="<table><thead><tr><th></th><th>Tipper</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>For</th><th>Against</th><th>%</th><th>Tips</th><th>Error</th><th>Risk</th><th>Bonuses Used</th><th>Bonus Score</th><th>Perfect Tips</th></thead><tbody>";
+		var ladderHTML ="<table><thead><tr><th></th><th>Tipper</th><th>W</th><th>D</th><th>L</th><th>P</th><th>F</th><th>A</th><th>%</th><th>T</th><th>E</th><th>R</th><th>BU</th><th>B</th><th>P</th></thead><tbody>";
 		for (i = 0; i < ladder.length; i++) {
 			var lVals = ladder[i].split(",");
 			ladderHTML = ladderHTML + "<tr><td><b>" + lVals[0] + "</b></td><td>" + lVals[1] + "</td><td>" + lVals[2] + "</td><td>" + lVals[3] + "</td><td>" + lVals[4] +
