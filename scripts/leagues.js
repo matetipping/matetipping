@@ -232,7 +232,10 @@ function updateLadder(doc) {
 			orderedLadder[position] = ladder[i];
 		}
 		ladder = orderedLadder;
-		var ladderHTML ="<table style='width: 100%'><thead style='text-align: left'><tr><th>#</th><th>Tipper</th><th>W</th><th>D</th><th>L</th><th>P</th><th>F</th><th>A</th><th>%</th><th>T</th><th>E</th><th>R</th><th>BU</th><th>B</th><th>P</th></thead><tbody>";
+		var ladderHTML ="<table style='width: 100%'><thead style='text-align: left'><tr><th title='Position'>#</th><th title='Tipper Name'>Tipper</th>" +
+		    "<th title='Wins'>W</th><th title='Draws'>D</th><th title='Losses'>L</th><th title='Points'>P</th><th title='Total Score For'>F</th>" +
+		    "<th title='Total Score Against'>A</th><th title='Percentage'>%</th><th title='Correct Tips'>T</th><th title='Total Error'>E</th>" +
+		    "<th title='Total Risk'>R</th><th title='Bonuses Used'>BU</th><th title='Total Bonus Scored'>B</th><th title='Perfect Tips'>P</th></thead><tbody>";
 		for (i = 0; i < ladder.length; i++) {
 			var lVals = ladder[i].split(",");
 			ladderHTML = ladderHTML + "<tr><td><b>" + lVals[0] + "</b></td><td>" + lVals[1] + "</td><td>" + lVals[2] + "</td><td>" + lVals[3] + "</td><td>" + lVals[4] +
