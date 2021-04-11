@@ -275,17 +275,15 @@ function updateLadder(doc) {
 				var j;
 				for (j = i+1; j < colVals.length; j++) {
 					var compVal = Number(colVals.eq(j).html());
-					if (compVal > thisVal && !(orderAscending)) {
+					if (compVal > thisVal) {
 						newOrder[i] = newOrder[i] + 1;
 						newOrder[j] = newOrder[j] - 1;
-					} else if (thisVal > compVal && orderAscending) {
-						newOrder[i] = newOrder[i] - 1;
-						newOrder[j] = newOrder[j] + 1;
 					}
 				}
 			}
-			console.log(newOrder);
-			console.log(orderAscending);
+			if (!(orderAscending)) {
+				newOrder.reverse();
+			}
 			var rowVals = $("div#ladder tr");
 			var ladderHTML = "<table style='width: 100%'><thead style='text-align: left'><tr>" + rowVals.eq(0).html() + "</tr></thead><tbody>";
 			for (i = 0; i < newOrder.length; i++) {
