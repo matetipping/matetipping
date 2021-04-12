@@ -239,7 +239,7 @@ function loadTippingForm(doc) {
 				htmlTitle = htmlTitle + "<option value='R" + iString + "'>Round " + i + "</option>";
 			}
 		}
-		htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div><div class='opponentName'>Your opponent is " + opponentName + "</div></div>";
+		htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div><div class='opponentName'>Your opponent is " + opponentName + "</div>";
 		htmlFields = htmlTitle + htmlFields;
 		var timer = setInterval(function() {
 			var currentTime = Date.now();
