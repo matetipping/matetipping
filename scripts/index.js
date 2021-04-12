@@ -189,7 +189,7 @@ function loadPageData() {
 function loadOpponentName(doc, roundCode) {
 	var fixtures = doc.data().fixtures;
 	var participants = doc.data().participants;
-	var ladder = doc.data().ladders;
+	var ladder = doc.data().ladder;
 	var myID = -1;
 	var i;
 	for (i = 0; i < participants.length; i++) {
