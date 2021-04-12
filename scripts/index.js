@@ -202,6 +202,7 @@ function loadOpponentName(doc, roundCode) {
 	var opponentIndex = Number(fixtures[myID].split(",")[roundNo]);
 	var opponentName = ladder[opponentIndex].split(",")[1];
 	console.log(opponentName);
+	$("div.inputs:nth-child(1)").after("Your opponent is <b>" + opponentName + "</b>.");
 }
 
 function loadTippingForm(doc) {
