@@ -183,14 +183,10 @@ function loadPageData() {
 			loadTippingForm(doc);
 		});
 	});
-	var newFixtureRef = db.collection("leagues").doc("oQxiLDIb6SVXVeaHjdMj");
-		newFixtureRef.get().then(function(doc) {
-		loadOpponentName(doc);
-	});
 	
 }
 
-function loadOpponentName(doc) {
+function loadOpponentName(doc, roundCode) {
 	var fixtures = doc.data().fixtures;
 	var participants = doc.data().participants;
 	var ladder = doc.data().ladders;
@@ -220,6 +216,12 @@ function loadTippingForm(doc) {
 		roundRef = db.collection("rounds").doc(doc.id);
 		var roundName = doc.data().name;
 		roundCodeName = doc.data().codename;
+		
+		var newFixtureRef = db.collection("leagues").doc("oQxiLDIb6SVXVeaHjdMj");
+			newFixtureRef.get().then(function(doc) {
+			loadOpponentName(doc, roundCodeName);
+		});
+		
 		currentRound = roundName + ", " + currentYear;
 		htmlTitle = "<span class='downArrow'>&#9660;</span><select class='roundSelector'>";
 		var i;
@@ -557,7 +559,7 @@ function loadTippingForm(doc) {
 			});
 			var newFixtureRef = db.collection("leagues").doc("oQxiLDIb6SVXVeaHjdMj");
 			newFixtureRef.get().then(function(doc) {
-				loadOpponentName(doc);
+				loadOpponentName(doc, roundCode);
 			});
 		});
 	} else {
