@@ -3,6 +3,7 @@ var usedDisposalsList;	// a list of disposals bonuses already used in other roun
 var usedScorersList;	// a list of scorer bonuses already used in other rounds
 var currentYear;
 var tipsSaved = false;
+var opponentName = "";
 
 $(document).ready(function(){
 	currentYear = new Date().getFullYear().toString();
@@ -200,10 +201,8 @@ function loadOpponentName(doc, roundCode) {
 	}
 	var roundNo = Number(roundCode.split("R")[1])-1;
 	var opponentIndex = Number(fixtures[myID].split(",")[roundNo]);
-	var opponentName = ladder[opponentIndex].split(",")[1];
-	console.log(opponentName);
-	displayInfo("Your opponent is " + opponentName + ".");
-	$("div.inputs:nth-child(1)").after("Your opponent is <b>" + opponentName + "</b>.");
+	opponentName = ladder[opponentIndex].split(",")[1];
+	$("div.opponentName").html(opponentName);
 }
 
 function loadTippingForm(doc) {
@@ -240,7 +239,7 @@ function loadTippingForm(doc) {
 				htmlTitle = htmlTitle + "<option value='R" + iString + "'>Round " + i + "</option>";
 			}
 		}
-		htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div></div>";
+		htmlTitle = htmlTitle + "</select><div class='inputs'><div class='roundTitle'></div><div class='opponentName'>Your opponent is " + opponentName + "</div></div>";
 		htmlFields = htmlTitle + htmlFields;
 		var timer = setInterval(function() {
 			var currentTime = Date.now();
