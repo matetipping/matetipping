@@ -276,6 +276,7 @@ $(document).ready(function(){
 						var tipsForAway = [];
 						var marginsForHome = [];
 						var marginsForAway = [];
+						var tipsForDraw = [];
 						var clubStats = {};
 						for (counter = 0; counter < homeTeams.length; counter++) {
 							tipsForHome.push(0);
@@ -287,13 +288,16 @@ $(document).ready(function(){
 								if (tipData[k].clubs[counter] == homeTeams[counter]) {
 									tipsForHome[counter] = tipsForHome[counter] + 1;
 									marginsForHome[counter] = marginsForHome[counter] + tipData[k].margins[counter];
-								} else {
+								} else if (tipData[k].clubs[counter] == awayTeams[counter]) {
 									tipsForAway[counter] = tipsForAway[counter] + 1;
 									marginsForAway[counter] = marginsForAway[counter] + tipData[k].margins[counter];
+								} else {
+									tipsForDraw[counter] = tipsForDraw[counter] + 1;
 								}
 							}
-							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
-							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter], marginsForAway[counter], marginsForHome[counter]];
+							clubStats[homeTeams[counter]] = [tipsForHome[counter], tipsForAway[counter] + tipsForDraw[counter], marginsForHome[counter], marginsForAway[counter]];
+							clubStats[awayTeams[counter]] = [tipsForAway[counter], tipsForHome[counter] + tipsForDraw[counter], marginsForAway[counter], marginsForHome[counter]];
+							clubStats["DRW_" + counter] = [tipsForDraw[counter], tipsForHome[counter] + tipsForAway[counter], marginsForHome[counter], marginsForAway[counter]];
 						}
 						if (typeof ladder == 'undefined') {
 							ladder = [];
@@ -416,9 +420,20 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 		var myRisk = 0;
 		var oppRisk = 0;
 		var noTippers = clubStats[myClubs[i]][0] + clubStats[myClubs[i]][1];
-		var averageTip = (clubStats[myClubs[i]][2] - clubStats[myClubs[i]][3])/noTippers;
+		
+		if (myClubs[i] == "DRW") {
+			var averageTip = (clubStats[myClubs[i] + "_" + i][2] - clubStats[myClubs[i] + "_" + i][3])/noTippers;
+		} else {
+			var averageTip = (clubStats[myClubs[i]][2] - clubStats[myClubs[i]][3])/noTippers;
+		}
 		myRisk = Math.abs(myMargins[i] - averageTip);
+		if (oppClubs[i] == "DRW") {
+			var averageTip = (clubStats[oppClubs[i] + "_" + i][2] - clubStats[oppClubs[i] + "_" + i][3])/noTippers;
+		} else {
+			var averageTip = (clubStats[oppClubs[i]][2] - clubStats[oppClubs[i]][3])/noTippers;
+		}
 		oppRisk = Math.abs(oppMargins[i] - averageTip);
+		
 		myTotalRisk = myTotalRisk + myRisk;
 		oppTotalRisk = oppTotalRisk + oppRisk;
 		
