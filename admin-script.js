@@ -422,7 +422,7 @@ function calculateScores(isFinals, myTips, oppTips, results, footballersData, cl
 		
 		if (myClubs[i] == "DRW") {
 			var noTippers = clubStats["DRW_" + i][0] + clubStats["DRW_" + i][1];
-			var averageTip = (clubStats"DRW_" + i][2] - clubStats["DRW_" + i][3])/noTippers;
+			var averageTip = (clubStats["DRW_" + i][2] - clubStats["DRW_" + i][3])/noTippers;
 		} else {
 			var averageTip = (clubStats[myClubs[i]][2] - clubStats[myClubs[i]][3])/noTippers;
 		}
