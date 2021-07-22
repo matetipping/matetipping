@@ -67,7 +67,7 @@ $(document).ready(function(){
 			isDisposals = false;
 		});
 		var roundNumber = $("select.roundSelector").val();
-		var isFinals = ["R19", "R20", "R21", "R22"].includes(roundNumber);
+		var isFinals = ["R20", "R21", "R22", "R23"].includes(roundNumber);
 		var errorMessage = "You must tip all matches.";
 		if (usedScorersList.includes(bonusScorer) && !isFinals) {
 			errorMessage = "Scorers bonus already used.";
