@@ -231,7 +231,7 @@ $(document).ready(function(){
 		var text = $("textarea").val().split("\n");
 		var roundNo = Number(text[0]);
 		var isFinals = false;
-		if (roundNo >= 19) {
+		if (roundNo > 19) {
 			isFinals = true;
 		}
 		if (Number(text[0]) < 10) {
