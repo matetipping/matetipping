@@ -86,7 +86,7 @@ $(document).ready(function(){
 			valid = false;
 		}
 		
-		/**
+		
 		if (isFinals && bonusDisposal == null) {
 			errorMessage = "Must select a disposal bonus.";
 			valid = false;
@@ -95,8 +95,8 @@ $(document).ready(function(){
 			errorMessage = "Must select a scorer bonus.";
 			valid = false;
 		}
-		**/
 		
+		/**
 		if (isFinals && bonusDisposal == null && bonusScorer == null) {
 			errorMessage = "Must select one bonus of either type.";
 			valid = false;
@@ -106,6 +106,7 @@ $(document).ready(function(){
 			errorMessage = "Only one bonus tip may be selected for the knockout.";
 			valid = false;
 		}
+		**/
 		
 		if (tipsSaved) {
 			errorMessage = "Tips unchanged since last submission.";
