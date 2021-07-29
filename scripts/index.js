@@ -200,7 +200,7 @@ function loadOpponentName(doc, roundCode) {
 		}
 	}
 	var roundNo = Number(roundCode.split("R")[1])-1;
-	var opponentIndex = Number(fixtures[myID].split(",")[roundNo]);
+	var opponentIndex = Number(fixtures[myID].split(",")[roundNo].split("A")[0]);
 	opponentName = ladder[opponentIndex].split(",")[1];
 	$("div.opponentName").html("Your opponent is " + opponentName + ".");
 }
